@@ -272,13 +272,13 @@ Variants {
                 Shortcut {
                     enabled: root.isHubMode
                     sequence: "Tab"
-                    onActivated: hub.currentIndex = (hub.currentIndex + 1) % 4
+                    onActivated: hub.cycleTab(1)
                 }
 
                 Shortcut {
                     enabled: root.isHubMode
                     sequence: "Shift+Tab"
-                    onActivated: hub.currentIndex = (hub.currentIndex + 3) % 4
+                    onActivated: hub.cycleTab(-1)
                 }
             }
         }
@@ -656,14 +656,17 @@ Variants {
                                                             === audioPhaseExpanded
                 readonly property bool contentPresentationActive: recordingPresentationActive
                                                                   || audioPresentationActive
+                readonly property bool notificationPopupAvailable: NotificationManager.hasNotifs &&
+                                                                   !NotificationManager.popupInhibited
+                // Keep the selected lyrics mode while a banner temporarily takes its place.
                 property bool isLyricsMode: (showLyrics || lyricsPinned) && !contentPresentationActive &&
-                                            !expanded && !showHub && !showTools
+                                            !expanded && !showHub && !showTools && !notificationPopupAvailable
                 property bool isToolsMode: !contentPresentationActive && showTools && !isLyricsMode
                 property bool isHubMode: !contentPresentationActive && showHub && !isToolsMode &&
                                          !isLyricsMode
                 property bool isVolumeMode: !contentPresentationActive && showVolume && !expanded &&
                                             !isHubMode && !isToolsMode && !isLyricsMode
-                property bool isNotifMode: !contentPresentationActive && NotificationManager.hasNotifs &&
+                property bool isNotifMode: !contentPresentationActive && notificationPopupAvailable &&
                                            !expanded && !showVolume && !isHubMode && !isToolsMode &&
                                            !isLyricsMode
                 property bool isCollapsedMode: !contentPresentationActive && !expanded && !isNotifMode &&

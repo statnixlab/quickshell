@@ -4346,83 +4346,89 @@ Scroll to adjust</source>
         <translation>选择</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="154"/>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="533"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="156"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="542"/>
         <source>Home</source>
         <translation>主文件夹</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="161"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="163"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="584"/>
         <source>File system</source>
         <translation>文件系统</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="490"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="492"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="525"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="534"/>
         <source>Location</source>
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="538"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="547"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="544"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="553"/>
         <source>Documents</source>
         <translation>文档</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="550"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="559"/>
         <source>Music</source>
         <translation>音乐</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="556"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="565"/>
         <source>Pictures</source>
         <translation>图片</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="562"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="571"/>
         <source>Videos</source>
         <translation>视频</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="568"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="577"/>
         <source>Downloads</source>
         <translation>下载</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="621"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="594"/>
+        <source>Drives</source>
+        <translation>磁盘</translation>
+    </message>
+    <message>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="663"/>
         <source>Up one level</source>
         <translation>上一级</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="754"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="796"/>
         <source>Hide hidden files</source>
         <translation>隐藏隐藏文件</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="754"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="796"/>
         <source>Show hidden files</source>
         <translation>显示隐藏文件</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1012"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1054"/>
         <source>Current folder: %1</source>
         <translation>当前文件夹：%1</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1017"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1059"/>
         <source>Double-click to open </source>
         <translation>双击进入 </translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1029"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1071"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -5580,22 +5586,27 @@ Scroll to adjust</source>
 <context>
     <name>HubContent</name>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="69"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="71"/>
         <source>Dashboard</source>
         <translation>仪表板</translation>
     </message>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="82"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="84"/>
         <source>Upload</source>
         <translation>上传</translation>
     </message>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="88"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="90"/>
         <source>Weather</source>
         <translation>天气</translation>
     </message>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="75"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="96"/>
+        <source>Quick access</source>
+        <translation>快速访问</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="77"/>
         <source>Media</source>
         <translation>媒体</translation>
     </message>
@@ -14740,6 +14751,98 @@ Windows: </source>
         <location filename="../Modules/ControlCenter/ZenPaletteEditor.qml" line="540"/>
         <source>Grain: %1%</source>
         <translation>颗粒：%1%</translation>
+    </message>
+</context>
+<context>
+    <name>QuickAccessContent</name>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="24"/>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="32"/>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="60"/>
+        <source>Add folder</source>
+        <translation>添加文件夹</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="30"/>
+        <source>No subfolders</source>
+        <translation>没有子文件夹</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="31"/>
+        <source>Choose a folder</source>
+        <translation>选择文件夹</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="52"/>
+        <source>Quick access</source>
+        <translation>快速访问</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="70"/>
+        <source>File manager bookmarks appear here automatically. Add one in Files with Ctrl+D.</source>
+        <translation>文件管理器书签会自动显示在这里。打开文件夹后按 Ctrl+D 即可添加书签。</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="101"/>
+        <source>Add your frequently used folders here.</source>
+        <translation>在这里添加常用文件夹。</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="179"/>
+        <source>Remove from Quick access</source>
+        <translation>从快速访问中移除</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="202"/>
+        <source>File manager bookmark. Rename or remove it in Files.</source>
+        <translation>文件管理器书签，可在文件管理器中重命名或移除。</translation>
+    </message>
+</context>
+<context>
+    <name>QuickAccessService</name>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="102"/>
+        <source>Choose a local folder.</source>
+        <translation>请选择本地文件夹。</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="106"/>
+        <source>This folder is already in Quick access.</source>
+        <translation>此文件夹已在快速访问中。</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="126"/>
+        <source>Could not open this folder.</source>
+        <translation>无法打开此文件夹。</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="138"/>
+        <source>Could not prepare Quick access storage.</source>
+        <translation>无法创建快速访问的配置目录。</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="166"/>
+        <location filename="../Services/QuickAccessService.qml" line="175"/>
+        <source>Could not read saved folders. The saved file has been preserved.</source>
+        <translation>无法读取文件夹列表，原配置文件已保留。</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="179"/>
+        <source>Could not save folders. Changes may be lost after restarting.</source>
+        <translation>无法保存文件夹列表，重启后可能丢失本次更改。</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="204"/>
+        <source>Could not read file manager bookmarks.</source>
+        <translation>无法读取文件管理器书签。</translation>
+    </message>
+</context>
+<context>
+    <name>FilePickerLocations</name>
+    <message>
+        <location filename="../Services/FilePickerLocations.qml" line="58"/>
+        <source>Could not list drives.</source>
+        <translation>无法列出磁盘。</translation>
     </message>
 </context>
 </TS>

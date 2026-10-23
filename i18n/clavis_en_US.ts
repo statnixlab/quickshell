@@ -4347,83 +4347,89 @@ Scroll to adjust</translation>
         <translation>Choose</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="154"/>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="533"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="156"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="542"/>
         <source>Home</source>
         <translation>Home</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="161"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="163"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="584"/>
         <source>File system</source>
         <translation>File system</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="490"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="492"/>
         <source>Close</source>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="525"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="534"/>
         <source>Location</source>
         <translation>Location</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="538"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="547"/>
         <source>Desktop</source>
         <translation>Desktop</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="544"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="553"/>
         <source>Documents</source>
         <translation>Documents</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="550"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="559"/>
         <source>Music</source>
         <translation>Music</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="556"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="565"/>
         <source>Pictures</source>
         <translation>Pictures</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="562"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="571"/>
         <source>Videos</source>
         <translation>Videos</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="568"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="577"/>
         <source>Downloads</source>
         <translation>Downloads</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="621"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="594"/>
+        <source>Drives</source>
+        <translation>Drives</translation>
+    </message>
+    <message>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="663"/>
         <source>Up one level</source>
         <translation>Up one level</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="754"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="796"/>
         <source>Hide hidden files</source>
         <translation>Hide hidden files</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="754"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="796"/>
         <source>Show hidden files</source>
         <translation>Show hidden files</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1012"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1054"/>
         <source>Current folder: %1</source>
         <translation>Current folder: %1</translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1017"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1059"/>
         <source>Double-click to open </source>
         <translation>Double-click to open </translation>
     </message>
     <message>
-        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1029"/>
+        <location filename="../Modules/FilePicker/FilePickerWindow.qml" line="1071"/>
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
@@ -5581,22 +5587,27 @@ Scroll to adjust</translation>
 <context>
     <name>HubContent</name>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="69"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="71"/>
         <source>Dashboard</source>
         <translation>Dashboard</translation>
     </message>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="82"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="84"/>
         <source>Upload</source>
         <translation>Upload</translation>
     </message>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="88"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="90"/>
         <source>Weather</source>
         <translation>Weather</translation>
     </message>
     <message>
-        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="75"/>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="96"/>
+        <source>Quick access</source>
+        <translation>Quick access</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/Hub/HubContent.qml" line="77"/>
         <source>Media</source>
         <translation>Media</translation>
     </message>
@@ -14747,6 +14758,98 @@ Windows: </translation>
         <location filename="../Modules/ControlCenter/ZenPaletteEditor.qml" line="540"/>
         <source>Grain: %1%</source>
         <translation>Grain: %1%</translation>
+    </message>
+</context>
+<context>
+    <name>QuickAccessContent</name>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="24"/>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="32"/>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="60"/>
+        <source>Add folder</source>
+        <translation>Add folder</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="30"/>
+        <source>No subfolders</source>
+        <translation>No subfolders</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="31"/>
+        <source>Choose a folder</source>
+        <translation>Choose a folder</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="52"/>
+        <source>Quick access</source>
+        <translation>Quick access</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="70"/>
+        <source>File manager bookmarks appear here automatically. Add one in Files with Ctrl+D.</source>
+        <translation>File manager bookmarks appear here automatically. Add one in Files with Ctrl+D.</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="101"/>
+        <source>Add your frequently used folders here.</source>
+        <translation>Add your frequently used folders here.</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="179"/>
+        <source>Remove from Quick access</source>
+        <translation>Remove from Quick access</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/QuickAccessContent/QuickAccessContent.qml" line="202"/>
+        <source>File manager bookmark. Rename or remove it in Files.</source>
+        <translation>File manager bookmark. Rename or remove it in Files.</translation>
+    </message>
+</context>
+<context>
+    <name>QuickAccessService</name>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="102"/>
+        <source>Choose a local folder.</source>
+        <translation>Choose a local folder.</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="106"/>
+        <source>This folder is already in Quick access.</source>
+        <translation>This folder is already in Quick access.</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="126"/>
+        <source>Could not open this folder.</source>
+        <translation>Could not open this folder.</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="138"/>
+        <source>Could not prepare Quick access storage.</source>
+        <translation>Could not prepare Quick access storage.</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="166"/>
+        <location filename="../Services/QuickAccessService.qml" line="175"/>
+        <source>Could not read saved folders. The saved file has been preserved.</source>
+        <translation>Could not read saved folders. The saved file has been preserved.</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="179"/>
+        <source>Could not save folders. Changes may be lost after restarting.</source>
+        <translation>Could not save folders. Changes may be lost after restarting.</translation>
+    </message>
+    <message>
+        <location filename="../Services/QuickAccessService.qml" line="204"/>
+        <source>Could not read file manager bookmarks.</source>
+        <translation>Could not read file manager bookmarks.</translation>
+    </message>
+</context>
+<context>
+    <name>FilePickerLocations</name>
+    <message>
+        <location filename="../Services/FilePickerLocations.qml" line="58"/>
+        <source>Could not list drives.</source>
+        <translation>Could not list drives.</translation>
     </message>
 </context>
 </TS>

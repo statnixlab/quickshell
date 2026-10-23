@@ -87,8 +87,10 @@ FloatingWindow {
     }
     onCurrentPathChanged: Qt.callLater(refreshBreadcrumbs)
     onVisibleChanged: {
-        if (visible)
+        if (visible) {
+            FilePickerLocations.refresh();
             Qt.callLater(fileGrid.refreshLayout);
+        }
     }
     onClosed: {
         if (_completionHandled)
@@ -513,88 +515,128 @@ FloatingWindow {
                     radius: Appearance.rounding.large
                     color: Appearance.colors.colSurfaceContainer
 
-                    ColumnLayout {
+                    ScrollView {
+                        id: locationsScroll
                         anchors.fill: parent
                         anchors.margins: 12
-                        spacing: 5
+                        clip: true
+                        contentWidth: availableWidth
+                        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-                        Text {
-                            Layout.leftMargin: 12
-                            Layout.topMargin: 4
-                            Layout.bottomMargin: 6
-                            text: qsTr("Location")
-                            color: Appearance.colors.colOnSurface
-                            font.family: Fonts.ui
-                            font.pixelSize: 15
-                            font.weight: Font.DemiBold
-                        }
-
-                        LocationButton {
-                            label: qsTr("Home")
-                            iconName: "home"
-                            path: root.homeDir
-                        }
-                        LocationButton {
-                            label: qsTr("Desktop")
-                            iconName: "desktop_windows"
-                            path: root.desktopDir
-                            visible: path !== ""
-                        }
-                        LocationButton {
-                            label: qsTr("Documents")
-                            iconName: "description"
-                            path: root.documentsDir
-                            visible: path !== ""
-                        }
-                        LocationButton {
-                            label: qsTr("Music")
-                            iconName: "music_note"
-                            path: root.musicDir
-                            visible: path !== ""
-                        }
-                        LocationButton {
-                            label: qsTr("Pictures")
-                            iconName: "image"
-                            path: root.picturesDir
-                            visible: path !== ""
-                        }
-                        LocationButton {
-                            label: qsTr("Videos")
-                            iconName: "movie"
-                            path: root.videosDir
-                            visible: path !== ""
-                        }
-                        LocationButton {
-                            label: qsTr("Downloads")
-                            iconName: "download"
-                            path: root.downloadsDir
-                            visible: path !== ""
-                        }
-
-                        Item {
-                            Layout.fillHeight: true
-                        }
-
-                        Rectangle {
-                            Layout.fillWidth: true
-                            Layout.preferredHeight: formatLabel.implicitHeight + 20
-                            radius: Appearance.rounding.normal
-                            color: Appearance.colors.colSurfaceContainerHigh
+                        ColumnLayout {
+                            width: locationsScroll.availableWidth
+                            spacing: 5
 
                             Text {
-                                id: formatLabel
-
-                                anchors.fill: parent
-                                anchors.leftMargin: 12
-                                anchors.rightMargin: 12
-                                text: root.formatSummary
-                                color: Appearance.colors.colOnSurfaceVariant
+                                Layout.leftMargin: 12
+                                Layout.topMargin: 4
+                                Layout.bottomMargin: 6
+                                text: qsTr("Location")
+                                color: Appearance.colors.colOnSurface
                                 font.family: Fonts.ui
-                                font.pixelSize: 11
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                                wrapMode: Text.WordWrap
+                                font.pixelSize: 15
+                                font.weight: Font.DemiBold
+                            }
+
+                            LocationButton {
+                                label: qsTr("Home")
+                                iconName: "home"
+                                path: root.homeDir
+                            }
+                            LocationButton {
+                                label: qsTr("Desktop")
+                                iconName: "desktop_windows"
+                                path: root.desktopDir
+                                visible: path !== ""
+                            }
+                            LocationButton {
+                                label: qsTr("Documents")
+                                iconName: "description"
+                                path: root.documentsDir
+                                visible: path !== ""
+                            }
+                            LocationButton {
+                                label: qsTr("Music")
+                                iconName: "music_note"
+                                path: root.musicDir
+                                visible: path !== ""
+                            }
+                            LocationButton {
+                                label: qsTr("Pictures")
+                                iconName: "image"
+                                path: root.picturesDir
+                                visible: path !== ""
+                            }
+                            LocationButton {
+                                label: qsTr("Videos")
+                                iconName: "movie"
+                                path: root.videosDir
+                                visible: path !== ""
+                            }
+                            LocationButton {
+                                label: qsTr("Downloads")
+                                iconName: "download"
+                                path: root.downloadsDir
+                                visible: path !== ""
+                            }
+
+                            LocationButton {
+                                label: qsTr("File system")
+                                iconName: "hard_drive"
+                                path: "/"
+                            }
+
+                            Text {
+                                Layout.leftMargin: 12
+                                Layout.topMargin: 12
+                                Layout.bottomMargin: 6
+                                visible: FilePickerLocations.volumes.length > 0
+                                text: qsTr("Drives")
+                                color: Appearance.colors.colOnSurface
+                                font.family: Fonts.ui
+                                font.pixelSize: 15
+                                font.weight: Font.DemiBold
+                            }
+
+                            Repeater {
+                                model: FilePickerLocations.volumes
+                                delegate: LocationButton {
+                                    required property var modelData
+                                    label: modelData.label
+                                    iconName: "hard_drive"
+                                    path: modelData.path
+                                }
+                            }
+
+                            InlineStatusBanner {
+                                Layout.fillWidth: true
+                                visible: FilePickerLocations.errorMessage !== ""
+                                tone: "error"
+                                message: FilePickerLocations.errorMessage
+                            }
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: formatLabel.implicitHeight + 20
                                 visible: root.formatSummary !== ""
+                                radius: Appearance.rounding.normal
+                                color: Appearance.colors.colSurfaceContainerHigh
+
+                                Text {
+                                    id: formatLabel
+
+                                    anchors.fill: parent
+                                    anchors.leftMargin: 12
+                                    anchors.rightMargin: 12
+                                    text: root.formatSummary
+                                    color: Appearance.colors.colOnSurfaceVariant
+                                    font.family: Fonts.ui
+                                    font.pixelSize: 11
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                    wrapMode: Text.WordWrap
+                                    visible: root.formatSummary !== ""
+                                }
                             }
                         }
                     }

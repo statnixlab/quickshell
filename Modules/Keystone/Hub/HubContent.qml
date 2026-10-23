@@ -7,6 +7,7 @@ import qs.Services
 import qs.Modules.Keystone.CloudUploadContent
 import qs.Modules.Keystone.DashboardContent
 import qs.Modules.Keystone.Media
+import qs.Modules.Keystone.QuickAccessContent
 import qs.Modules.Keystone.WeatherContent
 
 Item {
@@ -15,7 +16,7 @@ Item {
     property var player: null
     property var screen: null
     property int currentIndex: 0
-    readonly property var tabIndexes: RcloneService.enabled ? [0, 1, 2, 3] : [0, 1, 3]
+    readonly property var tabIndexes: RcloneService.enabled ? [0, 1, 2, 3, 4] : [0, 1, 3, 4]
     property bool dragActive: false
     readonly property var dashboardKeyholeGlassItems: dashboardContent.keyholeGlassItems
     readonly property real dashboardKeyholeCenterOffset: dashboardContent.keyholeCenterOffset
@@ -41,15 +42,16 @@ Item {
     implicitWidth: currentIndex === 0 ? dashboardContent.implicitWidth : currentIndex === 2 ? 960 : currentIndex
                                                                                               === 3 ? 960 :
                                                                                                       760
-    implicitHeight: 80 + 20 + (currentIndex === 0 ? 520 : currentIndex === 1 ? 480 : currentIndex === 2 ? 480 :
-                                                                                                          weatherContent.height)
+    implicitHeight: 80 + 20 + (currentIndex === 0 ? 520 : currentIndex === 3 ? weatherContent.height : 480)
 
     Shortcut {
+        enabled: root.visible
         sequence: "Tab"
         onActivated: root.cycleTab(1)
     }
 
     Shortcut {
+        enabled: root.visible
         sequence: "Shift+Tab"
         onActivated: root.cycleTab(-1)
     }
@@ -87,6 +89,12 @@ Item {
             icon: "sunny"
             title: qsTr("Weather")
             index: 3
+        }
+
+        TabBtn {
+            icon: "folder_open"
+            title: qsTr("Quick access")
+            index: 4
         }
     }
 
@@ -235,6 +243,13 @@ Item {
                     duration: 300
                 }
             }
+        }
+
+        QuickAccessContent {
+            anchors.fill: parent
+            screen: root.screen
+            visible: root.currentIndex === 4
+            onCloseRequested: root.closeRequested()
         }
     }
 }
