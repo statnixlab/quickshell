@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Common
+import qs.Services
 
 QtObject {
     required property bool recordingActive
@@ -27,8 +28,8 @@ QtObject {
     property real expandedHeight: 210
     readonly property real volumeWidth: 320
     readonly property real volumeHeight: 64
-    readonly property real collapsedWidth: 220
-    readonly property real collapsedHeight: 42
+    readonly property real collapsedWidth: PersonalizationConfig.keystoneHideDate ? 180 : 220
+    readonly property real collapsedHeight: Sizes.barVisualThickness - 2
     readonly property real attachedRecordingWidth: 220
     readonly property real attachedRecordingHeight: 42
     readonly property real targetWidth: recordingActive ? recordingWidth : audioActive ? audioWidth :

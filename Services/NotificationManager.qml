@@ -167,7 +167,7 @@ Singleton {
         root.list = [...root.list, notif];
         if (notif.popup)
             root.unread++;
-        root.trimPopupList(3);
+        root.trimPopupList(1);
         root.saveNotifications();
         root.notify(notif);
     }
@@ -186,6 +186,36 @@ Singleton {
         command: ["mkdir", "-p", root.notificationsDir]
         running: false
         onExited: root.refresh()
+    }
+
+    // WeChat can send a desktop notification without playing audio itself.
+    // Play the locally extracted WeChat sound for new arrivals, never history or updates.
+    Process {
+        id: wechatSound
+        command: ["canberra-gtk-play", "--file=" + Paths.xdgDataHome + "/sounds/clavis/wechat-classic.wav",
+            "--property=application.name=Clavis Notification", "--property=media.role=notification"]
+        onExited: exitCode => {
+            if (exitCode !== 0)
+                console.warn("WeChat notification sound failed:", exitCode);
+        }
+    }
+
+    Timer {
+        id: wechatSoundCooldown
+        interval: 3000
+    }
+
+    function playWechatSound(notification, isReplacement) {
+        const desktopEntry = (notification.desktopEntry || "").toLowerCase();
+        const appName = (notification.appName || "").toLowerCase();
+        const isWechat = desktopEntry === "wechat" || desktopEntry === "wechat.desktop" || appName
+              === "wechat" || appName === "weixin" || appName === "微信";
+        const hints = notification.hints || {};
+        if (!isWechat || root.silent || isReplacement || hints["suppress-sound"] || notification.urgency
+                === NotificationUrgency.Low || wechatSound.running || wechatSoundCooldown.running)
+            return;
+        wechatSoundCooldown.start();
+        wechatSound.running = true;
     }
 
     NotificationServer {
@@ -251,8 +281,9 @@ Singleton {
             root.list = [...root.list.filter(notif => notif.serverNotificationId !== notification.id),
                          newNotifObject,];
             replaced.forEach(notif => Qt.callLater(() => notif.destroy()));
-            root.trimPopupList(3);
+            root.trimPopupList(1);
             root.saveNotifications();
+            root.playWechatSound(notification, replaced.length > 0);
             root.notify(newNotifObject);
         }
     }
@@ -494,7 +525,9 @@ Singleton {
     }
 
     function trimPopupList(maxCount) {
-        const popups = root.list.filter(notif => notif.popup).sort((a, b) => b.receivedAt - a.receivedAt);
+        const popups = root.list.filter(notif => notif.popup).sort((a, b) => b.receivedAt - a.receivedAt
+                                                                             || b.notificationId
+                                                                             - a.notificationId);
         for (let i = maxCount; i < popups.length; i++)
             root.hidePopup(popups[i]);
         if (popups.length > maxCount)

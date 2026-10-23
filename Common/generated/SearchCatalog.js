@@ -1420,6 +1420,25 @@ var catalog = {
       "title": "Position"
     },
     {
+      "aliases": [
+        "Bar height",
+        "Pill height",
+        "Bar width",
+        "Pill width"
+      ],
+      "anchor": true,
+      "context": "GeneralBarPage",
+      "icon": "height",
+      "id": "general.bar.section.size",
+      "path": [
+        "general",
+        "bar"
+      ],
+      "route": "general.bar",
+      "source": "GeneralBarPage.qml",
+      "title": "Size"
+    },
+    {
       "aliases": [],
       "anchor": true,
       "context": "GeneralBarPage",
@@ -1445,7 +1464,7 @@ var catalog = {
       ],
       "route": "general.effects",
       "source": "GeneralEffectsPage.qml",
-      "title": "Background"
+      "title": "Desktop panels"
     },
     {
       "aliases": [
@@ -2036,8 +2055,9 @@ function title(id) {
     case "general.displays.gamma.section.schedule": return qsTranslate("GammaControlPage", "Schedule");
     case "general.displays.gamma.section.current-status": return qsTranslate("GammaControlPage", "Current status");
     case "general.bar.section.position": return qsTranslate("GeneralBarPage", "Position");
+    case "general.bar.section.size": return qsTranslate("GeneralBarPage", "Size");
     case "general.bar.section.components": return qsTranslate("GeneralBarPage", "Components");
-    case "general.effects.section.background": return qsTranslate("GeneralEffectsPage", "Background");
+    case "general.effects.section.background": return qsTranslate("GeneralEffectsPage", "Desktop panels");
     case "general.effects.section.application-effects": return qsTranslate("GeneralEffectsPage", "Application effects");
     case "general.section.interface": return qsTranslate("GeneralOverviewPage", "Interface");
     case "general.section.system": return qsTranslate("GeneralOverviewPage", "System");

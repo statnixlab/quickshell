@@ -47,7 +47,8 @@ TopBarPill {
                                                                            root.trayDragGlobalY, 6)
 
     implicitHeight: vertical ? content.implicitHeight + 16 : Sizes.barPillThickness
-    implicitWidth: vertical ? Sizes.barVisualThickness : content.implicitWidth + 24
+    implicitWidth: vertical ? Sizes.barVisualThickness : content.implicitWidth + 2
+                              * Sizes.barPillHorizontalPadding
 
     onUnpinnedItemsChanged: {
         if (root.unpinnedItems.length === 0) {
@@ -253,7 +254,7 @@ TopBarPill {
 
         anchors.centerIn: parent
         rowSpacing: 15
-        columnSpacing: 15
+        columnSpacing: 8
         columns: root.vertical ? 1 : Math.max(1, root.pinnedItems.length + 1)
 
         RippleButton {

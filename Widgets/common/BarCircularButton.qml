@@ -11,7 +11,7 @@ Item {
     // surface in every state; the opened surface already communicates selection.
     property bool selected: false
     property real baseSize: Sizes.barControlCircleSize
-    property real hoverSize: 34
+    property real hoverSize: Math.min(34, Sizes.barPillThickness)
     property real iconSize: root.pointerHovered ? 20 : 18
     property real iconFill: 0
     property color containerColor: Appearance.colors.colPrimaryContainer
@@ -45,27 +45,26 @@ Item {
         containerColor: root.containerColor
         rippleColor: root.rippleColor
         stateLayerEnabled: false
-        downAction: (event) => {
+        downAction: event => {
             if (root.downAction)
                 root.downAction(event);
-
         }
         releaseAction: () => {
             return root.clicked(null);
         }
-        doubleClickAction: (event) => {
+        doubleClickAction: event => {
             if (root.doubleClickAction)
                 root.doubleClickAction(event);
 
             root.doubleClicked(event);
         }
-        altAction: (event) => {
+        altAction: event => {
             if (root.altAction)
                 root.altAction(event);
 
             root.altClicked(event);
         }
-        middleClickAction: (event) => {
+        middleClickAction: event => {
             if (root.middleClickAction)
                 root.middleClickAction(event);
 
@@ -78,7 +77,6 @@ Item {
                 easing.type: Appearance.animation.expressiveFastEffects.type
                 easing.bezierCurve: Appearance.animation.expressiveFastEffects.bezierCurve
             }
-
         }
 
         contentItem: MaterialSymbol {
@@ -93,16 +91,12 @@ Item {
                     easing.type: Appearance.animation.expressiveFastEffects.type
                     easing.bezierCurve: Appearance.animation.expressiveFastEffects.bezierCurve
                 }
-
             }
-
         }
-
     }
 
     StyledToolTip {
         text: root.tooltipText
         extraVisibleCondition: root.tooltipText.length > 0 && root.pointerHovered
     }
-
 }

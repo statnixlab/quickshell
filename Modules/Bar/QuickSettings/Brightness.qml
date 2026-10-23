@@ -11,11 +11,14 @@ Item {
     readonly property var monitor: Brightness.getMonitorForScreen(screen)
     readonly property real brightnessValue: monitor ? monitor.brightness : Brightness.brightnessValue
 
-    implicitHeight: 28
-    implicitWidth: 28
+    implicitHeight: Sizes.barControlCircleSize
+    implicitWidth: Sizes.barControlCircleSize
 
     ArcGauge {
-        anchors.fill: parent
+        anchors.centerIn: parent
+        width: 28
+        height: 28
+        scale: root.width / 28
 
         value: root.brightnessValue
         progressColor: Appearance.colors.colPrimary

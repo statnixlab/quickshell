@@ -3,7 +3,9 @@
 
 import QtQuick
 import Quickshell
+import qs.Modules.WindowOverview
 
 ShellRoot {
     AppShell {}
+    WindowOverviewHost {}
 }

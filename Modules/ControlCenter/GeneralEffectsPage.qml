@@ -40,12 +40,12 @@ StyledFlickable {
                 id: searchAnchor0
                 target: searchSection0
                 declaration:
-                    '{"id":"general.effects.section.background","route":"general.effects","title":"Background","context":"GeneralEffectsPage","icon":"blur_on","aliases":[]}'
+                    '{"id":"general.effects.section.background","route":"general.effects","title":"Desktop panels","context":"GeneralEffectsPage","icon":"blur_on","aliases":[]}'
             }
             iconName: "wallpaper"
 
             GeneralSliderSetting {
-                title: qsTr("Background opacity")
+                title: qsTr("Panel background opacity")
                 from: 0
                 to: 100
                 stepSize: 1
@@ -57,12 +57,12 @@ StyledFlickable {
             SettingsRow {
                 Layout.fillWidth: true
                 iconName: "blur_on"
-                title: qsTr("Background blur")
+                title: qsTr("Panel background blur")
 
                 trailing: StyledSwitch {
                     enabled: BlurService.available
                     checked: PersonalizationConfig.shellBlurEnabled
-                    Accessible.name: qsTr("Background blur")
+                    Accessible.name: qsTr("Panel background blur")
                     onToggled: PersonalizationConfig.setShellBlurEnabled(checked)
                 }
             }
@@ -83,6 +83,19 @@ StyledFlickable {
                 }
             }
 
+            GeneralSliderSetting {
+                enabled: NiriConfigService.separateBlurSupported && NiriConfigService.effectsSeparated &&
+                         !NiriConfigService.panelEffects.blurDisabled
+                title: qsTr("Panel blur strength")
+                from: 1
+                to: 5
+                stepSize: 1
+                value: NiriConfigService.panelEffects.blurStrength
+                onMoved: value => NiriConfigService.setPanelEffects({
+                                                                        blurStrength: Math.round(value)
+                                                                    })
+            }
+
             InlineStatusBanner {
                 Layout.fillWidth: true
                 visible: BlurService.lastError !== ""
@@ -91,13 +104,22 @@ StyledFlickable {
             }
         }
 
+        InlineStatusBanner {
+            Layout.fillWidth: true
+            visible: NiriConfigService.supported && NiriConfigService.revision !== "" &&
+                     !NiriConfigService.separateBlurSupported
+            tone: "warning"
+            message: qsTr(
+                         "Log out and back in after updating the compositor to adjust application and panel blur independently.")
+        }
+
         NiriSetupPrompt {
             Layout.fillWidth: true
             title: qsTr("Application effects")
             description: qsTr("Enable transparency and blur controls for application windows.")
             integrationState: NiriConfigService.state("application-effects")
             busy: NiriConfigService.busy && NiriConfigService.activeFeature === "application-effects"
-            blocked: NiriConfigService.busy
+            blocked: NiriConfigService.busy || !NiriConfigService.separateBlurSupported
             error: NiriConfigService.errorFeature === "application-effects" ? NiriConfigService.error : ""
             onSetupRequested: NiriConfigService.setup("application-effects")
         }
@@ -118,6 +140,7 @@ StyledFlickable {
 
             GeneralSliderSetting {
                 enabled: NiriConfigService.ready("application-effects")
+                         && NiriConfigService.separateBlurSupported && NiriConfigService.effectsSeparated
                 title: qsTr("Focused window opacity")
                 from: 10
                 to: 100
@@ -131,6 +154,7 @@ StyledFlickable {
 
             GeneralSliderSetting {
                 enabled: NiriConfigService.ready("application-effects")
+                         && NiriConfigService.separateBlurSupported && NiriConfigService.effectsSeparated
                 title: qsTr("Unfocused window opacity")
                 description: qsTr("Applies to the entire window, including text and images. 100% is opaque.")
                 from: 10
@@ -149,8 +173,9 @@ StyledFlickable {
                 title: qsTr("Application background blur")
 
                 trailing: StyledSwitch {
-                    enabled: NiriConfigService.ready("application-effects") &&
-                             !NiriConfigService.applicationEffects.blurDisabled
+                    enabled: NiriConfigService.ready("application-effects")
+                             && NiriConfigService.separateBlurSupported && NiriConfigService.effectsSeparated
+                             && !NiriConfigService.applicationEffects.blurDisabled
                     checked: NiriConfigService.applicationEffects.blurEnabled
                     Accessible.name: qsTr("Application background blur")
                     onToggled: NiriConfigService.setApplicationEffects({
@@ -160,11 +185,10 @@ StyledFlickable {
             }
 
             GeneralSliderSetting {
-                enabled: NiriConfigService.ready("application-effects") &&
+                enabled: NiriConfigService.ready("application-effects")
+                         && NiriConfigService.separateBlurSupported && NiriConfigService.effectsSeparated &&
                          !NiriConfigService.applicationEffects.blurDisabled
-                title: qsTr("Blur strength")
-                description: qsTr(
-                                 "Shared by applications and desktop panels. Higher levels use more graphics resources.")
+                title: qsTr("Application blur strength")
                 from: 1
                 to: 5
                 stepSize: 1

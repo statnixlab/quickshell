@@ -42,7 +42,7 @@ TopBarPill {
         Row {
             Layout.alignment: Qt.AlignCenter
             Layout.preferredWidth: 28
-            Layout.preferredHeight: 28
+            Layout.preferredHeight: Sizes.barControlCircleSize
             spacing: 2
 
             Repeater {
@@ -53,11 +53,12 @@ TopBarPill {
 
                     anchors.verticalCenter: parent.verticalCenter
                     width: 3
-                    height: 2 + 20 * (root.spectrumActive && AudioSpectrum.available ? Math.max(0, Math.min(1,
-                                                                                                            Number(AudioSpectrum.values[Math.floor(
-                                                                                                                                            index * AudioSpectrum.bars
-                                                                                                                                            / 6)]) || 0)) :
-                                                                                       0)
+                    height: 2 + (Sizes.barControlCircleSize - 6) * (root.spectrumActive && AudioSpectrum.available
+                                                                    ? Math.max(0, Math.min(1, Number(
+                                                                                               AudioSpectrum.values[Math.floor(
+                                                                                                                        index * AudioSpectrum.bars
+                                                                                                                        / 6)]) || 0)) :
+                                                                      0)
                     radius: 1.5
                     color: Appearance.colors.colPrimary
 
@@ -196,8 +197,8 @@ TopBarPill {
 
     component MediaButton: IconButton {
         Layout.alignment: Qt.AlignCenter
-        controlSize: 28
-        iconSize: 22
+        controlSize: Sizes.barControlCircleSize
+        iconSize: Math.min(22, Sizes.barControlCircleSize)
         opacity: enabled ? 1 : 0.35
     }
 }

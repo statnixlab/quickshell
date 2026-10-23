@@ -355,6 +355,8 @@ Singleton {
     property var keystoneKeyholeCards: root.defaultKeystoneKeyholeCards.slice()
     property string barPosition: "top"
     property int barEdgeMargin: 8
+    property int barThickness: 34
+    property int barPillThickness: 30
     readonly property var barComponentIds: ["workspaces", "information", "activeWindow", "media", "tray",
         "systemMonitor", "quickSettings"]
     readonly property var defaultBarLeadingComponents: ["workspaces", "information", "activeWindow"]
@@ -1293,6 +1295,21 @@ Singleton {
             root.save();
     }
 
+    function setBarThickness(value, persist = true) {
+        const next = root.normalizedBoundedInt(value, 34, 28, 64);
+        const padding = root.barThickness - root.barPillThickness;
+        root.barThickness = next;
+        root.barPillThickness = Math.max(24, next - padding);
+        if (persist)
+            root.save();
+    }
+
+    function setBarPillThickness(value, persist = true) {
+        root.barPillThickness = root.normalizedBoundedInt(value, 30, 24, root.barThickness);
+        if (persist)
+            root.save();
+    }
+
     function normalizedBarComponents(raw, excluded) {
         const source = Array.isArray(raw) ? raw : [];
         const blocked = excluded || [];
@@ -1685,6 +1702,8 @@ Singleton {
             "bar": {
                 "position": root.barPosition,
                 "edgeMargin": root.barEdgeMargin,
+                "thickness": root.barThickness,
+                "pillThickness": root.barPillThickness,
                 "barLeadingComponents": root.barLeadingComponents.slice(),
                 "barTrailingComponents": root.barTrailingComponents.slice(),
                 "quickSettingsComponents": root.quickSettingsComponents.slice()
@@ -1801,6 +1820,8 @@ Singleton {
         root.horizontalClockDigits = root.normalizedHorizontalClockDigits(horizontalClock.digits);
         root.barPosition = normalizedEdgePosition(bar.position);
         root.barEdgeMargin = Math.round(normalizedBoundedReal(bar.edgeMargin, 8, 0, 48));
+        root.barThickness = root.normalizedBoundedInt(bar.thickness, 34, 28, 64);
+        root.barPillThickness = root.normalizedBoundedInt(bar.pillThickness, 30, 24, root.barThickness);
         const hasBarLayout = Array.isArray(bar.barLeadingComponents) || Array.isArray(
                   bar.barTrailingComponents);
         const barLayout = root.normalizedBarLayout(bar.barLeadingComponents, bar.barTrailingComponents,

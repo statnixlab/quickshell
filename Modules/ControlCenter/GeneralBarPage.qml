@@ -77,6 +77,77 @@ StyledFlickable {
         }
 
         SettingsSection {
+            id: sizeSection
+            Layout.fillWidth: true
+            flat: true
+            title: sizeAnchor.title
+            iconName: "height"
+
+            SettingsSearchAnchor {
+                id: sizeAnchor
+                target: sizeSection
+                declaration:
+                    '{"id":"general.bar.section.size","route":"general.bar","title":"Size","context":"GeneralBarPage","icon":"height","aliases":["Bar height","Pill height","Bar width","Pill width"]}'
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: root.horizontalBar ? qsTr("Bar height") : qsTr("Bar width")
+
+                trailing: Text {
+                    text: qsTr("%1 px").arg(PersonalizationConfig.barThickness)
+                    color: Appearance.colors.colOnSurfaceVariant
+                    font.family: Fonts.numeric
+                    font.pixelSize: Typography.bodyMedium.pixelSize
+                }
+            }
+
+            MaterialSlider {
+                Layout.fillWidth: true
+                Layout.leftMargin: Metrics.spacingS
+                Layout.rightMargin: Metrics.spacingS
+                enabled: PersonalizationConfig.ready
+                accessibleName: root.horizontalBar ? qsTr("Bar height") : qsTr("Bar width")
+                from: 28
+                to: 64
+                stepSize: 1
+                discrete: true
+                value: PersonalizationConfig.barThickness
+                valueSuffix: " px"
+                onMoved: value => PersonalizationConfig.setBarThickness(value, !pressed)
+                onCommitted: value => PersonalizationConfig.setBarThickness(value)
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: root.horizontalBar ? qsTr("Pill height") : qsTr("Pill width")
+
+                trailing: Text {
+                    text: qsTr("%1 px").arg(PersonalizationConfig.barPillThickness)
+                    color: Appearance.colors.colOnSurfaceVariant
+                    font.family: Fonts.numeric
+                    font.pixelSize: Typography.bodyMedium.pixelSize
+                }
+            }
+
+            MaterialSlider {
+                Layout.fillWidth: true
+                Layout.leftMargin: Metrics.spacingS
+                Layout.rightMargin: Metrics.spacingS
+                enabled: PersonalizationConfig.ready
+                accessibleName: root.horizontalBar ? qsTr("Pill height") : qsTr("Pill width")
+                from: 24
+                to: PersonalizationConfig.barThickness
+                stepSize: 1
+                discrete: true
+                value: PersonalizationConfig.barPillThickness
+                valueSuffix: " px"
+                onMoved: value => PersonalizationConfig.setBarPillThickness(value, !pressed)
+                onCommitted: value => PersonalizationConfig.setBarPillThickness(value)
+            }
+        }
+
+        SettingsSection {
             id: searchSection1
             Layout.fillWidth: true
             flat: true

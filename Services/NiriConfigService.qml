@@ -53,7 +53,7 @@ Singleton {
                                                                                  })
 
     function setApplicationEffects(patch) {
-        if (!ready("application-effects"))
+        if (!ready("application-effects") || !separateBlurSupported || !effectsSeparated)
             return;
         pendingApplicationEffects = Object.assign({}, applicationEffects, patch);
         applicationEffectsSaveTimer.restart();
@@ -63,6 +63,40 @@ Singleton {
         id: applicationEffectsSaveTimer
         interval: 180
         onTriggered: root.update("application-effects")
+    }
+
+    property var pendingPanelEffects: null
+    property var activePanelEffects: null
+    readonly property var panelEffects: pendingPanelEffects || activePanelEffects || snapshot.panelEffects || (
+                                            {
+                                                blurStrength: 3,
+                                                blurDisabled: false
+                                            })
+    readonly property bool separateBlurSupported: snapshot.separateBlurSupported === true
+    readonly property bool effectsSeparated: snapshot.effectsSeparated === true && ready("panel-effects")
+    property string migrationAttemptRevision: ""
+
+    function setPanelEffects(patch) {
+        if (!separateBlurSupported || !effectsSeparated)
+            return;
+        pendingPanelEffects = Object.assign({}, panelEffects, patch);
+        panelEffectsSaveTimer.restart();
+    }
+
+    Timer {
+        id: panelEffectsSaveTimer
+        interval: 180
+        onTriggered: root.update("panel-effects")
+    }
+
+    function migrateEffects() {
+        if (busy || !separateBlurSupported || !ready("application-effects"))
+            return;
+        migrationAttemptRevision = revision;
+        invoke({
+                   operation: "migrate-effects",
+                   feature: "application-effects"
+               });
     }
 
     property string error: ""
@@ -117,6 +151,8 @@ Singleton {
     }
 
     function options(feature) {
+        if (feature === "panel-effects")
+            return panelEffects;
         if (feature === "application-effects")
             return applicationEffects;
         if (feature === "minimize-animation")
@@ -194,6 +230,10 @@ Singleton {
             activeApplicationEffects = Object.assign({}, applicationEffects, request);
             pendingApplicationEffects = null;
         }
+        if (activeFeature === "panel-effects") {
+            activePanelEffects = Object.assign({}, panelEffects, request);
+            pendingPanelEffects = null;
+        }
         operation.writing = request.operation !== "status" && request.operation !== "catalog";
         operation.command = ["python3", Paths.systemScriptsDir + "/niri_config.py", JSON.stringify(request)];
         operation.running = true;
@@ -255,6 +295,12 @@ Singleton {
             root.activeFeature = "";
             root.activeMouseOptions = null;
             root.activeApplicationEffects = null;
+            root.activePanelEffects = null;
+            if (code === 0 && root.separateBlurSupported && root.ready("application-effects") &&
+                    !root.effectsSeparated && root.migrationAttemptRevision !== root.revision) {
+                Qt.callLater(root.migrateEffects);
+                return;
+            }
             const pending = Object.keys(root.pendingUpdates);
             if (pending.length > 0) {
                 root.pendingUpdates = {};

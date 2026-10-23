@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent / 'vendor'))
 import kdl
 
 PRINT = kdl.PrintConfig(indent='    ', semicolons=True)
-FRAGMENTS = ('effects', 'cursor', 'layer-rules', 'binds', 'outputs', 'mouse', 'minimize-animation', 'application-effects')
+FRAGMENTS = ('effects', 'cursor', 'layer-rules', 'binds', 'outputs', 'mouse', 'minimize-animation', 'application-effects', 'panel-effects')
 
 # Stable first-setup defaults. Existing fragments, including empty ones, are preserved.
 DEFAULT_BINDINGS = (
@@ -244,6 +244,11 @@ def initial(feature, request):
     header = '// Managed by Clavis.\n'
     if feature == 'minimize-animation':
         return edit_minimize_animation(header, request) if 'effect' in request else header
+    if feature == 'panel-effects':
+        passes = request.get('blurStrength', 3)
+        if isinstance(passes, bool) or not isinstance(passes, int) or not 1 <= passes <= 5:
+            raise ValueError('Blur strength must be between 1 and 5')
+        return header + render(kdl.Node('blur', nodes=[kdl.Node('passes', args=[passes])]))
     if feature == 'application-effects':
         focused = request.get('focused', 0.94)
         unfocused = request.get('unfocused', 0.82)
@@ -256,10 +261,14 @@ def initial(feature, request):
             raise ValueError('Application blur must be true or false')
         if isinstance(passes, bool) or not isinstance(passes, int) or not 1 <= passes <= 5:
             raise ValueError('Blur strength must be between 1 and 5')
-        return header + render(kdl.Node('blur', nodes=[kdl.Node('passes', args=[passes])])) + render(kdl.Node('window-rule', nodes=[
+        return header + render(kdl.Node('window-rule', nodes=[
+            kdl.Node('exclude', props={'app-id': '^org[.]quickshell$'}),
+            kdl.Node('exclude', props={'title': '^(clavis-control-center(-[a-z-]+)?|clavis-file-picker)$'}),
             kdl.Node('opacity', args=[float(focused)]),
-            kdl.Node('background-effect', nodes=[kdl.Node('blur', args=[blur_enabled]), kdl.Node('xray', args=[False])])])) + render(kdl.Node('window-rule', nodes=[
+            kdl.Node('background-effect', nodes=[kdl.Node('blur', args=[blur_enabled]), kdl.Node('xray', args=[False]), kdl.Node('blur-passes', args=[passes])])])) + render(kdl.Node('window-rule', nodes=[
                 kdl.Node('match', props={'is-focused': False}),
+                kdl.Node('exclude', props={'app-id': '^org[.]quickshell$'}),
+                kdl.Node('exclude', props={'title': '^(clavis-control-center(-[a-z-]+)?|clavis-file-picker)$'}),
                 kdl.Node('opacity', args=[float(unfocused)])]))
     if feature == 'mouse':
         speed = request.get('speed', 0.0)
@@ -445,17 +454,18 @@ def edit_minimize_animation(previous, request):
 
 def application_effects_state(graph, managed):
     values = dict(focused=0.94, unfocused=0.82, blurEnabled=True, blurStrength=3, blurDisabled=False)
-    # Blur strength is compositor-wide; per-app window exceptions remain user-owned.
-    for path, node in graph.ordered:
+    # Global blur is the legacy fallback and the panel strength.
+    for _, node in graph.ordered:
         if node.name == 'blur':
             for child in node.nodes:
                 if child.name == 'passes' and child.args:
                     values['blurStrength'] = child.args[0]
                 if child.name in ('off', 'on'):
                     values['blurDisabled'] = child.name == 'off'
+    for path, node in graph.ordered:
         if path != managed or node.name != 'window-rule':
             continue
-        matches = [child for child in node.nodes if child.name in ('match', 'exclude')]
+        matches = [child for child in node.nodes if child.name == 'match']
         if not matches:
             keys = ('focused', 'unfocused')
         elif len(matches) == 1 and matches[0].name == 'match' and dict(matches[0].props) == {'is-focused': False}:
@@ -467,10 +477,82 @@ def application_effects_state(graph, managed):
                 for option in child.nodes:
                     if option.name == 'blur' and option.args:
                         values['blurEnabled'] = option.args[0]
+                    if option.name == 'blur-passes' and option.args:
+                        values['blurStrength'] = option.args[0]
             if child.name == 'opacity' and child.args:
                 for key in keys:
                     values[key] = child.args[0]
     return values
+
+
+def supports_separate_blur(request):
+    # Query the running compositor, not just the executable installed for next login.
+    endpoint = os.environ.get('NIRI_SOCKET')
+    try:
+        if endpoint:
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as peer:
+                peer.settimeout(2)
+                peer.connect(endpoint)
+                peer.sendall(b'"Capabilities"\n')
+                with peer.makefile('r') as response:
+                    data = json.loads(response.readline(65536))
+                return data.get('Ok', {}).get('Capabilities', {}).get('per_surface_blur') is True
+        with tempfile.TemporaryDirectory(prefix='clavis-blur-probe-') as directory:
+            candidate = Path(directory) / 'config.kdl'
+            candidate.write_text('window-rule { background-effect { blur-passes 3; }; }\n')
+            return subprocess.run([request.get('niri', 'niri'), 'validate', '-c', str(candidate)], capture_output=True, timeout=5).returncode == 0
+    except (OSError, ValueError, subprocess.TimeoutExpired):
+        return False
+
+
+def effects_separated(graph, managed):
+    return any(path == managed and node.name == 'window-rule' and
+               any(child.name == 'background-effect' and any(option.name == 'blur-passes' for option in child.nodes)
+                   for child in node.nodes) for path, node in graph.ordered)
+
+
+def migrate_effects(request):
+    if not supports_separate_blur(request):
+        raise ValueError('Log out and back in to enable independent blur controls')
+    main = main_path(request)
+    app = main.parent / 'clavis/application-effects.kdl'
+    panel = main.parent / 'clavis/panel-effects.kdl'
+    with configuration_lock(main):
+        graph = Graph(main)
+        if path_key(app) not in graph.references or not app.is_file():
+            raise ValueError('Application effects are not connected')
+        if effects_separated(graph, path_key(app)) and path_key(panel) in graph.references:
+            return status(request)
+        values = application_effects_state(graph, path_key(app))
+        panel_values = application_effects_state(graph, None)
+        previous = {main: read_text(main), app: read_text(app), panel: read_text(panel) if panel.exists() else None}
+        # The legacy application fragment is generator-owned; preserve its current values.
+        candidates = {app: initial('application-effects', values),
+                      panel: previous[panel] if previous[panel] is not None else initial('panel-effects', panel_values),
+                      main: previous[main]}
+        if path_key(panel) not in graph.references:
+            candidates[main] += '\n' + render(kdl.Node('include', args=['clavis/panel-effects.kdl']))
+        Graph(main, replacements={path_key(p): t for p, t in candidates.items()}).validate(request.get('niri', 'niri'))
+        graph.unchanged()
+        for path in candidates:
+            safe_target(path, missing=previous[path] is None)
+        if (read_text(panel) if panel.exists() else None) != previous[panel]:
+            raise ValueError('Panel effects changed externally; reload before saving')
+        published = []
+        try:
+            for path, text in candidates.items():
+                if text != previous[path]:
+                    replace_file(path, text)
+                    published.append(path)
+        except Exception:
+            for path in reversed(published):
+                if read_text(path) == candidates[path]:
+                    if previous[path] is None:
+                        path.unlink()
+                    else:
+                        replace_file(path, previous[path])
+            raise
+    return status(request)
 
 
 def status(request):
@@ -485,6 +567,10 @@ def status(request):
             raise graph.error
         state['revision'] = graph.revision()
         state['applicationEffects'] = application_effects_state(graph, path_key(managed_dir / 'application-effects.kdl'))
+        panel_values = application_effects_state(graph, None)
+        state['panelEffects'] = {key: panel_values[key] for key in ('blurStrength', 'blurDisabled')}
+        state['separateBlurSupported'] = supports_separate_blur(request)
+        state['effectsSeparated'] = effects_separated(graph, path_key(managed_dir / 'application-effects.kdl'))
         state['minimizeAnimation'] = minimize_animation_state(graph)
         state['outputs'] = niri_outputs.inspect(graph, path_key(managed_dir / 'outputs.kdl'))
         state['bindings'], state['modKey'] = bindings(graph, path_key(managed_dir / 'binds.kdl'))
@@ -553,7 +639,7 @@ def status(request):
         current = tuple(map(int, match.groups()))
         state['niriVersion'] = version.stdout.strip()
         for feature, fragment in state['fragments'].items():
-            if current < ((26, 4) if feature in ('effects', 'application-effects') else (25, 11)):
+            if current < ((26, 4) if feature in ('effects', 'application-effects', 'panel-effects') else (25, 11)):
                 fragment['state'] = 'unsupported'
     except (OSError, ValueError, subprocess.TimeoutExpired) as error:
         state['error'] = str(error)
@@ -643,6 +729,10 @@ def restore_output_publication(main, candidate, previous):
 
 
 def mutate(request):
+    if request.get('operation') == 'migrate-effects':
+        return migrate_effects(request)
+    if request.get('feature') in ('application-effects', 'panel-effects') and not supports_separate_blur(request):
+        raise ValueError('Log out and back in to enable independent blur controls')
     if request.get('operation') not in ('setup', 'update', 'save', 'delete', 'delete-group'):
         raise ValueError('Unknown write operation')
     feature = request['feature']

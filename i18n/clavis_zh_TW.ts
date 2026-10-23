@@ -4655,9 +4655,14 @@ Scroll to adjust</source>
 <context>
     <name>GeneralBarPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2019"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2057"/>
         <source>Position</source>
         <translation>位置</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2058"/>
+        <source>Size</source>
+        <translation>尺寸</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="40"/>
@@ -4665,7 +4670,7 @@ Scroll to adjust</source>
         <translation>螢幕邊緣</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2020"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2059"/>
         <source>Components</source>
         <translation>元件</translation>
     </message>
@@ -4677,36 +4682,62 @@ Scroll to adjust</source>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="55"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="98"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="126"/>
         <source>%1 px</source>
         <translation>%1 像素</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="91"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="110"/>
+        <source>Bar height</source>
+        <translation>頂列高度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="110"/>
+        <source>Bar width</source>
+        <translation>側列寬度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="123"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="138"/>
+        <source>Pill height</source>
+        <translation>膠囊高度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="123"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="138"/>
+        <source>Pill width</source>
+        <translation>膠囊寬度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="162"/>
         <source>Drag components to reorder them or move them to the other side.</source>
         <translation>拖曳元件調整順序，拖到另一側可移動位置。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="166"/>
         <source>Left</source>
         <translation>左側</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="166"/>
         <source>Top</source>
         <translation>上方</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="118"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="189"/>
         <source>Right</source>
         <translation>右側</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="118"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="189"/>
         <source>Bottom</source>
         <translation>下方</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="147"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="218"/>
         <source>Quick settings widgets</source>
         <translation>快速設定元件</translation>
     </message>
@@ -4724,26 +4755,26 @@ Scroll to adjust</source>
         <translation>建立或接入 Clavis X-Ray 規則。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2040"/>
-        <source>Background</source>
-        <translation>背景</translation>
+        <location filename="../Common/generated/SearchCatalog.js" line="2060"/>
+        <source>Desktop panels</source>
+        <translation>桌面面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2041"/>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="96"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2061"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="118"/>
         <source>Application effects</source>
         <translation>應用程式效果</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="48"/>
-        <source>Background opacity</source>
-        <translation>背景不透明度</translation>
+        <source>Panel background opacity</source>
+        <translation>面板背景不透明度</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="60"/>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="65"/>
-        <source>Background blur</source>
-        <translation>背景模糊</translation>
+        <source>Panel background blur</source>
+        <translation>面板背景模糊</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="73"/>
@@ -4762,43 +4793,48 @@ Scroll to adjust</source>
         <translation>需要先配置 Niri 模糊整合</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="97"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="89"/>
+        <source>Panel blur strength</source>
+        <translation>面板模糊強度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="112"/>
+        <source>Log out and back in after updating the compositor to adjust application and panel blur independently.</source>
+        <translation>更新視窗管理員後，請登出並重新登入，即可獨立調整應用程式與面板模糊。</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="119"/>
         <source>Enable transparency and blur controls for application windows.</source>
         <translation>啟用應用程式視窗的透明度與模糊控制。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="121"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="144"/>
         <source>Focused window opacity</source>
         <translation>聚焦視窗不透明度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="134"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="158"/>
         <source>Unfocused window opacity</source>
         <translation>未聚焦視窗不透明度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="135"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="159"/>
         <source>Applies to the entire window, including text and images. 100% is opaque.</source>
         <translation>套用至整個視窗，包括文字和圖片。100% 為不透明。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="149"/>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="155"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="173"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="180"/>
         <source>Application background blur</source>
         <translation>應用程式背景模糊</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="165"/>
-        <source>Blur strength</source>
-        <translation>模糊強度</translation>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="191"/>
+        <source>Application blur strength</source>
+        <translation>應用程式模糊強度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="166"/>
-        <source>Shared by applications and desktop panels. Higher levels use more graphics resources.</source>
-        <translation>應用程式與桌面面板共用此強度，等級越高，顯示卡負擔越大。</translation>
-    </message>
-    <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="181"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="205"/>
         <source>Blur is disabled in the compositor configuration.</source>
         <translation>視窗管理員設定已停用模糊。</translation>
     </message>

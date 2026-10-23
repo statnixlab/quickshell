@@ -9,11 +9,14 @@ Item {
 
     property var screen: null
 
-    implicitHeight: 28
-    implicitWidth: 28
+    implicitHeight: Sizes.barControlCircleSize
+    implicitWidth: Sizes.barControlCircleSize
 
     ArcGauge {
-        anchors.fill: parent
+        anchors.centerIn: parent
+        width: 28
+        height: 28
+        scale: root.width / 28
 
         value: Volume.sourceMuted ? 0 : Volume.sourceVolume
         progressColor: (Volume.sourceMuted || Volume.sourceVolume <= 0) ? Appearance.colors.colError :

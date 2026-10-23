@@ -53,7 +53,7 @@ TopBarPill {
 
         anchors.centerIn: parent
         rowSpacing: 8
-        columnSpacing: 8
+        columnSpacing: 4
         columns: root.vertical ? 1 : 8
 
         Repeater {

@@ -41,6 +41,40 @@ class ConfigurationContracts(unittest.TestCase):
         self.run_config('setup')
         return self.run_config()
 
+    def test_separate_blur_migrates_legacy_values_and_changes_independently(self):
+        self.fragment('application-effects').parent.mkdir()
+        self.fragment('application-effects').write_text('blur { passes 4; }\nwindow-rule { opacity 0.91; background-effect { blur true; xray false; }; }\nwindow-rule { match is-focused=false; opacity 0.73; }\n')
+        self.main.write_text('// Preserve input settings\ninput {}\ninclude "clavis/application-effects.kdl"\n')
+        state = self.run_config('migrate-effects', 'application-effects')
+        self.assertTrue(state['effectsSeparated'])
+        self.assertEqual(state['applicationEffects']['focused'], 0.91)
+        self.assertEqual(state['applicationEffects']['unfocused'], 0.73)
+        self.assertEqual(state['applicationEffects']['blurStrength'], 4)
+        self.assertEqual(state['panelEffects']['blurStrength'], 4)
+        app_before = self.fragment('application-effects').read_bytes()
+        state = self.run_config('update', 'panel-effects', blurStrength=2)
+        self.assertEqual(state['panelEffects']['blurStrength'], 2)
+        self.assertEqual(state['applicationEffects']['blurStrength'], 4)
+        self.assertEqual(self.fragment('application-effects').read_bytes(), app_before)
+        panel_before = self.fragment('panel-effects').read_bytes()
+        state = self.run_config('update', 'application-effects', focused=0.91, unfocused=0.73, blurEnabled=False, blurStrength=5)
+        self.assertEqual(state['applicationEffects']['blurStrength'], 5)
+        self.assertFalse(state['applicationEffects']['blurEnabled'])
+        self.assertEqual(state['panelEffects']['blurStrength'], 2)
+        self.assertEqual(self.fragment('panel-effects').read_bytes(), panel_before)
+        before = {path: path.read_bytes() for path in (self.main, self.fragment('application-effects'), self.fragment('panel-effects'))}
+        self.run_config('migrate-effects', 'application-effects')
+        self.assertEqual({path: path.read_bytes() for path in before}, before)
+
+    def test_separate_blur_does_not_modify_unsupported_session(self):
+        before = self.main.read_bytes()
+        with mock.patch.object(config, 'supports_separate_blur', return_value=False):
+            for operation in ('setup', 'update', 'migrate-effects'):
+                with self.assertRaisesRegex(ValueError, 'Log out'):
+                    self.run_config(operation, 'application-effects')
+        self.assertEqual(self.main.read_bytes(), before)
+        self.assertFalse(self.fragment('application-effects').exists())
+
     def test_application_effects_roundtrip_preserves_user_configuration(self):
         original = '// Keep custom blur color and application exceptions\nblur { offset 2; noise 0.01; saturation 1.2; }\n'
         self.main.write_text(original)

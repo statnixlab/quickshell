@@ -86,7 +86,8 @@ TopBarPill {
     }
 
     implicitHeight: vertical ? layout.implicitHeight + 16 : Sizes.barPillThickness
-    implicitWidth: vertical ? Sizes.barVisualThickness : layout.implicitWidth + 24
+    implicitWidth: vertical ? Sizes.barVisualThickness : layout.implicitWidth + 2
+                              * Sizes.barPillHorizontalPadding
 
     GridLayout {
         id: layout
@@ -94,7 +95,7 @@ TopBarPill {
         anchors.centerIn: parent
         columns: root.vertical ? 1 : 2
         rowSpacing: root.vertical ? 6 : 0
-        columnSpacing: root.vertical ? 0 : 10
+        columnSpacing: root.vertical ? 0 : 6
 
         Item {
             Layout.preferredWidth: 18

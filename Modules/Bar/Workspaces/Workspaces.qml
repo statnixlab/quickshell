@@ -14,7 +14,8 @@ TopBarPill {
     readonly property bool hasMultipleOutputs: Niri.outputs.count > 1
 
     implicitHeight: vertical ? layout.implicitHeight + 16 : Sizes.barPillThickness
-    implicitWidth: vertical ? Sizes.barVisualThickness : layout.implicitWidth + 24
+    implicitWidth: vertical ? Sizes.barVisualThickness : layout.implicitWidth + 2
+                              * Sizes.barPillHorizontalPadding
 
     animateResize: {
         for (let index = 0; index < workspaceRepeater.count; ++index) {
@@ -37,7 +38,7 @@ TopBarPill {
         id: layout
         anchors.centerIn: parent
         rowSpacing: 8
-        columnSpacing: 8
+        columnSpacing: 6
         columns: root.vertical ? 1 : Math.max(1, Niri.workspaces.count)
 
         Repeater {

@@ -1,12 +1,13 @@
 pragma Singleton
 import Quickshell
+import qs.Services
 
 Singleton {
     readonly property real cornerRadius: 10
-    readonly property real barVisualThickness: 44
-    readonly property real barPillThickness: 36
-    readonly property real barPillHorizontalPadding: 8
-    readonly property real barControlCircleSize: 28
+    readonly property real barVisualThickness: PersonalizationConfig.barThickness
+    readonly property real barPillThickness: PersonalizationConfig.barPillThickness
+    readonly property real barPillHorizontalPadding: 6
+    readonly property real barControlCircleSize: Math.min(28, barPillThickness - 4)
     readonly property real barWeatherVerticalPillHeight: 56
     readonly property real barOuterEdgeMargin: 8
     readonly property real barShadowBuffer: 36

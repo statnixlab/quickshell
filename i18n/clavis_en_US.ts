@@ -4656,9 +4656,14 @@ Scroll to adjust</translation>
 <context>
     <name>GeneralBarPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2019"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2057"/>
         <source>Position</source>
         <translation>Position</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2058"/>
+        <source>Size</source>
+        <translation>Size</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="40"/>
@@ -4666,7 +4671,7 @@ Scroll to adjust</translation>
         <translation>Screen edge</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2020"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2059"/>
         <source>Components</source>
         <translation>Components</translation>
     </message>
@@ -4678,36 +4683,62 @@ Scroll to adjust</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="55"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="98"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="126"/>
         <source>%1 px</source>
         <translation>%1 px</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="91"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="110"/>
+        <source>Bar height</source>
+        <translation>Bar height</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="110"/>
+        <source>Bar width</source>
+        <translation>Bar width</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="123"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="138"/>
+        <source>Pill height</source>
+        <translation>Pill height</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="123"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="138"/>
+        <source>Pill width</source>
+        <translation>Pill width</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="162"/>
         <source>Drag components to reorder them or move them to the other side.</source>
         <translation>Drag components to reorder them or move them to the other side.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="166"/>
         <source>Left</source>
         <translation>Left</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="166"/>
         <source>Top</source>
         <translation>Top</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="118"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="189"/>
         <source>Right</source>
         <translation>Right</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="118"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="189"/>
         <source>Bottom</source>
         <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="147"/>
+        <location filename="../Modules/ControlCenter/GeneralBarPage.qml" line="218"/>
         <source>Quick settings widgets</source>
         <translation>Quick settings widgets</translation>
     </message>
@@ -4725,26 +4756,26 @@ Scroll to adjust</translation>
         <translation>Create or connect the Clavis X-Ray rules.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2040"/>
-        <source>Background</source>
-        <translation>Background</translation>
+        <location filename="../Common/generated/SearchCatalog.js" line="2060"/>
+        <source>Desktop panels</source>
+        <translation>Desktop panels</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2041"/>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="96"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2061"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="118"/>
         <source>Application effects</source>
         <translation>Application effects</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="48"/>
-        <source>Background opacity</source>
-        <translation>Background opacity</translation>
+        <source>Panel background opacity</source>
+        <translation>Panel background opacity</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="60"/>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="65"/>
-        <source>Background blur</source>
-        <translation>Background blur</translation>
+        <source>Panel background blur</source>
+        <translation>Panel background blur</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="73"/>
@@ -4763,43 +4794,48 @@ Scroll to adjust</translation>
         <translation>Configure Niri blur integration first</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="97"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="89"/>
+        <source>Panel blur strength</source>
+        <translation>Panel blur strength</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="112"/>
+        <source>Log out and back in after updating the compositor to adjust application and panel blur independently.</source>
+        <translation>Log out and back in after updating the compositor to adjust application and panel blur independently.</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="119"/>
         <source>Enable transparency and blur controls for application windows.</source>
         <translation>Enable transparency and blur controls for application windows.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="121"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="144"/>
         <source>Focused window opacity</source>
         <translation>Focused window opacity</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="134"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="158"/>
         <source>Unfocused window opacity</source>
         <translation>Unfocused window opacity</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="135"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="159"/>
         <source>Applies to the entire window, including text and images. 100% is opaque.</source>
         <translation>Applies to the entire window, including text and images. 100% is opaque.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="149"/>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="155"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="173"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="180"/>
         <source>Application background blur</source>
         <translation>Application background blur</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="165"/>
-        <source>Blur strength</source>
-        <translation>Blur strength</translation>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="191"/>
+        <source>Application blur strength</source>
+        <translation>Application blur strength</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="166"/>
-        <source>Shared by applications and desktop panels. Higher levels use more graphics resources.</source>
-        <translation>Shared by applications and desktop panels. Higher levels use more graphics resources.</translation>
-    </message>
-    <message>
-        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="181"/>
+        <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="205"/>
         <source>Blur is disabled in the compositor configuration.</source>
         <translation>Blur is disabled in the compositor configuration.</translation>
     </message>
