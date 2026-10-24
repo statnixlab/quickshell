@@ -66,6 +66,16 @@ Singleton {
                                           }, null, 2));
     }
 
+    function iconForItem(item) {
+        if (!item)
+            return "";
+        // OpenList can advertise a temporary tray PNG that no longer exists.
+        // Its installed desktop icon remains available across app restarts.
+        if (item.id === "tray-icon tray app main-tray" && item.title === "openlist-desktop")
+            return ApplicationService.iconSource("openlist-desktop");
+        return item.icon || "";
+    }
+
     function getTooltipForItem(item) {
         if (!item)
             return qsTr("Tray");

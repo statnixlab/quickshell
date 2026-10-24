@@ -12,6 +12,8 @@ import "../../../Services/TrayActivation.js" as TrayActivation
 MouseArea {
     id: root
 
+    readonly property var iconSource: TrayService.iconForItem(root.modelData)
+
     required property var modelData
     property var screen: null
     property string edge: "top"
@@ -177,7 +179,7 @@ MouseArea {
         root.closeMenu();
         root.dragActive = true;
         const globalPosition = root.updateDragPosition(event);
-        root.dragStarted(root.modelData.id || "", root.pinned, root.modelData.icon || "", globalPosition.x,
+        root.dragStarted(root.modelData.id || "", root.pinned, root.iconSource, globalPosition.x,
                          globalPosition.y);
         event.accepted = true;
     }
@@ -261,7 +263,7 @@ MouseArea {
     IconImage {
         id: trayIcon
 
-        source: root.modelData.icon || ""
+        source: root.iconSource
         anchors.centerIn: parent
         width: parent.width
         height: parent.height
