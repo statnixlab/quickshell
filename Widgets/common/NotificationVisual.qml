@@ -5,28 +5,42 @@ import Quickshell.Services.Notifications
 import qs.Common
 import qs.Components
 import qs.Services
+import "../../Services/NotificationIcons.js" as NotificationIcons
 
 Item {
     id: root
 
     property string appIcon: ""
+    property string appName: ""
+    property string desktopEntry: ""
     property string image: ""
     property string summary: ""
     property var urgency: NotificationUrgency.Normal
     property bool imageLoaded: false
     property bool imageLoadFailed: false
-    property bool appIconLoadFailed: false
+    property int iconIndex: 0
+    readonly property var availableIcons: {
+        const revision = ThemeService.iconThemeRevision;
+        const candidates = NotificationIcons.candidates(appIcon, desktopEntry, appName,
+                                                        DesktopEntries.applications.values || []);
+        return candidates.filter(icon => icon.startsWith("/") || icon.startsWith("file://") || icon.startsWith(
+                                             "image://") || Quickshell.hasThemeIcon(icon));
+    }
+    readonly property string selectedIcon: availableIcons[iconIndex] || ""
     readonly property bool isUrgent: urgency === NotificationUrgency.Critical || String(urgency).endsWith(
                                          "Critical")
-    readonly property bool appIconIsFile: appIcon.startsWith("file://") || appIcon.startsWith("/")
+    readonly property bool appIconIsFile: selectedIcon.startsWith("file://") || selectedIcon.startsWith("/")
     readonly property string imageSource: normalizeSource(image)
-    readonly property string appIconSource: appIcon === "" ? "" : appIconIsFile ? normalizeSource(appIcon) :
-                                                                                  resolvedIconSource(appIcon)
+    readonly property string appIconSource: selectedIcon === "" ? "" : appIconIsFile || selectedIcon.startsWith(
+                                                                      "image://") ? normalizeSource(
+                                                                                        selectedIcon) :
+                                                                                    resolvedIconSource(
+                                                                                        selectedIcon)
     readonly property bool hasImage: imageSource !== "" && !image.startsWith("icon:")
     readonly property bool hasAppIcon: appIconSource !== ""
     readonly property bool showImage: hasImage && imageLoaded && !imageLoadFailed
-    readonly property bool showAppIcon: !showImage && hasAppIcon && !appIconLoadFailed
-    readonly property bool showSymbol: !showImage && (!hasAppIcon || appIconLoadFailed)
+    readonly property bool showAppIcon: !showImage && hasAppIcon
+    readonly property bool showSymbol: !showImage && !hasAppIcon
 
     function normalizeSource(source) {
         if (!source)
@@ -47,7 +61,7 @@ Item {
         root.imageLoaded = false;
         root.imageLoadFailed = false;
     }
-    onAppIconChanged: root.appIconLoadFailed = false
+    onAvailableIconsChanged: root.iconIndex = 0
 
     Rectangle {
         anchors.fill: parent
@@ -74,7 +88,10 @@ Item {
         fillMode: root.appIconIsFile ? Image.PreserveAspectCrop : Image.PreserveAspectFit
         asynchronous: true
         visible: root.showAppIcon && !root.appIconIsFile
-        onStatusChanged: root.appIconLoadFailed = status === Image.Error
+        onStatusChanged: {
+            if (status === Image.Error && root.iconIndex < root.availableIcons.length)
+                root.iconIndex += 1;
+        }
     }
 
     OpacityMask {

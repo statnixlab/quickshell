@@ -14,6 +14,7 @@ Rectangle {
     property string supportingText: ""
     property string detailText: ""
     property string temperatureText: ""
+    property string powerText: ""
     property real usage: -1
     property int shapeOverride: -999
     property var trendValues: []
@@ -51,8 +52,8 @@ Rectangle {
             radius: root.radius
         }
     }
-    Accessible.name: [root.label, root.valueText, root.detailText, root.supportingText,
-        root.temperatureText].filter(function (value) {
+    Accessible.name: [root.label, root.valueText, root.detailText, root.supportingText, root.temperatureText,
+        root.powerText].filter(function (value) {
             return String(value || "").length > 0;
         }).join("，")
 
@@ -102,10 +103,10 @@ Rectangle {
     }
 
     Row {
-        id: temperatureBadge
+        id: sensorBadges
 
-        visible: root.temperatureText.length > 0
-        spacing: 3
+        visible: root.temperatureText.length > 0 || root.powerText.length > 0
+        spacing: Appearance.spacing.small
         z: 5
 
         anchors {
@@ -115,23 +116,56 @@ Rectangle {
             rightMargin: root.dense ? Appearance.spacing.small : Appearance.spacing.medium
         }
 
-        MaterialSymbol {
+        Row {
             anchors.verticalCenter: parent.verticalCenter
-            text: "thermostat"
-            color: root.foregroundColor
-            iconSize: root.dense ? Typography.titleSmall.pixelSize : Typography.titleMedium.pixelSize
-            fill: 1
-            opacity: 0.78
+            visible: root.powerText.length > 0
+            spacing: 3
+
+            MaterialSymbol {
+                anchors.verticalCenter: parent.verticalCenter
+                text: "bolt"
+                color: root.foregroundColor
+                iconSize: root.dense ? Typography.titleSmall.pixelSize : Typography.titleMedium.pixelSize
+                fill: 1
+                opacity: 0.78
+            }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: root.powerText
+                color: root.foregroundColor
+                font.family: Fonts.numeric
+                font.pixelSize: root.dense ? Typography.titleSmall.pixelSize :
+                                             Typography.titleMedium.pixelSize
+                font.weight: Font.DemiBold
+                opacity: 0.84
+            }
         }
 
-        Text {
+        Row {
             anchors.verticalCenter: parent.verticalCenter
-            text: root.temperatureText
-            color: root.foregroundColor
-            font.family: Fonts.numeric
-            font.pixelSize: root.dense ? Typography.titleSmall.pixelSize : Typography.titleMedium.pixelSize
-            font.weight: Font.DemiBold
-            opacity: 0.84
+            visible: root.temperatureText.length > 0
+            spacing: 3
+
+            MaterialSymbol {
+                anchors.verticalCenter: parent.verticalCenter
+                text: "thermostat"
+                color: root.foregroundColor
+                iconSize: root.dense ? Typography.titleSmall.pixelSize : Typography.titleMedium.pixelSize
+                fill: 1
+                opacity: 0.78
+            }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: root.temperatureText
+                color: root.foregroundColor
+                font.family: Fonts.numeric
+                font.pixelSize: root.dense ? Typography.titleSmall.pixelSize :
+                                             Typography.titleMedium.pixelSize
+                font.weight: Font.DemiBold
+                opacity: 0.84
+            }
         }
     }
 
@@ -143,7 +177,7 @@ Rectangle {
         spacing: root.dense ? 2 : Appearance.spacing.xSmall
 
         Text {
-            Layout.maximumWidth: Math.max(48, root.width - temperatureBadge.width - Appearance.spacing.large
+            Layout.maximumWidth: Math.max(48, root.width - sensorBadges.width - Appearance.spacing.large
                                           * 1.5)
             text: root.label
             color: root.foregroundColor

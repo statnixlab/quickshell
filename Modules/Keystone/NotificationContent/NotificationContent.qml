@@ -85,6 +85,8 @@ Item {
                     Layout.preferredHeight: 44
                     Layout.alignment: Qt.AlignTop
                     appIcon: delegateRoot.modelData ? delegateRoot.modelData.appIcon : ""
+                    appName: delegateRoot.modelData ? delegateRoot.modelData.appName : ""
+                    desktopEntry: delegateRoot.modelData ? delegateRoot.modelData.desktopEntry : ""
                     image: delegateRoot.modelData ? delegateRoot.modelData.image : ""
                     summary: delegateRoot.modelData ? delegateRoot.modelData.summary : ""
                     urgency: delegateRoot.modelData ? delegateRoot.modelData.urgency : ""

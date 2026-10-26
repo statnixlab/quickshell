@@ -105,14 +105,6 @@ Item {
         return qsTr("Overall utilization");
     }
 
-    function cpuSupporting() {
-        const frequency = Format.frequencyMHz(SystemMonitorService.cpu.frequencyCurrentMHz);
-        if (Format.isNumber(SystemMonitorService.cpu.powerWatts))
-            return frequency + " · " + Format.watts(SystemMonitorService.cpu.powerWatts);
-
-        return frequency;
-    }
-
     function gpuSupporting() {
         if (SystemMonitorService.selectedGpuId === "")
             return qsTr("No graphics device detected");
@@ -121,7 +113,7 @@ Item {
         if (Format.isNumber(gpu.vramUsedBytes) && Format.isNumber(gpu.vramTotalBytes))
             return Format.bytes(gpu.vramUsedBytes) + " / " + Format.bytes(gpu.vramTotalBytes);
 
-        return Format.watts(gpu.powerWatts);
+        return "";
     }
 
     function componentFor(id) {
@@ -227,8 +219,9 @@ Item {
             iconName: "memory"
             detailText: root.cpuDetail()
             valueText: Format.percent(SystemMonitorService.cpu.usagePercent, 0)
-            supportingText: root.cpuSupporting()
+            supportingText: Format.frequencyMHz(SystemMonitorService.cpu.frequencyCurrentMHz)
             temperatureText: root.temperatureBadge(root.cpuTemperature)
+            powerText: Format.watts(SystemMonitorService.cpu.powerWatts)
             usage: root.normalizedPercent(SystemMonitorService.cpu.usagePercent)
             trendValues: SystemMonitorService.cpuHistory
             chartActive: root.active
@@ -255,6 +248,7 @@ Item {
                                                                    "—"
             supportingText: root.gpuSupporting()
             temperatureText: root.temperatureBadge(root.primaryGpu.temperatureCelsius)
+            powerText: Format.watts(root.primaryGpu.powerWatts)
             usage: SystemMonitorService.selectedGpuId !== "" ? root.normalizedPercent(
                                                                    root.primaryGpu.utilizationPercent) : -1
             trendValues: SystemMonitorService.gpuHistory

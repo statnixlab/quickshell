@@ -145,6 +145,8 @@ MouseArea {
                                                                                     root.notifications[0].image
 
                 appIcon: root.notificationGroup ? root.notificationGroup.appIcon : ""
+                appName: root.notificationGroup ? root.notificationGroup.appName : ""
+                desktopEntry: root.notificationGroup ? root.notificationGroup.desktopEntry : ""
                 summary: root.notificationCount > 0 ? root.notifications[root.notificationCount - 1].summary :
                                                       ""
                 urgency: root.notifications.some(notif => {

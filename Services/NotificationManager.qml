@@ -486,6 +486,7 @@ Singleton {
                 groups[appName] = {
                     appName,
                     appIcon: notif.appIcon,
+                    desktopEntry: notif.desktopEntry,
                     notifications: [],
                     receivedAt: 0
                 };
@@ -494,6 +495,8 @@ Singleton {
             groups[appName].receivedAt = root.latestTimeForApp[appName] || notif.receivedAt;
             if (!groups[appName].appIcon && notif.appIcon)
                 groups[appName].appIcon = notif.appIcon;
+            if (!groups[appName].desktopEntry && notif.desktopEntry)
+                groups[appName].desktopEntry = notif.desktopEntry;
         });
         return groups;
     }
