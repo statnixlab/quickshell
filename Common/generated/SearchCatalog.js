@@ -1442,6 +1442,20 @@ var catalog = {
       "aliases": [],
       "anchor": true,
       "context": "GeneralBarPage",
+      "icon": "space_bar",
+      "id": "general.bar.section.size-spacing",
+      "path": [
+        "general",
+        "bar"
+      ],
+      "route": "general.bar",
+      "source": "GeneralBarPage.qml",
+      "title": "Size and spacing"
+    },
+    {
+      "aliases": [],
+      "anchor": true,
+      "context": "GeneralBarPage",
       "icon": "dock_to_bottom",
       "id": "general.bar.section.components",
       "path": [
@@ -1611,6 +1625,19 @@ var catalog = {
       "aliases": [],
       "anchor": true,
       "context": "KeystonePage",
+      "icon": "space_bar",
+      "id": "keystone.section.size-spacing",
+      "path": [
+        "keystone"
+      ],
+      "route": "keystone",
+      "source": "KeystonePage.qml",
+      "title": "Size and spacing"
+    },
+    {
+      "aliases": [],
+      "anchor": true,
+      "context": "KeystonePage",
       "icon": "toggle_off",
       "id": "keystone.section.mouse-actions",
       "path": [
@@ -1619,6 +1646,19 @@ var catalog = {
       "route": "keystone",
       "source": "KeystonePage.qml",
       "title": "Mouse actions"
+    },
+    {
+      "aliases": [],
+      "anchor": true,
+      "context": "KeystonePage",
+      "icon": "music_note",
+      "id": "keystone.section.media-controls",
+      "path": [
+        "keystone"
+      ],
+      "route": "keystone",
+      "source": "KeystonePage.qml",
+      "title": "Media controls"
     },
     {
       "aliases": [],
@@ -1856,6 +1896,22 @@ var catalog = {
       "title": "Clipboard"
     },
     {
+      "aliases": [
+        "window controls",
+        "traffic lights"
+      ],
+      "anchor": true,
+      "context": "ThemePage",
+      "icon": "window",
+      "id": "theme.section.settings-window",
+      "path": [
+        "theme"
+      ],
+      "route": "theme",
+      "source": "ThemePage.qml",
+      "title": "Settings window"
+    },
+    {
       "aliases": [],
       "anchor": true,
       "context": "ThemePage",
@@ -2056,6 +2112,7 @@ function title(id) {
     case "general.displays.gamma.section.current-status": return qsTranslate("GammaControlPage", "Current status");
     case "general.bar.section.position": return qsTranslate("GeneralBarPage", "Position");
     case "general.bar.section.size": return qsTranslate("GeneralBarPage", "Size");
+    case "general.bar.section.size-spacing": return qsTranslate("GeneralBarPage", "Size and spacing");
     case "general.bar.section.components": return qsTranslate("GeneralBarPage", "Components");
     case "general.effects.section.background": return qsTranslate("GeneralEffectsPage", "Desktop panels");
     case "general.effects.section.application-effects": return qsTranslate("GeneralEffectsPage", "Application effects");
@@ -2068,7 +2125,9 @@ function title(id) {
     case "general.sidebar.section.system-cards": return qsTranslate("GeneralSidebarPage", "System cards");
     case "keystone.horizontal-clock.section.horizontal-clock-style": return qsTranslate("HorizontalClockPage", "Horizontal clock style");
     case "keystone.section.keystone-style": return qsTranslate("KeystonePage", "Keystone style");
+    case "keystone.section.size-spacing": return qsTranslate("KeystonePage", "Size and spacing");
     case "keystone.section.mouse-actions": return qsTranslate("KeystonePage", "Mouse actions");
+    case "keystone.section.media-controls": return qsTranslate("KeystonePage", "Media controls");
     case "keystone.section.keyboard-indicators": return qsTranslate("KeystonePage", "Keyboard indicators");
     case "keystone.section.keyhole": return qsTranslate("KeystonePage", "Keyhole");
     case "keystone.section.horizontal-clock": return qsTranslate("KeystonePage", "Horizontal clock");
@@ -2086,6 +2145,7 @@ function title(id) {
     case "general.spotlight.section.applications": return qsTranslate("SpotlightPage", "Applications");
     case "general.spotlight.section.web-search": return qsTranslate("SpotlightPage", "Web search");
     case "general.spotlight.section.clipboard": return qsTranslate("SpotlightPage", "Clipboard");
+    case "theme.section.settings-window": return qsTranslate("ThemePage", "Settings window");
     case "theme.section.matugen-color-scheme": return qsTranslate("ThemePage", "matugen color scheme");
     case "theme.section.super-key-appearance": return qsTranslate("ThemePage", "Super key appearance");
     case "theme.section.lock-screen": return qsTranslate("ThemePage", "Lock screen");

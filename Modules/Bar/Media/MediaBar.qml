@@ -11,14 +11,12 @@ TopBarPill {
     property bool vertical: false
     property real maximumTitleWidth: 180
     readonly property var player: MediaManager.active
-    readonly property string title: player ? player.trackTitle || player.identity || qsTr("No media") : qsTr(
-                                                 "No media")
+    readonly property string title: player ? player.trackTitle || player.identity || "" : ""
     readonly property bool spectrumActive: visible && player !== null && player.isPlaying
     readonly property string spectrumToken: "bar-media-" + String(root)
 
-    implicitWidth: vertical ? Sizes.barVisualThickness : layout.implicitWidth + 2
-                              * Sizes.barPillHorizontalPadding
-    implicitHeight: vertical ? layout.implicitHeight + 16 : Sizes.barPillThickness
+    implicitWidth: vertical ? root.bandThickness : layout.implicitWidth + 2 * root.pillPadding
+    implicitHeight: vertical ? layout.implicitHeight + 2 * (root.pillPadding + 2) : root.pillThickness
 
     onSpectrumActiveChanged: updateSpectrum()
     Component.onCompleted: updateSpectrum()
@@ -97,6 +95,8 @@ TopBarPill {
 
         Item {
             id: titleSlot
+
+            visible: root.title.length > 0
 
             readonly property real titleExtent: Math.min(Math.max(0, root.maximumTitleWidth),
                                                          titleText.implicitWidth)

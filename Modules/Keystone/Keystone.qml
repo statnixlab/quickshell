@@ -25,6 +25,7 @@ Item {
 
     Loader {
         id: styleLoader
+        active: PersonalizationConfig.keystoneEnabled
 
         sourceComponent: PersonalizationConfig.keystoneStyle === "pill" ? pillStyle : bangsStyle
     }

@@ -111,6 +111,26 @@ Item {
                 }
                 iconName: "toggle_off"
 
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Show Keystone")
+                    trailing: StyledSwitch {
+                        checked: PersonalizationConfig.keystoneEnabled
+                        Accessible.name: qsTr("Show Keystone")
+                        onToggled: PersonalizationConfig.setValue("keystoneEnabled", checked)
+                    }
+                }
+
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Floating")
+                    trailing: StyledSwitch {
+                        checked: PersonalizationConfig.keystoneOverlay
+                        Accessible.name: qsTr("Floating")
+                        onToggled: PersonalizationConfig.setValue("keystoneOverlay", checked)
+                    }
+                }
+
                 SearchSelectSettingRow {
                     title: qsTr("Style")
                     options: PersonalizationConfig.keystoneStyles
@@ -118,6 +138,16 @@ Item {
                     placeholder: qsTr("Choose Keystone style")
                     onAccepted: value => {
                         return PersonalizationConfig.setKeystoneStyle(value);
+                    }
+                }
+
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Full display")
+                    trailing: StyledSwitch {
+                        checked: PersonalizationConfig.keystoneFullDisplay
+                        Accessible.name: qsTr("Full display")
+                        onToggled: PersonalizationConfig.setValue("keystoneFullDisplay", checked)
                     }
                 }
 
@@ -135,6 +165,93 @@ Item {
             }
 
             KeystoneSection {
+                id: dimensionsSection
+                Layout.fillWidth: true
+                title: dimensionsSearchAnchor.title
+                iconName: "space_bar"
+                SettingsSearchAnchor {
+                    id: dimensionsSearchAnchor
+                    target: dimensionsSection
+                    declaration:
+                        '{"id":"keystone.section.size-spacing","route":"keystone","title":"Size and spacing","context":"KeystonePage","icon":"space_bar","aliases":[]}'
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Edge spacing")
+                    value: PersonalizationConfig.keystoneStyle === "pill"
+                           ? PersonalizationConfig.keystoneEdgeSpacing : 0
+                    from: PersonalizationConfig.keystoneDimensionLimits.edgeSpacing[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.edgeSpacing[2]
+                    suffix: qsTr(" px")
+                    enabled: PersonalizationConfig.keystoneStyle === "pill"
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "edgeSpacing",
+                                                                              value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Exclusive zone offset")
+                    value: PersonalizationConfig.keystoneExclusiveZoneOffset
+                    from: PersonalizationConfig.keystoneDimensionLimits.exclusiveZoneOffset[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.exclusiveZoneOffset[2]
+                    suffix: qsTr(" px")
+                    enabled: !PersonalizationConfig.keystoneOverlay
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone",
+                                                                              "exclusiveZoneOffset", value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Size")
+                    value: PersonalizationConfig.keystoneThickness
+                    from: PersonalizationConfig.keystoneDimensionLimits.thickness[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.thickness[2]
+                    suffix: qsTr(" px")
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "thickness", value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Compact length")
+                    value: PersonalizationConfig.keystoneCompactLength
+                    from: PersonalizationConfig.keystoneDimensionLimits.compactLength[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.compactLength[2]
+                    suffix: qsTr(" px")
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "compactLength",
+                                                                              value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Inset padding")
+                    value: PersonalizationConfig.keystoneInsetPadding
+                    from: PersonalizationConfig.keystoneDimensionLimits.insetPadding[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.insetPadding[2]
+                    suffix: qsTr(" px")
+                    enabled: PersonalizationConfig.keystoneFullDisplay
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "insetPadding",
+                                                                              value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Item spacing")
+                    value: PersonalizationConfig.keystoneItemSpacing
+                    from: PersonalizationConfig.keystoneDimensionLimits.itemSpacing[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.itemSpacing[2]
+                    suffix: qsTr(" px")
+                    enabled: PersonalizationConfig.keystoneFullDisplay
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "itemSpacing",
+                                                                              value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Popup gap")
+                    value: PersonalizationConfig.keystonePopupGap
+                    from: PersonalizationConfig.keystoneDimensionLimits.popupGap[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.popupGap[2]
+                    suffix: qsTr(" px")
+                    enabled: PersonalizationConfig.keystoneFullDisplay
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "popupGap", value)
+                }
+            }
+
+            KeystoneSection {
                 id: searchSection1
                 title: searchAnchor1.title
                 SettingsSearchAnchor {
@@ -147,9 +264,31 @@ Item {
 
                 SearchSelectSettingRow {
                     title: qsTr("Hover")
-                    options: PersonalizationConfig.keystoneHoverActionOptions
-                    value: PersonalizationConfig.keystoneHoverAction
+                    options: PersonalizationConfig.availableKeystoneHoverActionOptions
+                    value: PersonalizationConfig.effectiveKeystoneHoverAction
                     onAccepted: value => PersonalizationConfig.setKeystoneAction("hover", value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Hover open delay")
+                    value: PersonalizationConfig.keystoneHoverOpenDelay
+                    from: 0
+                    to: 500
+                    stepSize: 25
+                    suffix: qsTr(" ms")
+                    enabled: PersonalizationConfig.effectiveKeystoneHoverAction !== "none"
+                    onMoved: value => PersonalizationConfig.setKeystoneHoverOpenDelay(value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Hover close delay")
+                    value: PersonalizationConfig.keystoneHoverCloseDelay
+                    from: 0
+                    to: 600
+                    stepSize: 25
+                    suffix: qsTr(" ms")
+                    enabled: PersonalizationConfig.effectiveKeystoneHoverAction !== "none"
+                    onMoved: value => PersonalizationConfig.setKeystoneHoverCloseDelay(value)
                 }
 
                 SearchSelectSettingRow {
@@ -164,6 +303,115 @@ Item {
                     options: PersonalizationConfig.keystoneActionOptions
                     value: PersonalizationConfig.keystoneMiddleClickAction
                     onAccepted: value => PersonalizationConfig.setKeystoneAction("middle", value)
+                }
+            }
+
+            KeystoneSection {
+                id: mediaSection
+                title: mediaSearchAnchor.title
+                iconName: "music_note"
+
+                SettingsSearchAnchor {
+                    id: mediaSearchAnchor
+                    target: mediaSection
+                    declaration:
+                        '{"id":"keystone.section.media-controls","route":"keystone","title":"Media controls","context":"KeystonePage","icon":"music_note","aliases":[]}'
+                }
+
+                SearchSelectSettingRow {
+                    title: qsTr("Progress bar")
+                    options: PersonalizationConfig.keystoneMediaProgressOptions
+                    value: PersonalizationConfig.keystoneMediaProgressStyle
+                    onAccepted: value => PersonalizationConfig.setKeystoneMediaProgressStyle(value)
+                }
+
+                SearchSelectSettingRow {
+                    title: qsTr("Cover style")
+                    options: PersonalizationConfig.keystoneMediaCoverOptions
+                    value: PersonalizationConfig.keystoneMediaCoverStyle
+                    onAccepted: value => PersonalizationConfig.setKeystoneMediaCoverStyle(value)
+                }
+
+                SearchSelectSettingRow {
+                    title: qsTr("Colors")
+                    options: PersonalizationConfig.keystoneMediaColorOptions
+                    value: PersonalizationConfig.keystoneMediaColorStyle
+                    onAccepted: value => PersonalizationConfig.setKeystoneMediaColorStyle(value)
+                }
+            }
+
+            KeystoneSection {
+                visible: PersonalizationConfig.keystoneFullDisplay
+                title: qsTr("Status items")
+                iconName: "view_week"
+
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Show device names")
+                    trailing: StyledSwitch {
+                        checked: PersonalizationConfig.keystoneFullShowNames
+                        Accessible.name: qsTr("Show device names")
+                        onToggled: PersonalizationConfig.setKeystoneFullShowNames(checked)
+                    }
+                }
+
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Show system monitor values")
+                    trailing: StyledSwitch {
+                        checked: PersonalizationConfig.keystoneFullShowMonitorValues
+                        Accessible.name: qsTr("Show system monitor values")
+                        onToggled: PersonalizationConfig.setKeystoneFullShowMonitorValues(checked)
+                    }
+                }
+
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Show numeric values")
+                    trailing: StyledSwitch {
+                        checked: PersonalizationConfig.keystoneFullShowValues
+                        Accessible.name: qsTr("Show numeric values")
+                        onToggled: PersonalizationConfig.setKeystoneFullShowValues(checked)
+                    }
+                }
+
+                SettingsRow {
+                    id: fullLeadingFieldRow
+                    Layout.fillWidth: true
+                    title: PersonalizationConfig.keystonePosition === "top"
+                           || PersonalizationConfig.keystonePosition === "bottom" ? qsTr("Left") : qsTr("Top")
+                    trailing: SortableMultiSelectField {
+                        id: fullLeadingField
+                        Layout.minimumWidth: 0
+                        Layout.preferredWidth: Math.max(0, fullLeadingFieldRow.width - 96 - 3
+                                                        * Metrics.spacingS)
+                        values: PersonalizationConfig.keystoneFullLeading
+                        options: PersonalizationConfig.keystoneFullItemOptions
+                        zone: "leading"
+                        dragCoordinator: fullDragCoordinator
+                        onToggled: itemId => PersonalizationConfig.toggleKeystoneFullItem(itemId, zone)
+                        onRemoved: itemId => PersonalizationConfig.removeKeystoneFullItem(itemId)
+                    }
+                }
+
+                SettingsRow {
+                    id: fullTrailingFieldRow
+                    Layout.fillWidth: true
+                    title: PersonalizationConfig.keystonePosition === "top"
+                           || PersonalizationConfig.keystonePosition === "bottom" ? qsTr("Right") : qsTr(
+                                                                                        "Bottom")
+                    trailing: SortableMultiSelectField {
+                        id: fullTrailingField
+                        Layout.minimumWidth: 0
+                        Layout.preferredWidth: Math.max(0, fullTrailingFieldRow.width - 96 - 3
+                                                        * Metrics.spacingS)
+                        values: PersonalizationConfig.keystoneFullTrailing
+                        options: PersonalizationConfig.keystoneFullItemOptions
+                        zone: "trailing"
+                        dragCoordinator: fullDragCoordinator
+                        onToggled: itemId => PersonalizationConfig.toggleKeystoneFullItem(itemId, zone)
+                        onRemoved: itemId => PersonalizationConfig.removeKeystoneFullItem(itemId)
+                    }
                 }
             }
 
@@ -337,6 +585,16 @@ Item {
     }
 
     BarLayoutDragCoordinator {
+        id: fullDragCoordinator
+        anchors.fill: parent
+        z: 1001
+        fields: [fullLeadingField, fullTrailingField]
+        onDropped: (itemId, targetZone, targetIndex) => PersonalizationConfig.moveKeystoneFullItem(itemId,
+                                                                                                   targetZone,
+                                                                                                   targetIndex)
+    }
+
+    BarLayoutDragCoordinator {
         id: keyholeDragCoordinator
 
         anchors.fill: parent
@@ -430,6 +688,7 @@ Item {
         property string value: ""
         property string placeholder: ""
         property int fieldWidth: 240
+        property bool closeOnAccept: true
 
         signal accepted(string value)
 
@@ -472,6 +731,7 @@ Item {
                 Layout.preferredHeight: 40
                 Layout.alignment: Qt.AlignVCenter
                 options: selectRow.options
+                closeOnAccept: selectRow.closeOnAccept
                 value: selectRow.value
                 placeholder: selectRow.placeholder
                 textRole: "label"

@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick
 import qs.Services
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 import Clavis.Niri
 
@@ -176,6 +177,29 @@ Singleton {
             return nativeWindow.isFocused;
         const target = root.toplevel();
         return target ? target.activated : false;
+    }
+
+    function toggleMaximize() {
+        if (!root.controlCenterWindow || maximizeProcess.running)
+            return;
+        const window = root.niriWindow();
+        if (!window) {
+            root.controlCenterWindow.maximized = !root.controlCenterWindow.maximized;
+            return;
+        }
+        // Niri's native action also handles floating windows and sends back
+        // the maximized state used by the green button's Restore label.
+        maximizeProcess.command = ["niri", "msg", "action", "maximize-window-to-edges", "--id", String(
+                                       window.id)];
+        maximizeProcess.running = true;
+    }
+
+    Process {
+        id: maximizeProcess
+        onExited: exitCode => {
+            if (exitCode !== 0)
+                console.warn("Settings window maximize action failed:", exitCode);
+        }
     }
 
     function activateWindow() {

@@ -901,6 +901,18 @@ StyledFlickable {
                     }
                 }
 
+                SettingsRow {
+                    Layout.fillWidth: true
+                    title: qsTr("Floating window parallax")
+
+                    trailing: StyledSwitch {
+                        enabled: !root.desktopUsesAwww
+                        checked: PersonalizationConfig.parallaxFloatingWindowsEnabled
+                        Accessible.name: qsTr("Floating window parallax")
+                        onToggled: PersonalizationConfig.setParallaxFloatingWindowsEnabled(checked)
+                    }
+                }
+
                 ColumnLayout {
                     Layout.fillWidth: true
                     spacing: 0

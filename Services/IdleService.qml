@@ -82,6 +82,10 @@ Singleton {
     signal operationFailed(string operation, string message)
     signal lockRequested
 
+    onOperationStarted: operation => console.info("Idle operation started:", operation)
+    onOperationSucceeded: operation => console.info("Idle operation succeeded:", operation)
+    onOperationFailed: (operation, message) => console.warn("Idle operation failed:", operation, message)
+
     function setInhibited(value) {
         const requested = !!value;
         if (root.inhibited === requested)
@@ -135,9 +139,13 @@ Singleton {
         const normalizedTimeout = Math.max(0, Number(timeout || 0));
         root.lastError = "";
         root.operationStarted("configure-stage");
+        // Recreate idle notifications across a disabled state. Quickshell 0.3.2
+        // can lose isIdle updates when a changed timeout reuses a notification.
+        root.policyLoading = true;
         root[name + "Enabled"] = !!enabled;
         root[name + "Timeout"] = normalizedTimeout;
         root[name + "RespectInhibitors"] = !!respectInhibitors;
+        root.policyLoading = false;
         root.savePolicy();
         root.operationSucceeded("configure-stage");
     }
@@ -233,7 +241,8 @@ Singleton {
     }
 
     function _monitorEnabled(stageEnabled, timeout, respectInhibitors) {
-        return root.policyEnabled && stageEnabled && timeout > 0 && !(respectInhibitors && root.inhibited);
+        return root.policyReady && root.policyEnabled && stageEnabled && timeout > 0 && !(respectInhibitors
+                                                                                          && root.inhibited);
     }
 
     function _setDimmed(value) {
@@ -305,7 +314,7 @@ Singleton {
             return;
         root.lastError = "";
         root.operationStarted("suspend");
-        suspendProcess.exec(["systemctl", "suspend-then-hibernate"]);
+        suspendProcess.exec(["systemctl", "suspend"]);
     }
 
     IdleInhibitorSurface {
@@ -420,6 +429,11 @@ Singleton {
 
     Process {
         id: suspendProcess
+
+        onStarted: console.info("Idle suspend process started:", processId)
+        stderr: SplitParser {
+            onRead: data => console.warn("Idle suspend stderr:", data)
+        }
 
         onExited: exitCode => {
             if (exitCode === 0) {

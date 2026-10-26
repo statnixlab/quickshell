@@ -9,6 +9,7 @@ import "../../../Common/functions/SystemFormat.js" as Format
 TopBarPill {
     id: root
 
+    property bool showValues: true
     property bool vertical: false
     property string ownerId: "bar-sysmonitor"
     readonly property bool isHovered: mouseArea.containsMouse
@@ -71,11 +72,9 @@ TopBarPill {
                                                                                  + " / " + total;
     }
 
-    implicitWidth: root.vertical ? Sizes.barVisualThickness : resourceLayout.implicitWidth + 2
-                                   * Sizes.barPillHorizontalPadding
+    implicitWidth: root.vertical ? root.bandThickness : resourceLayout.implicitWidth + 2 * root.pillPadding
 
-    implicitHeight: root.vertical ? resourceLayout.implicitHeight + 2 * Sizes.barPillHorizontalPadding :
-                                    Sizes.barPillThickness
+    implicitHeight: root.vertical ? resourceLayout.implicitHeight + 2 * root.pillPadding : root.pillThickness
     Component.onCompleted: SystemMonitorService.setConsumerModules(root.ownerId, ["cpu", "memory", "disk"])
     Component.onDestruction: SystemMonitorService.clearConsumer(root.ownerId)
 
@@ -92,7 +91,7 @@ TopBarPill {
             indicatorSize: root.indicatorSize
             iconSize: root.indicatorIconSize
             value: root.memoryUsage
-            showText: !root.vertical
+            showText: root.showValues && !root.vertical
             displayText: root.memoryDisplayText
             icon: "memory_alt"
             fillColor: Appearance.colors.colPrimary
@@ -105,7 +104,7 @@ TopBarPill {
             indicatorSize: root.indicatorSize
             iconSize: root.indicatorIconSize
             value: root.diskUsage
-            showText: !root.vertical
+            showText: root.showValues && !root.vertical
             displayText: root.diskDisplayText
             icon: "hard_drive"
             fillColor: Appearance.colors.colSecondary
@@ -118,7 +117,7 @@ TopBarPill {
             indicatorSize: root.indicatorSize
             iconSize: root.indicatorIconSize
             value: root.temperatureUsage
-            showText: !root.vertical
+            showText: root.showValues && !root.vertical
             displayText: root.temperatureDisplayText
             icon: "thermostat"
             fillColor: Appearance.colors.colTertiary
@@ -131,7 +130,7 @@ TopBarPill {
             indicatorSize: root.indicatorSize
             iconSize: root.indicatorIconSize
             value: root.cpuUsage
-            showText: !root.vertical
+            showText: root.showValues && !root.vertical
             displayText: root.cpuDisplayText
             icon: "developer_board"
             fillColor: Appearance.colors.colTertiary

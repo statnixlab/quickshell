@@ -46,9 +46,8 @@ TopBarPill {
                                                && root.containsGlobalPoint(root, root.trayDragGlobalX,
                                                                            root.trayDragGlobalY, 6)
 
-    implicitHeight: vertical ? content.implicitHeight + 16 : Sizes.barPillThickness
-    implicitWidth: vertical ? Sizes.barVisualThickness : content.implicitWidth + 2
-                              * Sizes.barPillHorizontalPadding
+    implicitHeight: vertical ? content.implicitHeight + 2 * (root.pillPadding + 2) : root.pillThickness
+    implicitWidth: vertical ? root.bandThickness : content.implicitWidth + 2 * root.pillPadding
 
     onUnpinnedItemsChanged: {
         if (root.unpinnedItems.length === 0) {

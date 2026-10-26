@@ -16,7 +16,9 @@ Item {
     readonly property real baseSize: Sizes.barControlCircleSize
     readonly property bool hasSsid: NetworkService.activeConnection.length > 0
     readonly property real expandedWidth: Math.max(root.baseSize, 18 + 6 + ssidMetrics.width + 20)
-    property real expansionProgress: !root.vertical && root.hasSsid && horizontalButton.pointerHovered ? 1 : 0
+    property real expansionProgress: !root.vertical && root.hasSsid && (PersonalizationConfig.barShowNames
+                                                                        || horizontalButton.pointerHovered)
+                                     ? 1 : 0
     readonly property string tooltipText: NetworkService.connected ? ((NetworkService.activeConnection || qsTr(
                                                                            "Network connected")) + qsTr(
                                                                           "\nClick to open network settings")) :

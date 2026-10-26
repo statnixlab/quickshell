@@ -13,9 +13,8 @@ TopBarPill {
     property bool vertical: false
     readonly property bool hasMultipleOutputs: Niri.outputs.count > 1
 
-    implicitHeight: vertical ? layout.implicitHeight + 16 : Sizes.barPillThickness
-    implicitWidth: vertical ? Sizes.barVisualThickness : layout.implicitWidth + 2
-                              * Sizes.barPillHorizontalPadding
+    implicitHeight: vertical ? layout.implicitHeight + 2 * (root.pillPadding + 2) : root.pillThickness
+    implicitWidth: vertical ? root.bandThickness : layout.implicitWidth + 2 * root.pillPadding
 
     animateResize: {
         for (let index = 0; index < workspaceRepeater.count; ++index) {

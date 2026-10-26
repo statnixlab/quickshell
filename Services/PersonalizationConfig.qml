@@ -256,6 +256,7 @@ Singleton {
     property bool parallaxFollowWorkspaces: true
     property bool parallaxFollowSidebars: false
     property bool parallaxFollowTiledColumns: false
+    property bool parallaxFloatingWindowsEnabled: true
     property real parallaxPreferredScale: 1.1
     property int parallaxTiledColumnSpan: 6
     property string matugenScheme: "scheme-tonal-spot"
@@ -272,6 +273,7 @@ Singleton {
     ]
     property string lockScreenStyle: "default"
     property string themeMode: "dark"
+    property string settingsWindowControlsSide: "left"
     property string superKeyStyle: "text"
     readonly property var superKeyStyles: [
         {
@@ -336,7 +338,26 @@ Singleton {
     property bool cursorHideWhenTyping: false
     property int cursorHideAfterInactiveMs: 0
     property string iconTheme: ""
+    property bool keystoneEnabled: true
+    property int keystoneEdgeSpacing: 8
+    property int keystoneExclusiveZoneOffset: 0
+    property int keystoneThickness: 42
+    property int keystoneCompactLength: 220
+    property int keystoneInsetPadding: 16
+    property int keystoneItemSpacing: 8
+    property int keystonePopupGap: 24
+    readonly property var keystoneDimensionLimits: ({
+                                                        "edgeSpacing": [8, 0, 48],
+                                                        "exclusiveZoneOffset": [0, -50, 50],
+                                                        "thickness": [42, 36, 72],
+                                                        "compactLength": [220, 180, 400],
+                                                        "insetPadding": [16, 0, 48],
+                                                        "itemSpacing": [8, 0, 24],
+                                                        "popupGap": [24, 8, 64]
+                                                    })
+    property bool keystoneOverlay: true
     property string keystoneStyle: "bangs"
+    property bool keystoneFullDisplay: false
     readonly property var keystoneKeyholeCardIds: ["weather", "quickSettings", "pomodoro"]
     readonly property var defaultKeystoneKeyholeCards: root.keystoneKeyholeCardIds.slice()
     readonly property var keystoneKeyholeCardOptions: [({
@@ -353,6 +374,22 @@ Singleton {
                                                                       "icon": "timer"
                                                                   })]
     property var keystoneKeyholeCards: root.defaultKeystoneKeyholeCards.slice()
+    property bool barEnabled: true
+    property bool barOverlay: false
+    property bool barShowNames: false
+    property bool barShowValues: false
+    property int barExclusiveZoneOffset: 0
+    property int barInnerPadding: 6
+    property int barInsetPadding: 10
+    property int barLengthPadding: 0
+    property int barModuleRadius: 18
+    readonly property var barDimensionLimits: ({
+                                                   "exclusiveZoneOffset": [0, -50, 50],
+                                                   "innerPadding": [6, 0, 24],
+                                                   "insetPadding": [10, 0, 48],
+                                                   "lengthPadding": [0, 0, 512],
+                                                   "moduleRadius": [18, 0, 32]
+                                               })
     property string barPosition: "top"
     property int barEdgeMargin: 8
     property int barThickness: 34
@@ -437,9 +474,193 @@ Singleton {
     property bool keystoneCapsLockOsd: true
     property bool keystoneNumLockOsd: true
     property bool keystoneHideDate: false
+    property bool keystoneFullShowNames: true
+    property bool keystoneFullShowMonitorValues: true
+    property bool keystoneFullShowValues: true
     property string keystoneHoverAction: "peak"
     property string keystoneLeftClickAction: "media"
     property string keystoneMiddleClickAction: "lyrics"
+    property string keystoneMediaProgressStyle: "wave"
+    property string keystoneMediaCoverStyle: "rounded"
+    property string keystoneMediaColorStyle: "theme"
+    readonly property var keystoneMediaProgressOptions: [
+        {
+            value: "wave",
+            label: qsTr("Sine wave")
+        },
+        {
+            value: "material",
+            label: qsTr("Material wave")
+        }
+    ]
+    readonly property var keystoneMediaCoverOptions: [
+        {
+            value: "rounded",
+            label: qsTr("Rounded cover")
+        },
+        {
+            value: "caelestia",
+            label: qsTr("Caelestia")
+        },
+        {
+            value: "background",
+            label: qsTr("Cover background")
+        }
+    ]
+    readonly property var keystoneMediaColorOptions: [
+        {
+            value: "theme",
+            label: qsTr("Theme colors")
+        },
+        {
+            value: "cover",
+            label: qsTr("Cover colors")
+        }
+    ]
+
+    function setKeystoneMediaProgressStyle(value) {
+        setValue("keystoneMediaProgressStyle", normalizedOption(root.keystoneMediaProgressOptions, value,
+                                                                "wave"));
+    }
+
+    function setKeystoneMediaCoverStyle(value) {
+        setValue("keystoneMediaCoverStyle", normalizedOption(root.keystoneMediaCoverOptions, value,
+                                                             "rounded"));
+    }
+
+    function setKeystoneMediaColorStyle(value) {
+        setValue("keystoneMediaColorStyle", normalizedOption(root.keystoneMediaColorOptions, value, "theme"));
+    }
+
+    property int keystoneHoverOpenDelay: 150
+    property int keystoneHoverCloseDelay: 250
+    readonly property var keystoneFullItemIds: ["workspaces", "media", "systemMonitor", "tray", "network",
+        "bluetooth", "brightness", "volume", "microphone", "battery", "weather", "networkSpeed",
+        "cpuTemperature", "memoryUsage"]
+    readonly property var defaultKeystoneFullLeading: ["workspaces", "media", "systemMonitor"]
+    readonly property var defaultKeystoneFullTrailing: ["network", "bluetooth", "brightness", "volume",
+        "microphone", "battery"]
+    property var keystoneFullLeading: defaultKeystoneFullLeading.slice()
+    property var keystoneFullTrailing: defaultKeystoneFullTrailing.slice()
+    readonly property var keystoneFullItemOptions: [
+        {
+            value: "networkSpeed",
+            label: qsTr("Network speed"),
+            icon: "speed"
+        },
+        {
+            value: "cpuTemperature",
+            label: qsTr("CPU temperature"),
+            icon: "thermostat"
+        },
+        {
+            value: "memoryUsage",
+            label: qsTr("Memory usage"),
+            icon: "memory_alt"
+        },
+        {
+            value: "tray",
+            label: qsTr("System tray"),
+            icon: "apps"
+        },
+        {
+            value: "workspaces",
+            label: qsTr("Workspaces"),
+            icon: "view_week"
+        },
+        {
+            value: "media",
+            label: qsTr("Media"),
+            icon: "music_note"
+        },
+        {
+            value: "systemMonitor",
+            label: qsTr("System monitor"),
+            icon: "monitor_heart"
+        },
+        {
+            value: "weather",
+            label: qsTr("Weather"),
+            icon: "partly_cloudy_day"
+        },
+        {
+            value: "network",
+            label: qsTr("Network"),
+            icon: "wifi"
+        },
+        {
+            value: "bluetooth",
+            label: qsTr("Bluetooth"),
+            icon: "bluetooth"
+        },
+        {
+            value: "brightness",
+            label: qsTr("Brightness"),
+            icon: "brightness_medium"
+        },
+        {
+            value: "volume",
+            label: qsTr("Volume"),
+            icon: "volume_up"
+        },
+        {
+            value: "microphone",
+            label: qsTr("Microphone"),
+            icon: "mic"
+        },
+        {
+            value: "battery",
+            label: qsTr("Battery"),
+            icon: "battery_full"
+        }
+    ]
+
+    function setKeystoneHoverOpenDelay(value) {
+        setValue("keystoneHoverOpenDelay", normalizedBoundedInt(value, 150, 0, 500));
+    }
+
+    function setKeystoneHoverCloseDelay(value) {
+        setValue("keystoneHoverCloseDelay", normalizedBoundedInt(value, 250, 0, 600));
+    }
+
+    function normalizedKeystoneFullItems(raw, excluded) {
+        const result = [];
+        for (const value of Array.isArray(raw) ? raw : []) {
+            if (root.keystoneFullItemIds.indexOf(value) >= 0 && excluded.indexOf(value) < 0 && result.indexOf(value)
+                    < 0)
+                result.push(value);
+        }
+        return result;
+    }
+
+    function moveKeystoneFullItem(id, zone, index) {
+        if (root.keystoneFullItemIds.indexOf(id) < 0 || (zone !== "leading" && zone !== "trailing"))
+            return;
+        const leading = root.keystoneFullLeading.filter(value => value !== id);
+        const trailing = root.keystoneFullTrailing.filter(value => value !== id);
+        const target = zone === "leading" ? leading : trailing;
+        const position = Number(index);
+        target.splice(isFinite(position) ? Math.max(0, Math.min(target.length, Math.round(position))) :
+                                           target.length, 0, id);
+        root.keystoneFullLeading = leading;
+        root.keystoneFullTrailing = trailing;
+        root.save();
+    }
+
+    function removeKeystoneFullItem(id) {
+        root.keystoneFullLeading = root.keystoneFullLeading.filter(value => value !== id);
+        root.keystoneFullTrailing = root.keystoneFullTrailing.filter(value => value !== id);
+        root.save();
+    }
+
+    function toggleKeystoneFullItem(id, zone) {
+        const target = zone === "leading" ? root.keystoneFullLeading : root.keystoneFullTrailing;
+        if (target.indexOf(id) >= 0)
+            root.removeKeystoneFullItem(id);
+        else
+            root.moveKeystoneFullItem(id, zone, target.length);
+    }
+
     readonly property var keystoneActionOptions: [
         {
             value: "none",
@@ -482,6 +703,14 @@ Singleton {
         }
     ].concat(root.keystoneActionOptions)
 
+    readonly property var availableKeystoneHoverActionOptions: keystoneFullDisplay ? keystoneActionOptions :
+                                                                                     keystoneHoverActionOptions
+
+    // Full display has no peak state. Retain the saved preference for compact
+    // mode, but resolve it to none while the status controls are visible.
+    readonly property string effectiveKeystoneHoverAction: keystoneFullDisplay && keystoneHoverAction
+                                                           === "peak" ? "none" : keystoneHoverAction
+
     function setKeystoneAction(gesture, action) {
         const properties = {
             hover: "keystoneHoverAction",
@@ -490,9 +719,11 @@ Singleton {
         };
         if (!Object.prototype.hasOwnProperty.call(properties, gesture))
             return;
-        setValue(properties[gesture], normalizedOption(gesture === "hover" ? root.keystoneHoverActionOptions :
-                                                                             root.keystoneActionOptions,
-                                                       action, gesture === "hover" ? "peak" : "none"));
+        setValue(properties[gesture], normalizedOption(gesture === "hover"
+                                                       ? root.availableKeystoneHoverActionOptions :
+                                                         root.keystoneActionOptions, action, gesture
+                                                       === "hover" && !root.keystoneFullDisplay ? "peak" :
+                                                                                                  "none"));
     }
 
     readonly property var horizontalClockAxisDefaults: ({
@@ -755,6 +986,38 @@ Singleton {
                 result.push(value);
         }
         return result;
+    }
+
+    function panelDimensionProperty(panel, key) {
+        return panel + key.charAt(0).toUpperCase() + key.slice(1);
+    }
+
+    function panelDimensions(panel) {
+        const limits = root[panel + "DimensionLimits"];
+        const result = {};
+        for (const key of Object.keys(limits))
+            result[key] = root[panelDimensionProperty(panel, key)];
+        return result;
+    }
+
+    function setPanelDimension(panel, key, value) {
+        if (panel !== "keystone" && panel !== "bar")
+            return;
+        const limits = root[panel + "DimensionLimits"][key];
+        if (!limits)
+            return;
+        setValue(panelDimensionProperty(panel, key), normalizedBoundedInt(value, limits[0], limits[1],
+                                                                          limits[2]));
+    }
+
+    function restorePanelDimensions(panel, values) {
+        const limits = root[panel + "DimensionLimits"];
+        const source = values && typeof values === "object" ? values : {};
+        for (const key of Object.keys(limits)) {
+            const range = limits[key];
+            root[panelDimensionProperty(panel, key)] = normalizedBoundedInt(source[key], range[0], range[1],
+                                                                            range[2]);
+        }
     }
 
     function setValue(propertyName, value) {
@@ -1133,6 +1396,10 @@ Singleton {
         setValue("parallaxFollowTiledColumns", !!value);
     }
 
+    function setParallaxFloatingWindowsEnabled(value) {
+        setValue("parallaxFloatingWindowsEnabled", !!value);
+    }
+
     function setParallaxPreferredScale(value) {
         setValue("parallaxPreferredScale", normalizedBoundedReal(value, 1.1, 1, 1.35));
     }
@@ -1194,6 +1461,10 @@ Singleton {
 
     function setThemeMode(value) {
         setValue("themeMode", value === "light" ? "light" : "dark");
+    }
+
+    function setSettingsWindowControlsSide(value) {
+        setValue("settingsWindowControlsSide", value === "right" ? "right" : "left");
     }
 
     function setCursorTheme(value) {
@@ -1516,6 +1787,18 @@ Singleton {
         setValue("keystoneNumLockOsd", !!value);
     }
 
+    function setKeystoneFullShowNames(value) {
+        setValue("keystoneFullShowNames", !!value);
+    }
+
+    function setKeystoneFullShowMonitorValues(value) {
+        setValue("keystoneFullShowMonitorValues", !!value);
+    }
+
+    function setKeystoneFullShowValues(value) {
+        setValue("keystoneFullShowValues", !!value);
+    }
+
     function setKeystoneHideDate(value) {
         setValue("keystoneHideDate", !!value);
     }
@@ -1654,6 +1937,7 @@ Singleton {
                     "followWorkspaces": root.parallaxFollowWorkspaces,
                     "followSidebars": root.parallaxFollowSidebars,
                     "followTiledColumns": root.parallaxFollowTiledColumns,
+                    "floatingWindowsEnabled": root.parallaxFloatingWindowsEnabled,
                     "preferredScale": root.parallaxPreferredScale,
                     "tiledColumnSpan": root.parallaxTiledColumnSpan
                 }
@@ -1662,6 +1946,7 @@ Singleton {
                 "matugenScheme": root.matugenScheme,
                 "matugenTemplates": root.normalizedMatugenTemplates(root.matugenTemplates),
                 "mode": root.themeMode,
+                "settingsWindowControlsSide": root.settingsWindowControlsSide,
                 "superKeyStyle": root.superKeyStyle,
                 "lockScreenStyle": root.lockScreenStyle,
                 "cursorTheme": root.cursorTheme,
@@ -1682,6 +1967,22 @@ Singleton {
                 "shellBlurXray": root.shellBlurXray
             },
             "keystone": {
+                "enabled": root.keystoneEnabled,
+                "dimensions": root.panelDimensions("keystone"),
+                "overlay": root.keystoneOverlay,
+                "fullDisplay": root.keystoneFullDisplay,
+                "longShowNames": root.keystoneFullShowNames,
+                "longShowMonitorValues": root.keystoneFullShowMonitorValues,
+                "longShowValues": root.keystoneFullShowValues,
+                "hoverOpenDelay": root.keystoneHoverOpenDelay,
+                "hoverCloseDelay": root.keystoneHoverCloseDelay,
+                "longLeading": root.keystoneFullLeading.slice(),
+                "longTrailing": root.keystoneFullTrailing.slice(),
+                "media": {
+                    "progressStyle": root.keystoneMediaProgressStyle,
+                    "coverStyle": root.keystoneMediaCoverStyle,
+                    "colorStyle": root.keystoneMediaColorStyle
+                },
                 "style": root.keystoneStyle,
                 "position": root.keystonePosition,
                 "capsLockOsd": root.keystoneCapsLockOsd,
@@ -1700,6 +2001,11 @@ Singleton {
                 }
             },
             "bar": {
+                "enabled": root.barEnabled,
+                "overlay": root.barOverlay,
+                "showNames": root.barShowNames,
+                "showValues": root.barShowValues,
+                "dimensions": root.panelDimensions("bar"),
                 "position": root.barPosition,
                 "edgeMargin": root.barEdgeMargin,
                 "thickness": root.barThickness,
@@ -1783,12 +2089,15 @@ Singleton {
                                                                                   !parallax.followWorkspaces;
         root.parallaxFollowSidebars = !!parallax.followSidebars;
         root.parallaxFollowTiledColumns = !!parallax.followTiledColumns;
+        root.parallaxFloatingWindowsEnabled = parallax.floatingWindowsEnabled === undefined ? true : !
+                                                                                              !parallax.floatingWindowsEnabled;
         root.parallaxPreferredScale = normalizedBoundedReal(parallax.preferredScale, 1.1, 1, 1.35);
         root.parallaxTiledColumnSpan = normalizedBoundedInt(parallax.tiledColumnSpan, 6, 2, 12);
         root.matugenScheme = normalizedOption(root.matugenSchemes, theme.matugenScheme, "scheme-tonal-spot");
         root.matugenTemplates = normalizedMatugenTemplates(theme.matugenTemplates);
         root.lockScreenStyle = normalizedOption(root.lockScreenStyles, theme.lockScreenStyle, "default");
         root.themeMode = theme.mode === "light" ? "light" : "dark";
+        root.settingsWindowControlsSide = theme.settingsWindowControlsSide === "right" ? "right" : "left";
         root.superKeyStyle = root.superKeyStyles.some(style => style.value === theme.superKeyStyle)
                 ? theme.superKeyStyle : "text";
         root.cursorTheme = root.normalizedCursorTheme(theme.cursorTheme);
@@ -1803,7 +2112,38 @@ Singleton {
         root.shellBlurEnabled = typeof effects.shellBlurEnabled === "boolean" ? effects.shellBlurEnabled :
                                                                                 false;
         root.shellBlurXray = typeof effects.shellBlurXray === "boolean" ? effects.shellBlurXray : true;
-        root.keystoneStyle = normalizedOption(root.keystoneStyles, keystone.style, "bangs");
+        const media = keystone.media || {};
+        root.keystoneMediaProgressStyle = normalizedOption(root.keystoneMediaProgressOptions,
+                                                           media.progressStyle, "wave");
+        root.keystoneMediaCoverStyle = normalizedOption(root.keystoneMediaCoverOptions, media.coverStyle
+                                                        === "spectrum" ? "caelestia" : media.coverStyle,
+                                                        "rounded");
+        root.keystoneMediaColorStyle = normalizedOption(root.keystoneMediaColorOptions, media.colorStyle,
+                                                        "theme");
+        root.restorePanelDimensions("keystone", keystone.dimensions);
+        root.keystoneEnabled = typeof keystone.enabled === "boolean" ? keystone.enabled : true;
+        root.keystoneOverlay = typeof keystone.overlay === "boolean" ? keystone.overlay : true;
+        // Migrate the former standalone long style without losing its layout.
+        root.keystoneStyle = normalizedOption(root.keystoneStyles, keystone.style === "long" ? "pill" :
+                                                                                               keystone.style,
+                                              "bangs");
+        root.keystoneFullDisplay = typeof keystone.fullDisplay === "boolean" ? keystone.fullDisplay :
+                                                                               keystone.style === "long";
+        root.keystoneFullShowValues = typeof keystone.longShowValues === "boolean" ? keystone.longShowValues :
+                                                                                     true;
+        root.keystoneFullShowNames = typeof keystone.longShowNames === "boolean" ? keystone.longShowNames :
+                                                                                   true;
+        root.keystoneFullShowMonitorValues = typeof keystone.longShowMonitorValues === "boolean"
+                ? keystone.longShowMonitorValues : true;
+        root.keystoneHoverOpenDelay = normalizedBoundedInt(keystone.hoverOpenDelay, 150, 0, 500);
+        root.keystoneHoverCloseDelay = normalizedBoundedInt(keystone.hoverCloseDelay, 250, 0, 600);
+        root.keystoneFullLeading = root.normalizedKeystoneFullItems(Array.isArray(keystone.longLeading)
+                                                                    ? keystone.longLeading :
+                                                                      root.defaultKeystoneFullLeading, []);
+        root.keystoneFullTrailing = root.normalizedKeystoneFullItems(Array.isArray(keystone.longTrailing)
+                                                                     ? keystone.longTrailing :
+                                                                       root.defaultKeystoneFullTrailing,
+                                                                     root.keystoneFullLeading);
         root.keystonePosition = normalizedEdgePosition(keystone.position);
         root.keystoneCapsLockOsd = typeof keystone.capsLockOsd === "boolean" ? keystone.capsLockOsd : true;
         root.keystoneNumLockOsd = typeof keystone.numLockOsd === "boolean" ? keystone.numLockOsd : true;
@@ -1818,6 +2158,11 @@ Singleton {
         root.horizontalClockFontSize = root.normalizedBoundedInt(horizontalClock.fontSize, 22, 16, 28);
         root.horizontalClockAxes = root.normalizedHorizontalClockAxes(horizontalClock.axes);
         root.horizontalClockDigits = root.normalizedHorizontalClockDigits(horizontalClock.digits);
+        root.barEnabled = typeof bar.enabled === "boolean" ? bar.enabled : true;
+        root.barOverlay = typeof bar.overlay === "boolean" ? bar.overlay : false;
+        root.barShowNames = typeof bar.showNames === "boolean" ? bar.showNames : false;
+        root.barShowValues = typeof bar.showValues === "boolean" ? bar.showValues : false;
+        root.restorePanelDimensions("bar", bar.dimensions);
         root.barPosition = normalizedEdgePosition(bar.position);
         root.barEdgeMargin = Math.round(normalizedBoundedReal(bar.edgeMargin, 8, 0, 48));
         root.barThickness = root.normalizedBoundedInt(bar.thickness, 34, 28, 64);

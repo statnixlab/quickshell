@@ -4747,6 +4747,54 @@ Scroll to adjust</source>
         <source>Quick settings widgets</source>
         <translation>快捷设置组件</translation>
     </message>
+    <message>
+        <source>Size and spacing</source>
+        <translation>尺寸与间距</translation>
+    </message>
+    <message>
+        <source>Show bar</source>
+        <translation>显示条栏</translation>
+    </message>
+    <message>
+        <source>Floating</source>
+        <translation>浮动</translation>
+    </message>
+    <message>
+        <source>Exclusive zone offset</source>
+        <translation>独占区域偏移</translation>
+    </message>
+    <message>
+        <source> px</source>
+        <translation> 像素</translation>
+    </message>
+    <message>
+        <source>Inner padding</source>
+        <translation>内边距</translation>
+    </message>
+    <message>
+        <source>Inset padding</source>
+        <translation>状态内嵌边距</translation>
+    </message>
+    <message>
+        <source>Bar length padding</source>
+        <translation>条栏两端留白</translation>
+    </message>
+    <message>
+        <source>Limited by the space required by visible modules.</source>
+        <translation>受可见模块所需空间限制。</translation>
+    </message>
+    <message>
+        <source>Module corner radius</source>
+        <translation>模块圆角</translation>
+    </message>
+    <message>
+        <source>Show device names</source>
+        <translation>显示设备名称</translation>
+    </message>
+    <message>
+        <source>Show numeric values</source>
+        <translation>显示数值</translation>
+    </message>
 </context>
 <context>
     <name>GeneralEffectsPage</name>
@@ -5958,6 +6006,114 @@ Scroll to adjust</source>
         <location filename="../Modules/ControlCenter/KeystonePage.qml" line="163"/>
         <source>Middle click</source>
         <translation>中键点击</translation>
+    </message>
+    <message>
+        <source>Show Keystone</source>
+        <translation>显示灵动岛</translation>
+    </message>
+    <message>
+        <source>Floating</source>
+        <translation>浮动</translation>
+    </message>
+    <message>
+        <source>Full display</source>
+        <translation>完整显示</translation>
+    </message>
+    <message>
+        <source>Edge spacing</source>
+        <translation>屏幕边缘间距</translation>
+    </message>
+    <message>
+        <source> px</source>
+        <translation> 像素</translation>
+    </message>
+    <message>
+        <source>Exclusive zone offset</source>
+        <translation>独占区域偏移</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>尺寸</translation>
+    </message>
+    <message>
+        <source>Compact length</source>
+        <translation>收起长度</translation>
+    </message>
+    <message>
+        <source>Inset padding</source>
+        <translation>状态内嵌边距</translation>
+    </message>
+    <message>
+        <source>Item spacing</source>
+        <translation>控件间距</translation>
+    </message>
+    <message>
+        <source>Popup gap</source>
+        <translation>弹出界面间距</translation>
+    </message>
+    <message>
+        <source>Hover open delay</source>
+        <translation>悬停展开延迟</translation>
+    </message>
+    <message>
+        <source> ms</source>
+        <translation> ms</translation>
+    </message>
+    <message>
+        <source>Hover close delay</source>
+        <translation>离开收起延迟</translation>
+    </message>
+    <message>
+        <source>Progress bar</source>
+        <translation>进度条</translation>
+    </message>
+    <message>
+        <source>Cover style</source>
+        <translation>封面样式</translation>
+    </message>
+    <message>
+        <source>Colors</source>
+        <translation>配色</translation>
+    </message>
+    <message>
+        <source>Status items</source>
+        <translation>状态项</translation>
+    </message>
+    <message>
+        <source>Show device names</source>
+        <translation>显示设备名称</translation>
+    </message>
+    <message>
+        <source>Show system monitor values</source>
+        <translation>显示系统监测数值</translation>
+    </message>
+    <message>
+        <source>Show numeric values</source>
+        <translation>显示数值</translation>
+    </message>
+    <message>
+        <source>Left</source>
+        <translation>左侧</translation>
+    </message>
+    <message>
+        <source>Top</source>
+        <translation>上侧</translation>
+    </message>
+    <message>
+        <source>Right</source>
+        <translation>右侧</translation>
+    </message>
+    <message>
+        <source>Bottom</source>
+        <translation>下侧</translation>
+    </message>
+    <message>
+        <source>Size and spacing</source>
+        <translation>尺寸与间距</translation>
+    </message>
+    <message>
+        <source>Media controls</source>
+        <translation>媒体控制</translation>
     </message>
 </context>
 <context>
@@ -9439,6 +9595,54 @@ Click to open network settings</source>
         <location filename="../Services/PersonalizationConfig.qml" line="479"/>
         <source>Peak</source>
         <translation>Peak</translation>
+    </message>
+    <message>
+        <source>Sine wave</source>
+        <translation>正弦波浪</translation>
+    </message>
+    <message>
+        <source>Material wave</source>
+        <translation>Material 波浪</translation>
+    </message>
+    <message>
+        <source>Rounded cover</source>
+        <translation>圆角封面</translation>
+    </message>
+    <message>
+        <source>Caelestia</source>
+        <translation>Caelestia</translation>
+    </message>
+    <message>
+        <source>Cover background</source>
+        <translation>封面背景</translation>
+    </message>
+    <message>
+        <source>Theme colors</source>
+        <translation>主题配色</translation>
+    </message>
+    <message>
+        <source>Cover colors</source>
+        <translation>封面配色</translation>
+    </message>
+    <message>
+        <source>System tray</source>
+        <translation>系统托盘</translation>
+    </message>
+    <message>
+        <source>System monitor</source>
+        <translation>系统监测</translation>
+    </message>
+    <message>
+        <source>Network speed</source>
+        <translation>实时网速</translation>
+    </message>
+    <message>
+        <source>CPU temperature</source>
+        <translation>CPU 温度</translation>
+    </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>内存占用</translation>
     </message>
 </context>
 <context>
@@ -12953,6 +13157,22 @@ detected</source>
         <source>Select expressive font</source>
         <translation>选择表现性字体</translation>
     </message>
+    <message>
+        <source>Settings window</source>
+        <translation>设置窗口</translation>
+    </message>
+    <message>
+        <source>Window controls</source>
+        <translation>窗口按钮</translation>
+    </message>
+    <message>
+        <source>Left</source>
+        <translation>左侧</translation>
+    </message>
+    <message>
+        <source>Right</source>
+        <translation>右侧</translation>
+    </message>
 </context>
 <context>
     <name>ThemeService</name>
@@ -13652,6 +13872,10 @@ Scroll to adjust; click to open sound</source>
         <location filename="../Modules/ControlCenter/WallpaperPage.qml" line="1161"/>
         <source>Overview contrast</source>
         <translation>overview 对比度</translation>
+    </message>
+    <message>
+        <source>Floating window parallax</source>
+        <translation>浮动窗口视差</translation>
     </message>
 </context>
 <context>
@@ -14843,6 +15067,153 @@ Windows: </source>
         <location filename="../Services/FilePickerLocations.qml" line="58"/>
         <source>Could not list drives.</source>
         <translation>无法列出磁盘。</translation>
+    </message>
+</context>
+<context>
+    <name>FullStatusItem</name>
+    <message numerus="yes">
+        <source>%n device(s)</source>
+        <translation>
+            <numerusform>%n 台设备</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No media</source>
+        <translation>没有媒体</translation>
+    </message>
+    <message>
+        <source>Network connected</source>
+        <translation>网络已连接</translation>
+    </message>
+    <message>
+        <source>Network disconnected</source>
+        <translation>网络未连接</translation>
+    </message>
+    <message>
+        <source>Bluetooth unavailable</source>
+        <translation>蓝牙不可用</translation>
+    </message>
+    <message>
+        <source>Bluetooth on</source>
+        <translation>蓝牙已开启</translation>
+    </message>
+    <message>
+        <source>Bluetooth off</source>
+        <translation>蓝牙已关闭</translation>
+    </message>
+    <message>
+        <source>Detecting battery</source>
+        <translation>正在检测电池</translation>
+    </message>
+    <message>
+        <source>No battery detected</source>
+        <translation>未检测到电池</translation>
+    </message>
+    <message>
+        <source>Fully charged</source>
+        <translation>已充满</translation>
+    </message>
+    <message>
+        <source>Charging</source>
+        <translation>充电中</translation>
+    </message>
+    <message>
+        <source>Discharging</source>
+        <translation>放电中</translation>
+    </message>
+    <message>
+        <source>Plugged in</source>
+        <translation>已接通电源</translation>
+    </message>
+    <message>
+        <source>Battery: %1% · %2</source>
+        <translation>电量：%1% · %2</translation>
+    </message>
+    <message>
+        <source>Brightness: %1%
+%2
+Scroll to adjust</source>
+        <translation>亮度：%1%
+%2
+滚动调整</translation>
+    </message>
+    <message>
+        <source>No audio output</source>
+        <translation>没有音频输出设备</translation>
+    </message>
+    <message>
+        <source>Volume: muted
+%1</source>
+        <translation>音量：已静音
+%1</translation>
+    </message>
+    <message>
+        <source>Volume: %1%
+%2</source>
+        <translation>音量：%1%
+%2</translation>
+    </message>
+    <message>
+        <source>No audio input</source>
+        <translation>没有音频输入设备</translation>
+    </message>
+    <message>
+        <source>Microphone: muted
+%1</source>
+        <translation>麦克风：已静音
+%1</translation>
+    </message>
+    <message>
+        <source>Microphone: %1%
+%2</source>
+        <translation>麦克风：%1%
+%2</translation>
+    </message>
+    <message>
+        <source>CPU: %1
+Memory: %2
+Disk: %3
+Temperature: %4</source>
+        <translation>CPU：%1
+内存：%2
+磁盘：%3
+温度：%4</translation>
+    </message>
+</context>
+<context>
+    <name>FullMetricItem</name>
+    <message>
+        <source>Download: %1
+Upload: %2</source>
+        <translation>下载：%1
+上传：%2</translation>
+    </message>
+    <message>
+        <source>CPU temperature: %1</source>
+        <translation>CPU 温度：%1</translation>
+    </message>
+    <message>
+        <source>Memory: %1 / %2 (%3)</source>
+        <translation>内存：%1 / %2（%3）</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsWindowControls</name>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <source>Minimize</source>
+        <translation>最小化</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation>还原</translation>
+    </message>
+    <message>
+        <source>Maximize</source>
+        <translation>最大化</translation>
     </message>
 </context>
 </TS>

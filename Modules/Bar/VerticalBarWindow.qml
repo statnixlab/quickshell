@@ -58,13 +58,19 @@ PanelWindow {
     readonly property real outerEdgeMargin: PersonalizationConfig.barEdgeMargin
     // Shadow pixels need surface space, but must not reserve desktop space.
     readonly property real surfaceThickness: outerEdgeMargin + visualThickness + Sizes.barShadowBuffer
-    readonly property real exclusiveThickness: outerEdgeMargin + visualThickness
+    readonly property real exclusiveThickness: Math.max(0, outerEdgeMargin + visualThickness
+                                                        + PersonalizationConfig.barExclusiveZoneOffset)
+    readonly property real lengthPadding: Math.min(PersonalizationConfig.barLengthPadding, Math.max(0, (height
+                                                                                                        - content.minimumLength)
+                                                                                                    / 2))
 
     implicitWidth: surfaceThickness
     color: "transparent"
     // Revealing the bar in overview must not push maximized previews sideways.
-    exclusiveZone: root.autoHidden || (Niri.inOverview && MaximizedWindowService.hasMaximizedWindow(
-                                           root.modelData)) ? 0 : exclusiveThickness
+    exclusiveZone: PersonalizationConfig.barOverlay || root.autoHidden || (Niri.inOverview
+                                                                           && MaximizedWindowService.hasMaximizedWindow(
+                                                                               root.modelData)) ? 0 :
+                                                                                                  exclusiveThickness
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "clavis-shell-bar-vertical"
     WlrLayershell.exclusionMode: ExclusionMode.Normal
@@ -87,9 +93,9 @@ PanelWindow {
         visible: root.showContents
 
         x: axis.isLeft ? root.outerEdgeMargin : Sizes.barShadowBuffer
-        y: 0
+        y: root.lengthPadding
         width: root.visualThickness
-        height: parent.height
+        height: Math.max(0, parent.height - 2 * root.lengthPadding)
 
         VerticalBarContent {
             id: content
@@ -100,17 +106,10 @@ PanelWindow {
         }
     }
 
-    CompositorBlurRegion {
-        // Reattaching a rounded native blur region after auto-hide produces
-        // visibly polygonal edges on fractional/high-DPI compositor surfaces.
-        blurEnabled: root.showContents && !root.autoHidden
-        inset: 1
-        pillShapes: true
-        targetWindow: root
-        backgroundItem: content.backgroundItems.length > 0 ? content.backgroundItems[0] : null
-        additionalBackgroundItems: content.backgroundItems.slice(1)
-        radius: 18
-    }
+    // wl_region blur outlines are integer logical pixels. On HiDPI outputs
+    // they add a stepped second edge beneath the antialiased translucent pills.
+    // Explicitly opt out rather than leaving a compositor layer rule in control.
+    BackgroundEffect.blurRegion: Region {}
 
     mask: Region {
         Region {

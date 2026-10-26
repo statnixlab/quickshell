@@ -291,9 +291,24 @@ def initial(feature, request):
     if feature == 'layer-rules':
         return header + 'layer-rule {\n    match namespace="^clavis-overview-wallpaper$";\n    place-within-backdrop true;\n}\nlayout {\n    background-color "transparent";\n}\n'
     if feature == 'effects':
+        # The compact island gets its blur from a separate surface with a
+        # geometry clip, so its edge can be antialiased at physical resolution.
+        smooth_backdrops = ''
+        for style, radii in {
+            'pill': [10000],
+            'top': [0, 0, 10000, 10000],
+            'bottom': [10000, 10000, 0, 0],
+            'left': [0, 10000, 10000, 0],
+            'right': [10000, 0, 0, 10000],
+        }.items():
+            smooth_backdrops += render(kdl.Node('layer-rule', nodes=[
+                kdl.Node('match', props={'namespace': '^clavis-keystone-backdrop-' + style + '$'}),
+                kdl.Node('geometry-corner-radius', args=radii),
+                kdl.Node('background-effect', nodes=[
+                    kdl.Node('blur', args=[True]), kdl.Node('xray', args=[False])])]))
         if request.get('xray', True):
-            return header + "// X-Ray is niri's default for client-requested effects.\n"
-        return header + 'layer-rule {\n    match namespace="^clavis-shell-";\n    background-effect { xray false; };\n}\nwindow-rule {\n    match title="^(clavis-control-center(-[a-z-]+)?|clavis-file-picker)$";\n    background-effect { xray false; };\n}\n'
+            return header + smooth_backdrops + "// X-Ray is niri's default for client-requested effects.\n"
+        return header + smooth_backdrops + 'layer-rule {\n    match namespace="^clavis-shell-";\n    background-effect { xray false; };\n}\nwindow-rule {\n    match title="^(clavis-control-center(-[a-z-]+)?|clavis-file-picker)$";\n    background-effect { xray false; };\n}\n'
     size = int(request.get('size', 24))
     hide = int(request.get('hideAfter', 0))
     if not 12 <= size <= 128 or not 0 <= hide <= 5000:

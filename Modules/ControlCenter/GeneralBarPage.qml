@@ -37,6 +37,26 @@ StyledFlickable {
 
             SettingsRow {
                 Layout.fillWidth: true
+                title: qsTr("Show bar")
+                trailing: StyledSwitch {
+                    checked: PersonalizationConfig.barEnabled
+                    Accessible.name: qsTr("Show bar")
+                    onToggled: PersonalizationConfig.setValue("barEnabled", checked)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Floating")
+                trailing: StyledSwitch {
+                    checked: PersonalizationConfig.barOverlay
+                    Accessible.name: qsTr("Floating")
+                    onToggled: PersonalizationConfig.setValue("barOverlay", checked)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
                 title: qsTr("Screen edge")
 
                 trailing: EdgePositionSelector {
@@ -148,6 +168,67 @@ StyledFlickable {
         }
 
         SettingsSection {
+            id: dimensionsSection
+            Layout.fillWidth: true
+            flat: true
+            title: dimensionsSearchAnchor.title
+            iconName: "space_bar"
+            SettingsSearchAnchor {
+                id: dimensionsSearchAnchor
+                target: dimensionsSection
+                declaration:
+                    '{"id":"general.bar.section.size-spacing","route":"general.bar","title":"Size and spacing","context":"GeneralBarPage","icon":"space_bar","aliases":[]}'
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Exclusive zone offset")
+                value: PersonalizationConfig.barExclusiveZoneOffset
+                from: PersonalizationConfig.barDimensionLimits.exclusiveZoneOffset[1]
+                to: PersonalizationConfig.barDimensionLimits.exclusiveZoneOffset[2]
+                suffix: qsTr(" px")
+                enabled: !PersonalizationConfig.barOverlay
+                onMoved: value => PersonalizationConfig.setPanelDimension("bar", "exclusiveZoneOffset", value)
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Inner padding")
+                value: PersonalizationConfig.barInnerPadding
+                from: PersonalizationConfig.barDimensionLimits.innerPadding[1]
+                to: PersonalizationConfig.barDimensionLimits.innerPadding[2]
+                suffix: qsTr(" px")
+                onMoved: value => PersonalizationConfig.setPanelDimension("bar", "innerPadding", value)
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Inset padding")
+                value: PersonalizationConfig.barInsetPadding
+                from: PersonalizationConfig.barDimensionLimits.insetPadding[1]
+                to: PersonalizationConfig.barDimensionLimits.insetPadding[2]
+                suffix: qsTr(" px")
+                onMoved: value => PersonalizationConfig.setPanelDimension("bar", "insetPadding", value)
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Bar length padding")
+                description: qsTr("Limited by the space required by visible modules.")
+                value: PersonalizationConfig.barLengthPadding
+                from: PersonalizationConfig.barDimensionLimits.lengthPadding[1]
+                to: PersonalizationConfig.barDimensionLimits.lengthPadding[2]
+                suffix: qsTr(" px")
+                onMoved: value => PersonalizationConfig.setPanelDimension("bar", "lengthPadding", value)
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Module corner radius")
+                value: PersonalizationConfig.barModuleRadius
+                from: PersonalizationConfig.barDimensionLimits.moduleRadius[1]
+                to: PersonalizationConfig.barDimensionLimits.moduleRadius[2]
+                suffix: qsTr(" px")
+                onMoved: value => PersonalizationConfig.setPanelDimension("bar", "moduleRadius", value)
+            }
+        }
+
+        SettingsSection {
             id: searchSection1
             Layout.fillWidth: true
             flat: true
@@ -159,6 +240,24 @@ StyledFlickable {
                     '{"id":"general.bar.section.components","route":"general.bar","title":"Components","context":"GeneralBarPage","icon":"dock_to_bottom","aliases":[]}'
             }
             iconName: "view_agenda"
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Show device names")
+                trailing: StyledSwitch {
+                    checked: PersonalizationConfig.barShowNames
+                    Accessible.name: qsTr("Show device names")
+                    onToggled: PersonalizationConfig.setValue("barShowNames", checked)
+                }
+            }
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Show numeric values")
+                trailing: StyledSwitch {
+                    checked: PersonalizationConfig.barShowValues
+                    Accessible.name: qsTr("Show numeric values")
+                    onToggled: PersonalizationConfig.setValue("barShowValues", checked)
+                }
+            }
             supportingText: qsTr("Drag components to reorder them or move them to the other side.")
 
             SettingsRow {

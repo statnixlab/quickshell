@@ -12,7 +12,7 @@ Item {
     // the old topology before creating the new per-output surface, so a
     // mapped horizontal layer surface is never mutated into a vertical one.
     Variants {
-        model: root.horizontal ? Quickshell.screens : []
+        model: PersonalizationConfig.barEnabled && root.horizontal ? Quickshell.screens : []
 
         HorizontalBarWindow {
             screen: modelData
@@ -21,7 +21,7 @@ Item {
     }
 
     Variants {
-        model: root.horizontal ? [] : Quickshell.screens
+        model: PersonalizationConfig.barEnabled && !root.horizontal ? Quickshell.screens : []
 
         VerticalBarWindow {
             screen: modelData

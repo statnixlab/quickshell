@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import QtQuick.Window
 import Quickshell
 import Quickshell.Wayland
+import Clavis.Niri
 import qs.Common
 import qs.Services
 import qs.Components
@@ -28,6 +29,17 @@ FloatingWindow {
     property int searchRequestSerial: -1
     property var searchLeaf: null
     readonly property var searchPageAnchor: pageSearchAnchor
+
+    function toggleMaximize() {
+        ControlCenterService.toggleMaximize();
+    }
+
+    function minimizeWindow() {
+        const window = ControlCenterService.niriWindow();
+        if (window && Niri.supportsMinimize && Niri.minimizeWindow(window.id))
+            return;
+        root.minimized = true;
+    }
 
     function prepareSearchTarget(entry, serial) {
         searchRequestSerial = serial;
@@ -63,6 +75,7 @@ FloatingWindow {
 
     function showWindow() {
         root._wasShown = true;
+        root.minimized = false;
         root.visible = true;
     }
 
@@ -236,7 +249,7 @@ FloatingWindow {
                 id: titlebar
 
                 Layout.fillWidth: true
-                Layout.preferredHeight: Math.max(titleText.implicitHeight, closeButton.implicitHeight)
+                Layout.preferredHeight: 40
 
                 Text {
                     id: titleText
@@ -250,48 +263,35 @@ FloatingWindow {
                     font.weight: Font.DemiBold
                 }
 
-                Rectangle {
-                    id: closeButton
-
-                    anchors.right: parent.right
+                SettingsWindowControls {
+                    id: windowControls
+                    x: PersonalizationConfig.settingsWindowControlsSide === "right" ? parent.width - width : 0
                     anchors.verticalCenter: parent.verticalCenter
-                    implicitWidth: 35
-                    implicitHeight: 35
-                    radius: Appearance.rounding.full
-                    color: closeMouse.pressed ? Appearance.colors.colLayer1Active : closeMouse.containsMouse
-                                                ? Appearance.colors.colLayer1Hover : "transparent"
-
-                    MaterialSymbol {
-                        anchors.centerIn: parent
-                        text: "close"
-                        iconSize: 20
-                        color: Appearance.colors.colOnLayer1
-                    }
-
-                    MouseArea {
-                        id: closeMouse
-
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: root.hideWindow()
-                    }
-
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: Appearance.animation.expressiveEffects.duration
-                            easing.type: Appearance.animation.expressiveEffects.type
-                            easing.bezierCurve: Appearance.animation.expressiveEffects.bezierCurve
-                        }
-                    }
+                    maximized: root.maximized
+                    onCloseRequested: root.hideWindow()
+                    onMinimizeRequested: root.minimizeWindow()
+                    onMaximizeRequested: root.toggleMaximize()
                 }
 
-                DragHandler {
-                    target: null
-                    acceptedButtons: Qt.LeftButton
-                    onActiveChanged: {
-                        if (active)
-                            root.startSystemMove();
+                Item {
+                    anchors.fill: parent
+                    anchors.leftMargin: PersonalizationConfig.settingsWindowControlsSide === "left"
+                                        ? windowControls.width : 0
+                    anchors.rightMargin: PersonalizationConfig.settingsWindowControlsSide === "right"
+                                         ? windowControls.width : 0
+
+                    DragHandler {
+                        target: null
+                        acceptedButtons: Qt.LeftButton
+                        onActiveChanged: {
+                            if (active)
+                                root.startSystemMove();
+                        }
+                    }
+
+                    TapHandler {
+                        acceptedButtons: Qt.LeftButton
+                        onDoubleTapped: root.toggleMaximize()
                     }
                 }
             }

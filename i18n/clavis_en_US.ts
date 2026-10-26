@@ -4748,6 +4748,54 @@ Scroll to adjust</translation>
         <source>Quick settings widgets</source>
         <translation>Quick settings widgets</translation>
     </message>
+    <message>
+        <source>Size and spacing</source>
+        <translation>Size and spacing</translation>
+    </message>
+    <message>
+        <source>Show bar</source>
+        <translation>Show bar</translation>
+    </message>
+    <message>
+        <source>Floating</source>
+        <translation>Floating</translation>
+    </message>
+    <message>
+        <source>Exclusive zone offset</source>
+        <translation>Exclusive zone offset</translation>
+    </message>
+    <message>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
+    <message>
+        <source>Inner padding</source>
+        <translation>Inner padding</translation>
+    </message>
+    <message>
+        <source>Inset padding</source>
+        <translation>Inset padding</translation>
+    </message>
+    <message>
+        <source>Bar length padding</source>
+        <translation>Bar length padding</translation>
+    </message>
+    <message>
+        <source>Limited by the space required by visible modules.</source>
+        <translation>Limited by the space required by visible modules.</translation>
+    </message>
+    <message>
+        <source>Module corner radius</source>
+        <translation>Module corner radius</translation>
+    </message>
+    <message>
+        <source>Show device names</source>
+        <translation>Show device names</translation>
+    </message>
+    <message>
+        <source>Show numeric values</source>
+        <translation>Show numeric values</translation>
+    </message>
 </context>
 <context>
     <name>GeneralEffectsPage</name>
@@ -5959,6 +6007,114 @@ Scroll to adjust</translation>
         <location filename="../Modules/ControlCenter/KeystonePage.qml" line="163"/>
         <source>Middle click</source>
         <translation>Middle click</translation>
+    </message>
+    <message>
+        <source>Show Keystone</source>
+        <translation>Show Keystone</translation>
+    </message>
+    <message>
+        <source>Floating</source>
+        <translation>Floating</translation>
+    </message>
+    <message>
+        <source>Full display</source>
+        <translation>Full display</translation>
+    </message>
+    <message>
+        <source>Edge spacing</source>
+        <translation>Edge spacing</translation>
+    </message>
+    <message>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
+    <message>
+        <source>Exclusive zone offset</source>
+        <translation>Exclusive zone offset</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Size</translation>
+    </message>
+    <message>
+        <source>Compact length</source>
+        <translation>Compact length</translation>
+    </message>
+    <message>
+        <source>Inset padding</source>
+        <translation>Inset padding</translation>
+    </message>
+    <message>
+        <source>Item spacing</source>
+        <translation>Item spacing</translation>
+    </message>
+    <message>
+        <source>Popup gap</source>
+        <translation>Popup gap</translation>
+    </message>
+    <message>
+        <source>Hover open delay</source>
+        <translation>Hover open delay</translation>
+    </message>
+    <message>
+        <source> ms</source>
+        <translation> ms</translation>
+    </message>
+    <message>
+        <source>Hover close delay</source>
+        <translation>Hover close delay</translation>
+    </message>
+    <message>
+        <source>Progress bar</source>
+        <translation>Progress bar</translation>
+    </message>
+    <message>
+        <source>Cover style</source>
+        <translation>Cover style</translation>
+    </message>
+    <message>
+        <source>Colors</source>
+        <translation>Colors</translation>
+    </message>
+    <message>
+        <source>Status items</source>
+        <translation>Status items</translation>
+    </message>
+    <message>
+        <source>Show device names</source>
+        <translation>Show device names</translation>
+    </message>
+    <message>
+        <source>Show system monitor values</source>
+        <translation>Show system monitor values</translation>
+    </message>
+    <message>
+        <source>Show numeric values</source>
+        <translation>Show numeric values</translation>
+    </message>
+    <message>
+        <source>Left</source>
+        <translation>Left</translation>
+    </message>
+    <message>
+        <source>Top</source>
+        <translation>Top</translation>
+    </message>
+    <message>
+        <source>Right</source>
+        <translation>Right</translation>
+    </message>
+    <message>
+        <source>Bottom</source>
+        <translation>Bottom</translation>
+    </message>
+    <message>
+        <source>Size and spacing</source>
+        <translation>Size and spacing</translation>
+    </message>
+    <message>
+        <source>Media controls</source>
+        <translation>Media controls</translation>
     </message>
 </context>
 <context>
@@ -9440,6 +9596,54 @@ Click to open network settings</translation>
         <location filename="../Services/PersonalizationConfig.qml" line="479"/>
         <source>Peak</source>
         <translation>Peak</translation>
+    </message>
+    <message>
+        <source>Sine wave</source>
+        <translation>Sine wave</translation>
+    </message>
+    <message>
+        <source>Material wave</source>
+        <translation>Material wave</translation>
+    </message>
+    <message>
+        <source>Rounded cover</source>
+        <translation>Rounded cover</translation>
+    </message>
+    <message>
+        <source>Caelestia</source>
+        <translation>Caelestia</translation>
+    </message>
+    <message>
+        <source>Cover background</source>
+        <translation>Cover background</translation>
+    </message>
+    <message>
+        <source>Theme colors</source>
+        <translation>Theme colors</translation>
+    </message>
+    <message>
+        <source>Cover colors</source>
+        <translation>Cover colors</translation>
+    </message>
+    <message>
+        <source>System tray</source>
+        <translation>System tray</translation>
+    </message>
+    <message>
+        <source>System monitor</source>
+        <translation>System monitor</translation>
+    </message>
+    <message>
+        <source>Network speed</source>
+        <translation>Network speed</translation>
+    </message>
+    <message>
+        <source>CPU temperature</source>
+        <translation>CPU temperature</translation>
+    </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>Memory usage</translation>
     </message>
 </context>
 <context>
@@ -12958,6 +13162,22 @@ detected</translation>
         <source>Select expressive font</source>
         <translation>Select expressive font</translation>
     </message>
+    <message>
+        <source>Settings window</source>
+        <translation>Settings window</translation>
+    </message>
+    <message>
+        <source>Window controls</source>
+        <translation>Window controls</translation>
+    </message>
+    <message>
+        <source>Left</source>
+        <translation>Left</translation>
+    </message>
+    <message>
+        <source>Right</source>
+        <translation>Right</translation>
+    </message>
 </context>
 <context>
     <name>ThemeService</name>
@@ -13659,6 +13879,10 @@ Scroll to adjust; click to open sound</translation>
         <location filename="../Modules/ControlCenter/WallpaperPage.qml" line="1161"/>
         <source>Overview contrast</source>
         <translation>Overview contrast</translation>
+    </message>
+    <message>
+        <source>Floating window parallax</source>
+        <translation>Floating window parallax</translation>
     </message>
 </context>
 <context>
@@ -14850,6 +15074,154 @@ Windows: </translation>
         <location filename="../Services/FilePickerLocations.qml" line="58"/>
         <source>Could not list drives.</source>
         <translation>Could not list drives.</translation>
+    </message>
+</context>
+<context>
+    <name>FullStatusItem</name>
+    <message numerus="yes">
+        <source>%n device(s)</source>
+        <translation>
+            <numerusform>%n device</numerusform>
+            <numerusform>%n devices</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>No media</source>
+        <translation>No media</translation>
+    </message>
+    <message>
+        <source>Network connected</source>
+        <translation>Network connected</translation>
+    </message>
+    <message>
+        <source>Network disconnected</source>
+        <translation>Network disconnected</translation>
+    </message>
+    <message>
+        <source>Bluetooth unavailable</source>
+        <translation>Bluetooth unavailable</translation>
+    </message>
+    <message>
+        <source>Bluetooth on</source>
+        <translation>Bluetooth on</translation>
+    </message>
+    <message>
+        <source>Bluetooth off</source>
+        <translation>Bluetooth off</translation>
+    </message>
+    <message>
+        <source>Detecting battery</source>
+        <translation>Detecting battery</translation>
+    </message>
+    <message>
+        <source>No battery detected</source>
+        <translation>No battery detected</translation>
+    </message>
+    <message>
+        <source>Fully charged</source>
+        <translation>Fully charged</translation>
+    </message>
+    <message>
+        <source>Charging</source>
+        <translation>Charging</translation>
+    </message>
+    <message>
+        <source>Discharging</source>
+        <translation>Discharging</translation>
+    </message>
+    <message>
+        <source>Plugged in</source>
+        <translation>Plugged in</translation>
+    </message>
+    <message>
+        <source>Battery: %1% · %2</source>
+        <translation>Battery: %1% · %2</translation>
+    </message>
+    <message>
+        <source>Brightness: %1%
+%2
+Scroll to adjust</source>
+        <translation>Brightness: %1%
+%2
+Scroll to adjust</translation>
+    </message>
+    <message>
+        <source>No audio output</source>
+        <translation>No audio output</translation>
+    </message>
+    <message>
+        <source>Volume: muted
+%1</source>
+        <translation>Volume: muted
+%1</translation>
+    </message>
+    <message>
+        <source>Volume: %1%
+%2</source>
+        <translation>Volume: %1%
+%2</translation>
+    </message>
+    <message>
+        <source>No audio input</source>
+        <translation>No audio input</translation>
+    </message>
+    <message>
+        <source>Microphone: muted
+%1</source>
+        <translation>Microphone: muted
+%1</translation>
+    </message>
+    <message>
+        <source>Microphone: %1%
+%2</source>
+        <translation>Microphone: %1%
+%2</translation>
+    </message>
+    <message>
+        <source>CPU: %1
+Memory: %2
+Disk: %3
+Temperature: %4</source>
+        <translation>CPU: %1
+Memory: %2
+Disk: %3
+Temperature: %4</translation>
+    </message>
+</context>
+<context>
+    <name>FullMetricItem</name>
+    <message>
+        <source>Download: %1
+Upload: %2</source>
+        <translation>Download: %1
+Upload: %2</translation>
+    </message>
+    <message>
+        <source>CPU temperature: %1</source>
+        <translation>CPU temperature: %1</translation>
+    </message>
+    <message>
+        <source>Memory: %1 / %2 (%3)</source>
+        <translation>Memory: %1 / %2 (%3)</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsWindowControls</name>
+    <message>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <source>Minimize</source>
+        <translation>Minimize</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation>Restore</translation>
+    </message>
+    <message>
+        <source>Maximize</source>
+        <translation>Maximize</translation>
     </message>
 </context>
 </TS>

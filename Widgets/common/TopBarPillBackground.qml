@@ -29,6 +29,7 @@ Item {
         anchors.fill: parent
         color: root.fillColor
         radius: root.cornerRadius
+        antialiasing: true
         visible: false
     }
 
@@ -45,11 +46,15 @@ Item {
         cached: root.shadowCached
     }
 
-    Rectangle {
-        anchors.fill: parent
-        color: root.fillColor
-        radius: root.cornerRadius
-        antialiasing: true
-        clip: true
+    ShaderEffect {
+        // Keep the smooth physical-pixel fringe outside the content clip.
+        x: -1
+        y: -1
+        width: parent.width + 2
+        height: parent.height + 2
+        property vector2d resolution: Qt.vector2d(width, height)
+        property color fillColor: root.fillColor
+        property real cornerRadius: root.cornerRadius
+        fragmentShader: Paths.fileUrl(Paths.assetsDir + "/shaders/common/qsb/rounded_panel.frag.qsb")
     }
 }
