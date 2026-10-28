@@ -61,8 +61,19 @@ Singleton {
         NiriConfigService.setup("effects");
     }
 
+    Timer {
+        id: barRadiusSaveTimer
+        interval: 180
+        onTriggered: root.writeEffectsConfig()
+    }
+
     Connections {
         target: PersonalizationConfig
+
+        function onBarModuleRadiusChanged() {
+            if (PersonalizationConfig.ready)
+                barRadiusSaveTimer.restart();
+        }
 
         function onShellBlurXrayChanged() {
             root.writeEffectsConfig();

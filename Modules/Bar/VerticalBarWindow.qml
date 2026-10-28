@@ -103,12 +103,11 @@ PanelWindow {
             anchors.fill: parent
             screen: root.modelData
             axis: axis
+            surfaceOffset: Qt.point(axis.isLeft ? 0 : root.modelData.width - root.width, 0)
         }
     }
 
-    // wl_region blur outlines are integer logical pixels. On HiDPI outputs
-    // they add a stepped second edge beneath the antialiased translucent pills.
-    // Explicitly opt out rather than leaving a compositor layer rule in control.
+    // Separate geometry-clipped surfaces provide smooth blur for each pill.
     BackgroundEffect.blurRegion: Region {}
 
     mask: Region {

@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQml.Models
 import qs.Services
+import qs.Widgets.common
 
 Item {
     id: root
@@ -9,6 +10,7 @@ Item {
     required property var screen
     required property var axis
     property bool vertical: false
+    property point surfaceOffset: Qt.point(0, 0)
     property string popupEdge: axis.edge
     property int itemRevision: 0
     readonly property real minimumLength: (vertical ? leadingSection.implicitHeight
@@ -27,6 +29,23 @@ Item {
                 items.push(loader.item);
         }
         return items;
+    }
+
+    Instantiator {
+        model: root.backgroundItems
+
+        delegate: GeometryBlurBackdrop {
+            required property var modelData
+
+            sourceItem: modelData
+            targetScreen: root.screen
+            surfaceOffset: root.surfaceOffset
+            surfaceNamespace: "clavis-bar-backdrop"
+            active: sourceItem && sourceItem.backgroundVisible !== false && (sourceItem.blurFillOpacity
+                                                                             === undefined
+                                                                             || sourceItem.blurFillOpacity
+                                                                             < 1)
+        }
     }
 
     BarSection {

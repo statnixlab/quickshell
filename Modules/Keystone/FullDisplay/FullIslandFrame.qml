@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import Quickshell
 import qs.Common
 import qs.Services
@@ -323,23 +323,18 @@ Item {
         // Render opaque once, then apply the configured alpha to the combined
         // surface and its shadow, preserving translucent shell backgrounds.
         opacity: root.surfaceColor.a
-        layer.enabled: opacity < 1
-
-        MorphShader {
-            id: shadowSource
-            fillColor: "black"
-            visible: false
-        }
-
-        DropShadow {
-            anchors.fill: shadowSource
-            source: shadowSource
-            horizontalOffset: root.edge === "left" ? 4 : root.edge === "right" ? -4 : 0
-            verticalOffset: root.edge === "top" ? 4 : root.edge === "bottom" ? -4 : 0
-            radius: 14
-            samples: 29
-            color: Appearance.colors.colShadow
-            cached: false
+        // Compose the shape once and shadow its rendered texture. Capturing a
+        // second live MorphShader as a DropShadow source leaves a stale pill
+        // under the clock on the collapsed full-display bar.
+        layer.enabled: true
+        layer.effect: MultiEffect {
+            shadowEnabled: true
+            shadowBlur: 1
+            blurMax: 16
+            shadowColor: Appearance.colors.colShadow
+            shadowHorizontalOffset: root.edge === "left" ? 4 : root.edge === "right" ? -4 : 0
+            shadowVerticalOffset: root.edge === "top" ? 4 : root.edge === "bottom" ? -4 : 0
+            autoPaddingEnabled: true
         }
 
         MorphShader {}

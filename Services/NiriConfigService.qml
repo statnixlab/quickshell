@@ -164,7 +164,8 @@ Singleton {
             return mouseOptions;
         if (feature === "effects")
             return {
-                xray: PersonalizationConfig.shellBlurXray
+                xray: PersonalizationConfig.shellBlurXray,
+                barRadius: PersonalizationConfig.barModuleRadius
             };
         if (feature === "cursor")
             return {

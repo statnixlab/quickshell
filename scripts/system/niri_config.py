@@ -306,6 +306,14 @@ def initial(feature, request):
                 kdl.Node('geometry-corner-radius', args=radii),
                 kdl.Node('background-effect', nodes=[
                     kdl.Node('blur', args=[True]), kdl.Node('xray', args=[False])])]))
+        bar_radius = request.get('barRadius', 18)
+        if isinstance(bar_radius, bool) or not isinstance(bar_radius, int) or not 0 <= bar_radius <= 32:
+            raise ValueError('Bar corner radius must be between 0 and 32')
+        smooth_backdrops += render(kdl.Node('layer-rule', nodes=[
+            kdl.Node('match', props={'namespace': '^clavis-bar-backdrop$'}),
+            kdl.Node('geometry-corner-radius', args=[bar_radius]),
+            kdl.Node('background-effect', nodes=[
+                kdl.Node('blur', args=[True]), kdl.Node('xray', args=[False])])]))
         if request.get('xray', True):
             return header + smooth_backdrops + "// X-Ray is niri's default for client-requested effects.\n"
         return header + smooth_backdrops + 'layer-rule {\n    match namespace="^clavis-shell-";\n    background-effect { xray false; };\n}\nwindow-rule {\n    match title="^(clavis-control-center(-[a-z-]+)?|clavis-file-picker)$";\n    background-effect { xray false; };\n}\n'

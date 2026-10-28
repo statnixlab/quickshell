@@ -182,7 +182,7 @@ FloatingWindow {
         breadcrumbModel.clear();
         for (const item of items)
             breadcrumbModel.append(item);
-        Qt.callLater(() => breadcrumbFlick.revealCurrent());
+        Qt.callLater(breadcrumbFlick.revealCurrent);
     }
 
     function beginPathEditing() {

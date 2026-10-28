@@ -180,7 +180,6 @@ Item {
 
             Text {
                 anchors.centerIn: parent
-                visible: PersonalizationConfig.barShowValues
                 text: root.displayText
                 color: root.valueAvailable ? root.containerColor : root.foregroundColor
                 font.family: Fonts.expressive
