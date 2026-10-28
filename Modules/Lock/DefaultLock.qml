@@ -18,6 +18,8 @@ Item {
     property bool useSnapshot: true
     property bool started: false
     property bool exiting: false
+    property bool revealPending: false
+    property int preparationFrames: 0
     property real reveal: 0
     property real sceneOpacity: 1
     readonly property string screenName: screen ? screen.name : ""
@@ -31,10 +33,12 @@ Item {
             return;
         useSnapshot = snapshotReady;
         started = true;
-        if (snapshotReady)
-            entrance.start();
-        else
+        if (snapshotReady) {
+            preparationFrames = 0;
+            revealPending = true;
+        } else {
             reveal = 1;
+        }
         content.forceAuthFocus();
     }
 
@@ -54,32 +58,15 @@ Item {
     }
 
     Item {
-        id: discMask
-        anchors.fill: parent
-        visible: false
-        layer.enabled: true
-
-        Rectangle {
-            readonly property real discRadius: Math.hypot(root.width, root.height) * root.reveal
-            x: -discRadius
-            y: -discRadius
-            width: discRadius * 2
-            height: width
-            radius: discRadius
-            color: "white"
-        }
-    }
-
-    Item {
         id: scene
         anchors.fill: parent
         opacity: root.started ? (root.useSnapshot ? root.sceneOpacity : 1) : 0
         layer.enabled: true
-        layer.effect: MultiEffect {
-            maskEnabled: true
-            maskSource: discMask
-            maskThresholdMin: 0.5
-            maskSpreadAtMin: 0.5
+        layer.effect: ShaderEffect {
+            property var source
+            property vector2d resolution: Qt.vector2d(width, height)
+            property real progress: root.reveal
+            fragmentShader: Paths.fileUrl(Paths.assetsDir + "/shaders/lock/qsb/reveal.frag.qsb")
         }
 
         Rectangle {
@@ -125,6 +112,7 @@ Item {
             if (root.exiting)
                 return;
             root.exiting = true;
+            root.revealPending = false;
             entrance.stop();
             exitAnimation.start();
         }
@@ -139,6 +127,18 @@ Item {
         duration: 850
         easing.type: Easing.BezierSpline
         easing.bezierCurve: [0.2, 0, 0, 1, 1, 1]
+    }
+
+    FrameAnimation {
+        running: root.revealPending
+        onTriggered: {
+            // Allocate the scene/blur layers and prepare the reveal shader
+            // before advancing the animation, while the snapshot covers it.
+            if (++root.preparationFrames >= 2) {
+                root.revealPending = false;
+                entrance.start();
+            }
+        }
     }
 
     NumberAnimation {
