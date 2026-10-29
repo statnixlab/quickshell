@@ -305,8 +305,8 @@ Singleton {
         root._displayCommandTargetOff = root._desiredDisplaysOff;
         root.lastError = "";
         root.operationStarted(root._displayCommandTargetOff ? "display-off" : "display-on");
-        displayPowerProcess.exec(["niri", "msg", "action", root._displayCommandTargetOff
-                                  ? "power-off-monitors" : "power-on-monitors"]);
+        displayPowerProcess.exec(["/usr/bin/python3", "-I", Paths.systemScriptsDir + "/display_power.py",
+                                  root._displayCommandTargetOff ? "off" : "on"]);
     }
 
     function _requestSuspend() {
@@ -412,6 +412,13 @@ Singleton {
     Process {
         id: displayPowerProcess
 
+        stdout: SplitParser {
+            onRead: data => console.info("Idle display verification:", data)
+        }
+        stderr: SplitParser {
+            onRead: data => console.warn("Idle display stderr:", data)
+        }
+
         onExited: exitCode => {
             const operation = root._displayCommandTargetOff ? "display-off" : "display-on";
             if (exitCode === 0) {
@@ -422,7 +429,9 @@ Singleton {
                 root.operationFailed(operation, root.lastError);
             }
 
-            if (root.displaysOff !== root._desiredDisplaysOff)
+            // Run a queued change of direction, but never retry a failed wake
+            // indefinitely: the helper already performs bounded recovery.
+            if (root._displayCommandTargetOff !== root._desiredDisplaysOff)
                 Qt.callLater(root._setDisplaysOff, root._desiredDisplaysOff);
         }
     }

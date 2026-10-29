@@ -171,6 +171,24 @@ class NiriMinimizeTest : public QObject {
         m_thread.wait();
         qputenv("NIRI_SOCKET", m_oldSocket);
     }
+    void reconnectRestoresWindowStateAfterEventStreamLoss()
+    {
+        NiriPlugin niri;
+        QTRY_COMPARE(niri.windows()->rowCount(), 1);
+        const auto generation = niri.connectionGeneration();
+        server([](auto *peer) {
+            peer->windows = {floatingWindow(43, 200), floatingWindow(44, 300)};
+            peer->events->abort();
+        });
+        QTRY_VERIFY(!niri.connected());
+        QCOMPARE(niri.windows()->rowCount(), 0);
+        QTRY_VERIFY(niri.connected());
+        QTRY_COMPARE(niri.windows()->rowCount(), 2);
+        QVERIFY(niri.connectionGeneration() > generation);
+        QVERIFY(!niri.windowById(43).isEmpty());
+        QVERIFY(niri.windowById(42).isEmpty());
+    }
+
     void floatingParallaxIsAsyncCoalescedAndClamped()
     {
         server([](auto *peer) {

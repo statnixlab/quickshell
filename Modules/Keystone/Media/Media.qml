@@ -23,9 +23,14 @@ Item {
     property string title: (player && player.trackTitle) ? player.trackTitle : qsTr("Not playing")
     property string artist: (player && player.trackArtist) ? player.trackArtist : qsTr("Unknown artist")
     property string album: (player && player.trackAlbum) ? player.trackAlbum : ""
-    readonly property bool isActive: root.visible && root.player
+    readonly property bool isActive: animationVisibility.active && root.player
     property bool showLyrics: false
     readonly property var lyricsModel: Lyrics.lyrics
+
+    AnimationVisibility {
+        id: animationVisibility
+        target: root
+    }
 
     onShowLyricsChanged: {
         if (root.showLyrics)
@@ -96,7 +101,9 @@ Item {
         let s = seconds % 60;
         return m + ":" + (s < 10 ? "0" : "") + s;
     }
-    property double realProgress: (player && player.length > 0) ? (currentPos / player.length) : 0
+    readonly property double realProgress: player && Number.isFinite(player.length) && player.length > 0 && Number.isFinite(
+                                               currentPos) ? Math.max(0, Math.min(1, currentPos
+                                                                                  / player.length)) : 0
 
     // ==========================================
     // 界面渲染层
@@ -113,18 +120,22 @@ Item {
         radius: 24
         color: Appearance.colors.colLayer1
 
-        layer.enabled: true
-        layer.effect: OpacityMask {
-            maskSource: Rectangle {
-                width: mainBg.width
-                height: mainBg.height
-                radius: mainBg.radius
-            }
-        }
-
         Item {
+            id: backdrop
             anchors.fill: parent
             clip: true
+
+            // Only the backdrop needs rounded offscreen clipping. Keeping the
+            // animated curves inside this layer lets removed scene-graph nodes
+            // accumulate while the layer is not rendered.
+            layer.enabled: true
+            layer.effect: OpacityMask {
+                maskSource: Rectangle {
+                    width: backdrop.width
+                    height: backdrop.height
+                    radius: mainBg.radius
+                }
+            }
 
             Image {
                 id: bgSource
@@ -254,7 +265,7 @@ Item {
 
                 RadialSpectrum {
                     anchors.fill: parent
-                    values: AudioSpectrum.values
+                    values: root.isActive ? AudioSpectrum.values : []
                     barCount: AudioSpectrum.bars
                     innerRadius: 70
                     maxMagnitude: 36

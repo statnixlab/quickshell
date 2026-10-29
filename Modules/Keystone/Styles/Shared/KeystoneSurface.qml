@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Window
 import QtQuick.Effects
 import Qt5Compat.GraphicalEffects
 import Quickshell
@@ -88,6 +89,29 @@ Variants {
         readonly property string edge: PersonalizationConfig.keystonePosition
         readonly property bool horizontalEdge: edge === "top" || edge === "bottom"
         readonly property bool topEdge: edge === "top"
+        readonly property bool interactionFocused: maskContainer.Window.active || keyboardInput.Window.active
+        property bool interactionHadFocus: false
+
+        onInteractionFocusedChanged: {
+            if (interactionFocused) {
+                interactionHadFocus = true;
+                focusDismissDelay.stop();
+            } else if (interactionHadFocus && root.keyboardInteractionActive) {
+                focusDismissDelay.restart();
+            }
+        }
+
+        // Moving focus between the island and its keyboard helper takes two
+        // Wayland events. Only dismiss after both have lost focus; never place
+        // a full-screen input surface over other applications to detect clicks.
+        Timer {
+            id: focusDismissDelay
+            interval: 100
+            onTriggered: {
+                if (!keystoneWindow.interactionFocused && root.keyboardInteractionActive)
+                    keystoneWindow.closeAllOthers();
+            }
+        }
         readonly property bool bottomEdge: edge === "bottom"
         readonly property bool leftEdge: edge === "left"
         readonly property bool rightEdge: edge === "right"
@@ -306,6 +330,7 @@ Variants {
             mask: Region {}
 
             Item {
+                id: keyboardInput
                 anchors.fill: parent
                 focus: true
                 Keys.forwardTo: root.isToolsMode ? [toolsWidget, root] : [root]
@@ -335,20 +360,6 @@ Variants {
 
         margins {
             top: 0
-        }
-
-        MouseArea {
-            id: outsideClickArea
-            anchors.fill: parent
-            z: -1
-            enabled: root.keyboardInteractionActive
-            acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
-            onClicked: event => {
-                const point = mapToItem(maskContainer, event.x, event.y);
-                if (point.x < 0 || point.y < 0 || point.x >= maskContainer.width || point.y
-                        >= maskContainer.height)
-                    keystoneWindow.closeAllOthers();
-            }
         }
 
         // ============================================================
@@ -901,6 +912,10 @@ Variants {
                 onKeyboardInteractionActiveChanged: {
                     if (keyboardInteractionActive)
                         root.requestKeyboardFocus();
+                    else {
+                        focusDismissDelay.stop();
+                        keystoneWindow.interactionHadFocus = false;
+                    }
                 }
                 readonly property bool dashboardTabActive: isHubMode && hubTabIndex === 0
                 readonly property string dashboardUptimeOwner: "keystone-dashboard:" + String(
@@ -2090,10 +2105,7 @@ Variants {
 
         mask: Region {
             Region {
-                item: keystoneWindow.showSurface ? (root.keyboardInteractionActive ? outsideClickArea : (
-                                                                                         styleSurface.fullDisplay
-                                                                                         ? null : maskContainer)) :
-                                                   null
+                item: keystoneWindow.showSurface && !styleSurface.fullDisplay ? maskContainer : null
                 regions: keystoneWindow.showSurface && styleSurface.fullDisplay && fullFrame.item
                          ? [fullFrame.item.mainInputRegion] : []
             }

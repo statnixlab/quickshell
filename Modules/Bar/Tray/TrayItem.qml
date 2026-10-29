@@ -13,6 +13,8 @@ MouseArea {
     id: root
 
     readonly property var iconSource: TrayService.iconForItem(root.modelData)
+    readonly property bool needsAttention: root.modelData.status === Status.NeedsAttention
+                                           || TrayService.hasUnreadNotification(root.modelData)
 
     required property var modelData
     property var screen: null
@@ -269,6 +271,29 @@ MouseArea {
         height: parent.height
         asynchronous: true
         mipmap: true
+
+        SequentialAnimation on opacity {
+            running: root.needsAttention && root.visible && !root.dragActive
+            loops: Animation.Infinite
+            onRunningChanged: {
+                if (!running)
+                    trayIcon.opacity = 1;
+            }
+
+            NumberAnimation {
+                from: 1
+                to: 0.25
+                duration: 600
+                easing.type: Easing.InOutSine
+            }
+
+            NumberAnimation {
+                from: 0.25
+                to: 1
+                duration: 600
+                easing.type: Easing.InOutSine
+            }
+        }
     }
 
     PopupToolTip {

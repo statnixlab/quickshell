@@ -10,6 +10,7 @@
 #include <QObject>
 #include <QHash>
 #include <QJsonObject>
+#include <QTimer>
 #include <QVariantMap>
 #include <QtQml/qqmlregistration.h>
 
@@ -126,6 +127,7 @@ class NiriPlugin : public QObject {
     QVariantMap makeWorkspaceIcon(const NiriWindow &window, int count, bool active) const;
 
     NiriIpcClient m_client;
+    QTimer m_reconnectTimer;
     NiriFloatingParallax *m_floatingParallax;
     quint64 m_floatingParallaxLease;
     NiriWorkspaceModel m_workspaceModel;

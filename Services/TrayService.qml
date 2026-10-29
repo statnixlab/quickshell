@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Services.SystemTray
 import qs.Common
+import "DockBadges.js" as DockBadges
 
 Singleton {
     id: root
@@ -74,6 +75,25 @@ Singleton {
         if (item.id === "tray-icon tray app main-tray" && item.title === "openlist-desktop")
             return ApplicationService.iconSource("openlist-desktop");
         return item.icon || "";
+    }
+
+    function hasUnreadNotification(item) {
+        if (!item)
+            return false;
+        // Use the same application identities and acknowledgement state as the
+        // Dock. Conflicting tray metadata must not flash an unrelated app.
+        const keys = [];
+        for (const label of [item.id, item.title, item.tooltipTitle]) {
+            if (!label)
+                continue;
+            const key = DockBadges.keyForNotification({
+                                                          appName: label
+                                                      }, ApplicationService.launcherApplications,
+                                                      DockBadgeService.windows);
+            if (key && keys.indexOf(key) === -1)
+                keys.push(key);
+        }
+        return keys.length === 1 && DockBadgeService.countFor(keys[0]) > 0;
     }
 
     function getTooltipForItem(item) {

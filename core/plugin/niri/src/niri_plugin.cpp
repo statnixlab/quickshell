@@ -14,11 +14,15 @@ NiriPlugin::NiriPlugin(QObject *parent)
     connect(&m_client, &NiriIpcClient::connectedChanged, this, &NiriPlugin::connectionChanged);
     connect(&m_client, &NiriIpcClient::eventReceived, this, &NiriPlugin::handleEvent);
     connect(&m_client, &NiriIpcClient::errorOccurred, this, &NiriPlugin::setError);
+    m_reconnectTimer.setInterval(1000);
+    m_reconnectTimer.setSingleShot(true);
+    connect(&m_reconnectTimer, &QTimer::timeout, this, &NiriPlugin::connectToNiri);
     QTimer::singleShot(0, this, &NiriPlugin::connectToNiri);
 }
 
 NiriPlugin::~NiriPlugin()
 {
+    m_reconnectTimer.stop();
     m_floatingParallax->release(m_floatingParallaxLease);
     QObject::disconnect(&m_client, nullptr, this, nullptr);
     m_client.disconnectFromNiri();
@@ -47,8 +51,12 @@ bool NiriPlugin::connectToNiri()
     if (connected())
         return true;
     const bool ok = m_client.connectToNiri();
-    if (ok)
+    if (ok) {
+        m_reconnectTimer.stop();
         loadInitialState();
+    } else {
+        m_reconnectTimer.start();
+    }
     return ok;
 }
 
@@ -68,6 +76,7 @@ void NiriPlugin::connectionChanged()
     emit capabilitiesChanged();
     emit connectedChanged();
     if (!online) {
+        m_reconnectTimer.start();
         m_windows.clear();
         m_workspaces.clear();
         m_outputs.clear();

@@ -42,11 +42,19 @@ Item {
         anchors.fill: parent
 
         property real targetPlayhead: seekMa.pressed ? Math.max(0, Math.min(seekMa.mouseX, width)) : (
-                                                           root.progress * width)
+                                                           Number.isFinite(root.progress) ? Math.max(0,
+                                                                                                     Math.min(1,
+                                                                                                              root.progress))
+                                                                                            * width : 0)
         property real playheadX: targetPlayhead
         property real wavePhase: 0
         property real centerY: height / 2
-        property real waveEndX: Math.max(root.lineWidth / 2, playheadX - (root.gap + root.lineWidth / 2))
+        // Bound the path even during resize/smoothing and when MPRIS sends a
+        // stale position with a new duration. Geometry must scale with the view,
+        // never with an untrusted playback ratio.
+        property real waveEndX: Math.max(root.lineWidth / 2, Math.min(width, playheadX) - (root.gap
+                                                                                           + root.lineWidth
+                                                                                           / 2))
         property string wavePath: animationVisibility.active ? buildWavePath() : ""
 
         function waveY(x) {
