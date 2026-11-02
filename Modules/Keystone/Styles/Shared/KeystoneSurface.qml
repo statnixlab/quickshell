@@ -2098,6 +2098,9 @@ Variants {
             }
 
             CompositorBlurRegion {
+                // The main strip is blurred by its separate geometry backdrop.
+                // Keep every popup snapshot outside it, even during contraction.
+                clipItem: styleSurface.fullDisplay && fullFrame.item ? fullFrame.item.popupBlurClipItem : null
                 blurEnabled: keystoneWindow.showSurface && keystoneWindow.revealProgress >= 1 && (
                                  styleSurface.fullDisplay || !root.isCollapsedMode)
                 targetWindow: keystoneWindow

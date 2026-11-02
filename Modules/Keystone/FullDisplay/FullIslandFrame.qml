@@ -94,6 +94,7 @@ Item {
     readonly property alias mainItem: mainBar
     readonly property bool clockHovered: mainBar.clockHovered
     readonly property bool mainHovered: mainBar.hovered
+    readonly property alias popupBlurClipItem: popupBlurClip
     readonly property alias childBlurItem: childBlur
     readonly property alias cutoutBlurItem: cutoutBlur
     // Keep the main strip's shader-smoothed outline free of integer-pixel
@@ -276,6 +277,18 @@ Item {
             required property var modelData
             item: modelData
         }
+    }
+
+    // The main strip has its own backdrop. Popup blur must never cover it,
+    // including the final compact pose before the clear reaches the compositor.
+    // Use a rectangular half-plane so the integer blur region cannot leave a
+    // rounded capsule inside the shader-smoothed clock bar.
+    Item {
+        id: popupBlurClip
+        x: root.edge === "left" ? root.thickness : 0
+        y: root.edge === "top" ? root.thickness : 0
+        width: root.horizontal ? root.width : Math.max(0, root.width - root.thickness)
+        height: root.horizontal ? Math.max(0, root.height - root.thickness) : root.height
     }
 
     Item {
