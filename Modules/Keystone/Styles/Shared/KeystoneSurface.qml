@@ -2018,6 +2018,9 @@ Variants {
             Loader {
                 id: pillRecordingPresenter
 
+                // Full display renders recording inside its child panel. Never
+                // construct the compact shader/shadow stack for that topology.
+                active: styleSurface.splitRecording
                 anchors.fill: root
                 visible: styleSurface.splitRecording && root.recordingPresentationActive
                 sourceComponent: keystoneWindow.horizontalEdge ? horizontalPillRecordingComponent :
