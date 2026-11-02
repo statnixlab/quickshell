@@ -18,6 +18,7 @@ Singleton {
     property string spotlightAppStyle: "list"
     property string spotlightClipboardStyle: "default"
     property bool dndEnabled: false
+    property bool wechatExtraSoundEnabled: true
     property bool darkMode: false
     property string language: I18nManager.systemLanguage
     property string weatherTemperatureUnit: "celsius"
@@ -528,6 +529,7 @@ Singleton {
         root.savePending = false;
         prefsFile.setText(JSON.stringify({
                                              "dndEnabled": root.dndEnabled,
+                                             "wechatExtraSoundEnabled": root.wechatExtraSoundEnabled,
                                              "language": root.language,
                                              "weatherTemperatureUnit": root.weatherTemperatureUnit,
                                              "systemTemperatureUnit": root.systemTemperatureUnit,
@@ -599,6 +601,7 @@ Singleton {
                 const parsed = JSON.parse(prefsFile.text().trim() || "{}");
                 if (typeof parsed.dndEnabled === "boolean")
                     root.dndEnabled = parsed.dndEnabled;
+                root.wechatExtraSoundEnabled = parsed.wechatExtraSoundEnabled !== false;
 
                 root.language = root.normalizedLanguage(parsed.language || I18nManager.systemLanguage);
                 root.weatherTemperatureUnit = root.normalizedTemperatureUnit(parsed.weatherTemperatureUnit);

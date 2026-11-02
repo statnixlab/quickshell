@@ -211,8 +211,9 @@ Singleton {
         const isWechat = desktopEntry === "wechat" || desktopEntry === "wechat.desktop" || appName
               === "wechat" || appName === "weixin" || appName === "微信";
         const hints = notification.hints || {};
-        if (!isWechat || root.silent || isReplacement || hints["suppress-sound"] || notification.urgency
-                === NotificationUrgency.Low || wechatSound.running || wechatSoundCooldown.running)
+        if (!UiPreferences.wechatExtraSoundEnabled || !isWechat || root.silent || isReplacement
+                || hints["suppress-sound"] || notification.urgency === NotificationUrgency.Low
+                || wechatSound.running || wechatSoundCooldown.running)
             return;
         wechatSoundCooldown.start();
         wechatSound.running = true;
