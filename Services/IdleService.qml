@@ -314,7 +314,7 @@ Singleton {
             return;
         root.lastError = "";
         root.operationStarted("suspend");
-        suspendProcess.exec(["systemctl", "suspend"]);
+        suspendProcess.exec(["systemctl", "suspend-then-hibernate"]);
     }
 
     IdleInhibitorSurface {
