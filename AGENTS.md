@@ -1,5 +1,18 @@
 # Clavis Shell 开发约定
 
+## Machine branch policy
+
+This checkout belongs to the NVIDIA desktop (`cachyos`). Its branch is
+`machine/nvidia-desktop`; the paired desktop-config checkout uses the same branch.
+The AMD laptop uses `machine/amd-laptop` in both repositories.
+Keep fixes and preferences independent. Inspect the other branch read-only, then
+port individual reviewed fixes with `git cherry-pick -x` when requested; do not
+merge the whole machine branch or restore its configuration wholesale.
+Preserve this desktop's GPU, display, power and application compatibility settings.
+An AMD-only removal or workaround is not automatically suitable for this desktop.
+When saving source changes, update this machine's desktop-config lock separately.
+The old `personal/cachyos-niri` branch is shared history, not this machine's update target.
+
 ## Project responsibilities
 
 Clavis 是 CMake/Ninja + QML/Quickshell 项目。`shell.qml` 是入口，`AppShell.qml`
