@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Window
 import QtQuick.Effects
@@ -368,32 +370,182 @@ Variants {
         Item {
             id: maskContainer
 
-            Item {
-                id: backgroundVisual
-                visible: !styleSurface.fullDisplay && !(styleSurface.splitRecording
-                                                        && root.recordingPresentationActive)
-                // Give the compositing layer real shadow margins. Enlarging only
-                // layer.sourceRect would rescale the island into its original bounds.
+            // Full display owns its surface in FullIslandFrame. Do not create
+            // the compact Canvas/shadow layers there: hiding their parent alone
+            // can leave an independently composited capsule on the first frame.
+            Loader {
+                id: compactBackground
+                active: !styleSurface.fullDisplay
+                visible: active && !(styleSurface.splitRecording && root.recordingPresentationActive)
+                // Keep real shadow margins around the loaded surface.
                 x: -32
                 y: -32
                 width: parent.width + 64
                 height: parent.height + 64
-                opacity: root.color.a
-                layer.enabled: opacity < 1
-                readonly property color surfaceColor: Qt.rgba(root.color.r, root.color.g, root.color.b, 1)
+                sourceComponent: Item {
+                    id: backgroundVisual
+                    opacity: root.color.a
+                    layer.enabled: opacity < 1
+                    readonly property color surfaceColor: Qt.rgba(root.color.r, root.color.g, root.color.b, 1)
 
-                Item {
-                    x: 32
-                    y: 32
-                    width: parent.width - 64
-                    height: parent.height - 64
                     Item {
-                        id: shadowSource
+                        x: 32
+                        y: 32
+                        width: parent.width - 64
+                        height: parent.height - 64
+                        Item {
+                            id: shadowSource
 
-                        anchors.fill: parent
+                            anchors.fill: parent
 
+                            AttachedEdgeCurve {
+                                id: shadowLeftTopCurve
+
+                                visible: styleSurface.showAttachedEdgeCurves
+                                edge: keystoneWindow.edge
+                                after: false
+                                along: keystoneWindow.edgeCurveAlong
+                                depth: keystoneWindow.edgeCurveDepth
+                                sideControl: keystoneWindow.edgeCurveSideControl
+                                edgeControl: keystoneWindow.edgeCurveOuterControl
+                                fillColor: "black"
+
+                                anchors {
+                                    right: keystoneWindow.horizontalEdge ? rootShadow.left :
+                                                                           keystoneWindow.rightEdge
+                                                                           ? rootShadow.right : undefined
+                                    left: keystoneWindow.leftEdge ? rootShadow.left : undefined
+                                    bottom: !keystoneWindow.horizontalEdge ? rootShadow.top :
+                                                                             keystoneWindow.bottomEdge
+                                                                             ? rootShadow.bottom : undefined
+                                    top: keystoneWindow.topEdge ? rootShadow.top : undefined
+                                }
+                            }
+
+                            Item {
+                                id: rootShadow
+
+                                width: root.width
+                                height: root.height
+                                state: keystoneWindow.edge
+                                states: [
+                                    State {
+                                        name: "top"
+
+                                        AnchorChanges {
+                                            target: rootShadow
+                                            anchors.top: shadowSource.top
+                                            anchors.bottom: undefined
+                                            anchors.left: undefined
+                                            anchors.right: undefined
+                                            anchors.horizontalCenter: shadowSource.horizontalCenter
+                                            anchors.verticalCenter: undefined
+                                        }
+                                    },
+                                    State {
+                                        name: "bottom"
+
+                                        AnchorChanges {
+                                            target: rootShadow
+                                            anchors.top: undefined
+                                            anchors.bottom: shadowSource.bottom
+                                            anchors.left: undefined
+                                            anchors.right: undefined
+                                            anchors.horizontalCenter: shadowSource.horizontalCenter
+                                            anchors.verticalCenter: undefined
+                                        }
+                                    },
+                                    State {
+                                        name: "left"
+
+                                        AnchorChanges {
+                                            target: rootShadow
+                                            anchors.top: undefined
+                                            anchors.bottom: undefined
+                                            anchors.left: shadowSource.left
+                                            anchors.right: undefined
+                                            anchors.horizontalCenter: undefined
+                                            anchors.verticalCenter: shadowSource.verticalCenter
+                                        }
+                                    },
+                                    State {
+                                        name: "right"
+
+                                        AnchorChanges {
+                                            target: rootShadow
+                                            anchors.top: undefined
+                                            anchors.bottom: undefined
+                                            anchors.left: undefined
+                                            anchors.right: shadowSource.right
+                                            anchors.horizontalCenter: undefined
+                                            anchors.verticalCenter: shadowSource.verticalCenter
+                                        }
+                                    }
+                                ]
+
+                                SurfaceShape {
+                                    surfaceColor: "black"
+                                    topLeftRadius: root.surfaceTopLeftRadius
+                                    topRightRadius: root.surfaceTopRightRadius
+                                    bottomRightRadius: root.surfaceBottomRightRadius
+                                    bottomLeftRadius: root.surfaceBottomLeftRadius
+                                    cutoutVisible: rootSurface.cutoutVisible
+                                    cutoutX: rootSurface.cutoutX
+                                    cutoutY: rootSurface.cutoutY
+                                    cutoutWidth: rootSurface.cutoutWidth
+                                    cutoutHeight: rootSurface.cutoutHeight
+                                    cutoutRadius: rootSurface.cutoutRadius
+                                }
+                            }
+
+                            AttachedEdgeCurve {
+                                id: shadowRightTopCurve
+
+                                visible: styleSurface.showAttachedEdgeCurves
+                                edge: keystoneWindow.edge
+                                after: true
+                                along: keystoneWindow.edgeCurveAlong
+                                depth: keystoneWindow.edgeCurveDepth
+                                sideControl: keystoneWindow.edgeCurveSideControl
+                                edgeControl: keystoneWindow.edgeCurveOuterControl
+                                fillColor: "black"
+
+                                anchors {
+                                    left: keystoneWindow.leftEdge ? rootShadow.left : (
+                                                                        keystoneWindow.horizontalEdge
+                                                                        ? rootShadow.right : undefined)
+                                    right: keystoneWindow.rightEdge ? rootShadow.right : undefined
+                                    top: keystoneWindow.topEdge ? rootShadow.top : (
+                                                                      !keystoneWindow.horizontalEdge
+                                                                      ? rootShadow.bottom : undefined)
+                                    bottom: keystoneWindow.bottomEdge ? rootShadow.bottom : undefined
+                                }
+                            }
+                        }
+                        // Keep the Canvas paintable without showing its black shadow source.
+                        ShaderEffectSource {
+                            id: shadowTexture
+
+                            anchors.fill: shadowSource
+                            sourceItem: shadowSource
+                            hideSource: true
+                            visible: false
+                        }
+                        DropShadow {
+
+                            anchors.fill: shadowSource
+                            source: shadowTexture
+                            horizontalOffset: keystoneWindow.leftEdge ? 6 : keystoneWindow.rightEdge ? -6 : 0
+                            verticalOffset: keystoneWindow.topEdge ? 6 : keystoneWindow.bottomEdge ? -6 : 0
+                            radius: 20
+                            samples: 32
+                            color: "#80000000"
+                            cached: false
+                        }
                         AttachedEdgeCurve {
-                            id: shadowLeftTopCurve
+                            id: leftTopCurve
+
+                            z: 1
 
                             visible: styleSurface.showAttachedEdgeCurves
                             edge: keystoneWindow.edge
@@ -402,98 +554,53 @@ Variants {
                             depth: keystoneWindow.edgeCurveDepth
                             sideControl: keystoneWindow.edgeCurveSideControl
                             edgeControl: keystoneWindow.edgeCurveOuterControl
-                            fillColor: "black"
+                            fillColor: backgroundVisual.surfaceColor
 
                             anchors {
-                                right: keystoneWindow.horizontalEdge ? rootShadow.left :
+                                right: keystoneWindow.horizontalEdge ? rootSurface.left :
                                                                        keystoneWindow.rightEdge
-                                                                       ? rootShadow.right : undefined
-                                left: keystoneWindow.leftEdge ? rootShadow.left : undefined
-                                bottom: !keystoneWindow.horizontalEdge ? rootShadow.top :
+                                                                       ? rootSurface.right : undefined
+
+                                left: keystoneWindow.leftEdge ? rootSurface.left : undefined
+                                bottom: !keystoneWindow.horizontalEdge ? rootSurface.top :
                                                                          keystoneWindow.bottomEdge
-                                                                         ? rootShadow.bottom : undefined
-                                top: keystoneWindow.topEdge ? rootShadow.top : undefined
+                                                                         ? rootSurface.bottom : undefined
+                                top: keystoneWindow.topEdge ? rootSurface.top : undefined
+                            }
+
+                            Connections {
+                                function onColorChanged() {
+                                    leftTopCurve.requestPaint();
+                                }
+
+                                target: root
                             }
                         }
+                        SurfaceShape {
+                            id: rootSurface
 
-                        Item {
-                            id: rootShadow
-
+                            z: 1
+                            anchors.fill: null
+                            x: root.x
+                            y: root.y
                             width: root.width
                             height: root.height
-                            state: keystoneWindow.edge
-                            states: [
-                                State {
-                                    name: "top"
-
-                                    AnchorChanges {
-                                        target: rootShadow
-                                        anchors.top: shadowSource.top
-                                        anchors.bottom: undefined
-                                        anchors.left: undefined
-                                        anchors.right: undefined
-                                        anchors.horizontalCenter: shadowSource.horizontalCenter
-                                        anchors.verticalCenter: undefined
-                                    }
-                                },
-                                State {
-                                    name: "bottom"
-
-                                    AnchorChanges {
-                                        target: rootShadow
-                                        anchors.top: undefined
-                                        anchors.bottom: shadowSource.bottom
-                                        anchors.left: undefined
-                                        anchors.right: undefined
-                                        anchors.horizontalCenter: shadowSource.horizontalCenter
-                                        anchors.verticalCenter: undefined
-                                    }
-                                },
-                                State {
-                                    name: "left"
-
-                                    AnchorChanges {
-                                        target: rootShadow
-                                        anchors.top: undefined
-                                        anchors.bottom: undefined
-                                        anchors.left: shadowSource.left
-                                        anchors.right: undefined
-                                        anchors.horizontalCenter: undefined
-                                        anchors.verticalCenter: shadowSource.verticalCenter
-                                    }
-                                },
-                                State {
-                                    name: "right"
-
-                                    AnchorChanges {
-                                        target: rootShadow
-                                        anchors.top: undefined
-                                        anchors.bottom: undefined
-                                        anchors.left: undefined
-                                        anchors.right: shadowSource.right
-                                        anchors.horizontalCenter: undefined
-                                        anchors.verticalCenter: shadowSource.verticalCenter
-                                    }
-                                }
-                            ]
-
-                            SurfaceShape {
-                                surfaceColor: "black"
-                                topLeftRadius: rootSurface.topLeftRadius
-                                topRightRadius: rootSurface.topRightRadius
-                                bottomRightRadius: rootSurface.bottomRightRadius
-                                bottomLeftRadius: rootSurface.bottomLeftRadius
-                                cutoutVisible: rootSurface.cutoutVisible
-                                cutoutX: rootSurface.cutoutX
-                                cutoutY: rootSurface.cutoutY
-                                cutoutWidth: rootSurface.cutoutWidth
-                                cutoutHeight: rootSurface.cutoutHeight
-                                cutoutRadius: rootSurface.cutoutRadius
-                            }
+                            surfaceColor: backgroundVisual.surfaceColor
+                            topLeftRadius: root.surfaceTopLeftRadius
+                            topRightRadius: root.surfaceTopRightRadius
+                            bottomRightRadius: root.surfaceBottomRightRadius
+                            bottomLeftRadius: root.surfaceBottomLeftRadius
+                            cutoutVisible: root.showDashboardKeyhole
+                            cutoutX: dashboardKeyholeCutout.x
+                            cutoutY: dashboardKeyholeCutout.y
+                            cutoutWidth: dashboardKeyholeCutout.width
+                            cutoutHeight: dashboardKeyholeCutout.height
+                            cutoutRadius: dashboardKeyholeCutout.radius
                         }
-
                         AttachedEdgeCurve {
-                            id: shadowRightTopCurve
+                            id: rightTopCurve
+
+                            z: 1
 
                             visible: styleSurface.showAttachedEdgeCurves
                             edge: keystoneWindow.edge
@@ -502,132 +609,27 @@ Variants {
                             depth: keystoneWindow.edgeCurveDepth
                             sideControl: keystoneWindow.edgeCurveSideControl
                             edgeControl: keystoneWindow.edgeCurveOuterControl
-                            fillColor: "black"
+                            fillColor: backgroundVisual.surfaceColor
 
                             anchors {
-                                left: keystoneWindow.leftEdge ? rootShadow.left : (
+                                left: keystoneWindow.leftEdge ? rootSurface.left : (
                                                                     keystoneWindow.horizontalEdge
-                                                                    ? rootShadow.right : undefined)
-                                right: keystoneWindow.rightEdge ? rootShadow.right : undefined
-                                top: keystoneWindow.topEdge ? rootShadow.top : (
+                                                                    ? rootSurface.right : undefined)
+
+                                right: keystoneWindow.rightEdge ? rootSurface.right : undefined
+                                top: keystoneWindow.topEdge ? rootSurface.top : (
                                                                   !keystoneWindow.horizontalEdge
-                                                                  ? rootShadow.bottom : undefined)
-                                bottom: keystoneWindow.bottomEdge ? rootShadow.bottom : undefined
-                            }
-                        }
-                    }
-                    // Keep the Canvas paintable without showing its black shadow source.
-                    ShaderEffectSource {
-                        id: shadowTexture
-
-                        anchors.fill: shadowSource
-                        sourceItem: shadowSource
-                        hideSource: true
-                        visible: false
-                    }
-                    DropShadow {
-
-                        anchors.fill: shadowSource
-                        source: shadowTexture
-                        horizontalOffset: keystoneWindow.leftEdge ? 6 : keystoneWindow.rightEdge ? -6 : 0
-                        verticalOffset: keystoneWindow.topEdge ? 6 : keystoneWindow.bottomEdge ? -6 : 0
-                        radius: 20
-                        samples: 32
-                        color: "#80000000"
-                        cached: false
-                    }
-                    AttachedEdgeCurve {
-                        id: leftTopCurve
-
-                        z: 1
-
-                        visible: styleSurface.showAttachedEdgeCurves
-                        edge: keystoneWindow.edge
-                        after: false
-                        along: keystoneWindow.edgeCurveAlong
-                        depth: keystoneWindow.edgeCurveDepth
-                        sideControl: keystoneWindow.edgeCurveSideControl
-                        edgeControl: keystoneWindow.edgeCurveOuterControl
-                        fillColor: backgroundVisual.surfaceColor
-
-                        anchors {
-                            right: keystoneWindow.horizontalEdge ? rootSurface.left :
-                                                                   keystoneWindow.rightEdge
-                                                                   ? rootSurface.right : undefined
-
-                            left: keystoneWindow.leftEdge ? rootSurface.left : undefined
-                            bottom: !keystoneWindow.horizontalEdge ? rootSurface.top :
-                                                                     keystoneWindow.bottomEdge
-                                                                     ? rootSurface.bottom : undefined
-                            top: keystoneWindow.topEdge ? rootSurface.top : undefined
-                        }
-
-                        Connections {
-                            function onColorChanged() {
-                                leftTopCurve.requestPaint();
+                                                                  ? rootSurface.bottom : undefined)
+                                bottom: keystoneWindow.bottomEdge ? rootSurface.bottom : undefined
                             }
 
-                            target: root
-                        }
-                    }
-                    SurfaceShape {
-                        id: rootSurface
+                            Connections {
+                                function onColorChanged() {
+                                    rightTopCurve.requestPaint();
+                                }
 
-                        z: 1
-                        anchors.fill: null
-                        x: root.x
-                        y: root.y
-                        width: root.width
-                        height: root.height
-                        surfaceColor: backgroundVisual.surfaceColor
-                        topLeftRadius: styleSurface.detached || (!keystoneWindow.topEdge &&
-                                                                 !keystoneWindow.leftEdge) ? root.radius : 0
-                        topRightRadius: styleSurface.detached || (!keystoneWindow.topEdge &&
-                                                                  !keystoneWindow.rightEdge) ? root.radius : 0
-                        bottomRightRadius: styleSurface.detached || (!keystoneWindow.bottomEdge &&
-                                                                     !keystoneWindow.rightEdge) ? root.radius :
-                                                                                                  0
-                        bottomLeftRadius: styleSurface.detached || (!keystoneWindow.bottomEdge &&
-                                                                    !keystoneWindow.leftEdge) ? root.radius :
-                                                                                                0
-                        cutoutVisible: root.showDashboardKeyhole
-                        cutoutX: dashboardKeyholeCutout.x
-                        cutoutY: dashboardKeyholeCutout.y
-                        cutoutWidth: dashboardKeyholeCutout.width
-                        cutoutHeight: dashboardKeyholeCutout.height
-                        cutoutRadius: dashboardKeyholeCutout.radius
-                    }
-                    AttachedEdgeCurve {
-                        id: rightTopCurve
-
-                        z: 1
-
-                        visible: styleSurface.showAttachedEdgeCurves
-                        edge: keystoneWindow.edge
-                        after: true
-                        along: keystoneWindow.edgeCurveAlong
-                        depth: keystoneWindow.edgeCurveDepth
-                        sideControl: keystoneWindow.edgeCurveSideControl
-                        edgeControl: keystoneWindow.edgeCurveOuterControl
-                        fillColor: backgroundVisual.surfaceColor
-
-                        anchors {
-                            left: keystoneWindow.leftEdge ? rootSurface.left : (keystoneWindow.horizontalEdge
-                                                                                ? rootSurface.right :
-                                                                                  undefined)
-
-                            right: keystoneWindow.rightEdge ? rootSurface.right : undefined
-                            top: keystoneWindow.topEdge ? rootSurface.top : (!keystoneWindow.horizontalEdge
-                                                                             ? rootSurface.bottom : undefined)
-                            bottom: keystoneWindow.bottomEdge ? rootSurface.bottom : undefined
-                        }
-
-                        Connections {
-                            function onColorChanged() {
-                                rightTopCurve.requestPaint();
+                                target: root
                             }
-
-                            target: root
                         }
                     }
                 }
@@ -935,6 +937,18 @@ Variants {
                     return height + (NotificationManager.normalActions(notif).length > 0 ? 104 : 64);
                 }, 0) + Math.max(0, NotificationManager.popupList.length - 1) * 10
                 readonly property real blurFillOpacity: color.a
+                readonly property real surfaceTopLeftRadius: styleSurface.detached || (
+                                                                 !keystoneWindow.topEdge &&
+                                                                 !keystoneWindow.leftEdge) ? radius : 0
+                readonly property real surfaceTopRightRadius: styleSurface.detached || (
+                                                                  !keystoneWindow.topEdge &&
+                                                                  !keystoneWindow.rightEdge) ? radius : 0
+                readonly property real surfaceBottomRightRadius: styleSurface.detached || (
+                                                                     !keystoneWindow.bottomEdge &&
+                                                                     !keystoneWindow.rightEdge) ? radius : 0
+                readonly property real surfaceBottomLeftRadius: styleSurface.detached || (
+                                                                    !keystoneWindow.bottomEdge &&
+                                                                    !keystoneWindow.leftEdge) ? radius : 0
                 property color color: BlurService.backgroundColor(mediaWidget.visible
                                                                   && mediaWidget.coverColors
                                                                   ? mediaWidget.surfaceColor :
@@ -1570,13 +1584,13 @@ Variants {
                                                                mediaWidget.panelHeight * 1.5) * 2), Math.ceil(
                                                 mediaWidget.panelHeight * 2))
                         topLeftRadius: styleSurface.fullDisplay && fullFrame.item
-                                       ? fullFrame.item.childRadius : rootSurface.topLeftRadius
+                                       ? fullFrame.item.childRadius : root.surfaceTopLeftRadius
                         topRightRadius: styleSurface.fullDisplay && fullFrame.item
-                                        ? fullFrame.item.childRadius : rootSurface.topRightRadius
+                                        ? fullFrame.item.childRadius : root.surfaceTopRightRadius
                         bottomLeftRadius: styleSurface.fullDisplay && fullFrame.item
-                                          ? fullFrame.item.childRadius : rootSurface.bottomLeftRadius
+                                          ? fullFrame.item.childRadius : root.surfaceBottomLeftRadius
                         bottomRightRadius: styleSurface.fullDisplay && fullFrame.item
-                                           ? fullFrame.item.childRadius : rootSurface.bottomRightRadius
+                                           ? fullFrame.item.childRadius : root.surfaceBottomRightRadius
                     }
                 }
 
@@ -1784,7 +1798,7 @@ Variants {
                         scale: keystoneWindow.popupContentScale
                         transformOrigin: Item.Top
                         surfaceTopRightRadius: styleSurface.fullDisplay && fullFrame.item
-                                               ? fullFrame.item.childRadius : rootSurface.topRightRadius
+                                               ? fullFrame.item.childRadius : root.surfaceTopRightRadius
 
                         anchors.top: parent.top
                         anchors.horizontalCenter: parent.horizontalCenter

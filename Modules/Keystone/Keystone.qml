@@ -25,7 +25,10 @@ Item {
 
     Loader {
         id: styleLoader
-        active: PersonalizationConfig.keystoneEnabled
+        // Wait for the first complete config load: style is restored before
+        // fullDisplay, so constructing here earlier briefly creates a compact
+        // surface. Keep it alive during later config reloads and interactions.
+        active: PersonalizationConfig.loaded && PersonalizationConfig.keystoneEnabled
 
         sourceComponent: PersonalizationConfig.keystoneStyle === "pill" ? pillStyle : bangsStyle
     }
