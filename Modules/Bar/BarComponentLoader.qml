@@ -16,6 +16,7 @@ Loader {
     required property var axis
     required property Item barVisualItem
     property bool vertical: false
+    property real activeWindowAvailableWidth: Infinity
     active: root.screen !== null && root.screen !== undefined
 
     sourceComponent: {
@@ -61,6 +62,7 @@ Loader {
 
         ActiveWindow {
             maximumTitleWidth: root.vertical ? 250 : Math.max(48, Math.min(250, root.screen.width * 0.18))
+            availableWidth: root.activeWindowAvailableWidth
             vertical: root.vertical
         }
     }

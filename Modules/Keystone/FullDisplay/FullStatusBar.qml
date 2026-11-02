@@ -19,13 +19,29 @@ Item {
     readonly property bool clockHovered: clockHover.hovered
     readonly property bool hovered: mainHover.hovered
     readonly property alias clockItem: clock
+    readonly property var bar: BarLayoutService.barFor(root.screen, root.edge)
+    readonly property real availableLength: !root.vertical && root.bar ? Math.max(
+                                                                             PersonalizationConfig.keystoneCompactLength,
+                                                                             root.screen.width - 2 * (
+                                                                                 root.bar.horizontalInset
+                                                                                 + Math.max(
+                                                                                     root.bar.minimumLeadingWidth,
+                                                                                     root.bar.minimumTrailingWidth)
+                                                                                 + BarLayoutService.clearance)) :
+                                                                         (root.vertical ? root.screen.height :
+                                                                                          root.screen.width)
     // Reserve equal space on both sides so changing module sizes never
     // pushes the clock away from the main island's geometric centre.
-    readonly property real contentLength: PersonalizationConfig.keystoneCompactLength + 2 * (Math.max(
-                                                                                                 leadingLane.contentExtent,
-                                                                                                 trailingLane.contentExtent)
-                                                                                             + PersonalizationConfig.keystoneInsetPadding
-                                                                                             + 12)
+    readonly property real preferredLength: PersonalizationConfig.keystoneCompactLength + 2 * (Math.max(
+                                                                                                   leadingLane.preferredExtent,
+                                                                                                   trailingLane.preferredExtent)
+                                                                                               + PersonalizationConfig.keystoneInsetPadding
+                                                                                               + 12)
+    readonly property real contentLength: root.vertical ? preferredLength : Math.min(preferredLength,
+                                                                                     availableLength)
+
+    Component.onCompleted: BarLayoutService.registerKeystone(root)
+    Component.onDestruction: BarLayoutService.unregisterKeystone(root)
 
     signal clockClicked(int button)
     signal mediaRequested
@@ -83,6 +99,31 @@ Item {
         id: lane
         required property var items
         property bool trailing: false
+        property int itemRevision: 0
+        // This width stays independent of media's allocated width. Otherwise
+        // shrinking the title feeds back into the island's own size request.
+        readonly property real preferredExtent: root.vertical ? itemsLayout.implicitHeight : measuredWidth(
+                                                                    false)
+        readonly property real nonMediaExtent: measuredWidth(true)
+        readonly property real mediaAvailableWidth: Math.max(0, lane.width - nonMediaExtent)
+        clip: !root.vertical
+
+        function measuredWidth(excludeMedia) {
+            const revision = lane.itemRevision;
+            let extent = Math.max(0, statusItems.count - 1) * PersonalizationConfig.keystoneItemSpacing;
+            for (let index = 0; index < statusItems.count; ++index) {
+                const loader = statusItems.itemAt(index);
+                if (!loader || !loader.item)
+                    continue;
+                if (loader.modelData === "media") {
+                    if (!excludeMedia)
+                        extent += loader.item.preferredHorizontalWidth;
+                } else {
+                    extent += loader.item.implicitWidth;
+                }
+            }
+            return extent;
+        }
         readonly property var displayItems: {
             const result = [];
             for (let index = 0; index < items.length; ++index) {
@@ -101,8 +142,6 @@ Item {
             }
             return result;
         }
-        readonly property real contentExtent: root.vertical ? itemsLayout.implicitHeight :
-                                                              itemsLayout.implicitWidth
 
         GridLayout {
             id: itemsLayout
@@ -114,10 +153,14 @@ Item {
             columnSpacing: PersonalizationConfig.keystoneItemSpacing
 
             Repeater {
+                id: statusItems
                 model: lane.displayItems
+                onItemAdded: lane.itemRevision += 1
+                onItemRemoved: lane.itemRevision += 1
                 delegate: Loader {
                     id: statusLoader
                     required property string modelData
+                    onItemChanged: lane.itemRevision += 1
                     Layout.alignment: Qt.AlignCenter
                     Layout.preferredWidth: root.vertical ? root.width : implicitWidth
                     sourceComponent: modelData === "cpuMemory" ? metricStack : ["networkSpeed",
@@ -160,6 +203,7 @@ Item {
                         MediaBar {
                             vertical: root.vertical
                             maximumTitleWidth: root.vertical ? 120 : 180
+                            availableWidth: root.vertical ? Infinity : lane.mediaAvailableWidth
                             backgroundVisible: false
                         }
                     }
