@@ -18,6 +18,7 @@ Item {
                                                        >= 36)
     readonly property real valueFontSize: compactContent ? 11 : 12
     readonly property real iconTextSpacing: 2
+    readonly property real speedItemSpacing: inlineNetwork ? PersonalizationConfig.keystoneItemSpacing : 0
     readonly property real speedRowWidth: metricIconSize + iconTextSpacing + speedMetrics.width
     readonly property real metricIconSize: compactContent ? Math.min(Sizes.keystoneIconSize * 0.7, (
                                                                          PersonalizationConfig.keystoneThickness
@@ -78,8 +79,8 @@ Item {
     Component.onDestruction: SystemMonitorService.clearConsumer(consumerId)
 
     // Reserve the same width between samples so changing rates do not move the clock.
-    implicitWidth: networkSpeed ? speedRowWidth * (inlineNetwork ? 2 : 1) + (inlineNetwork ? 8 : 0) + 3 :
-                                  valueMetrics.width + metricIconSize + iconTextSpacing + 3
+    implicitWidth: networkSpeed ? speedRowWidth * (inlineNetwork ? 2 : 1) + speedItemSpacing + 3 : valueMetrics.width
+                                  + metricIconSize + iconTextSpacing + 3
     implicitHeight: compact ? Math.max(17, metricIconSize) : vertical ? Math.max(34, networkSpeed
                                                                                  ? networkLayout.implicitHeight :
                                                                                    0) : PersonalizationConfig.keystoneThickness
@@ -120,7 +121,7 @@ Item {
         anchors.centerIn: parent
         visible: root.networkSpeed
         columns: root.inlineNetwork ? 2 : 1
-        columnSpacing: root.inlineNetwork ? 8 : 0
+        columnSpacing: root.speedItemSpacing
         rowSpacing: 0
         Row {
             spacing: root.iconTextSpacing
