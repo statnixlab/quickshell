@@ -3986,138 +3986,191 @@ Scroll to adjust</source>
 <context>
     <name>DockPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2013"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2137"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2014"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2138"/>
+        <source>Background</source>
+        <translation>背景</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2139"/>
         <source>Behavior</source>
         <translation>行为</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2015"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2140"/>
         <source>Window previews</source>
         <translation>窗口预览</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="40"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="45"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="50"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="55"/>
         <source>Show Dock</source>
         <translation>显示程序坞</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="75"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="85"/>
         <source>Screen edge</source>
         <translation>屏幕边缘</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="81"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="83"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="91"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="93"/>
         <source>Left</source>
         <translation>左侧</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="87"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="89"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="97"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="99"/>
         <source>Bottom</source>
         <translation>底部</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="93"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="95"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="103"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="105"/>
         <source>Right</source>
         <translation>右侧</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="109"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="119"/>
         <source>Icon size</source>
         <translation>图标大小</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="122"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="127"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="132"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="137"/>
         <source>Magnify on hover</source>
         <translation>悬停时放大</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="133"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="143"/>
         <source>Magnification</source>
         <translation>放大倍率</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="164"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="169"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="178"/>
+        <source>Theme</source>
+        <translation>跟随主题</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="182"/>
+        <source>Custom</source>
+        <translation>自定义</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="194"/>
+        <source>Custom color</source>
+        <translation>自定义颜色</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="207"/>
+        <source>Choose background color</source>
+        <translation>选择背景颜色</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="218"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="221"/>
+        <source>Follow panel opacity</source>
+        <translation>跟随全局面板不透明度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="227"/>
+        <source>Background opacity</source>
+        <translation>背景不透明度</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="237"/>
+        <source>Corner radius</source>
+        <translation>圆角半径</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="248"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="251"/>
+        <source>Show border</source>
+        <translation>显示边框</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="275"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="280"/>
         <source>Automatically hide</source>
         <translation>自动隐藏</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="176"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="181"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="287"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="292"/>
         <source>Bounce when launching</source>
         <translation>启动时弹跳</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="188"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="193"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="299"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="304"/>
         <source>Show running indicators</source>
         <translation>显示运行指示标记</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="201"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="312"/>
         <source>Minimize animation</source>
         <translation>最小化动画</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="28"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="38"/>
         <source>First-time setup</source>
         <translation>首次设置</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="29"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="19"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="173"/>
+        <source>Background color</source>
+        <translation>背景颜色</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="39"/>
         <source>Set up window minimization animations.</source>
         <translation>设置窗口最小化动画。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="203"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="314"/>
         <source>Window animation selection is unavailable in this session</source>
         <translation>当前会话不支持选择窗口动画</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="206"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="317"/>
         <source>Animations are disabled in your configuration</source>
         <translation>配置中已关闭动画</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="219"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="330"/>
         <source>Genie</source>
         <translation>神奇效果</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="223"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="334"/>
         <source>Scale</source>
         <translation>缩放</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="249"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="254"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="360"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="365"/>
         <source>Show recent applications</source>
         <translation>显示最近启动的应用</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="261"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="266"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="372"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="377"/>
         <source>Pin applications from the menu</source>
         <translation>允许从菜单固定应用</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="288"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="292"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="399"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="403"/>
         <source>Show window thumbnails</source>
         <translation>显示窗口缩略图</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="297"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="408"/>
         <source>Preview size</source>
         <translation>预览尺寸</translation>
     </message>

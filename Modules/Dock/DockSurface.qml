@@ -755,10 +755,10 @@ PanelWindow {
                 y: root.horizontal ? parent.height - height : 0
                 width: root.horizontal ? parent.width : root.restingThickness
                 height: root.horizontal ? root.restingThickness : parent.height
-                radius: 20
-                color: BlurService.backgroundColor(Appearance.colors.colSurfaceContainer)
+                radius: Math.min(DockService.cornerRadius, width / 2, height / 2)
+                color: Appearance.applyAlpha(DockService.surfaceColor, DockService.effectiveBackgroundOpacity)
                 border.color: Appearance.applyAlpha(Appearance.colors.colOutlineVariant, 0.65)
-                border.width: 1
+                border.width: DockService.showBorder ? 1 : 0
                 MouseArea {
                     anchors.fill: parent
                     acceptedButtons: Qt.RightButton
@@ -795,7 +795,7 @@ PanelWindow {
                         x: root.horizontal ? modelData - width / 2 : glass.x + 10
                         y: root.horizontal ? glass.y + 10 : modelData - height / 2
                         radius: 1
-                        color: Appearance.applyAlpha(Appearance.colors.colOnSurface, 0.4)
+                        color: Appearance.applyAlpha(DockService.indicatorColor, 0.4)
                         Behavior on x {
                             NumberAnimation {
                                 duration: DockMotion.reflowDuration
@@ -1196,6 +1196,6 @@ PanelWindow {
                                        filePopup.blurBackgroundItems, root.folderButtonItems)
         additionalRegions: filePopup.blurRegions
         blurEnabled: root.shown
-        radius: 20
+        radius: glass.radius
     }
 }

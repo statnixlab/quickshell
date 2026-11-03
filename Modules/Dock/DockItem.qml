@@ -222,7 +222,7 @@ Item {
         radius: width / 2
         x: root.horizontal ? (root.width - width) / 2 : root.edge === "left" ? 8 - width : root.width - 8
         y: root.horizontal ? root.height - 10 : (root.height - height) / 2
-        color: Appearance.applyAlpha(Appearance.colors.colOnSurface, root.focused ? 1 : 0.8)
+        color: Appearance.applyAlpha(DockService.indicatorColor, root.focused ? 1 : 0.8)
     }
     MouseArea {
         id: pointer

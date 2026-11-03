@@ -75,6 +75,24 @@ Singleton {
     readonly property bool enabled: root._options.enabled
     readonly property string position: root._options.position
     readonly property int iconSize: root._options.iconSize
+    readonly property bool customBackground: root._options.customBackground
+    readonly property string backgroundColor: root._options.backgroundColor
+    readonly property bool followPanelOpacity: root._options.followPanelOpacity
+    readonly property real backgroundOpacity: root._options.backgroundOpacity
+    readonly property int cornerRadius: root._options.cornerRadius
+    readonly property bool showBorder: root._options.showBorder
+    readonly property real effectiveBackgroundOpacity: root.followPanelOpacity
+                                                       ? PersonalizationConfig.shellBackgroundOpacity :
+                                                         root.backgroundOpacity
+    // Use the actual surface tone. Overlay colors assume another Material
+    // surface beneath them and become too dark when used directly over glass.
+    readonly property color surfaceColor: root.customBackground ? root.backgroundColor :
+                                                                  Appearance.m3colors.m3surfaceContainer
+    readonly property color indicatorColor: root.customBackground ? (0.2126 * surfaceColor.r + 0.7152
+                                                                     * surfaceColor.g + 0.0722
+                                                                     * surfaceColor.b > 0.55 ? "#202020" :
+                                                                                               "#ffffff") :
+                                                                    Appearance.colors.colOnSurface
     readonly property bool magnification: root._options.magnification
     readonly property real magnificationScale: root._options.magnificationScale
     readonly property bool autoHide: root._options.autoHide
@@ -404,6 +422,27 @@ Singleton {
             entryKey = "";
             windowIds = [];
         }
+    }
+
+    function setBackgroundOpacity(value) {
+        const normalized = DockModel.option("backgroundOpacity", value);
+        if (!root.ready || normalized === undefined)
+            return false;
+        if (!root.followPanelOpacity && root.backgroundOpacity === normalized)
+            return true;
+        // Commit the opacity and its inheritance mode together so the file
+        // watcher cannot reload an intermediate appearance configuration.
+        root._options = Object.assign({}, root._options, {
+                                          backgroundOpacity: normalized,
+                                          followPanelOpacity: false
+                                      });
+        root.save();
+        return true;
+    }
+
+    function setFollowPanelOpacity(value) {
+        return value ? root.setOption("followPanelOpacity", true) : root.setBackgroundOpacity(
+                           root.effectiveBackgroundOpacity);
     }
 
     function setOption(name, value) {

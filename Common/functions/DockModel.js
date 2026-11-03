@@ -5,6 +5,12 @@ function defaults() {
         enabled: true,
         position: "bottom",
         iconSize: 48,
+        customBackground: false,
+        backgroundColor: "#f0eee2",
+        followPanelOpacity: true,
+        backgroundOpacity: 0.55,
+        cornerRadius: 20,
+        showBorder: true,
         magnification: true,
         magnificationScale: 1.5,
         autoHide: false,
@@ -32,7 +38,11 @@ function option(name, value) {
     if (!Object.prototype.hasOwnProperty.call(standard, name)) return undefined;
     if (typeof standard[name] === "boolean") return typeof value === "boolean" ? value : undefined;
     if (name === "position") return ["bottom", "left", "right"].indexOf(value) >= 0 ? value : undefined;
+    if (name === "backgroundColor") return typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value)
+            ? value.toLowerCase() : undefined;
     if (typeof value !== "number" || !isFinite(value)) return undefined;
+    if (name === "backgroundOpacity") return Math.max(0, Math.min(1, value));
+    if (name === "cornerRadius") return Math.round(Math.max(0, Math.min(60, value)));
     if (name === "previewSize") return Math.round(Math.max(96, Math.min(240, value)));
     if (name === "iconSize") return Math.round(Math.max(32, Math.min(80, value)));
     if (name === "magnificationScale") return Math.max(1, Math.min(2, value));

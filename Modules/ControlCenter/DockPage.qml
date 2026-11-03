@@ -1,4 +1,6 @@
 import QtQuick
+import QtQuick.Window
+import QtQuick.Dialogs
 import QtQuick.Layouts
 import qs.Common
 import qs.Services
@@ -10,6 +12,14 @@ StyledFlickable {
     clip: true
     contentWidth: width
     contentHeight: contentColumn.implicitHeight + Metrics.pageMargin * 2
+
+    ColorDialog {
+        id: backgroundColorDialog
+        parentWindow: root.Window.window
+        title: qsTr("Background color")
+        options: ColorDialog.DontUseNativeDialog
+        onAccepted: DockService.setOption("backgroundColor", selectedColor.toString())
+    }
 
     ColumnLayout {
         id: contentColumn
@@ -139,6 +149,107 @@ StyledFlickable {
                 value: DockService.magnificationScale * 100
                 onMoved: value => {
                     return DockService.setOption("magnificationScale", value / 100);
+                }
+            }
+        }
+
+        SettingsSection {
+            id: backgroundSection
+
+            Layout.fillWidth: true
+            flat: true
+            title: backgroundAnchor.title
+            iconName: "palette"
+
+            SettingsSearchAnchor {
+                id: backgroundAnchor
+                target: backgroundSection
+                declaration:
+                    '{"id":"general.dock.section.background","route":"general.dock","title":"Background","context":"DockPage","icon":"palette","aliases":["color","opacity","transparency","radius","corners","border"]}'
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Background color")
+                trailing: StyledButtonGroup {
+                    model: [
+                        {
+                            value: false,
+                            label: qsTr("Theme")
+                        },
+                        {
+                            value: true,
+                            label: qsTr("Custom")
+                        }
+                    ]
+                    currentValue: DockService.customBackground
+                    buttonMinWidth: 88
+                    onValueSelected: value => DockService.setOption("customBackground", value)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                visible: DockService.customBackground
+                title: qsTr("Custom color")
+                trailing: RowLayout {
+                    spacing: Metrics.spacingS
+                    Rectangle {
+                        Layout.preferredWidth: Metrics.iconM
+                        Layout.preferredHeight: Metrics.iconM
+                        radius: width / 2
+                        color: DockService.backgroundColor
+                        border.width: 1
+                        border.color: Appearance.colors.colOutlineVariant
+                    }
+                    ActionButton {
+                        text: DockService.backgroundColor.toUpperCase()
+                        Accessible.name: qsTr("Choose background color")
+                        onClicked: {
+                            backgroundColorDialog.selectedColor = DockService.backgroundColor;
+                            backgroundColorDialog.open();
+                        }
+                    }
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Follow panel opacity")
+                trailing: StyledSwitch {
+                    checked: DockService.followPanelOpacity
+                    Accessible.name: qsTr("Follow panel opacity")
+                    onToggled: DockService.setFollowPanelOpacity(checked)
+                }
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Background opacity")
+                from: 0
+                to: 100
+                stepSize: 1
+                suffix: "%"
+                value: DockService.effectiveBackgroundOpacity * 100
+                onMoved: value => DockService.setBackgroundOpacity(value / 100)
+            }
+
+            GeneralSliderSetting {
+                title: qsTr("Corner radius")
+                from: 0
+                to: 60
+                stepSize: 1
+                suffix: " px"
+                value: DockService.cornerRadius
+                onMoved: value => DockService.setOption("cornerRadius", value)
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Show border")
+                trailing: StyledSwitch {
+                    checked: DockService.showBorder
+                    Accessible.name: qsTr("Show border")
+                    onToggled: DockService.setOption("showBorder", checked)
                 }
             }
         }

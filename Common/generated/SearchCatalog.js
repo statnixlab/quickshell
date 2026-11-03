@@ -1320,6 +1320,27 @@ var catalog = {
     },
     {
       "aliases": [
+        "color",
+        "opacity",
+        "transparency",
+        "radius",
+        "corners",
+        "border"
+      ],
+      "anchor": true,
+      "context": "DockPage",
+      "icon": "palette",
+      "id": "general.dock.section.background",
+      "path": [
+        "general",
+        "dock"
+      ],
+      "route": "general.dock",
+      "source": "DockPage.qml",
+      "title": "Background"
+    },
+    {
+      "aliases": [
         "auto hide",
         "bounce",
         "recent",
@@ -2114,6 +2135,7 @@ function title(id) {
     case "general.displays.configuration.section.layout": return qsTranslate("DisplayConfigurationPage", "Layout");
     case "general.displays.configuration.section.output-settings": return qsTranslate("DisplayConfigurationPage", "Output settings");
     case "general.dock.section.appearance": return qsTranslate("DockPage", "Appearance");
+    case "general.dock.section.background": return qsTranslate("DockPage", "Background");
     case "general.dock.section.behavior": return qsTranslate("DockPage", "Behavior");
     case "general.dock.section.previews": return qsTranslate("DockPage", "Window previews");
     case "general.displays.gamma.section.color": return qsTranslate("GammaControlPage", "Color");
