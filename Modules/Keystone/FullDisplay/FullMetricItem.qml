@@ -13,6 +13,16 @@ Item {
     required property var screen
     property bool vertical: false
     property bool compact: false
+    readonly property bool inlineNetwork: !vertical && PersonalizationConfig.keystoneThickness < 36
+    readonly property bool compactContent: compact || (!vertical && PersonalizationConfig.keystoneThickness
+                                                       >= 36)
+    readonly property real valueFontSize: compactContent ? 11 : 12
+    readonly property real iconTextSpacing: 2
+    readonly property real speedRowWidth: metricIconSize + iconTextSpacing + speedMetrics.width
+    readonly property real metricIconSize: compactContent ? Math.min(Sizes.keystoneIconSize * 0.7, (
+                                                                         PersonalizationConfig.keystoneThickness
+                                                                         - 2) / 2) : Sizes.keystoneIconSize
+                                                            * 0.9
     readonly property string consumerId: "keystone-metric:" + String(root)
     readonly property bool networkSpeed: metric === "networkSpeed"
     readonly property bool cpuTemperature: metric === "cpuTemperature"
@@ -68,8 +78,12 @@ Item {
     Component.onDestruction: SystemMonitorService.clearConsumer(consumerId)
 
     // Reserve the same width between samples so changing rates do not move the clock.
-    implicitWidth: networkSpeed ? speedMetrics.width + 8 : valueMetrics.width + (compact ? 22 : 28)
-    implicitHeight: compact ? 17 : 34
+    implicitWidth: networkSpeed ? speedRowWidth * (inlineNetwork ? 2 : 1) + (inlineNetwork ? 8 : 0) + 3 :
+                                  valueMetrics.width + metricIconSize + iconTextSpacing + 3
+    implicitHeight: compact ? Math.max(17, metricIconSize) : vertical ? Math.max(34, networkSpeed
+                                                                                 ? networkLayout.implicitHeight :
+                                                                                   0) : PersonalizationConfig.keystoneThickness
+
     Accessible.role: Accessible.Button
     Accessible.name: label
     Accessible.description: tooltipText
@@ -90,57 +104,82 @@ Item {
     TextMetrics {
         id: speedMetrics
         font.family: Fonts.numeric
-        font.pixelSize: 11
-        text: "↓ 999.9 MiB/s"
+        font.pixelSize: root.valueFontSize
+        text: "999.9 MiB/s"
     }
 
     TextMetrics {
         id: valueMetrics
         font.family: Fonts.numeric
-        font.pixelSize: root.compact ? 11 : 12
+        font.pixelSize: root.valueFontSize
         text: root.compact || root.cpuTemperature ? "100 °F" : "100%"
     }
 
-    Column {
+    Grid {
+        id: networkLayout
         anchors.centerIn: parent
         visible: root.networkSpeed
-        spacing: 0
-        Text {
-            width: speedMetrics.width
-            horizontalAlignment: Text.AlignRight
-            text: "↓ " + root.downloadText
-            font.family: Fonts.numeric
-            font.pixelSize: 11
-            color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
+        columns: root.inlineNetwork ? 2 : 1
+        columnSpacing: root.inlineNetwork ? 8 : 0
+        rowSpacing: 0
+        Row {
+            spacing: root.iconTextSpacing
+            MaterialSymbol {
+                anchors.verticalCenter: parent.verticalCenter
+                text: "arrow_downward"
+                iconSize: root.metricIconSize
+                fill: 1
+                color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
+            }
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                width: speedMetrics.width
+                horizontalAlignment: Text.AlignLeft
+                text: root.downloadText
+                font.family: Fonts.numeric
+                font.pixelSize: root.valueFontSize
+                color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
+            }
         }
-        Text {
-            width: speedMetrics.width
-            horizontalAlignment: Text.AlignRight
-            text: "↑ " + root.uploadText
-            font.family: Fonts.numeric
-            font.pixelSize: 11
-            color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
+        Row {
+            spacing: root.iconTextSpacing
+            MaterialSymbol {
+                anchors.verticalCenter: parent.verticalCenter
+                text: "arrow_upward"
+                iconSize: root.metricIconSize
+                fill: 1
+                color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
+            }
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                width: speedMetrics.width
+                horizontalAlignment: Text.AlignLeft
+                text: root.uploadText
+                font.family: Fonts.numeric
+                font.pixelSize: root.valueFontSize
+                color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
+            }
         }
     }
 
     Row {
         anchors.centerIn: parent
         visible: !root.networkSpeed
-        spacing: 5
+        spacing: root.iconTextSpacing
         MaterialSymbol {
             anchors.verticalCenter: parent.verticalCenter
             text: root.cpuTemperature ? "thermostat" : "memory_alt"
-            iconSize: root.compact ? 14 : 18
+            iconSize: root.metricIconSize
             fill: 1
             color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
         }
         Text {
             anchors.verticalCenter: parent.verticalCenter
             width: valueMetrics.width
-            horizontalAlignment: Text.AlignRight
+            horizontalAlignment: Text.AlignLeft
             text: root.valueText
             font.family: Fonts.numeric
-            font.pixelSize: root.compact ? 11 : 12
+            font.pixelSize: root.valueFontSize
             color: pointer.containsMouse ? Appearance.colors.colPrimary : Appearance.colors.colOnSurface
         }
     }

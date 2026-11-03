@@ -12,6 +12,8 @@ TopBarPill {
     property bool showValues: true
     property bool vertical: false
     property string ownerId: "bar-sysmonitor"
+    property real controlSize: Sizes.barControlCircleSize
+    property real iconSize: 15
     readonly property bool isHovered: mouseArea.containsMouse
     readonly property var memory: SystemMonitorService.memory || ({})
     readonly property var cpu: SystemMonitorService.cpu || ({})
@@ -33,11 +35,11 @@ TopBarPill {
     readonly property string cpuDisplayText: Format.number(root.cpu.usagePercent, 0)
     // Match the ordinary circular controls in QuickSettings. Vertical bars
     // use the same circle geometry while intentionally hiding percentages.
-    readonly property real horizontalIndicatorSize: Sizes.barControlCircleSize
-    readonly property real verticalIndicatorSize: Sizes.barControlCircleSize
+    readonly property real horizontalIndicatorSize: root.controlSize
+    readonly property real verticalIndicatorSize: root.controlSize
     readonly property real indicatorSize: root.vertical ? root.verticalIndicatorSize :
                                                           root.horizontalIndicatorSize
-    readonly property real indicatorIconSize: 15
+    readonly property real indicatorIconSize: root.iconSize
     readonly property real indicatorSpacing: root.vertical ? Appearance.spacing.small :
                                                              Appearance.spacing.xSmall
 

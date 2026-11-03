@@ -7,9 +7,10 @@ import qs.Modules.Keystone.ClockContent
 Item {
     id: root
 
-    readonly property real referenceWidth: 220
-    readonly property real referenceHeight: 42
-    readonly property real previewScale: Math.max(0.01, Math.min(width / referenceWidth, height / referenceHeight))
+    readonly property real referenceWidth: PersonalizationConfig.keystoneCompactLength
+    readonly property real referenceHeight: PersonalizationConfig.keystoneThickness
+    readonly property real previewScale: Math.max(0.01, Math.min(width / referenceWidth, height
+                                                                 / referenceHeight))
     property string edge: "top"
     readonly property int h0: clockContent.h0
     readonly property int h1: clockContent.h1
@@ -24,7 +25,9 @@ Item {
         id: shadowSource
 
         anchors.fill: parent
-        radius: height / 2
+        radius: Math.min(width / 2, height / 2, PersonalizationConfig.keystoneModuleRadius
+                         * root.previewScale)
+
         color: BlurService.backgroundColor(Appearance.colors.colLayer0)
         visible: false
     }
@@ -44,7 +47,7 @@ Item {
         id: surface
 
         anchors.fill: parent
-        radius: height / 2
+        radius: shadowSource.radius
         color: BlurService.backgroundColor(Appearance.colors.colLayer0)
         clip: true
 
@@ -62,9 +65,6 @@ Item {
                 anchors.fill: parent
                 edge: root.edge
             }
-
         }
-
     }
-
 }

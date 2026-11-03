@@ -165,7 +165,8 @@ Singleton {
         if (feature === "effects")
             return {
                 xray: PersonalizationConfig.shellBlurXray,
-                barRadius: PersonalizationConfig.barModuleRadius
+                barRadius: PersonalizationConfig.barModuleRadius,
+                keystoneRadius: PersonalizationConfig.keystoneModuleRadius
             };
         if (feature === "cursor")
             return {

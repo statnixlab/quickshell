@@ -11,13 +11,16 @@ TopBarPill {
     property bool vertical: false
     property real maximumTitleWidth: 180
     property real availableWidth: Infinity
+    property real controlSize: Sizes.barControlCircleSize
+    property real iconSize: Math.min(22, controlSize)
+    readonly property real titleThickness: Math.min(28, root.pillThickness)
     readonly property var player: MediaManager.active
     readonly property string title: player ? player.trackTitle || player.identity || "" : ""
     readonly property bool spectrumActive: visible && player !== null && player.isPlaying
     readonly property string spectrumToken: "bar-media-" + String(root)
     readonly property real preferredTitleWidth: Math.min(Math.max(0, maximumTitleWidth),
                                                          titleText.implicitWidth)
-    readonly property real fullControlsWidth: 2 * pillPadding + 28 + 3 * Sizes.barControlCircleSize + 12
+    readonly property real fullControlsWidth: 2 * pillPadding + 28 + 3 * root.controlSize + 12
     readonly property real preferredHorizontalWidth: fullControlsWidth + (title.length > 0 ? 4
                                                                                              + preferredTitleWidth :
                                                                                              0)
@@ -25,7 +28,7 @@ TopBarPill {
                                                                                                > 0 ? 4 + Math.min(
                                                                                                          64, preferredTitleWidth) :
                                                                                                      0)
-    readonly property real controlsWidth: compactControls ? 2 * pillPadding + Sizes.barControlCircleSize :
+    readonly property real controlsWidth: compactControls ? 2 * pillPadding + root.controlSize :
                                                             fullControlsWidth
 
     readonly property real horizontalTitleWidth: Math.max(0, Math.min(preferredTitleWidth, availableWidth
@@ -58,7 +61,7 @@ TopBarPill {
             visible: !root.compactControls
             Layout.alignment: Qt.AlignCenter
             Layout.preferredWidth: 28
-            Layout.preferredHeight: Sizes.barControlCircleSize
+            Layout.preferredHeight: root.controlSize
             spacing: 2
 
             Repeater {
@@ -69,12 +72,12 @@ TopBarPill {
 
                     anchors.verticalCenter: parent.verticalCenter
                     width: 3
-                    height: 2 + (Sizes.barControlCircleSize - 6) * (root.spectrumActive && AudioSpectrum.available
-                                                                    ? Math.max(0, Math.min(1, Number(
-                                                                                               AudioSpectrum.values[Math.floor(
-                                                                                                                        index * AudioSpectrum.bars
-                                                                                                                        / 6)]) || 0)) :
-                                                                      0)
+                    height: 2 + (root.controlSize - 6) * (root.spectrumActive && AudioSpectrum.available
+                                                          ? Math.max(0, Math.min(1, Number(
+                                                                                     AudioSpectrum.values[Math.floor(
+                                                                                                              index * AudioSpectrum.bars
+                                                                                                              / 6)]) || 0)) :
+                                                            0)
                     radius: 1.5
                     color: Appearance.colors.colPrimary
 
@@ -120,8 +123,8 @@ TopBarPill {
 
             readonly property real titleExtent: root.vertical ? root.preferredTitleWidth :
                                                                 root.horizontalTitleWidth
-            implicitWidth: root.vertical ? 28 : titleExtent
-            implicitHeight: root.vertical ? titleExtent : 28
+            implicitWidth: root.vertical ? root.titleThickness : titleExtent
+            implicitHeight: root.vertical ? titleExtent : root.titleThickness
             Layout.alignment: Qt.AlignCenter
 
             Item {
@@ -129,7 +132,7 @@ TopBarPill {
 
                 anchors.centerIn: parent
                 width: titleSlot.titleExtent
-                height: 28
+                height: root.titleThickness
                 rotation: root.vertical ? (PersonalizationConfig.barPosition === "left" ? -90 : 90) : 0
                 clip: true
                 readonly property bool overflowing: titleText.implicitWidth > width
@@ -217,8 +220,8 @@ TopBarPill {
 
     component MediaButton: IconButton {
         Layout.alignment: Qt.AlignCenter
-        controlSize: Sizes.barControlCircleSize
-        iconSize: Math.min(22, Sizes.barControlCircleSize)
+        controlSize: root.controlSize
+        iconSize: root.iconSize
         opacity: enabled ? 1 : 0.35
     }
 }

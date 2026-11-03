@@ -1421,9 +1421,13 @@ var catalog = {
     },
     {
       "aliases": [
+        "Layout height",
+        "Layout width",
         "Bar height",
-        "Pill height",
+        "Side component height",
         "Bar width",
+        "Side component width",
+        "Pill height",
         "Pill width"
       ],
       "anchor": true,
@@ -1622,7 +1626,12 @@ var catalog = {
       "title": "Keystone style"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "Height",
+        "Width",
+        "Corner radius",
+        "Icon size"
+      ],
       "anchor": true,
       "context": "KeystonePage",
       "icon": "space_bar",

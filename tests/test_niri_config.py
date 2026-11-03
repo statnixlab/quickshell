@@ -369,6 +369,28 @@ class ConfigurationContracts(unittest.TestCase):
         self.assertEqual(subprocess.run([script, 'write'] + args, capture_output=True).returncode, 0)
         self.assertEqual(before, self.main.read_bytes())
 
+        # Independent corner settings must reach Niri's blur geometry, and
+        # invalid values must leave both managed and user configuration intact.
+        self.run_config('update', 'effects', keystoneRadius=8, barRadius=12)
+        radii = {}
+        for rule in config.parse(self.fragment('effects').read_text()).nodes:
+            matches = [node for node in rule.nodes if node.name == 'match']
+            corners = [node for node in rule.nodes if node.name == 'geometry-corner-radius']
+            if matches and corners:
+                radii[matches[0].props['namespace']] = corners[0].args
+        self.assertEqual(radii['^clavis-keystone-backdrop-pill$'], [8])
+        self.assertEqual(radii['^clavis-keystone-backdrop-top$'], [0, 0, 8, 8])
+        self.assertEqual(radii['^clavis-keystone-backdrop-bottom$'], [8, 8, 0, 0])
+        self.assertEqual(radii['^clavis-keystone-backdrop-left$'], [0, 8, 8, 0])
+        self.assertEqual(radii['^clavis-keystone-backdrop-right$'], [8, 0, 0, 8])
+        self.assertEqual(radii['^clavis-bar-backdrop$'], [12])
+        saved = self.fragment('effects').read_bytes()
+        for invalid in (-1, 37, True, 3.5, '8'):
+            with self.subTest(keystoneRadius=invalid), self.assertRaises(ValueError):
+                self.run_config('update', 'effects', keystoneRadius=invalid)
+            self.assertEqual(self.fragment('effects').read_bytes(), saved)
+        self.assertEqual(self.main.read_bytes(), before)
+
     def test_read_does_not_initialize(self):
         before = self.main.read_bytes()
         for feature in config.FRAGMENTS:

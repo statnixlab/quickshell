@@ -198,8 +198,11 @@ Item {
         }
     }
 
-    implicitWidth: Math.max(32, contentLayout.implicitWidth + 12)
-    implicitHeight: Math.max(32, contentLayout.implicitHeight + 12)
+    implicitWidth: root.vertical ? PersonalizationConfig.keystoneThickness : Math.max(
+                                       Sizes.keystoneControlSize, contentLayout.implicitWidth + 12)
+    implicitHeight: root.vertical ? Math.max(Sizes.keystoneControlSize, contentLayout.implicitHeight + 12) :
+                                    PersonalizationConfig.keystoneThickness
+
     Accessible.role: itemId === "battery" || itemId === "brightness" || itemId === "weather"
                      ? Accessible.StaticText : Accessible.Button
 
@@ -226,7 +229,7 @@ Item {
             id: statusIcon
             Layout.alignment: Qt.AlignCenter
             text: root.iconName
-            iconSize: 20
+            iconSize: Sizes.keystoneIconSize
             fill: 1
             color: root.itemId === "battery" && root.batteryAvailable && PowerService.discharging
                    && PowerService.percentage <= 0.15 ? Appearance.colors.colError : pointer.containsMouse

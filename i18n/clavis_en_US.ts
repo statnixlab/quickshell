@@ -4796,6 +4796,22 @@ Scroll to adjust</translation>
         <source>Show numeric values</source>
         <translation>Show numeric values</translation>
     </message>
+    <message>
+        <source>Side component height</source>
+        <translation>Side component height</translation>
+    </message>
+    <message>
+        <source>Side component width</source>
+        <translation>Side component width</translation>
+    </message>
+    <message>
+        <source>Layout height</source>
+        <translation>Layout height</translation>
+    </message>
+    <message>
+        <source>Layout width</source>
+        <translation>Layout width</translation>
+    </message>
 </context>
 <context>
     <name>GeneralEffectsPage</name>
@@ -6115,6 +6131,22 @@ Scroll to adjust</translation>
     <message>
         <source>Media controls</source>
         <translation>Media controls</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>Height</translation>
+    </message>
+    <message>
+        <source>Width</source>
+        <translation>Width</translation>
+    </message>
+    <message>
+        <source>Corner radius</source>
+        <translation>Corner radius</translation>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation>Icon size</translation>
     </message>
 </context>
 <context>

@@ -16,6 +16,7 @@ TopBarPill {
     property string overflowNavigationState: ""
     readonly property bool overviewInputPassthrough: ThemeService.isNiriSession && Niri.inOverview
     property bool vertical: false
+    property real iconSize: 20
     property string edge: "top"
     property var barVisualItem: null
     property var activeMenu: null
@@ -261,8 +262,8 @@ TopBarPill {
 
             visible: TrayService.visibleItems.length > 0
             toggled: root.trayOverflowOpen || root.dragOverOverflowButton
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: root.iconSize + 4
+            implicitHeight: root.iconSize + 4
             buttonRadius: Appearance.rounding.full
             containerColor: root.dragOverOverflowButton ? Appearance.colors.colPrimaryContainer :
                                                           root.trayOverflowOpen
@@ -304,7 +305,7 @@ TopBarPill {
             contentItem: MaterialSymbol {
                 anchors.centerIn: parent
                 text: "expand_more"
-                iconSize: 19
+                iconSize: root.iconSize - 1
                 color: root.trayOverflowOpen || root.dragOverOverflowButton
                        || trayOverflowButton.pointerHovered ? Appearance.colors.colOnSecondaryContainer :
                                                               Appearance.colors.colOnLayer0
@@ -332,6 +333,8 @@ TopBarPill {
             model: root.pinnedItems
 
             delegate: TrayItem {
+                implicitWidth: root.iconSize
+                implicitHeight: root.iconSize
                 screen: root.screen
                 edge: root.edge
                 barVisualItem: root.barVisualItem

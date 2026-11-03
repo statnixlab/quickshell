@@ -91,14 +91,13 @@ Item {
         compact: (root.vertical ? root.screen.height : root.screen.width) < 1000
         componentCount: PersonalizationConfig.barLeadingComponents.length
 
-        anchors {
-            left: root.vertical ? undefined : parent.left
-            top: root.vertical ? parent.top : undefined
-            leftMargin: root.vertical ? 0 : PersonalizationConfig.barInsetPadding
-            topMargin: root.vertical ? PersonalizationConfig.barInsetPadding : 0
-            verticalCenter: root.vertical ? undefined : parent.verticalCenter
-            horizontalCenter: root.vertical ? parent.horizontalCenter : undefined
-        }
+        // Match Keystone's visible-edge origin. Explicit positions also avoid
+        // briefly stretching the layout while switching opposing anchors.
+        x: root.vertical ? (root.axis.isRight ? root.width - width : 0) :
+                           PersonalizationConfig.barInsetPadding
+
+        y: root.vertical ? PersonalizationConfig.barInsetPadding : (root.axis.isBottom ? root.height - height :
+                                                                                         0)
     }
 
     BarSection {
@@ -108,14 +107,11 @@ Item {
         compact: (root.vertical ? root.screen.height : root.screen.width) < 1000
         componentCount: PersonalizationConfig.barTrailingComponents.length
 
-        anchors {
-            right: root.vertical ? undefined : parent.right
-            bottom: root.vertical ? parent.bottom : undefined
-            rightMargin: root.vertical ? 0 : PersonalizationConfig.barInsetPadding
-            bottomMargin: root.vertical ? PersonalizationConfig.barInsetPadding : 0
-            verticalCenter: root.vertical ? undefined : parent.verticalCenter
-            horizontalCenter: root.vertical ? parent.horizontalCenter : undefined
-        }
+        x: root.vertical ? (root.axis.isRight ? root.width - width : 0) : root.width - width
+                           - PersonalizationConfig.barInsetPadding
+        y: root.vertical ? root.height - height - PersonalizationConfig.barInsetPadding : (root.axis.isBottom
+                                                                                           ? root.height
+                                                                                             - height : 0)
     }
 
     Instantiator {

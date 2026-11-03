@@ -4795,6 +4795,22 @@ Scroll to adjust</source>
         <source>Show numeric values</source>
         <translation>显示数值</translation>
     </message>
+    <message>
+        <source>Side component height</source>
+        <translation>两侧组件高度</translation>
+    </message>
+    <message>
+        <source>Side component width</source>
+        <translation>两侧组件宽度</translation>
+    </message>
+    <message>
+        <source>Layout height</source>
+        <translation>布局高度</translation>
+    </message>
+    <message>
+        <source>Layout width</source>
+        <translation>布局宽度</translation>
+    </message>
 </context>
 <context>
     <name>GeneralEffectsPage</name>
@@ -6114,6 +6130,22 @@ Scroll to adjust</source>
     <message>
         <source>Media controls</source>
         <translation>媒体控制</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>高度</translation>
+    </message>
+    <message>
+        <source>Width</source>
+        <translation>宽度</translation>
+    </message>
+    <message>
+        <source>Corner radius</source>
+        <translation>圆角半径</translation>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation>图标大小</translation>
     </message>
 </context>
 <context>

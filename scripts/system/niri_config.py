@@ -294,12 +294,15 @@ def initial(feature, request):
         # The compact island gets its blur from a separate surface with a
         # geometry clip, so its edge can be antialiased at physical resolution.
         smooth_backdrops = ''
+        keystone_radius = request.get('keystoneRadius', 36)
+        if isinstance(keystone_radius, bool) or not isinstance(keystone_radius, int) or not 0 <= keystone_radius <= 36:
+            raise ValueError('Keystone corner radius must be between 0 and 36')
         for style, radii in {
-            'pill': [10000],
-            'top': [0, 0, 10000, 10000],
-            'bottom': [10000, 10000, 0, 0],
-            'left': [0, 10000, 10000, 0],
-            'right': [10000, 0, 0, 10000],
+            'pill': [keystone_radius],
+            'top': [0, 0, keystone_radius, keystone_radius],
+            'bottom': [keystone_radius, keystone_radius, 0, 0],
+            'left': [0, keystone_radius, keystone_radius, 0],
+            'right': [keystone_radius, 0, 0, keystone_radius],
         }.items():
             smooth_backdrops += render(kdl.Node('layer-rule', nodes=[
                 kdl.Node('match', props={'namespace': '^clavis-keystone-backdrop-' + style + '$'}),

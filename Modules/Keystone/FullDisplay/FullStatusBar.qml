@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
+import qs.Common
 import qs.Services
 import qs.Modules.Keystone.ClockContent
 import qs.Modules.Bar.Workspaces
@@ -133,7 +134,7 @@ Item {
                                                                                                 === "memoryUsage"
                                                                                                 && next
                                                                                                 === "cpuTemperature");
-                if (!root.vertical && metricPair) {
+                if (!root.vertical && metricPair && PersonalizationConfig.keystoneThickness >= 36) {
                     result.push("cpuMemory");
                     ++index;
                 } else {
@@ -181,6 +182,9 @@ Item {
                     Component {
                         id: workspaces
                         Workspaces {
+                            contentThickness: PersonalizationConfig.keystoneThickness
+                            dotSize: Sizes.keystoneIconSize * 0.6
+                            activeLength: Sizes.keystoneIconSize * 1.6
                             screenName: root.screen ? root.screen.name : ""
                             vertical: root.vertical
                             backgroundVisible: false
@@ -190,6 +194,8 @@ Item {
                     Component {
                         id: tray
                         Tray {
+                            contentThickness: PersonalizationConfig.keystoneThickness
+                            iconSize: Sizes.keystoneIconSize
                             screen: root.screen
                             edge: root.edge
                             vertical: root.vertical
@@ -201,6 +207,9 @@ Item {
                     Component {
                         id: media
                         MediaBar {
+                            contentThickness: PersonalizationConfig.keystoneThickness
+                            controlSize: Sizes.keystoneControlSize
+                            iconSize: Sizes.keystoneIconSize
                             vertical: root.vertical
                             maximumTitleWidth: root.vertical ? 120 : 180
                             availableWidth: root.vertical ? Infinity : lane.mediaAvailableWidth
@@ -211,6 +220,9 @@ Item {
                     Component {
                         id: systemMonitor
                         SysMonitor {
+                            contentThickness: PersonalizationConfig.keystoneThickness
+                            controlSize: Sizes.keystoneControlSize
+                            iconSize: Sizes.keystoneIconSize * 0.75
                             showValues: PersonalizationConfig.keystoneFullShowMonitorValues
                             vertical: root.vertical
                             ownerId: "keystone-long:" + String(root.screen ? root.screen.name : "default") + (
