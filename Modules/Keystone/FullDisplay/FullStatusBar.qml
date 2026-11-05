@@ -20,6 +20,9 @@ Item {
     readonly property bool clockHovered: clockHover.hovered
     readonly property bool hovered: mainHover.hovered
     readonly property alias clockItem: clock
+    readonly property real clockLength: root.vertical ? PersonalizationConfig.keystoneCompactLength : Math.min(
+                                                            PersonalizationConfig.keystoneCompactLength,
+                                                            clock.preferredHorizontalWidth)
     readonly property var bar: BarLayoutService.barFor(root.screen, root.edge)
     readonly property real availableLength: !root.vertical && root.bar ? Math.max(
                                                                              PersonalizationConfig.keystoneCompactLength,
@@ -33,11 +36,10 @@ Item {
                                                                                           root.screen.width)
     // Reserve equal space on both sides so changing module sizes never
     // pushes the clock away from the main island's geometric centre.
-    readonly property real preferredLength: PersonalizationConfig.keystoneCompactLength + 2 * (Math.max(
-                                                                                                   leadingLane.preferredExtent,
-                                                                                                   trailingLane.preferredExtent)
-                                                                                               + PersonalizationConfig.keystoneInsetPadding
-                                                                                               + 12)
+    readonly property real preferredLength: root.clockLength + 2 * (Math.max(leadingLane.preferredExtent,
+                                                                             trailingLane.preferredExtent)
+                                                                    + PersonalizationConfig.keystoneInsetPadding
+                                                                    + 12)
     readonly property real contentLength: root.vertical ? preferredLength : Math.min(preferredLength,
                                                                                      availableLength)
 
@@ -54,8 +56,7 @@ Item {
     ClockContent {
         id: clock
         anchors.centerIn: parent
-        width: root.vertical ? PersonalizationConfig.keystoneThickness :
-                               PersonalizationConfig.keystoneCompactLength
+        width: root.vertical ? PersonalizationConfig.keystoneThickness : root.clockLength
         height: root.vertical ? PersonalizationConfig.keystoneCompactLength :
                                 PersonalizationConfig.keystoneThickness
         edge: root.edge
@@ -146,7 +147,7 @@ Item {
 
         GridLayout {
             id: itemsLayout
-            x: root.vertical ? (lane.width - width) / 2 : lane.trailing ? Math.max(0, lane.width - width) : 0
+            x: root.vertical ? (lane.width - width) / 2 : lane.trailing ? 0 : Math.max(0, lane.width - width)
             y: root.vertical ? (lane.trailing ? Math.max(0, lane.height - height) : 0) : (lane.height - height)
                                / 2
             columns: root.vertical ? 1 : Math.max(1, lane.displayItems.length)

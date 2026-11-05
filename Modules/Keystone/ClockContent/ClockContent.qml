@@ -25,6 +25,13 @@ Item {
                                                                                          }) : ({})
     readonly property real horizontalFontSize: root.boundedNumber(
                                                    PersonalizationConfig.horizontalClockFontSize, 22, 16, 28)
+    // Measure without the assigned width to avoid a layout feedback loop.
+    readonly property real preferredHorizontalWidth: horizontalClockLayout.width * Math.min(1, Math.max(1,
+                                                                                                        root.height
+                                                                                                        - 2) / Math.max(
+                                                                                                1, horizontalClockLayout.height
+                                                                                                + 2 * root.horizontalOverflow))
+                                                     + 20
     // Keep the user's per-digit offsets and rotations inside a smaller island.
     readonly property real horizontalOverflow: {
         let overflow = 0;
@@ -199,14 +206,14 @@ Item {
                     width: 4
                     height: 4
                     radius: 2
-                    color: Appearance.colors.colOutlineVariant
+                    color: Appearance.colors.colPrimary
                 }
 
                 Rectangle {
                     width: 4
                     height: 4
                     radius: 2
-                    color: Appearance.colors.colOutlineVariant
+                    color: Appearance.colors.colPrimary
                 }
             }
 
