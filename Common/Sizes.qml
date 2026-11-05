@@ -8,6 +8,10 @@ Singleton {
     readonly property real barPillThickness: PersonalizationConfig.barPillThickness
     readonly property real barPillHorizontalPadding: 6
     readonly property real barControlCircleSize: Math.min(28, barPillThickness - 4)
+    readonly property real keystoneIconSize: Math.min(PersonalizationConfig.keystoneIconSize,
+                                                      PersonalizationConfig.keystoneThickness - 4)
+    readonly property real keystoneControlSize: Math.min(keystoneIconSize + 8,
+                                                         PersonalizationConfig.keystoneThickness - 2)
     readonly property real barWeatherVerticalPillHeight: 56
     readonly property real barOuterEdgeMargin: 8
     readonly property real barShadowBuffer: 36

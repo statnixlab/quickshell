@@ -173,7 +173,7 @@ Item {
                     id: dimensionsSearchAnchor
                     target: dimensionsSection
                     declaration:
-                        '{"id":"keystone.section.size-spacing","route":"keystone","title":"Size and spacing","context":"KeystonePage","icon":"space_bar","aliases":[]}'
+                        '{"id":"keystone.section.size-spacing","route":"keystone","title":"Size and spacing","context":"KeystonePage","icon":"space_bar","aliases":["Height","Width","Corner radius","Icon size"]}'
                 }
 
                 GeneralSliderSetting {
@@ -200,12 +200,34 @@ Item {
                 }
 
                 GeneralSliderSetting {
-                    title: qsTr("Size")
+                    title: PersonalizationConfig.keystonePosition === "top"
+                           || PersonalizationConfig.keystonePosition === "bottom" ? qsTr("Height") : qsTr(
+                                                                                        "Width")
                     value: PersonalizationConfig.keystoneThickness
                     from: PersonalizationConfig.keystoneDimensionLimits.thickness[1]
                     to: PersonalizationConfig.keystoneDimensionLimits.thickness[2]
                     suffix: qsTr(" px")
                     onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "thickness", value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Corner radius")
+                    value: PersonalizationConfig.keystoneModuleRadius
+                    from: PersonalizationConfig.keystoneDimensionLimits.moduleRadius[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.moduleRadius[2]
+                    suffix: qsTr(" px")
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "moduleRadius",
+                                                                              value)
+                }
+
+                GeneralSliderSetting {
+                    title: qsTr("Icon size")
+                    value: PersonalizationConfig.keystoneIconSize
+                    from: PersonalizationConfig.keystoneDimensionLimits.iconSize[1]
+                    to: PersonalizationConfig.keystoneDimensionLimits.iconSize[2]
+                    suffix: qsTr(" px")
+                    enabled: PersonalizationConfig.keystoneFullDisplay
+                    onMoved: value => PersonalizationConfig.setPanelDimension("keystone", "iconSize", value)
                 }
 
                 GeneralSliderSetting {

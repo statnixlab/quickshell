@@ -13,10 +13,16 @@ Item {
     property point surfaceOffset: Qt.point(0, 0)
     property string popupEdge: axis.edge
     property int itemRevision: 0
+    readonly property var keystone: BarLayoutService.keystoneFor(root.screen, root.popupEdge)
+    readonly property real horizontalInset: Math.max(0, (root.screen.width - root.width) / 2)
+                                            + PersonalizationConfig.barInsetPadding
+    readonly property real minimumLeadingWidth: sectionMinimumWidth(true)
+    readonly property real minimumTrailingWidth: sectionMinimumWidth(false)
     readonly property real minimumLength: (vertical ? leadingSection.implicitHeight
-                                                      + trailingSection.implicitHeight :
-                                                      leadingSection.implicitWidth
-                                                      + trailingSection.implicitWidth) + 2
+                                                      + trailingSection.implicitHeight : root.keystone
+                                                      ? minimumLeadingWidth + minimumTrailingWidth :
+                                                        leadingSection.implicitWidth
+                                                        + trailingSection.implicitWidth) + 2
                                           * PersonalizationConfig.barInsetPadding + 8
     readonly property Item leadingInputRegionItem: leadingSection
     readonly property Item trailingInputRegionItem: trailingSection
@@ -29,6 +35,36 @@ Item {
                 items.push(loader.item);
         }
         return items;
+    }
+
+    Component.onCompleted: BarLayoutService.registerBar(root)
+    Component.onDestruction: BarLayoutService.unregisterBar(root)
+
+    // Use the icon-only window width for the independent minimum. Keystone
+    // can then fit its media title without a cycle through the assigned width.
+    function sectionMinimumWidth(leading) {
+        const revision = root.itemRevision;
+        let extent = 0;
+        let count = 0;
+        for (let index = 0; index < componentInstantiator.count; ++index) {
+            const loader = componentInstantiator.objectAt(index);
+            if (!loader || !loader.active || !loader.item || (loader.leadingIndex >= 0) !== leading)
+                continue;
+            extent += loader.modelData === "activeWindow" ? loader.item.minimumHorizontalWidth :
+                                                            loader.item.implicitWidth;
+            ++count;
+        }
+        const section = leading ? leadingSection : trailingSection;
+        return extent + Math.max(0, count - 1) * section.columnSpacing;
+    }
+
+    function activeWindowAvailableWidth(leading, minimumWidth) {
+        if (root.vertical || !root.keystone)
+            return Infinity;
+        const available = (root.screen.width - root.keystone.contentLength) / 2 - root.horizontalInset
+              - BarLayoutService.clearance;
+        const fixedWidth = (leading ? root.minimumLeadingWidth : root.minimumTrailingWidth) - minimumWidth;
+        return Math.max(minimumWidth, available - fixedWidth);
     }
 
     Instantiator {
@@ -55,14 +91,13 @@ Item {
         compact: (root.vertical ? root.screen.height : root.screen.width) < 1000
         componentCount: PersonalizationConfig.barLeadingComponents.length
 
-        anchors {
-            left: root.vertical ? undefined : parent.left
-            top: root.vertical ? parent.top : undefined
-            leftMargin: root.vertical ? 0 : PersonalizationConfig.barInsetPadding
-            topMargin: root.vertical ? PersonalizationConfig.barInsetPadding : 0
-            verticalCenter: root.vertical ? undefined : parent.verticalCenter
-            horizontalCenter: root.vertical ? parent.horizontalCenter : undefined
-        }
+        // Match Keystone's visible-edge origin. Explicit positions also avoid
+        // briefly stretching the layout while switching opposing anchors.
+        x: root.vertical ? (root.axis.isRight ? root.width - width : 0) :
+                           PersonalizationConfig.barInsetPadding
+
+        y: root.vertical ? PersonalizationConfig.barInsetPadding : (root.axis.isBottom ? root.height - height :
+                                                                                         0)
     }
 
     BarSection {
@@ -72,14 +107,11 @@ Item {
         compact: (root.vertical ? root.screen.height : root.screen.width) < 1000
         componentCount: PersonalizationConfig.barTrailingComponents.length
 
-        anchors {
-            right: root.vertical ? undefined : parent.right
-            bottom: root.vertical ? parent.bottom : undefined
-            rightMargin: root.vertical ? 0 : PersonalizationConfig.barInsetPadding
-            bottomMargin: root.vertical ? PersonalizationConfig.barInsetPadding : 0
-            verticalCenter: root.vertical ? undefined : parent.verticalCenter
-            horizontalCenter: root.vertical ? parent.horizontalCenter : undefined
-        }
+        x: root.vertical ? (root.axis.isRight ? root.width - width : 0) : root.width - width
+                           - PersonalizationConfig.barInsetPadding
+        y: root.vertical ? root.height - height - PersonalizationConfig.barInsetPadding : (root.axis.isBottom
+                                                                                           ? root.height
+                                                                                             - height : 0)
     }
 
     Instantiator {
@@ -103,6 +135,10 @@ Item {
             axis: root.axis
             barVisualItem: root
             vertical: root.vertical
+            activeWindowAvailableWidth: item && modelData === "activeWindow" ? root.activeWindowAvailableWidth(
+                                                                                   leadingIndex >= 0,
+                                                                                   item.minimumHorizontalWidth) :
+                                                                               Infinity
             active: zoneIndex >= 0
             visible: active
             parent: leadingIndex >= 0 ? leadingSection : trailingSection

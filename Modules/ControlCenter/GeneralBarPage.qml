@@ -107,12 +107,12 @@ StyledFlickable {
                 id: sizeAnchor
                 target: sizeSection
                 declaration:
-                    '{"id":"general.bar.section.size","route":"general.bar","title":"Size","context":"GeneralBarPage","icon":"height","aliases":["Bar height","Pill height","Bar width","Pill width"]}'
+                    '{"id":"general.bar.section.size","route":"general.bar","title":"Size","context":"GeneralBarPage","icon":"height","aliases":["Layout height","Layout width","Bar height","Side component height","Bar width","Side component width","Pill height","Pill width"]}'
             }
 
             SettingsRow {
                 Layout.fillWidth: true
-                title: root.horizontalBar ? qsTr("Bar height") : qsTr("Bar width")
+                title: root.horizontalBar ? qsTr("Layout height") : qsTr("Layout width")
 
                 trailing: Text {
                     text: qsTr("%1 px").arg(PersonalizationConfig.barThickness)
@@ -127,7 +127,7 @@ StyledFlickable {
                 Layout.leftMargin: Metrics.spacingS
                 Layout.rightMargin: Metrics.spacingS
                 enabled: PersonalizationConfig.ready
-                accessibleName: root.horizontalBar ? qsTr("Bar height") : qsTr("Bar width")
+                accessibleName: root.horizontalBar ? qsTr("Layout height") : qsTr("Layout width")
                 from: 28
                 to: 64
                 stepSize: 1
@@ -140,7 +140,7 @@ StyledFlickable {
 
             SettingsRow {
                 Layout.fillWidth: true
-                title: root.horizontalBar ? qsTr("Pill height") : qsTr("Pill width")
+                title: root.horizontalBar ? qsTr("Side component height") : qsTr("Side component width")
 
                 trailing: Text {
                     text: qsTr("%1 px").arg(PersonalizationConfig.barPillThickness)
@@ -155,7 +155,8 @@ StyledFlickable {
                 Layout.leftMargin: Metrics.spacingS
                 Layout.rightMargin: Metrics.spacingS
                 enabled: PersonalizationConfig.ready
-                accessibleName: root.horizontalBar ? qsTr("Pill height") : qsTr("Pill width")
+                accessibleName: root.horizontalBar ? qsTr("Side component height") : qsTr(
+                                                         "Side component width")
                 from: 24
                 to: PersonalizationConfig.barThickness
                 stepSize: 1

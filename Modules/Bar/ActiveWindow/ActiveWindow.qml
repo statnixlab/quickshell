@@ -11,6 +11,17 @@ TopBarPill {
 
     property bool vertical: false
     property real maximumTitleWidth: 250
+    property real availableWidth: Infinity
+    readonly property bool showApplicationIcon: vertical || isDesktop || activeIcon !== "" || activeAppName
+                                                !== ""
+    readonly property real minimumHorizontalWidth: 2 * pillPadding + (showApplicationIcon ? 18 : 0)
+    readonly property real horizontalTitleWidth: Math.max(0, Math.min(maximumTitleWidth,
+                                                                      horizontalTitle.implicitWidth,
+                                                                      availableWidth - minimumHorizontalWidth
+                                                                      - (showApplicationIcon ? 6 : 0)))
+    // Width changes must respect the shared space immediately, including when
+    // the neighbouring media title grows during a track change.
+    animateResize: root.vertical || !Number.isFinite(root.availableWidth)
     readonly property string edge: PersonalizationConfig.barPosition
     readonly property var activeWindow: {
         const focused = Niri.focusedWindow;
@@ -100,7 +111,7 @@ TopBarPill {
             Layout.preferredWidth: 18
             Layout.preferredHeight: 18
             Layout.alignment: Qt.AlignCenter
-            visible: root.vertical || root.isDesktop || root.activeIcon !== "" || root.activeAppName !== ""
+            visible: root.showApplicationIcon
 
             Image {
                 id: appIcon
@@ -134,9 +145,10 @@ TopBarPill {
         }
 
         Item {
+            visible: root.vertical || root.horizontalTitleWidth > 0
             implicitWidth: root.vertical ? (root.verticalAppNameIsCjk ? verticalCjkTitle.implicitWidth :
                                                                         verticalRotatedTitle.implicitHeight) :
-                                           horizontalTitle.implicitWidth
+                                           root.horizontalTitleWidth
             implicitHeight: root.vertical ? (root.verticalAppNameIsCjk ? verticalCjkTitle.implicitHeight :
                                                                          verticalRotatedTitle.implicitWidth) :
                                             horizontalTitle.implicitHeight
@@ -188,13 +200,13 @@ TopBarPill {
         id: activeHover
 
         anchors.fill: parent
-        enabled: root.vertical
+        enabled: root.vertical || horizontalTitle.truncated || root.horizontalTitleWidth === 0
         hoverEnabled: true
         acceptedButtons: Qt.NoButton
     }
 
     PopupToolTip {
-        extraVisibleCondition: root.vertical && activeHover.containsMouse
+        extraVisibleCondition: activeHover.containsMouse
         text: root.detailedTooltipText
     }
 }

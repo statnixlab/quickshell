@@ -75,6 +75,11 @@ Singleton {
                 barRadiusSaveTimer.restart();
         }
 
+        function onKeystoneModuleRadiusChanged() {
+            if (PersonalizationConfig.ready)
+                barRadiusSaveTimer.restart();
+        }
+
         function onShellBlurXrayChanged() {
             root.writeEffectsConfig();
         }

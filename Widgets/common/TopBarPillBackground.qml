@@ -1,5 +1,7 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import qs.Common
 import qs.Services
 
@@ -8,8 +10,7 @@ Item {
 
     property color fillColor: BlurService.backgroundColor(Appearance.colors.colLayer0)
     property real cornerRadius: height / 2
-    property real shadowPadding: Sizes.barShadowBuffer
-    property bool shadowCached: true
+    property real shadowPadding: 24
     property bool shadowEnabled: true
     readonly property string contextualEdge: findContextEdge(root.parent)
 
@@ -23,38 +24,39 @@ Item {
         return "top";
     }
 
-    Rectangle {
-        id: shadowSource
+    Item {
+        x: -root.shadowPadding
+        y: -root.shadowPadding
+        width: root.width + 2 * root.shadowPadding
+        height: root.height + 2 * root.shadowPadding
+        // Match Keystone: compose an opaque surface and its shadow, then apply
+        // the background alpha once so the shadow cannot darken the interior.
+        opacity: root.fillColor.a
+        layer.enabled: true
+        layer.effect: MultiEffect {
+            shadowEnabled: root.shadowEnabled
+            shadowBlur: 1
+            blurMax: 16
+            shadowColor: Appearance.colors.colShadow
+            shadowHorizontalOffset: root.contextualEdge === "left" ? 4 : root.contextualEdge === "right" ? -4 :
+                                                                                                           0
 
-        anchors.fill: parent
-        color: root.fillColor
-        radius: root.cornerRadius
-        antialiasing: true
-        visible: false
-    }
+            shadowVerticalOffset: root.contextualEdge === "top" ? 4 : root.contextualEdge === "bottom" ? -4 :
+                                                                                                         0
 
-    DropShadow {
-        anchors.fill: shadowSource
-        source: shadowSource
-        visible: root.shadowEnabled
-        radius: 16
-        samples: 32
-        transparentBorder: true
-        color: Appearance.applyAlpha(Appearance.colors.colShadow, 0.4)
-        horizontalOffset: root.contextualEdge === "left" ? 3 : root.contextualEdge === "right" ? -3 : 0
-        verticalOffset: root.contextualEdge === "top" ? 3 : root.contextualEdge === "bottom" ? -3 : 0
-        cached: root.shadowCached
-    }
+            autoPaddingEnabled: true
+        }
 
-    ShaderEffect {
-        // Keep the smooth physical-pixel fringe outside the content clip.
-        x: -1
-        y: -1
-        width: parent.width + 2
-        height: parent.height + 2
-        property vector2d resolution: Qt.vector2d(width, height)
-        property color fillColor: root.fillColor
-        property real cornerRadius: root.cornerRadius
-        fragmentShader: Paths.fileUrl(Paths.assetsDir + "/shaders/common/qsb/rounded_panel.frag.qsb")
+        ShaderEffect {
+            // Keep the smooth physical-pixel fringe outside the content clip.
+            x: root.shadowPadding - 1
+            y: root.shadowPadding - 1
+            width: root.width + 2
+            height: root.height + 2
+            property vector2d resolution: Qt.vector2d(width, height)
+            property color fillColor: Qt.rgba(root.fillColor.r, root.fillColor.g, root.fillColor.b, 1)
+            property real cornerRadius: root.cornerRadius
+            fragmentShader: Paths.fileUrl(Paths.assetsDir + "/shaders/common/qsb/rounded_panel.frag.qsb")
+        }
     }
 }

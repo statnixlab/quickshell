@@ -23,9 +23,18 @@ Item {
                                                                                              "ROND": 25,
                                                                                              "slnt": 0
                                                                                          }) : ({})
-    readonly property real horizontalFontSize: Math.min(root.boundedNumber(
-                                                            PersonalizationConfig.horizontalClockFontSize, 22,
-                                                            16, 28), Sizes.barVisualThickness - 8)
+    readonly property real horizontalFontSize: root.boundedNumber(
+                                                   PersonalizationConfig.horizontalClockFontSize, 22, 16, 28)
+    // Keep the user's per-digit offsets and rotations inside a smaller island.
+    readonly property real horizontalOverflow: {
+        let overflow = 0;
+        for (const id of ["h0", "h1", "m0", "m1", "ap", "periodM"]) {
+            const rotation = Math.abs(root.horizontalDigitValue(id, "rotation")) * Math.PI / 180;
+            overflow = Math.max(overflow, Math.abs(root.horizontalDigitValue(id, "y"))
+                                + root.horizontalFontSize * Math.sin(rotation) / 2);
+        }
+        return overflow;
+    }
     // 【核心变化1】把时间拆分成 4 个独立的整数型变量，绑定动画目标值
     property int h0: 0
     property int h1: 0
@@ -124,7 +133,10 @@ Item {
     }
 
     Row {
+        id: horizontalClockLayout
         anchors.centerIn: parent
+        scale: Math.min(1, Math.max(1, root.width - 20) / Math.max(1, width), Math.max(1, root.height - 2)
+                        / Math.max(1, height + 2 * root.horizontalOverflow))
         spacing: root.hideDate ? 0 : 10
         visible: !root.vertical
 
@@ -237,6 +249,8 @@ Item {
         id: verticalClockLayout
 
         anchors.centerIn: parent
+        scale: Math.min(1, Math.max(1, root.width - 4) / Math.max(1, width), Math.max(1, root.height - 4)
+                        / Math.max(1, height))
         spacing: 4
         visible: root.vertical
 

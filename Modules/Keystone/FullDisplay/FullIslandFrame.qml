@@ -29,6 +29,7 @@ Item {
     readonly property real availableChildHeight: Math.max(24, screen.height - (horizontal ? thickness + gap + screenMargin
                                                                                             + 24 : 32))
     readonly property real thickness: PersonalizationConfig.keystoneThickness
+    readonly property real cornerRadius: Math.min(thickness / 2, PersonalizationConfig.keystoneModuleRadius)
     readonly property real gap: PersonalizationConfig.keystonePopupGap
     // Match the collapsed Pill surface. Only the child deforms; the status
     // bar and its clock remain fixed throughout the split and fusion.
@@ -73,10 +74,9 @@ Item {
     readonly property real childHeight: pillHeight + (heldHeight - pillHeight) * (horizontal ? inwardGrowth :
                                                                                                alongGrowth)
     readonly property real childOffset: (thickness + gap) * travel
-    readonly property real childRadius: Math.min(childWidth / 2, childHeight / 2, thickness / 2 + (24
-                                                                                                   - thickness
-                                                                                                   / 2) * Math.min(
-                                                     1, inwardGrowth))
+    readonly property real childRadius: Math.min(childWidth / 2, childHeight / 2, cornerRadius + (24
+                                                                                                  - cornerRadius)
+                                                 * Math.min(1, inwardGrowth))
     readonly property real contentOpacity: closing ? legPose.opacity * closingRemaining : stage(0.12, 0.50) + (
                                                          legPose.opacity - smoothStep((legStart - 0.12)
                                                                                       / 0.38))
@@ -211,7 +211,7 @@ Item {
         y: !root.horizontal ? (root.height - height) / 2 : root.edge === "bottom" ? root.height - height : 0
         width: root.horizontal ? root.length : root.thickness
         height: root.horizontal ? root.thickness : root.length
-        property real radius: root.thickness / 2
+        property real radius: root.cornerRadius
         onClockClicked: button => root.clockClicked(button)
         onMediaRequested: root.mediaRequested()
         z: 2
@@ -263,7 +263,7 @@ Item {
     Region {
         id: barRegion
         item: mainBar
-        radius: root.thickness / 2
+        radius: root.cornerRadius
     }
     Region {
         id: capRegion
@@ -347,7 +347,7 @@ Item {
         property vector2d mainCenter: Qt.vector2d(mainBar.x + mainBar.width / 2 + 24, mainBar.y
                                                   + mainBar.height / 2 + 24)
         property vector2d mainSize: Qt.vector2d(mainBar.width, mainBar.height)
-        property real mainRadius: root.thickness / 2
+        property real mainRadius: root.cornerRadius
         property real attached: root.attached ? 1 : 0
         property vector2d inwardDirection: root.inwardDirection
         property vector2d satelliteCenter: Qt.vector2d(root.childItem.x + root.childWidth / 2 + 24,

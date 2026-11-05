@@ -342,6 +342,8 @@ Singleton {
     property int keystoneEdgeSpacing: 8
     property int keystoneExclusiveZoneOffset: 0
     property int keystoneThickness: 42
+    property int keystoneModuleRadius: 36
+    property int keystoneIconSize: 20
     property int keystoneCompactLength: 220
     property int keystoneInsetPadding: 16
     property int keystoneItemSpacing: 8
@@ -349,7 +351,9 @@ Singleton {
     readonly property var keystoneDimensionLimits: ({
                                                         "edgeSpacing": [8, 0, 48],
                                                         "exclusiveZoneOffset": [0, -50, 50],
-                                                        "thickness": [42, 36, 72],
+                                                        "thickness": [42, 24, 72],
+                                                        "moduleRadius": [36, 0, 36],
+                                                        "iconSize": [20, 12, 32],
                                                         "compactLength": [220, 180, 400],
                                                         "insetPadding": [16, 0, 48],
                                                         "itemSpacing": [8, 0, 24],

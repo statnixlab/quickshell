@@ -11,6 +11,8 @@ TopBarPill {
 
     property string screenName: ""
     property bool vertical: false
+    property real dotSize: 12
+    property real activeLength: 32
     readonly property bool hasMultipleOutputs: Niri.outputs.count > 1
 
     implicitHeight: vertical ? layout.implicitHeight + 2 * (root.pillPadding + 2) : root.pillThickness
@@ -55,8 +57,12 @@ TopBarPill {
                 property bool isHovered: mouseArea.containsMouse
 
                 visible: belongsToScreen
-                implicitWidth: !belongsToScreen ? 0 : root.vertical ? 12 : ((active || isHovered) ? 32 : 12)
-                implicitHeight: !belongsToScreen ? 0 : root.vertical ? ((active || isHovered) ? 32 : 12) : 12
+                implicitWidth: !belongsToScreen ? 0 : root.vertical ? root.dotSize : ((active || isHovered)
+                                                                                      ? root.activeLength :
+                                                                                        root.dotSize)
+                implicitHeight: !belongsToScreen ? 0 : root.vertical ? ((active || isHovered) ? root.activeLength :
+                                                                                                root.dotSize) :
+                                                                       root.dotSize
 
                 Behavior on implicitWidth {
                     NumberAnimation {

@@ -959,8 +959,12 @@ Variants {
                                                                                                       112) : activeLayout.targetWidth
                 property real targetH: isVolumeMode && keyboardOsd ? (keystoneWindow.horizontalEdge ? 64 :
                                                                                                       144) : activeLayout.targetHeight
-                property int targetR: styleSurface.detached ? Math.min(Math.min(targetW, targetH) / 2, styleSurface.maxPillRadius) :
-                                                              12
+                property int targetR: isCollapsedMode ? Math.min(targetW / 2, targetH / 2,
+                                                                 PersonalizationConfig.keystoneModuleRadius) :
+                                                        styleSurface.detached ? Math.min(Math.min(targetW,
+                                                                                                  targetH) / 2,
+                                                                                         styleSurface.maxPillRadius) :
+                                                                                12
                 property int wDuration: KeystoneMotion.expandingDuration
                 property int hDuration: KeystoneMotion.expandingDuration
                 property int rDuration: KeystoneMotion.radiusDuration

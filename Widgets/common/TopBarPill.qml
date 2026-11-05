@@ -9,9 +9,12 @@ Item {
     default property alias contentData: contentViewport.data
     property bool backgroundVisible: true
     property bool animateResize: true
-    readonly property real pillThickness: backgroundVisible ? PersonalizationConfig.barPillThickness : 36
+    property real contentThickness: 36
+    readonly property real pillThickness: backgroundVisible ? PersonalizationConfig.barPillThickness :
+                                                              contentThickness
     readonly property real pillPadding: backgroundVisible ? PersonalizationConfig.barInnerPadding : 6
-    readonly property real bandThickness: backgroundVisible ? PersonalizationConfig.barThickness : 36
+    // Vertical modules use the same visible thickness as horizontal modules.
+    readonly property real bandThickness: pillThickness
     readonly property real radius: Math.min(width / 2, height / 2, backgroundVisible
                                             ? PersonalizationConfig.barModuleRadius : Math.min(width, height)
                                               / 2)
