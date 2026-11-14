@@ -3,6 +3,7 @@
 #include <QString>
 #include <QVariantList>
 #include <QVariantMap>
+#include <tuple>
 
 struct NiriWorkspace {
     quint64 id = 0;
@@ -34,6 +35,15 @@ struct NiriWindow {
     int layoutRow = 999999;
     bool hasLayoutPosition = false;
     QString iconPath;
+
+    bool operator==(const NiriWindow &other) const
+    {
+        return std::tie(id, title, appId, appName, pid, workspaceId, isFocused, isFloating, isMinimized,
+                        isUrgent, layoutColumn, layoutRow, hasLayoutPosition, iconPath) ==
+               std::tie(other.id, other.title, other.appId, other.appName, other.pid, other.workspaceId,
+                        other.isFocused, other.isFloating, other.isMinimized, other.isUrgent,
+                        other.layoutColumn, other.layoutRow, other.hasLayoutPosition, other.iconPath);
+    }
 };
 
 struct NiriOutput {

@@ -189,6 +189,49 @@ class NiriMinimizeTest : public QObject {
         QVERIFY(niri.windowById(42).isEmpty());
     }
 
+    void geometryOnlyResizeBurstDoesNotRepublishShellState()
+    {
+        server([](auto *peer) { peer->windows = {floatingWindow(42, 100)}; });
+        NiriPlugin niri;
+        QTRY_COMPARE(niri.windows()->rowCount(), 1);
+        QTRY_VERIFY(niri.supportsMinimize());
+        QTRY_VERIFY(niri.outputs()->rowCount() > 0);
+        QSignalSpy windows(&niri, &NiriPlugin::windowsChanged);
+        QSignalSpy workspaces(&niri, &NiriPlugin::workspacesChanged);
+        QSignalSpy focused(&niri, &NiriPlugin::focusedWindowChanged);
+        server([](auto *peer) {
+            for (int i = 0; i < 128; ++i) {
+                auto window = floatingWindow(42, 100 + i);
+                auto layout = window.value("layout").toObject();
+                layout["window_size"] = QJsonArray{400 + i, 300 + i};
+                window["layout"] = layout;
+                peer->send(
+                    {{"WindowLayoutsChanged", QJsonObject{{"changes", QJsonArray{QJsonArray{42, layout}}}}}});
+                peer->send({{"WindowOpenedOrChanged", QJsonObject{{"window", window}}}});
+            }
+            auto window = floatingWindow(42, 228);
+            window["title"] = "Resize completed";
+            peer->send({{"WindowOpenedOrChanged", QJsonObject{{"window", window}}}});
+        });
+        QTRY_COMPARE(niri.windowById(42).value("title").toString(), QString("Resize completed"));
+        QCOMPARE(windows.count(), 1);
+        QCOMPARE(workspaces.count(), 1);
+        QCOMPARE(focused.count(), 1);
+
+        // Real layout topology changes must still reach consumers.
+        server([](auto *peer) {
+            peer->send(
+                {{"WindowLayoutsChanged",
+                  QJsonObject{{"changes", QJsonArray{QJsonArray{
+                                              42, QJsonObject{{"pos_in_scrolling_layout", QJsonArray{2, 1}},
+                                                              {"tile_pos_in_workspace_view",
+                                                               QJsonArray{228, 100}}}}}}}}});
+        });
+        QTRY_COMPARE(niri.windowById(42).value("layoutColumn").toInt(), 2);
+        QCOMPARE(niri.windowById(42).value("layoutRow").toInt(), 1);
+        QCOMPARE(windows.count(), 2);
+    }
+
     void floatingParallaxIsAsyncCoalescedAndClamped()
     {
         server([](auto *peer) {

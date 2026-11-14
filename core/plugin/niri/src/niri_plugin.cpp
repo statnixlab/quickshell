@@ -367,11 +367,13 @@ void NiriPlugin::handleEvent(const QJsonObject &event)
             parseWindow(event.value(type).toObject().value(QStringLiteral("window")).toObject());
         auto it = std::find_if(m_windows.begin(), m_windows.end(),
                                [window](const NiriWindow &candidate) { return candidate.id == window.id; });
-        if (it == m_windows.end())
+        if (it == m_windows.end()) {
             m_windows.append(window);
-        else
+            windowChanged = true;
+        } else if (!(*it == window)) {
             *it = window;
-        windowChanged = true;
+            windowChanged = true;
+        }
     } else if (type == QStringLiteral("WindowClosed")) {
         const quint64 id = event.value(type).toObject().value(QStringLiteral("id")).toInteger();
         m_windows.erase(std::remove_if(m_windows.begin(), m_windows.end(),
@@ -414,15 +416,24 @@ void NiriPlugin::handleEvent(const QJsonObject &event)
                 change.at(1).toObject().value(QStringLiteral("pos_in_scrolling_layout")).toArray();
             const QJsonArray point =
                 change.at(1).toObject().value(QStringLiteral("tile_pos_in_workspace_view")).toArray();
+            const int column = pos.size() > 0 ? pos.at(0).toInt(999999) : 999999;
+            const int row = pos.size() > 1 ? pos.at(1).toInt(999999) : 999999;
+            const bool hasPosition = point.size() == 2;
             for (NiriWindow &window : m_windows) {
                 if (window.id == id) {
-                    window.layoutColumn = pos.size() > 0 ? pos.at(0).toInt(999999) : 999999;
-                    window.layoutRow = pos.size() > 1 ? pos.at(1).toInt(999999) : 999999;
-                    window.hasLayoutPosition = point.size() == 2;
+                    // Resize/move events arrive at frame rate. Pixel geometry is not part of
+                    // the shell's window model; only publish changes to the state it exposes.
+                    if (window.layoutColumn != column || window.layoutRow != row ||
+                        window.hasLayoutPosition != hasPosition) {
+                        window.layoutColumn = column;
+                        window.layoutRow = row;
+                        window.hasLayoutPosition = hasPosition;
+                        windowChanged = true;
+                    }
+                    break;
                 }
             }
         }
-        windowChanged = true;
     } else if (type == QStringLiteral("OutputsChanged")) {
         ++m_outputRefreshGeneration;
         const QJsonObject outputs = event.value(type).toObject().value(QStringLiteral("outputs")).toObject();
