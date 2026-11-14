@@ -17,8 +17,9 @@ Singleton {
     readonly property string notificationsDir: Paths.stateHome + "/notifications"
     readonly property string filePath: notificationsDir + "/notifications.json"
     readonly property bool silent: UiPreferences.dndEnabled
-    readonly property bool popupInhibited: silent || (WidgetState.dashboardSidebarOpen
-                                                      && WidgetState.dashboardSidebarView === "info")
+    readonly property bool centerVisible: WidgetState.dashboardSidebarOpen
+                                          && WidgetState.dashboardSidebarView === "info"
+    readonly property bool popupInhibited: silent || centerVisible
     readonly property bool hasNotifs: popupList.length > 0
 
     property bool historyReady: false
@@ -256,7 +257,8 @@ Singleton {
                                                                    "image": notification.image || "",
                                                                    "isTransient": notification.transient,
                                                                    "dockUnread": DockBadges.unreadForArrival(
-                                                                                     replaced, notification.transient),
+                                                                                     replaced, notification.transient,
+                                                                                     root.centerVisible),
                                                                    "summary": notification.summary
                                                                               || notification.appName || qsTr(
                                                                                   "Notification"),
@@ -309,7 +311,8 @@ Singleton {
                     maxId = Math.max(maxId, notificationId);
                     return notifComponent.createObject(root, {
                                                            "notificationId": notificationId,
-                                                           "dockUnread": notif.dockUnread === true,
+                                                           "dockUnread": notif.dockUnread === true &&
+                                                                         !root.centerVisible,
                                                            "localKind": notif.localKind === "file-saved"
                                                                         ? "file-saved" : "",
                                                            "filePath": notif.localKind === "file-saved"
@@ -544,6 +547,8 @@ Singleton {
 
     function markAllRead() {
         root.unread = 0;
+        if (DockBadges.acknowledgeAll(root.list))
+            root.saveNotifications();
     }
 
     function detachNotification(id) {

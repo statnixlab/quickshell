@@ -19,17 +19,12 @@ StyledFlickable {
     contentHeight: Math.max(height, contentLayout.implicitHeight)
 
     onIsForegroundChanged: {
-        SystemIdentityService.setUptimeConsumer("left-sidebar-info:" + root.screenName, root.isForeground);
         if (isForeground) {
             NotificationManager.hideAllPopups();
             NotificationManager.markAllRead();
             Time.refreshNow();
         }
     }
-    Component.onCompleted: SystemIdentityService.setUptimeConsumer("left-sidebar-info:" + root.screenName,
-                                                                   root.isForeground)
-    Component.onDestruction: SystemIdentityService.setUptimeConsumer("left-sidebar-info:" + root.screenName,
-                                                                     false)
 
     ColumnLayout {
         id: contentLayout
@@ -37,14 +32,6 @@ StyledFlickable {
         width: root.width
         height: root.contentHeight
         spacing: 12
-
-        ProfileHeaderCard {
-            Layout.fillWidth: true
-            Layout.preferredHeight: implicitHeight
-            screenName: root.screenName
-            onBannerColorRequested: root.bannerColorRequested()
-            onImageSelectionRequested: forAvatar => root.imageSelectionRequested(forAvatar)
-        }
 
         NotificationList {
             Layout.fillWidth: true

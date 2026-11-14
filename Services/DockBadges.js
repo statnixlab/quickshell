@@ -29,10 +29,25 @@ function focusedNotifications(notifications, applications, windows) {
         && keyForNotification(notification, applications, windows) === key);
 }
 
-function unreadForArrival(replaced, transient) {
+function total(countsByApplication) {
+    return Object.keys(countsByApplication).reduce((sum, key) => sum + countsByApplication[key], 0);
+}
+
+function acknowledgeAll(notifications) {
+    let changed = false;
+    for (const notification of notifications) {
+        if (!notification.dockUnread) continue;
+        notification.dockUnread = false;
+        changed = true;
+    }
+    return changed;
+}
+
+function unreadForArrival(replaced, transient, centerVisible) {
     // Updates retain their acknowledgement state, and replace the previous
     // snapshot rather than counting as a second notification.
-    return !transient && (replaced.length === 0 || replaced.some(notification => notification.dockUnread));
+    return !centerVisible && !transient
+        && (replaced.length === 0 || replaced.some(notification => notification.dockUnread));
 }
 
 function label(count) {

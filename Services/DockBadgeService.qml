@@ -16,6 +16,7 @@ Singleton {
     }
     readonly property var counts: DockBadges.counts(NotificationManager.list,
                                                     ApplicationService.launcherApplications, root.windows)
+    readonly property int totalUnread: DockBadges.total(root.counts)
 
     function countFor(key) {
         return root.counts[key] || 0;
