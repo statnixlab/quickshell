@@ -726,6 +726,16 @@ PanelWindow {
             }
             transform: Translate {
                 id: hideTranslation
+                // TransformWatcher observes Item geometry, not Translate offsets.
+                // Keep blur aligned during reveal without waiting for hover magnification.
+                onXChanged: {
+                    if (dockBlurRegion)
+                        dockBlurRegion.publish();
+                }
+                onYChanged: {
+                    if (dockBlurRegion)
+                        dockBlurRegion.publish();
+                }
                 x: root.horizontal ? 0 : root.shown ? 0 : root.edge === "left" ? -band.width
                                                                                  - root.edgeOffset :
                                                                                  band.width + root.edgeOffset
@@ -1190,6 +1200,7 @@ PanelWindow {
         }
     }
     CompositorBlurRegion {
+        id: dockBlurRegion
         targetWindow: root
         backgroundItem: glass
         additionalBackgroundItems: (popup.visible ? popup.blurBackgroundItems : []).concat(
