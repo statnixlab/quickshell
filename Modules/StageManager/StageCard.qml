@@ -34,7 +34,20 @@ Item {
         return index < frontIndex ? index + 1 : index;
     }
 
-    implicitHeight: thumbnails.height + iconRow.anchors.topMargin + iconRow.height + titleLabel.height + 8
+    // Geometry of the front thumbnail (same formula as its card below), so the
+    // app icons can sit centred on its bottom edge like macOS Stage Manager.
+    readonly property var frontFrame: {
+        const revision = WindowPreviewService.revision;
+        return previewsEnabled && frontWindow ? WindowPreviewService.frameFor(frontWindow.id) : null;
+    }
+    readonly property bool frontHasFrame: !!frontFrame && frontFrame.hasFrame
+    readonly property real frontAspect: frontHasFrame && frontFrame.sourceSize.height > 0
+                                        ? frontFrame.sourceSize.width / frontFrame.sourceSize.height : 1.6
+    readonly property real frontWidth: thumbnails.width - 16
+    readonly property real frontBottom: (thumbnails.height + Math.min(frontWidth / frontAspect,
+                                                                      thumbnails.height)) / 2
+
+    implicitHeight: Math.max(thumbnails.height, iconRow.y + iconRow.height) + titleLabel.height + 10
     Accessible.role: Accessible.Button
     Accessible.name: frontWindow ? String(frontWindow.title || frontWindow.appId || "") : ""
 
@@ -155,10 +168,20 @@ Item {
 
     Row {
         id: iconRow
-        anchors.top: thumbnails.bottom
-        anchors.topMargin: 4
-        x: 4
+        z: 1
+        // A minimized window without a saved frame already shows its large
+        // icon in the middle of the card; a second small one would repeat it.
+        visible: !(root.stage.minimized && !root.frontHasFrame)
+        x: (root.frontWidth - width) / 2
+        y: root.frontBottom - height / 2
         spacing: -6
+
+        Behavior on y {
+            NumberAnimation {
+                duration: 140
+                easing.type: Easing.OutCubic
+            }
+        }
 
         Repeater {
             model: root.previewWindows
@@ -168,9 +191,9 @@ Item {
                 required property var modelData
                 required property int index
                 readonly property bool front: root.highlightedIndex === index
-                width: 30
-                height: 30
-                radius: 9
+                width: 34
+                height: 34
+                radius: 10
                 z: front ? 1 : 0
                 scale: front ? 1.18 : 1
                 color: Appearance.colors.colSurfaceContainerHighest
@@ -197,51 +220,51 @@ Item {
 
                 ThemeIcon {
                     anchors.centerIn: parent
-                    width: 22
-                    height: 22
+                    width: 26
+                    height: 26
                     iconSource: ApplicationService.iconSource(badge.modelData.iconPath
                                                               || badge.modelData.appId)
-                    sourceSize: Qt.size(44, 44)
+                    sourceSize: Qt.size(52, 52)
                     fillMode: Image.PreserveAspectFit
                 }
             }
         }
-        Text {
-            visible: root.stage.minimized
-            leftPadding: 12
-            height: 30
-            verticalAlignment: Text.AlignVCenter
-            // Same wording as the Dock's window cards; reuse their translation.
-            text: qsTranslate("DockWindowCard", "Minimized")
-            textFormat: Text.PlainText
-            font.family: Fonts.ui
-            font.pixelSize: 12
-            color: Appearance.colors.colOnSurfaceVariant
-        }
-        Text {
+        Rectangle {
             visible: root.stage.windows.length > root.previewWindows.length
-            leftPadding: 10
-            height: 30
-            verticalAlignment: Text.AlignVCenter
-            text: "+" + (root.stage.windows.length - root.previewWindows.length)
-            textFormat: Text.PlainText
-            font.family: Fonts.ui
-            font.pixelSize: 12
-            font.weight: Font.DemiBold
-            color: Appearance.colors.colOnSurface
+            width: moreLabel.implicitWidth + 16
+            height: 34
+            radius: 10
+            color: Appearance.colors.colSurfaceContainerHighest
+            border.width: 1
+            border.color: Appearance.applyAlpha(Appearance.colors.colOnSurface, 0.1)
+            Text {
+                id: moreLabel
+                anchors.centerIn: parent
+                text: "+" + (root.stage.windows.length - root.previewWindows.length)
+                textFormat: Text.PlainText
+                font.family: Fonts.ui
+                font.pixelSize: 12
+                font.weight: Font.DemiBold
+                color: Appearance.colors.colOnSurface
+            }
         }
     }
 
+    // Under the icons: the front window's title while hovered; otherwise
+    // "Minimized" for a minimized window's stage.
     Text {
         id: titleLabel
-        anchors.top: iconRow.bottom
-        anchors.topMargin: 2
+        y: Math.max(thumbnails.height, iconRow.y + iconRow.height) + 4
         x: 4
-        width: parent.width - 8
-        visible: root.hovered && !!root.frontWindow
+        width: root.frontWidth - 8
+        horizontalAlignment: Text.AlignHCenter
+        visible: text !== ""
         height: 18
-        text: root.frontWindow ? String(root.frontWindow.title || root.frontWindow.appName
-                                        || root.frontWindow.appId || "") : ""
+        text: root.hovered && root.frontWindow ? String(root.frontWindow.title || root.frontWindow.appName
+                                                        || root.frontWindow.appId || "") :
+                                                 root.stage.minimized ?
+                                                     // Same wording as the Dock's window cards; reuse their translation.
+                                                     qsTranslate("DockWindowCard", "Minimized") : ""
         textFormat: Text.PlainText
         elide: Text.ElideRight
         font.family: Fonts.ui
