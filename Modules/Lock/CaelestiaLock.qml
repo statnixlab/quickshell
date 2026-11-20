@@ -12,6 +12,9 @@ Item {
     property var context: null
     property var snapshotProvider: null
     property var snapshotResult: null
+    // Surfaces created after the lock is secured (outputs re-added while locked)
+    // must not replay the pre-lock desktop snapshot; frozen in onCompleted.
+    property bool lateSurface: lock ? lock.secure : false
     property bool componentReady: false
     property bool snapshotResolved: false
     property bool startupStarted: false
@@ -32,7 +35,7 @@ Item {
         if (!componentReady || snapshotResolved || !root.screen || !root.screen.name)
             return;
 
-        snapshotResult = snapshotProvider ? snapshotProvider.snapshot(root.screen) : null;
+        snapshotResult = snapshotProvider && !lateSurface ? snapshotProvider.snapshot(root.screen) : null;
         snapshotResolved = true;
         maybeStartStartupAnimation();
     }
@@ -67,6 +70,7 @@ Item {
 
     onScreenChanged: resolveSnapshot()
     Component.onCompleted: {
+        lateSurface = lateSurface; // break the binding: keep the creation-time state
         componentReady = true;
         resolveSnapshot();
     }

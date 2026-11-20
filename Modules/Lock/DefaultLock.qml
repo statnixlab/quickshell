@@ -12,8 +12,12 @@ Item {
     required property var context
     property var snapshotProvider: null
     property var screen: null
-    readonly property var snapshotResult: snapshotProvider && screen ? snapshotProvider.snapshot(screen) :
-                                                                       null
+    // A surface created after the lock is already secured belongs to an output
+    // that was re-added while locked (e.g. the wake-time link reset). Do not
+    // replay the pre-lock desktop snapshot there; frozen in onCompleted.
+    property bool lateSurface: lock ? lock.secure : false
+    readonly property var snapshotResult: !lateSurface && snapshotProvider && screen
+                                          ? snapshotProvider.snapshot(screen) : null
     readonly property bool snapshotReady: snapshotResult !== null && snapshot.status === Image.Ready
     property bool useSnapshot: true
     property bool started: false
@@ -43,7 +47,10 @@ Item {
     }
 
     onScreenChanged: Qt.callLater(startReveal)
-    Component.onCompleted: Qt.callLater(startReveal)
+    Component.onCompleted: {
+        lateSurface = lateSurface; // break the binding: keep the creation-time state
+        Qt.callLater(startReveal);
+    }
 
     // Captured before acquiring the session lock. Decode synchronously so the
     // first surface frame already has a desktop underneath the reveal.
