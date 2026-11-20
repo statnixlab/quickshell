@@ -326,6 +326,12 @@ Item {
 
     IpcHandler {
         function open(pageId: string): string {
+            // A settings route or section ID (e.g. "general.keyboard") opens that page directly.
+            if (pageId && pageId.indexOf(".") >= 0) {
+                if (!SpotlightCatalog.setting(pageId))
+                    return "UNKNOWN";
+                return ControlCenterService.openSearch(pageId) ? "OK" : "UNAVAILABLE";
+            }
             return ControlCenterService.open(pageId || "") ? "OK" : "UNAVAILABLE";
         }
 

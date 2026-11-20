@@ -62,6 +62,10 @@ spawn "qs" "-c" "clavis" "ipc" "call" "keystone" "hub"
 托管片段按 [niri include 顺序](https://niri-wm.github.io/niri/Configuration:-Include.html)
 处理覆盖。目录随程序部署，运行时只在本机验证动作支持，不联网下载。
 
+`qs -c clavis ipc call control-center open PAGE` 打开设置中心。`PAGE` 可以是顶层页面
+（如 `general`），也可以是 `Common/settings-routes.json` 中的路由或页面内分组 ID
+（如 `general.keyboard`），此时直接跳转并高亮该位置；未知 ID 返回 `UNKNOWN`。
+
 快捷键配置图独立于设置中心加载，使用 `qs -c clavis ipc call shortcut-map toggle`
 打开或关闭；也提供无参数的 `open` 和 `close`。账户页按钮与 IPC 共用同一个弹层。
 
