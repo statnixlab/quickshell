@@ -25,8 +25,17 @@ Item {
                                       ? highlightedIndex : 0
     readonly property var frontWindow: previewWindows[frontIndex] || null
 
+    // Window being dragged out of the strip (owned by the strip); its source
+    // thumbnail dims while the drag is in progress.
+    property var draggedWindowId: null
+
     signal windowActivated(var windowId)
     signal mergeRequested
+    // Dragging a window out of the strip; points are in window coordinates.
+    signal windowDragStarted(var window, point position)
+    signal windowDragMoved(point position)
+    signal windowDragFinished(point position)
+    signal windowDragCanceled
 
     function depthOf(index) {
         if (index === frontIndex)
@@ -82,13 +91,19 @@ Item {
             }
         }
 
-        MouseArea {
+        // Click focuses the front window; dragging carries it out of the strip.
+        StageWindowDragArea {
+            id: stackDrag
             anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            onClicked: {
+            windowData: root.frontWindow
+            onTapped: {
                 if (root.frontWindow)
                     root.windowActivated(root.frontWindow.id);
             }
+            onDragStarted: position => root.windowDragStarted(windowData, position)
+            onDragMoved: position => root.windowDragMoved(position)
+            onDragFinished: position => root.windowDragFinished(position)
+            onDragCanceled: root.windowDragCanceled()
         }
 
         Repeater {
@@ -118,7 +133,7 @@ Item {
                 border.color: Appearance.applyAlpha(Appearance.colors.colOnSurface, 0.12)
                 visible: depth < root.stackDepth
                 z: root.stackDepth - depth
-                opacity: 1 - depth * 0.12
+                opacity: (1 - depth * 0.12) * (root.draggedWindowId === modelData.id ? 0.35 : 1)
 
                 Behavior on x {
                     NumberAnimation {
@@ -207,15 +222,19 @@ Item {
                     }
                 }
 
-                MouseArea {
+                StageWindowDragArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
+                    windowData: badge.modelData
                     onContainsMouseChanged: {
                         if (containsMouse)
                             root.highlightedIndex = badge.index;
                     }
-                    onClicked: root.windowActivated(badge.modelData.id)
+                    onTapped: root.windowActivated(badge.modelData.id)
+                    onDragStarted: position => root.windowDragStarted(windowData, position)
+                    onDragMoved: position => root.windowDragMoved(position)
+                    onDragFinished: position => root.windowDragFinished(position)
+                    onDragCanceled: root.windowDragCanceled()
                 }
 
                 ThemeIcon {

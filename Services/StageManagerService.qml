@@ -66,6 +66,29 @@ Singleton {
         return windows.length > 0;
     }
 
+    // Move one window into the active stage of an output and focus it. A
+    // minimized window is restored onto that output instead.
+    function moveWindowToActive(windowId, outputName) {
+        if (!Niri.connected)
+            return false;
+        const window = Niri.windowById(windowId);
+        if (!window || !window.id)
+            return false;
+        if (window.isMinimized)
+            return Niri.restoreWindow(windowId, String(outputName || ""));
+        const target = Niri.activeWorkspaceForOutput(outputName);
+        if (!target || !target.id)
+            return false;
+        if (window.workspaceId === target.id)
+            return Niri.focusWindow(windowId);
+        // Move first, then focus, as one sequence so focus lands on the moved window.
+        Quickshell.execDetached(["sh", "-c",
+                                 'niri msg action move-window-to-workspace --window-id "$1" --focus false "$2" '
+                                 + '&& niri msg action focus-window --id "$1"', "sh", String(windowId), String(
+                                     target.index)]);
+        return true;
+    }
+
     function request(outputName) {
         if (!enabled)
             return false;

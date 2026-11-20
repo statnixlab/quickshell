@@ -3,7 +3,9 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 import Clavis.Niri
+import Clavis.WindowPreview
 import qs.Common
+import qs.Components
 import qs.Services
 
 // Left-edge strip of inactive stages for one output. It slides in when the
@@ -17,6 +19,23 @@ PanelWindow {
     property string previewConsumer: ""
     readonly property string outputName: targetScreen ? targetScreen.name : ""
     readonly property real stripWidth: 236
+    // Window being dragged out of the strip, and the pointer in window coordinates.
+    property var dragWindow: null
+    property point dragPoint: Qt.point(0, 0)
+    readonly property bool dragging: dragWindow !== null
+    // Past the strip: releasing moves the window into the current stage.
+    readonly property bool dropArmed: dragging && dragPoint.x > stripWidth
+
+    function finishDrag(position, accepted) {
+        const window = dragWindow;
+        dragWindow = null;
+        if (accepted && window && position.x > stripWidth) {
+            StageManagerService.moveWindowToActive(window.id, outputName);
+            conceal();
+        } else if (!stripHover.hovered && revealed) {
+            hideTimer.restart();
+        }
+    }
 
     function syncStages() {
         stages = StageManagerService.stagesForOutput(outputName);
@@ -40,6 +59,7 @@ PanelWindow {
         hideTimer.stop();
     }
     function conceal() {
+        dragWindow = null;
         if (StageManagerService.requestedOutput === outputName)
             StageManagerService.requestedOutput = "";
         revealed = false;
@@ -49,11 +69,16 @@ PanelWindow {
     screen: targetScreen
     visible: revealed || content.x > -content.width
     color: "transparent"
-    implicitWidth: stripWidth
+    // The surface spans the screen so a dragged window can follow the pointer
+    // anywhere; only the strip itself takes input outside a drag.
     anchors {
         left: true
+        right: true
         top: true
         bottom: true
+    }
+    mask: Region {
+        item: root.dragging ? fullArea : content
     }
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.namespace: "clavis-stage-manager"
@@ -96,6 +121,11 @@ PanelWindow {
         }
     }
 
+    Item {
+        id: fullArea
+        anchors.fill: parent
+    }
+
     Timer {
         id: hideTimer
         interval: 450
@@ -120,7 +150,7 @@ PanelWindow {
             onHoveredChanged: {
                 if (hovered)
                     hideTimer.stop();
-                else if (root.revealed)
+                else if (root.revealed && !root.dragging)
                     hideTimer.restart();
             }
         }
@@ -172,8 +202,70 @@ PanelWindow {
                             root.conceal();
                         }
                         onMergeRequested: StageManagerService.mergeIntoActive(modelData.id, root.outputName)
+                        draggedWindowId: root.dragWindow ? root.dragWindow.id : null
+                        onWindowDragStarted: (window, position) => {
+                            hideTimer.stop();
+                            root.dragPoint = position;
+                            root.dragWindow = window;
+                        }
+                        onWindowDragMoved: position => root.dragPoint = position
+                        onWindowDragFinished: position => root.finishDrag(position, true)
+                        onWindowDragCanceled: root.finishDrag(root.dragPoint, false)
                     }
                 }
+            }
+        }
+    }
+
+    // The dragged window's live thumbnail following the pointer.
+    Item {
+        id: dragGhost
+        z: 10
+        visible: root.dragging
+        readonly property WindowPreviewFrame frame: {
+            const revision = WindowPreviewService.revision;
+            return root.dragWindow ? WindowPreviewService.frameFor(root.dragWindow.id) : null;
+        }
+        readonly property bool hasFrame: !!frame && frame.hasFrame
+        readonly property real aspect: hasFrame && frame.sourceSize.height > 0 ? frame.sourceSize.width
+                                                                                 / frame.sourceSize.height :
+                                                                                 1.6
+        width: 240
+        height: width / aspect
+        x: root.dragPoint.x - width / 2
+        y: root.dragPoint.y - height / 2
+        scale: root.dropArmed ? 1.15 : 0.92
+
+        Behavior on scale {
+            NumberAnimation {
+                duration: 160
+                easing.type: Easing.OutCubic
+            }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            radius: 12
+            clip: true
+            color: Appearance.colors.colSurfaceContainerHigh
+            border.width: root.dropArmed ? 2 : 1
+            border.color: root.dropArmed ? Appearance.colors.colPrimary : Appearance.applyAlpha(
+                                               Appearance.colors.colOnSurface, 0.15)
+
+            CaptureImage {
+                anchors.fill: parent
+                frame: dragGhost.frame
+                visible: dragGhost.hasFrame
+            }
+            ThemeIcon {
+                anchors.centerIn: parent
+                width: 56
+                height: 56
+                visible: !dragGhost.hasFrame
+                iconSource: root.dragWindow ? ApplicationService.iconSource(root.dragWindow.iconPath
+                                                                            || root.dragWindow.appId) : ""
+                sourceSize: Qt.size(112, 112)
+                fillMode: Image.PreserveAspectFit
             }
         }
     }
