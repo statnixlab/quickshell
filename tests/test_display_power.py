@@ -58,6 +58,19 @@ class FakeDisplay:
 
 
 class RecoveryContracts(unittest.TestCase):
+    def test_no_active_outputs_is_not_reported_as_success(self):
+        d = FakeDisplay(ON)
+        d.active.clear()
+        self.assertFalse(self.wake(d))
+        self.assertEqual(d.commands, [('power', 'on')])
+
+    def test_output_reappearing_after_wake_can_complete(self):
+        d = FakeDisplay(ON)
+        restored = d.outputs()
+        d.active.clear()
+        self.assertTrue(self.wake(d, sleep=lambda _: d.active.update(restored)))
+        self.assertEqual(d.commands, [('power', 'on')])
+
     def wake(self, display, sleep=lambda _: None, reconnect_outputs=frozenset()):
         return POWER.wake(display, sleep=sleep, report=lambda *args, **kwargs: None,
                           reconnect_outputs=reconnect_outputs)

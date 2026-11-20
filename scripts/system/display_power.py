@@ -88,6 +88,19 @@ def wake(backend, sleep=time.sleep, report=emit, reconnect_outputs=frozenset()):
     targets = backend.outputs()
     report('wake-request', outputs={name: backend.state(name) for name in targets})
     backend.power('on')
+    if not targets:
+        # A failed compositor allocation can leave no active output at all.
+        # Allow an in-flight reconnect to complete, but do not report an empty
+        # target set as a successful wake or repeatedly enable missing panels.
+        for delay in (0.25, 0.75, 1.0):
+            sleep(delay)
+            targets = backend.outputs()
+            if targets:
+                break
+        if not targets:
+            report('wake-unavailable', reason='no-active-compositor-outputs',
+                   outputs={}, resetOutputs=[])
+            return False
     states = {}
     # The IPC acknowledgement precedes the actual modeset/page flip.
     for delay in (0.25, 0.75, 1.0):
