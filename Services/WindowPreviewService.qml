@@ -69,7 +69,9 @@ Singleton {
             backend.open(Quickshell.env("WAYLAND_DISPLAY"));
             syncWindows();
         } else
-            backend.close();
+            // Only paused (e.g. locked) on the same niri connection: keep the
+            // last frames of minimized windows, which cannot be captured again.
+            backend.close(Niri.connected);
     }
     onConnectedChanged: connectBackend()
     Component.onCompleted: {

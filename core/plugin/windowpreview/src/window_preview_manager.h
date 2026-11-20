@@ -21,7 +21,10 @@ class WindowPreviewManager : public QObject {
     QString error() const { return m_catalog.error(); }
     int captureCount() const { return m_captures.size(); }
     Q_INVOKABLE void open(const QString &displayName);
-    Q_INVOKABLE void close();
+    // keepMinimized: previews are only paused (lock screen) on the same niri
+    // connection, so the frames of minimized windows, which cannot be
+    // captured again, stay valid and are kept.
+    Q_INVOKABLE void close(bool keepMinimized = false);
     Q_INVOKABLE void setWindows(const QStringList &live, const QStringList &minimized);
     Q_INVOKABLE void setTargets(const QString &consumer, const QStringList &identifiers);
     Q_INVOKABLE void release(const QString &consumer);

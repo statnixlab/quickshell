@@ -24,17 +24,21 @@ WindowPreviewManager::~WindowPreviewManager()
 bool WindowPreviewManager::supported() const { return m_open && m_catalog.ready() && m_catalog.supported(); }
 void WindowPreviewManager::open(const QString &displayName)
 {
-    close();
+    // A previous close() (e.g. on lock) already chose which frames survive.
+    if (m_open)
+        close(true);
     m_display = displayName;
     m_open = true;
     m_catalog.open(displayName);
 }
-void WindowPreviewManager::close()
+void WindowPreviewManager::close(bool keepMinimized)
 {
     m_open = false;
     // The cache's identity is (connection generation, exact ext identifier).
-    // Also invalidate on lock/suspend, even when the compositor stays connected.
-    m_cache.reset(++m_generation);
+    // Also invalidate on lock/suspend, even when the compositor stays connected,
+    // except the last frames of minimized windows when asked to keep them:
+    // niri never reuses window ids within one connection.
+    m_cache.advance(++m_generation, keepMinimized ? (m_live & m_minimized) : QSet<QString>{});
     m_waiters.clear();
     m_prefetch.clear();
     m_snapshot.clear();

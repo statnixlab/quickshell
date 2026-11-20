@@ -33,6 +33,8 @@ class WindowPreviewCache : public QObject {
   public:
     explicit WindowPreviewCache(QObject *parent = nullptr, qint64 budget = 32 * 1024 * 1024);
     void reset(quint64 generation);
+    // Start a new generation but keep the frames of `ids`.
+    void advance(quint64 generation, const QSet<QString> &ids);
     WindowPreviewFrame *frameFor(const QString &id);
     bool hasFrame(const QString &id) const;
     bool store(quint64 generation, const QString &id, const QImage &image, QSize sourceSize);

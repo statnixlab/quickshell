@@ -11,6 +11,12 @@ void WindowPreviewCache::reset(quint64 generation)
     retain({});
 }
 
+void WindowPreviewCache::advance(quint64 generation, const QSet<QString> &ids)
+{
+    m_generation = generation;
+    retain(ids);
+}
+
 WindowPreviewFrame *WindowPreviewCache::frameFor(const QString &id)
 {
     if (id.isEmpty())

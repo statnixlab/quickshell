@@ -44,6 +44,21 @@ class WindowPreviewCacheTest : public QObject {
         QVERIFY(!cache.hasFrame("42"));
         QCOMPARE(cache.bytesUsed(), 0);
     }
+    void advanceKeepsOnlyListedFrames()
+    {
+        WindowPreviewCache cache;
+        cache.reset(1);
+        QImage source(16, 16, QImage::Format_RGB32);
+        source.fill(Qt::red);
+        QVERIFY(cache.store(1, "minimized", source, source.size()));
+        QVERIFY(cache.store(1, "live", source, source.size()));
+        cache.advance(2, {"minimized"});
+        QVERIFY(cache.hasFrame("minimized"));
+        QVERIFY(!cache.hasFrame("live"));
+        // Captures started before the new generation still cannot store.
+        QVERIFY(!cache.store(1, "live", source, source.size()));
+        QVERIFY(cache.store(2, "live", source, source.size()));
+    }
     void budgetEvictsLeastRecentlyUsedAndRevocationClears()
     {
         const qint64 size = 64 * 64 * 4;
