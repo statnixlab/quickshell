@@ -41,6 +41,115 @@ Singleton {
         interval: 180
         onTriggered: root.update("mouse")
     }
+    readonly property var keyboardDefaults: ({
+                                                 layouts: [],
+                                                 options: "",
+                                                 rules: "",
+                                                 model: "",
+                                                 file: null,
+                                                 repeatDelay: 600,
+                                                 repeatRate: 25,
+                                                 trackLayout: "global",
+                                                 numlock: false
+                                             })
+    property var pendingKeyboardOptions: null
+    property var activeKeyboardOptions: null
+    readonly property var keyboardOptions: pendingKeyboardOptions || activeKeyboardOptions
+                                           || snapshot.keyboard || keyboardDefaults
+    property var keyboardCatalog: ({
+                                       layouts: [],
+                                       switchOptions: [],
+                                       capsOptions: []
+                                   })
+    property string keyboardCatalogLanguage: ""
+
+    function setKeyboardOptions(patch) {
+        if (!ready("keyboard"))
+            return;
+        pendingKeyboardOptions = Object.assign({}, keyboardOptions, patch);
+        keyboardSaveTimer.restart();
+    }
+
+    function loadKeyboardCatalog() {
+        const language = Qt.uiLanguage || "en_US";
+        if (keyboardCatalogProcess.running || (keyboardCatalogLanguage === language
+                                               && keyboardCatalog.layouts.length > 0))
+            return;
+        keyboardCatalogLanguage = language;
+        keyboardCatalogProcess.command = ["python3", Paths.systemScriptsDir + "/xkb_catalog.py",
+                                          JSON.stringify({
+                                                             language: language
+                                                         })];
+        keyboardCatalogProcess.running = true;
+    }
+
+    Timer {
+        id: keyboardSaveTimer
+        interval: 400
+        onTriggered: root.update("keyboard")
+    }
+
+    Process {
+        id: keyboardCatalogProcess
+        stdout: StdioCollector {
+            id: keyboardCatalogResult
+        }
+        onExited: code => {
+            try {
+                const response = JSON.parse(keyboardCatalogResult.text);
+                if (code === 0 && response.schemaVersion === 1 && response.layouts)
+                    root.keyboardCatalog = response;
+                else
+                    root.keyboardCatalogLanguage = "";
+            } catch (e) {
+                root.keyboardCatalogLanguage = "";
+            }
+        }
+    }
+
+    property var pendingWindowsOptions: null
+    property var activeWindowsOptions: null
+    readonly property var windowsOptions: pendingWindowsOptions || activeWindowsOptions || snapshot.windows
+                                          || ({
+                                                  gaps: 16,
+                                                  centerFocusedColumn: "never",
+                                                  alwaysCenterSingleColumn: false,
+                                                  emptyWorkspaceAboveFirst: false,
+                                                  defaultColumnWidth: 0.5,
+                                                  focusRing: true,
+                                                  focusRingWidth: 4,
+                                                  border: false,
+                                                  borderWidth: 4,
+                                                  shadow: false,
+                                                  focusFollowsMouse: false,
+                                                  warpMouseToFocus: false,
+                                                  workspaceBackAndForth: false,
+                                                  personal: ({}),
+                                                  personalSupported: false,
+                                                  external: ({})
+                                              })
+
+    function setWindowsOptions(patch) {
+        if (!ready("windows"))
+            return;
+        pendingWindowsOptions = Object.assign({}, windowsOptions, patch);
+        windowsSaveTimer.restart();
+    }
+
+    function setPersonalLayoutFlag(flag, value) {
+        const personal = Object.assign({}, windowsOptions.personal || {});
+        personal[flag] = value;
+        setWindowsOptions({
+                              personal: personal
+                          });
+    }
+
+    Timer {
+        id: windowsSaveTimer
+        interval: 400
+        onTriggered: root.update("windows")
+    }
+
     property var pendingApplicationEffects: null
     property var activeApplicationEffects: null
     readonly property var applicationEffects: pendingApplicationEffects || activeApplicationEffects
@@ -162,6 +271,10 @@ Singleton {
             };
         if (feature === "mouse")
             return mouseOptions;
+        if (feature === "keyboard")
+            return keyboardOptions;
+        if (feature === "windows")
+            return windowsOptions;
         if (feature === "effects")
             return {
                 xray: PersonalizationConfig.shellBlurXray,
@@ -227,6 +340,14 @@ Singleton {
                 profile: request.profile
             };
             pendingMouseOptions = null;
+        }
+        if (activeFeature === "windows" && request.operation !== "status") {
+            activeWindowsOptions = Object.assign({}, windowsOptions, request);
+            pendingWindowsOptions = null;
+        }
+        if (activeFeature === "keyboard" && request.operation !== "status") {
+            activeKeyboardOptions = Object.assign({}, keyboardOptions, request);
+            pendingKeyboardOptions = null;
         }
         if (activeFeature === "application-effects") {
             activeApplicationEffects = Object.assign({}, applicationEffects, request);
@@ -296,6 +417,8 @@ Singleton {
             }
             root.activeFeature = "";
             root.activeMouseOptions = null;
+            root.activeKeyboardOptions = null;
+            root.activeWindowsOptions = null;
             root.activeApplicationEffects = null;
             root.activePanelEffects = null;
             if (code === 0 && root.separateBlurSupported && root.ready("application-effects") &&

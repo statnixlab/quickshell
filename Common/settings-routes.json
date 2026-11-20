@@ -29,6 +29,42 @@
       "aliases": []
     },
     {
+      "id": "general.keyboard",
+      "title": "Keyboard",
+      "context": "GeneralPage",
+      "icon": "keyboard_alt",
+      "source": "KeyboardPage.qml",
+      "path": ["general", "keyboard"],
+      "aliases": ["xkb", "layout", "repeat", "input method"]
+    },
+    {
+      "id": "general.windows",
+      "title": "Window management",
+      "context": "GeneralPage",
+      "icon": "tab_group",
+      "source": "WindowsPage.qml",
+      "path": ["general", "windows"],
+      "aliases": ["niri", "tiling", "gaps", "focus", "floating"]
+    },
+    {
+      "id": "general.sound",
+      "title": "Sound",
+      "context": "GeneralPage",
+      "icon": "volume_up",
+      "source": "SoundPage.qml",
+      "path": ["general", "sound"],
+      "aliases": ["audio", "volume", "speaker", "microphone", "pipewire"]
+    },
+    {
+      "id": "general.notifications",
+      "title": "Notifications",
+      "context": "GeneralPage",
+      "icon": "notifications",
+      "source": "NotificationsPage.qml",
+      "path": ["general", "notifications"],
+      "aliases": ["do not disturb", "dnd", "banner", "popup"]
+    },
+    {
       "id": "account",
       "title": "Account",
       "context": "ControlCenterWindow",

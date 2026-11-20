@@ -420,6 +420,76 @@ var catalog = {
       "title": "Mouse and cursor"
     },
     {
+      "aliases": [
+        "xkb",
+        "layout",
+        "repeat",
+        "input method"
+      ],
+      "context": "GeneralPage",
+      "icon": "keyboard_alt",
+      "id": "general.keyboard",
+      "path": [
+        "general",
+        "keyboard"
+      ],
+      "source": "KeyboardPage.qml",
+      "title": "Keyboard"
+    },
+    {
+      "aliases": [
+        "niri",
+        "tiling",
+        "gaps",
+        "focus",
+        "floating"
+      ],
+      "context": "GeneralPage",
+      "icon": "tab_group",
+      "id": "general.windows",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "source": "WindowsPage.qml",
+      "title": "Window management"
+    },
+    {
+      "aliases": [
+        "audio",
+        "volume",
+        "speaker",
+        "microphone",
+        "pipewire"
+      ],
+      "context": "GeneralPage",
+      "icon": "volume_up",
+      "id": "general.sound",
+      "path": [
+        "general",
+        "sound"
+      ],
+      "source": "SoundPage.qml",
+      "title": "Sound"
+    },
+    {
+      "aliases": [
+        "do not disturb",
+        "dnd",
+        "banner",
+        "popup"
+      ],
+      "context": "GeneralPage",
+      "icon": "notifications",
+      "id": "general.notifications",
+      "path": [
+        "general",
+        "notifications"
+      ],
+      "source": "NotificationsPage.qml",
+      "title": "Notifications"
+    },
+    {
       "aliases": [],
       "context": "ControlCenterWindow",
       "icon": "account_circle",
@@ -717,6 +787,84 @@ var catalog = {
       "route": "general.mouse",
       "source": "MousePage.qml",
       "title": "Mouse and cursor"
+    },
+    {
+      "aliases": [
+        "xkb",
+        "layout",
+        "repeat",
+        "input method"
+      ],
+      "anchor": false,
+      "context": "GeneralPage",
+      "icon": "keyboard_alt",
+      "id": "general.keyboard",
+      "path": [
+        "general",
+        "keyboard"
+      ],
+      "route": "general.keyboard",
+      "source": "KeyboardPage.qml",
+      "title": "Keyboard"
+    },
+    {
+      "aliases": [
+        "niri",
+        "tiling",
+        "gaps",
+        "focus",
+        "floating"
+      ],
+      "anchor": false,
+      "context": "GeneralPage",
+      "icon": "tab_group",
+      "id": "general.windows",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Window management"
+    },
+    {
+      "aliases": [
+        "audio",
+        "volume",
+        "speaker",
+        "microphone",
+        "pipewire"
+      ],
+      "anchor": false,
+      "context": "GeneralPage",
+      "icon": "volume_up",
+      "id": "general.sound",
+      "path": [
+        "general",
+        "sound"
+      ],
+      "route": "general.sound",
+      "source": "SoundPage.qml",
+      "title": "Sound"
+    },
+    {
+      "aliases": [
+        "do not disturb",
+        "dnd",
+        "banner",
+        "popup"
+      ],
+      "anchor": false,
+      "context": "GeneralPage",
+      "icon": "notifications",
+      "id": "general.notifications",
+      "path": [
+        "general",
+        "notifications"
+      ],
+      "route": "general.notifications",
+      "source": "NotificationsPage.qml",
+      "title": "Notifications"
     },
     {
       "aliases": [],
@@ -1634,6 +1782,62 @@ var catalog = {
       "title": "Horizontal clock style"
     },
     {
+      "aliases": [
+        "xkb",
+        "layout",
+        "language"
+      ],
+      "anchor": true,
+      "context": "KeyboardPage",
+      "icon": "language",
+      "id": "general.keyboard.section.layouts",
+      "path": [
+        "general",
+        "keyboard"
+      ],
+      "route": "general.keyboard",
+      "source": "KeyboardPage.qml",
+      "title": "Keyboard layouts"
+    },
+    {
+      "aliases": [
+        "repeat",
+        "delay",
+        "caps lock",
+        "num lock"
+      ],
+      "anchor": true,
+      "context": "KeyboardPage",
+      "icon": "keyboard",
+      "id": "general.keyboard.section.keys",
+      "path": [
+        "general",
+        "keyboard"
+      ],
+      "route": "general.keyboard",
+      "source": "KeyboardPage.qml",
+      "title": "Keys and repeat"
+    },
+    {
+      "aliases": [
+        "fcitx",
+        "ime",
+        "pinyin",
+        "rime"
+      ],
+      "anchor": true,
+      "context": "KeyboardPage",
+      "icon": "translate",
+      "id": "general.keyboard.section.input-method",
+      "path": [
+        "general",
+        "keyboard"
+      ],
+      "route": "general.keyboard",
+      "source": "KeyboardPage.qml",
+      "title": "Input method"
+    },
+    {
       "aliases": [],
       "anchor": true,
       "context": "KeystonePage",
@@ -1870,6 +2074,76 @@ var catalog = {
       "title": "Connection information"
     },
     {
+      "aliases": [
+        "dnd",
+        "silent",
+        "quiet"
+      ],
+      "anchor": true,
+      "context": "NotificationsPage",
+      "icon": "do_not_disturb_on",
+      "id": "general.notifications.section.dnd",
+      "path": [
+        "general",
+        "notifications"
+      ],
+      "route": "general.notifications",
+      "source": "NotificationsPage.qml",
+      "title": "Do Not Disturb"
+    },
+    {
+      "aliases": [
+        "popup",
+        "duration",
+        "sound",
+        "wechat"
+      ],
+      "anchor": true,
+      "context": "NotificationsPage",
+      "icon": "notifications",
+      "id": "general.notifications.section.banners",
+      "path": [
+        "general",
+        "notifications"
+      ],
+      "route": "general.notifications",
+      "source": "NotificationsPage.qml",
+      "title": "Banners"
+    },
+    {
+      "aliases": [
+        "mute app",
+        "block notifications"
+      ],
+      "anchor": true,
+      "context": "NotificationsPage",
+      "icon": "apps",
+      "id": "general.notifications.section.applications",
+      "path": [
+        "general",
+        "notifications"
+      ],
+      "route": "general.notifications",
+      "source": "NotificationsPage.qml",
+      "title": "Application notifications"
+    },
+    {
+      "aliases": [
+        "clear notifications"
+      ],
+      "anchor": true,
+      "context": "NotificationsPage",
+      "icon": "history",
+      "id": "general.notifications.section.history",
+      "path": [
+        "general",
+        "notifications"
+      ],
+      "route": "general.notifications",
+      "source": "NotificationsPage.qml",
+      "title": "Notification history"
+    },
+    {
       "aliases": [],
       "anchor": true,
       "context": "PowerManagementPage",
@@ -1882,6 +2156,81 @@ var catalog = {
       "route": "general.power-management",
       "source": "PowerManagementPage.qml",
       "title": "Power mode"
+    },
+    {
+      "aliases": [
+        "speaker",
+        "headphones",
+        "volume",
+        "audio output"
+      ],
+      "anchor": true,
+      "context": "SoundPage",
+      "icon": "volume_up",
+      "id": "general.sound.section.output",
+      "path": [
+        "general",
+        "sound"
+      ],
+      "route": "general.sound",
+      "source": "SoundPage.qml",
+      "title": "Output"
+    },
+    {
+      "aliases": [
+        "microphone",
+        "mic",
+        "recording"
+      ],
+      "anchor": true,
+      "context": "SoundPage",
+      "icon": "mic",
+      "id": "general.sound.section.input",
+      "path": [
+        "general",
+        "sound"
+      ],
+      "route": "general.sound",
+      "source": "SoundPage.qml",
+      "title": "Input"
+    },
+    {
+      "aliases": [
+        "mixer",
+        "app volume",
+        "per application"
+      ],
+      "anchor": true,
+      "context": "SoundPage",
+      "icon": "apps",
+      "id": "general.sound.section.applications",
+      "path": [
+        "general",
+        "sound"
+      ],
+      "route": "general.sound",
+      "source": "SoundPage.qml",
+      "title": "Application volume"
+    },
+    {
+      "aliases": [
+        "profile",
+        "hdmi",
+        "a2dp",
+        "headset mode",
+        "sound card"
+      ],
+      "anchor": true,
+      "context": "SoundPage",
+      "icon": "graphic_eq",
+      "id": "general.sound.section.profiles",
+      "path": [
+        "general",
+        "sound"
+      ],
+      "route": "general.sound",
+      "source": "SoundPage.qml",
+      "title": "Device profiles"
     },
     {
       "aliases": [],
@@ -2083,6 +2432,83 @@ var catalog = {
       "route": "wallpaper",
       "source": "WallpaperPage.qml",
       "title": "Overview background"
+    },
+    {
+      "aliases": [
+        "gaps",
+        "column width",
+        "center column",
+        "tiling"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "view_column",
+      "id": "general.windows.section.layout",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Window layout"
+    },
+    {
+      "aliases": [
+        "focus ring",
+        "border",
+        "shadow",
+        "outline"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "select_window",
+      "id": "general.windows.section.decorations",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Window decorations"
+    },
+    {
+      "aliases": [
+        "focus follows mouse",
+        "warp",
+        "back and forth"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "ads_click",
+      "id": "general.windows.section.focus",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Focus behavior"
+    },
+    {
+      "aliases": [
+        "floating",
+        "snap",
+        "remember layout",
+        "title bar",
+        "double click",
+        "maximize"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "dashboard_customize",
+      "id": "general.windows.section.floating",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Floating windows and title bars"
     }
   ]
 };
@@ -2092,6 +2518,10 @@ function title(id) {
     case "general.dock": return qsTranslate("GeneralPage", "Dock");
     case "general.power-management": return qsTranslate("GeneralPage", "Power management");
     case "general.mouse": return qsTranslate("GeneralPage", "Mouse and cursor");
+    case "general.keyboard": return qsTranslate("GeneralPage", "Keyboard");
+    case "general.windows": return qsTranslate("GeneralPage", "Window management");
+    case "general.sound": return qsTranslate("GeneralPage", "Sound");
+    case "general.notifications": return qsTranslate("GeneralPage", "Notifications");
     case "account": return qsTranslate("ControlCenterWindow", "Account");
     case "general": return qsTranslate("ControlCenterWindow", "General");
     case "wallpaper": return qsTranslate("ControlCenterWindow", "Wallpaper");
@@ -2155,6 +2585,9 @@ function title(id) {
     case "general.sidebar.section.clock-style": return qsTranslate("GeneralSidebarPage", "Clock style");
     case "general.sidebar.section.system-cards": return qsTranslate("GeneralSidebarPage", "System cards");
     case "keystone.horizontal-clock.section.horizontal-clock-style": return qsTranslate("HorizontalClockPage", "Horizontal clock style");
+    case "general.keyboard.section.layouts": return qsTranslate("KeyboardPage", "Keyboard layouts");
+    case "general.keyboard.section.keys": return qsTranslate("KeyboardPage", "Keys and repeat");
+    case "general.keyboard.section.input-method": return qsTranslate("KeyboardPage", "Input method");
     case "keystone.section.keystone-style": return qsTranslate("KeystonePage", "Keystone style");
     case "keystone.section.size-spacing": return qsTranslate("KeystonePage", "Size and spacing");
     case "keystone.section.mouse-actions": return qsTranslate("KeystonePage", "Mouse actions");
@@ -2172,7 +2605,15 @@ function title(id) {
     case "general.network.section.wi-fi": return qsTranslate("NetworkPage", "Wi-Fi");
     case "general.network.section.other-settings": return qsTranslate("NetworkPage", "Other settings");
     case "general.network.section.connection-information": return qsTranslate("NetworkPage", "Connection information");
+    case "general.notifications.section.dnd": return qsTranslate("NotificationsPage", "Do Not Disturb");
+    case "general.notifications.section.banners": return qsTranslate("NotificationsPage", "Banners");
+    case "general.notifications.section.applications": return qsTranslate("NotificationsPage", "Application notifications");
+    case "general.notifications.section.history": return qsTranslate("NotificationsPage", "Notification history");
     case "general.power-management.section.power-mode": return qsTranslate("PowerManagementPage", "Power mode");
+    case "general.sound.section.output": return qsTranslate("SoundPage", "Output");
+    case "general.sound.section.input": return qsTranslate("SoundPage", "Input");
+    case "general.sound.section.applications": return qsTranslate("SoundPage", "Application volume");
+    case "general.sound.section.profiles": return qsTranslate("SoundPage", "Device profiles");
     case "general.spotlight.section.applications": return qsTranslate("SpotlightPage", "Applications");
     case "general.spotlight.section.web-search": return qsTranslate("SpotlightPage", "Web search");
     case "general.spotlight.section.clipboard": return qsTranslate("SpotlightPage", "Clipboard");
@@ -2188,6 +2629,10 @@ function title(id) {
     case "wallpaper.section.transition": return qsTranslate("WallpaperPage", "Transition");
     case "wallpaper.section.parallax-effects": return qsTranslate("WallpaperPage", "Parallax effects");
     case "wallpaper.section.overview-background": return qsTranslate("WallpaperPage", "Overview background");
+    case "general.windows.section.layout": return qsTranslate("WindowsPage", "Window layout");
+    case "general.windows.section.decorations": return qsTranslate("WindowsPage", "Window decorations");
+    case "general.windows.section.focus": return qsTranslate("WindowsPage", "Focus behavior");
+    case "general.windows.section.floating": return qsTranslate("WindowsPage", "Floating windows and title bars");
     case "clavis:lock:open": return qsTranslate("SpotlightActions", "Lock screen");
     case "clavis:spotlight:search": return qsTranslate("SpotlightActions", "Search");
     case "clavis:spotlight:web": return qsTranslate("SpotlightActions", "Web search");

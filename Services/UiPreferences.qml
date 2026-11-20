@@ -19,6 +19,10 @@ Singleton {
     property string spotlightClipboardStyle: "default"
     property bool dndEnabled: false
     property bool wechatExtraSoundEnabled: true
+    readonly property var notificationPopupDurations: [3, 5, 7, 10, 15]
+    property int notificationPopupSeconds: 7
+    property bool notificationCriticalBypassDnd: true
+    property var notificationMutedApps: []
     property bool darkMode: false
     property string language: I18nManager.systemLanguage
     property string weatherTemperatureUnit: "celsius"
@@ -117,6 +121,32 @@ Singleton {
 
     function toggleDnd() {
         root.setDndEnabled(!root.dndEnabled);
+    }
+
+    function setWechatExtraSoundEnabled(value) {
+        root.wechatExtraSoundEnabled = value;
+        root.save();
+    }
+
+    function setNotificationPopupSeconds(value) {
+        if (root.notificationPopupDurations.indexOf(value) < 0)
+            return;
+        root.notificationPopupSeconds = value;
+        root.save();
+    }
+
+    function setNotificationCriticalBypassDnd(value) {
+        root.notificationCriticalBypassDnd = value;
+        root.save();
+    }
+
+    // Muted applications keep their history entries but never show banners.
+    function setNotificationAppMuted(appName, muted) {
+        const apps = root.notificationMutedApps.filter(name => name !== appName);
+        if (muted && appName)
+            apps.push(appName);
+        root.notificationMutedApps = apps.sort();
+        root.save();
     }
 
     function setLanguage(value) {
@@ -530,6 +560,10 @@ Singleton {
         prefsFile.setText(JSON.stringify({
                                              "dndEnabled": root.dndEnabled,
                                              "wechatExtraSoundEnabled": root.wechatExtraSoundEnabled,
+                                             "notificationPopupSeconds": root.notificationPopupSeconds,
+                                             "notificationCriticalBypassDnd":
+                                             root.notificationCriticalBypassDnd,
+                                             "notificationMutedApps": root.notificationMutedApps,
                                              "language": root.language,
                                              "weatherTemperatureUnit": root.weatherTemperatureUnit,
                                              "systemTemperatureUnit": root.systemTemperatureUnit,
@@ -602,6 +636,12 @@ Singleton {
                 if (typeof parsed.dndEnabled === "boolean")
                     root.dndEnabled = parsed.dndEnabled;
                 root.wechatExtraSoundEnabled = parsed.wechatExtraSoundEnabled !== false;
+                root.notificationPopupSeconds = root.notificationPopupDurations.indexOf(
+                            parsed.notificationPopupSeconds) >= 0 ? parsed.notificationPopupSeconds : 7;
+                root.notificationCriticalBypassDnd = parsed.notificationCriticalBypassDnd !== false;
+                root.notificationMutedApps = Array.isArray(parsed.notificationMutedApps)
+                        ? parsed.notificationMutedApps.filter(name => typeof name === "string" && name
+                                                                      !== "") : [];
 
                 root.language = root.normalizedLanguage(parsed.language || I18nManager.systemLanguage);
                 root.weatherTemperatureUnit = root.normalizedTemperatureUnit(parsed.weatherTemperatureUnit);

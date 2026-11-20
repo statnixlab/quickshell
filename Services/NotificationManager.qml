@@ -13,13 +13,16 @@ import "DockBadges.js" as DockBadges
 Singleton {
     id: root
 
-    readonly property int defaultPopupTimeoutMs: 7000
+    readonly property int defaultPopupTimeoutMs: UiPreferences.notificationPopupSeconds * 1000
     readonly property string notificationsDir: Paths.stateHome + "/notifications"
     readonly property string filePath: notificationsDir + "/notifications.json"
     readonly property bool silent: UiPreferences.dndEnabled
     readonly property bool centerVisible: WidgetState.dashboardSidebarOpen
                                           && WidgetState.dashboardSidebarView === "info"
-    readonly property bool popupInhibited: silent || centerVisible
+    // A critical banner may pass through Do Not Disturb; ordinary ones never get popup state then.
+    readonly property bool criticalPopupActive: UiPreferences.notificationCriticalBypassDnd && popupList.some(
+                                                    notif => notif.urgency === NotificationUrgency.Critical)
+    readonly property bool popupInhibited: centerVisible || (silent && !criticalPopupActive)
     readonly property bool hasNotifs: popupList.length > 0
 
     property bool historyReady: false
@@ -157,7 +160,8 @@ Singleton {
                                                       filePath: filePath || "",
                                                       receivedAt: now,
                                                       urgency: NotificationUrgency.Low,
-                                                      popup: !root.popupInhibited,
+                                                      popup: !root.popupInhibitedFor("Clavis Shell",
+                                                                                     NotificationUrgency.Low),
                                                       popupStartedAt: now,
                                                       popupExpiresAt: now + root.defaultPopupTimeoutMs
                                                   });
@@ -212,7 +216,9 @@ Singleton {
         const isWechat = desktopEntry === "wechat" || desktopEntry === "wechat.desktop" || appName
               === "wechat" || appName === "weixin" || appName === "微信";
         const hints = notification.hints || {};
-        if (!UiPreferences.wechatExtraSoundEnabled || !isWechat || root.silent || isReplacement
+        const muted = UiPreferences.notificationMutedApps.indexOf(notification.appName
+                                                                  || notification.desktopEntry) >= 0;
+        if (!UiPreferences.wechatExtraSoundEnabled || !isWechat || root.silent || muted || isReplacement
                 || hints["suppress-sound"] || notification.urgency === NotificationUrgency.Low
                 || wechatSound.running || wechatSoundCooldown.running)
             return;
@@ -276,7 +282,7 @@ Singleton {
                                                                         });
             }
 
-            if (!root.popupInhibited) {
+            if (!root.popupInhibitedFor(newNotifObject.appName, notification.urgency)) {
                 newNotifObject.popup = true;
                 root.unread++;
             }
@@ -539,6 +545,15 @@ Singleton {
             root.hidePopup(popups[i]);
         if (popups.length > maxCount)
             root.triggerListChange();
+    }
+
+    // Banners stay hidden while the center is open, for muted apps, and in Do Not Disturb
+    // unless critical notifications are allowed through.
+    function popupInhibitedFor(appName, urgency) {
+        if (root.centerVisible || UiPreferences.notificationMutedApps.indexOf(appName) >= 0)
+            return true;
+        return root.silent && !(urgency === NotificationUrgency.Critical
+                                && UiPreferences.notificationCriticalBypassDnd);
     }
 
     function setSilent(value) {

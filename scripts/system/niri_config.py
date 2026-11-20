@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent / 'vendor'))
 import kdl
 
 PRINT = kdl.PrintConfig(indent='    ', semicolons=True)
-FRAGMENTS = ('effects', 'cursor', 'layer-rules', 'binds', 'outputs', 'mouse', 'minimize-animation', 'application-effects', 'panel-effects')
+FRAGMENTS = ('effects', 'cursor', 'layer-rules', 'binds', 'outputs', 'mouse', 'keyboard', 'windows', 'minimize-animation', 'application-effects', 'panel-effects')
 
 # Stable first-setup defaults. Existing fragments, including empty ones, are preserved.
 DEFAULT_BINDINGS = (
@@ -311,6 +311,10 @@ def initial(feature, request):
         return header + render(kdl.Node('input', nodes=[kdl.Node('mouse', nodes=[
             kdl.Node('accel-speed', args=[float(speed)]),
             kdl.Node('accel-profile', args=[profile])])]))
+    if feature == 'keyboard':
+        return header + render(keyboard_node(request))
+    if feature == 'windows':
+        return header + ''.join(render(node) for node in windows_nodes(request))
     if feature == 'outputs':
         return header
     if feature == 'binds':
@@ -645,6 +649,9 @@ def status(request):
             included = path in graph.references
             state['fragments'][feature] = dict(path=str(path), state=('ready' if path.exists() else 'missing') if included else 'not-connected')
         state['keymap'] = {}
+        state['keyboard'] = keyboard_state(graph)
+        state['windows'] = windows_state(graph, path_key(managed_dir / 'windows.kdl'))
+        state['windows']['personalSupported'] = supports_personal_layout(request)
         state['mouse'] = dict(speed=0.0, profile='adaptive')
         for _, node in graph.ordered:
             if node.name == 'input':
@@ -789,6 +796,209 @@ def restore_output_publication(main, candidate, previous):
         replace_file(path, previous)
 
 
+KEYBOARD_DEFAULTS = dict(layouts=[], options='', rules='', model='', file=None, repeatDelay=600, repeatRate=25, trackLayout='global', numlock=False)
+XKB_NAME = re.compile(r'^[A-Za-z0-9_()+-]*$')
+XKB_OPTION = re.compile(r'^[A-Za-z0-9_]+:[A-Za-z0-9_]+$')
+
+
+def keyboard_node(request):
+    """Render the complete managed keyboard section; niri replaces xkb as a whole."""
+    layouts = request.get('layouts', [])
+    if not isinstance(layouts, list) or len(layouts) > 4:
+        raise ValueError('Choose at most four keyboard layouts')
+    names, variants = [], []
+    for row in layouts:
+        layout, variant = (row or {}).get('layout', ''), (row or {}).get('variant', '') or ''
+        if not isinstance(layout, str) or not layout or not XKB_NAME.match(layout):
+            raise ValueError('Invalid keyboard layout')
+        if not isinstance(variant, str) or not XKB_NAME.match(variant):
+            raise ValueError('Invalid keyboard layout variant')
+        names.append(layout)
+        variants.append(variant)
+    options = request.get('options', '') or ''
+    if not isinstance(options, str) or any(not XKB_OPTION.match(o) for o in options.split(',') if o):
+        raise ValueError('Invalid keyboard option')
+    delay, rate = request.get('repeatDelay', 600), request.get('repeatRate', 25)
+    if isinstance(delay, bool) or not isinstance(delay, int) or not 100 <= delay <= 2000:
+        raise ValueError('Repeat delay must be between 100 and 2000 ms')
+    if isinstance(rate, bool) or not isinstance(rate, int) or not 1 <= rate <= 100:
+        raise ValueError('Repeat rate must be between 1 and 100')
+    track = request.get('trackLayout', 'global')
+    if track not in ('global', 'window'):
+        raise ValueError('Unknown layout tracking mode')
+    numlock = request.get('numlock', False)
+    if not isinstance(numlock, bool):
+        raise ValueError('Num Lock must be true or false')
+    xkb = []
+    for key in ('rules', 'model'):
+        value = request.get(key) or ''
+        if not isinstance(value, str) or not XKB_NAME.match(value):
+            raise ValueError('Invalid XKB ' + key)
+        if value:
+            xkb.append(kdl.Node(key, args=[value]))
+    if names:
+        xkb.append(kdl.Node('layout', args=[','.join(names)]))
+        if any(variants):
+            xkb.append(kdl.Node('variant', args=[','.join(variants)]))
+    if options:
+        xkb.append(kdl.Node('options', args=[options]))
+    if request.get('file'):
+        # A keymap file takes precedence in niri; keep the user's choice intact.
+        if not isinstance(request['file'], str):
+            raise ValueError('Invalid XKB keymap file')
+        xkb.append(kdl.Node('file', args=[request['file']]))
+    return kdl.Node('input', nodes=[kdl.Node('keyboard', nodes=[
+        kdl.Node('xkb', nodes=xkb),
+        kdl.Node('repeat-delay', args=[delay]),
+        kdl.Node('repeat-rate', args=[rate]),
+        kdl.Node('track-layout', args=[track]),
+        kdl.Node('numlock', args=[] if numlock else [False])])])
+
+
+def keyboard_state(graph):
+    """Effective keyboard settings, following niri's include merge rules."""
+    state = copy.deepcopy(KEYBOARD_DEFAULTS)
+    for _, node in graph.ordered:
+        if node.name != 'input':
+            continue
+        for keyboard in (child for child in node.nodes if child.name == 'keyboard'):
+            for option in keyboard.nodes:
+                if option.name == 'xkb':
+                    values = {child.name: child.args[0] for child in option.nodes if child.args}
+                    layouts = [v for v in str(values.get('layout', '')).split(',')]
+                    variants = str(values.get('variant', '')).split(',')
+                    state['layouts'] = [dict(layout=layout, variant=variants[i] if i < len(variants) else '')
+                                        for i, layout in enumerate(layouts) if layout]
+                    state['options'] = str(values.get('options', '') or '')
+                    state['rules'] = str(values.get('rules', '') or '')
+                    state['model'] = str(values.get('model', '') or '')
+                    state['file'] = values.get('file')
+                elif option.name == 'repeat-delay' and option.args:
+                    state['repeatDelay'] = option.args[0]
+                elif option.name == 'repeat-rate' and option.args:
+                    state['repeatRate'] = option.args[0]
+                elif option.name == 'track-layout' and option.args:
+                    state['trackLayout'] = option.args[0]
+                elif option.name == 'numlock':
+                    state['numlock'] = option.args[0] is not False if option.args else True
+    return state
+
+
+# Layout flags from this machine's personal niri patch stack, probed before use.
+PERSONAL_LAYOUT_FLAGS = (
+    'remember-window-layout', 'floating-windows-follow-focus', 'floating-windows-follow-parent',
+    'floating-windows-match-tiling-top', 'floating-windows-edge-snap', 'floating-windows-detach-on-mod-drag',
+    'floating-windows-restore-normal-size', 'titlebar-double-click-to-column', 'client-maximize-to-column')
+WINDOWS_DEFAULTS = dict(gaps=16, centerFocusedColumn='never', alwaysCenterSingleColumn=False, emptyWorkspaceAboveFirst=False,
+                        defaultColumnWidth=0.5, focusRing=True, focusRingWidth=4, border=False, borderWidth=4, shadow=False,
+                        focusFollowsMouse=False, warpMouseToFocus=False, workspaceBackAndForth=False,
+                        personal={flag: False for flag in PERSONAL_LAYOUT_FLAGS})
+
+
+def flag_node(name, value):
+    return kdl.Node(name, args=[] if value else [False])
+
+
+def windows_nodes(request):
+    """Render the managed window-management fragment with every field explicit."""
+    def boolean(key):
+        value = request.get(key, WINDOWS_DEFAULTS[key])
+        if not isinstance(value, bool):
+            raise ValueError(key + ' must be true or false')
+        return value
+
+    def integer(key, low, high):
+        value = request.get(key, WINDOWS_DEFAULTS[key])
+        if isinstance(value, bool) or not isinstance(value, int) or not low <= value <= high:
+            raise ValueError('%s must be between %d and %d' % (key, low, high))
+        return value
+
+    center = request.get('centerFocusedColumn', 'never')
+    if center not in ('never', 'always', 'on-overflow'):
+        raise ValueError('Unknown column centering mode')
+    width = request.get('defaultColumnWidth', 0.5)
+    if isinstance(width, bool) or not isinstance(width, (int, float)) or not math.isfinite(width) or not 0 <= width <= 1:
+        raise ValueError('Default column width must be between 0 and 1')
+    layout = [
+        kdl.Node('gaps', args=[integer('gaps', 0, 64)]),
+        kdl.Node('center-focused-column', args=[center]),
+        flag_node('always-center-single-column', boolean('alwaysCenterSingleColumn')),
+        flag_node('empty-workspace-above-first', boolean('emptyWorkspaceAboveFirst')),
+        # Zero lets each application choose its initial width.
+        kdl.Node('default-column-width', nodes=[kdl.Node('proportion', args=[round(float(width), 5)])] if width else []),
+        kdl.Node('focus-ring', nodes=[kdl.Node('on' if boolean('focusRing') else 'off'), kdl.Node('width', args=[integer('focusRingWidth', 1, 16)])]),
+        kdl.Node('border', nodes=[kdl.Node('on' if boolean('border') else 'off'), kdl.Node('width', args=[integer('borderWidth', 1, 16)])]),
+        kdl.Node('shadow', nodes=[kdl.Node('on' if boolean('shadow') else 'off')]),
+    ]
+    personal = request.get('personal') or {}
+    if not isinstance(personal, dict) or any(key not in PERSONAL_LAYOUT_FLAGS or not isinstance(value, bool) for key, value in personal.items()):
+        raise ValueError('Unknown personal layout option')
+    if request.get('personalSupported'):
+        layout.extend(flag_node(flag, personal.get(flag, False)) for flag in PERSONAL_LAYOUT_FLAGS)
+    # niri cannot switch these two off from an include, so they are written only when enabled.
+    pointer = [kdl.Node(name) for key, name in (('focusFollowsMouse', 'focus-follows-mouse'), ('warpMouseToFocus', 'warp-mouse-to-focus')) if boolean(key)]
+    return [kdl.Node('layout', nodes=layout),
+            kdl.Node('input', nodes=pointer + [flag_node('workspace-auto-back-and-forth', boolean('workspaceBackAndForth'))])]
+
+
+def windows_state(graph, managed=None):
+    """Effective window-management values; `external` reports options another file forces on."""
+    state = copy.deepcopy(WINDOWS_DEFAULTS)
+    external = dict(focusFollowsMouse=False, warpMouseToFocus=False)
+
+    def flag(node):
+        return node.args[0] is not False if node.args else True
+
+    for path, node in graph.ordered:
+        if node.name == 'layout':
+            for child in node.nodes:
+                name = child.name
+                if name == 'gaps' and child.args:
+                    state['gaps'] = int(child.args[0])
+                elif name == 'center-focused-column' and child.args:
+                    state['centerFocusedColumn'] = child.args[0]
+                elif name == 'always-center-single-column':
+                    state['alwaysCenterSingleColumn'] = flag(child)
+                elif name == 'empty-workspace-above-first':
+                    state['emptyWorkspaceAboveFirst'] = flag(child)
+                elif name == 'default-column-width':
+                    proportion = next((c.args[0] for c in child.nodes if c.name == 'proportion' and c.args), None)
+                    state['defaultColumnWidth'] = float(proportion) if proportion is not None else 0.0
+                elif name in ('focus-ring', 'border', 'shadow'):
+                    key = {'focus-ring': 'focusRing', 'border': 'border', 'shadow': 'shadow'}[name]
+                    names = [c.name for c in child.nodes]
+                    if 'off' in names:
+                        state[key] = False
+                    elif 'on' in names or (name == 'border' and path == path_key(graph.main) and not child.nodes):
+                        state[key] = True
+                    width = next((c.args[0] for c in child.nodes if c.name == 'width' and c.args), None)
+                    if width is not None and key != 'shadow':
+                        state[key + 'Width'] = int(width)
+                elif name in PERSONAL_LAYOUT_FLAGS:
+                    state['personal'][name] = flag(child)
+        elif node.name == 'input':
+            for child in node.nodes:
+                if child.name in ('focus-follows-mouse', 'warp-mouse-to-focus'):
+                    key = 'focusFollowsMouse' if child.name == 'focus-follows-mouse' else 'warpMouseToFocus'
+                    state[key] = True
+                    if path != managed:
+                        external[key] = True
+                elif child.name == 'workspace-auto-back-and-forth':
+                    state['workspaceBackAndForth'] = flag(child)
+    state['external'] = external
+    return state
+
+
+def supports_personal_layout(request):
+    try:
+        with tempfile.TemporaryDirectory(prefix='clavis-layout-probe-') as directory:
+            candidate = Path(directory) / 'config.kdl'
+            candidate.write_text(render(kdl.Node('layout', nodes=[kdl.Node(flag) for flag in PERSONAL_LAYOUT_FLAGS])))
+            return subprocess.run([request.get('niri', 'niri'), 'validate', '-c', str(candidate)], capture_output=True, timeout=5).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
 def mutate(request):
     if request.get('operation') == 'migrate-effects':
         return migrate_effects(request)
@@ -816,6 +1026,11 @@ def mutate(request):
         previous = read_text(path) if exists else None
         if exists:
             parse(previous)
+        if feature == 'windows':
+            # Options forced on by another file stay owned there; copying them here
+            # would keep them enabled after the user removes the original line.
+            external = windows_state(graph, path_key(path))['external']
+            request = dict(request, **{key: False for key, forced in external.items() if forced})
         if request['operation'] == 'setup':
             candidate = previous if exists else initial(feature, request)
         elif feature == 'outputs':
@@ -894,6 +1109,9 @@ def catalog(request):
 def run(request):
     if request.get('operation') == 'catalog':
         return catalog(request)
+    if request.get('operation') == 'keyboard-catalog':
+        import xkb_catalog
+        return xkb_catalog.catalog(request)
     if request.get('operation', 'status') == 'status':
         return status(request)
     return mutate(request)

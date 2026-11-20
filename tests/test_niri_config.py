@@ -191,6 +191,71 @@ class ConfigurationContracts(unittest.TestCase):
             remaining = {entry['id'] for entry in self.run_config('catalog')['catalog']}
         self.assertTrue(set(ids).issubset(remaining))
 
+    def test_keyboard_fragment_seeds_from_and_overrides_user_settings(self):
+        self.main.write_text('input {\n    keyboard {\n        xkb { layout "de,us"; variant "nodeadkeys,"; }\n        repeat-delay 400\n        numlock\n    }\n}\n')
+        current = self.run_config()['keyboard']
+        self.assertEqual(current['layouts'], [dict(layout='de', variant='nodeadkeys'), dict(layout='us', variant='')])
+        self.assertEqual((current['repeatDelay'], current['repeatRate'], current['numlock']), (400, 25, True))
+        state = self.run_config('setup', 'keyboard', **current)
+        self.assertEqual(state['fragments']['keyboard']['state'], 'ready')
+        self.assertEqual(state['keyboard'], current)
+        state = self.run_config('update', 'keyboard', **dict(current, layouts=[dict(layout='us', variant=''), dict(layout='cn', variant='')],
+                                                           options='grp:win_space_toggle,ctrl:nocaps', repeatRate=40, trackLayout='window', numlock=False))
+        keyboard = state['keyboard']
+        self.assertEqual([row['layout'] for row in keyboard['layouts']], ['us', 'cn'])
+        self.assertEqual(keyboard['options'], 'grp:win_space_toggle,ctrl:nocaps')
+        self.assertEqual((keyboard['repeatDelay'], keyboard['repeatRate'], keyboard['trackLayout'], keyboard['numlock']), (400, 40, 'window', False))
+        self.assertIn('layout "de,us"', self.main.read_text())
+
+    def test_keyboard_rejects_invalid_values_without_writing(self):
+        self.run_config('setup', 'keyboard')
+        before = self.fragment('keyboard').read_bytes()
+        for bad in (dict(layouts=[dict(layout='us"; spawn')]), dict(layouts=[dict(layout='us')] * 5), dict(options='rm -rf'),
+                    dict(repeatDelay=50), dict(repeatRate=0), dict(trackLayout='app'), dict(numlock='yes')):
+            with self.assertRaises(ValueError):
+                self.run_config('update', 'keyboard', **bad)
+        self.assertEqual(self.fragment('keyboard').read_bytes(), before)
+
+    def test_keyboard_catalog_lists_localizable_layouts_and_options(self):
+        rules = Path(self.temp.name) / 'evdev.xml'
+        rules.write_text('<xkbConfigRegistry><layoutList><layout><configItem><name>us</name><description>English (US)</description></configItem>'
+                         '<variantList><variant><configItem><name>intl</name><description>English (US, intl., with dead keys)</description></configItem></variant></variantList></layout></layoutList>'
+                         '<optionList><group><configItem><name>grp</name></configItem><option><configItem><name>grp:win_space_toggle</name><description>Win+Space</description></configItem></option></group>'
+                         '<group><configItem><name>ctrl</name></configItem><option><configItem><name>ctrl:nocaps</name><description>Caps Lock as Ctrl</description></configItem></option>'
+                         '<option><configItem><name>ctrl:rctrl_ralt</name><description>Right Ctrl as Right Alt</description></configItem></option></group></optionList></xkbConfigRegistry>')
+        result = config.run(dict(operation='keyboard-catalog', rules=str(rules), language='en_US'))
+        self.assertEqual(result['layouts'][0]['name'], 'us')
+        self.assertEqual(result['layouts'][0]['variants'][0]['name'], 'intl')
+        self.assertEqual([row['name'] for row in result['switchOptions']], ['grp:win_space_toggle'])
+        self.assertEqual([row['name'] for row in result['capsOptions']], ['ctrl:nocaps'])
+
+    def test_windows_fragment_overrides_layout_and_reports_external_pointer_options(self):
+        self.main.write_text('input { focus-follows-mouse; }\nlayout {\n    gaps 3\n    border { off; }\n    shadow { on; }\n}\n')
+        current = self.run_config()['windows']
+        self.assertEqual((current['gaps'], current['border'], current['shadow']), (3, False, True))
+        self.assertTrue(current['external']['focusFollowsMouse'])
+        request = {key: value for key, value in current.items() if key not in ('external', 'personalSupported')}
+        self.run_config('setup', 'windows', **request)
+        state = self.run_config('update', 'windows', **dict(request, gaps=12, centerFocusedColumn='on-overflow', defaultColumnWidth=0,
+                                                          border=True, borderWidth=2, shadow=False, warpMouseToFocus=True,
+                                                          workspaceBackAndForth=True))['windows']
+        self.assertEqual((state['gaps'], state['centerFocusedColumn'], state['defaultColumnWidth']), (12, 'on-overflow', 0.0))
+        self.assertEqual((state['border'], state['borderWidth'], state['shadow']), (True, 2, False))
+        self.assertTrue(state['warpMouseToFocus'] and state['workspaceBackAndForth'])
+        self.assertFalse(state['external']['warpMouseToFocus'])
+        self.assertTrue(state['external']['focusFollowsMouse'])
+        self.assertNotIn('focus-follows-mouse', self.fragment('windows').read_text())
+
+    def test_windows_personal_flags_are_written_only_when_supported(self):
+        nodes = config.windows_nodes(dict(personal={'floating-windows-edge-snap': True}))
+        self.assertNotIn('floating-windows-edge-snap', ''.join(config.render(node) for node in nodes))
+        text = ''.join(config.render(node) for node in config.windows_nodes(dict(personalSupported=True, personal={'floating-windows-edge-snap': True})))
+        self.assertIn('floating-windows-edge-snap;', text)
+        self.assertIn('remember-window-layout false;', text)
+        for bad in (dict(gaps=-1), dict(centerFocusedColumn='middle'), dict(defaultColumnWidth=2), dict(shadow='on'), dict(personal={'unknown': True})):
+            with self.assertRaises(ValueError):
+                config.windows_nodes(bad)
+
     def test_compositor_config_argument_forms(self):
         cwd = Path('/work')
         self.assertEqual(config.config_argument(['niri-custom', '--session', '--config', '/a/b.kdl'], cwd), Path('/a/b.kdl'))

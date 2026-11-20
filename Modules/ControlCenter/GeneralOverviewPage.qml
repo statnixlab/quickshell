@@ -73,6 +73,15 @@ StyledFlickable {
                 trailingIconName: "chevron_right"
                 onClicked: root.sectionRequested("effects")
             }
+
+            SettingsActionRow {
+                Layout.fillWidth: true
+                iconName: "tab_group"
+                text: SpotlightCatalog.title("general.windows")
+                description: qsTr("Gaps, column width, decorations, focus and floating windows")
+                trailingIconName: "chevron_right"
+                onClicked: root.sectionRequested("windows")
+            }
         }
 
         SettingsSection {
@@ -106,11 +115,40 @@ StyledFlickable {
 
             SettingsActionRow {
                 Layout.fillWidth: true
+                iconName: "volume_up"
+                text: SpotlightCatalog.title("general.sound")
+                description: Volume.ready && Volume.outputAvailable ? Volume.sinkName : qsTr(
+                                                                          "Output, input, application volume and device profiles")
+                trailingIconName: "chevron_right"
+                onClicked: root.sectionRequested("sound")
+            }
+
+            SettingsActionRow {
+                Layout.fillWidth: true
+                iconName: UiPreferences.dndEnabled ? "notifications_off" : "notifications"
+                text: SpotlightCatalog.title("general.notifications")
+                description: UiPreferences.dndEnabled ? qsTr("Do Not Disturb is on") : qsTr(
+                                                            "Do Not Disturb, banners and application notifications")
+                trailingIconName: "chevron_right"
+                onClicked: root.sectionRequested("notifications")
+            }
+
+            SettingsActionRow {
+                Layout.fillWidth: true
                 iconName: "mouse"
                 text: qsTr("Mouse and cursor")
                 description: qsTr("Pointer speed, acceleration, cursor theme and size")
                 trailingIconName: "chevron_right"
                 onClicked: root.sectionRequested("mouse")
+            }
+
+            SettingsActionRow {
+                Layout.fillWidth: true
+                iconName: "keyboard_alt"
+                text: SpotlightCatalog.title("general.keyboard")
+                description: qsTr("Layouts, key repeat, Caps Lock and input method")
+                trailingIconName: "chevron_right"
+                onClicked: root.sectionRequested("keyboard")
             }
 
             SettingsActionRow {
