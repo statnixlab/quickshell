@@ -191,6 +191,13 @@ class ConfigurationContracts(unittest.TestCase):
             remaining = {entry['id'] for entry in self.run_config('catalog')['catalog']}
         self.assertTrue(set(ids).issubset(remaining))
 
+    def test_compositor_config_argument_forms(self):
+        cwd = Path('/work')
+        self.assertEqual(config.config_argument(['niri-custom', '--session', '--config', '/a/b.kdl'], cwd), Path('/a/b.kdl'))
+        self.assertEqual(config.config_argument(['niri', '-c', 'rel.kdl'], cwd), Path('/work/rel.kdl'))
+        self.assertEqual(config.config_argument(['niri', '--config=/c.kdl'], cwd), Path('/c.kdl'))
+        self.assertIsNone(config.config_argument(['niri', '--session'], cwd))
+
     def test_mouse_bindings_remain_visible_after_save_and_reload(self):
         self.setup_binds()
         keys = ['MouseLeft', 'MouseMiddle', 'MouseRight', 'MouseBack', 'Ctrl+MouseForward']

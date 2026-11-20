@@ -63,12 +63,43 @@ def path_key(path):
     return Path(os.path.realpath(path))
 
 
+def config_argument(arguments, cwd):
+    for i, arg in enumerate(arguments):
+        value = arguments[i + 1] if arg in ('-c', '--config') and i + 1 < len(arguments) else arg.split('=', 1)[1] if arg.startswith('--config=') else None
+        if value:
+            path = Path(value).expanduser()
+            return path if path.is_absolute() else cwd / path
+    return None
+
+
+def compositor_config():
+    endpoint = os.environ.get('NIRI_SOCKET')
+    if not endpoint:
+        return None
+    try:
+        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as peer:
+            peer.settimeout(2)
+            peer.connect(endpoint)
+            pid, _, _ = struct.unpack('3i', peer.getsockopt(socket.SOL_SOCKET, socket.SO_PEERCRED, 12))
+        process = Path('/proc') / str(pid)
+        if process.stat().st_uid != os.getuid():
+            return None
+        arguments = (process / 'cmdline').read_bytes().decode().split('\0')
+        return config_argument(arguments, (process / 'cwd').resolve())
+    except (OSError, UnicodeError, struct.error):
+        return None
+
+
 def main_path(request):
     if request.get('main'):
         return Path(request['main']).absolute()
     configured = os.environ.get('NIRI_CONFIG')
     if configured:
         return Path(configured).expanduser().absolute()
+    # The compositor behind NIRI_SOCKET is authoritative, whatever its binary is named.
+    running = compositor_config()
+    if running:
+        return running
     # A known custom session config takes precedence over the XDG default.
     candidates = set()
     for entry in Path('/proc').iterdir():
