@@ -50,40 +50,44 @@ class PreviewContracts(unittest.TestCase):
         self.addCleanup(self.finish)
 
     def serve(self):
+        # Like niri, answer each client independently: handlers may query this peer again.
         while not self.stop.is_set():
             try: connection,_=self.peer.accept()
             except (TimeoutError,OSError): continue
-            with connection:
-                connection.settimeout(2)
-                try:
-                    data=bytearray()
-                    while b'\n' not in data:
-                        part=connection.recv(65536)
-                        if not part: break
-                        data.extend(part)
-                    if not data:continue
-                    request=json.loads(data.split(b'\n')[0])
-                    if request=='Outputs': response={'Ok':{'Outputs':copy.deepcopy(self.state)}}
-                    elif isinstance(request,dict) and 'Output' in request:
-                        name=request['Output']['output'];action=request['Output']['action']
-                        self.actions.append((name,action))
-                        if self.fail_mode and isinstance(action,dict) and 'Scale' in action:
-                            self.fail_mode=False
-                            response={'Err':'Simulated mode failure'}
-                        else:
-                            self.apply_action(name,action)
-                            response={'Ok':'Handled'}
-                    elif isinstance(request,dict) and 'Action' in request:
-                        for row in config.status(dict(main=str(self.main)))['outputs']:
-                            name=row['identifier']
-                            if name not in self.state:continue
-                            settings=row['settings']
-                            self.apply_action(name,'Off' if settings.get('enabled') is False else 'On')
-                            for action in preview.actions(settings):self.apply_action(name,action)
+            threading.Thread(target=self.handle,args=(connection,),daemon=True).start()
+
+    def handle(self,connection):
+        with connection:
+            connection.settimeout(2)
+            try:
+                data=bytearray()
+                while b'\n' not in data:
+                    part=connection.recv(65536)
+                    if not part: break
+                    data.extend(part)
+                if not data:return
+                request=json.loads(data.split(b'\n')[0])
+                if request=='Outputs': response={'Ok':{'Outputs':copy.deepcopy(self.state)}}
+                elif isinstance(request,dict) and 'Output' in request:
+                    name=request['Output']['output'];action=request['Output']['action']
+                    self.actions.append((name,action))
+                    if self.fail_mode and isinstance(action,dict) and 'Scale' in action:
+                        self.fail_mode=False
+                        response={'Err':'Simulated mode failure'}
+                    else:
+                        self.apply_action(name,action)
                         response={'Ok':'Handled'}
-                    else:response={'Err':'Unsupported test request'}
-                    connection.sendall((json.dumps(response)+'\n').encode())
-                except (OSError,ValueError): pass
+                elif isinstance(request,dict) and 'Action' in request:
+                    for row in config.status(dict(main=str(self.main)))['outputs']:
+                        name=row['identifier']
+                        if name not in self.state:continue
+                        settings=row['settings']
+                        self.apply_action(name,'Off' if settings.get('enabled') is False else 'On')
+                        for action in preview.actions(settings):self.apply_action(name,action)
+                    response={'Ok':'Handled'}
+                else:response={'Err':'Unsupported test request'}
+                connection.sendall((json.dumps(response)+'\n').encode())
+            except (OSError,ValueError): pass
 
     def apply_action(self,name,action):
         if name not in self.state:return
