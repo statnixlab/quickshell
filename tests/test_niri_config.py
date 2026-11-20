@@ -295,6 +295,13 @@ class ConfigurationContracts(unittest.TestCase):
         self.assertEqual(config.key_identity('Control+Mod5+F1'), config.key_identity('ctrl+ISO_Level3_Shift+F1'))
         self.assertNotEqual(config.action_identity(config.parse('focus-workspace 1').nodes[0]), config.action_identity(config.parse('focus-workspace "1"').nodes[0]))
 
+    def test_modifier_only_bind_has_identity(self):
+        self.main.write_text('binds { Super { release { spawn "true"; }; }; Mod+Q { close-window; }; }\n')
+        rows, _ = config.bindings(config.Graph(self.main), self.fragment())
+        self.assertEqual(rows[0]['identity'], config.key_identity('win'))
+        self.assertNotEqual(rows[0]['identity'], rows[1]['identity'])
+        self.assertFalse(rows[0]['editable'])
+
     def test_sidebar_content_targets_preserve_legacy_shortcuts(self):
         for old, role in [('left', 'dashboard'), ('right', 'quicksettings')]:
             for method in ['open', 'close', 'toggle']:

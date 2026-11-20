@@ -350,6 +350,10 @@ def key_identity(key, mod='Super'):
         if part.lower() not in aliases:
             raise ValueError('Invalid key modifier: ' + part)
         modifiers.add(aliases[part.lower()])
+    if parts[-1].lower() in aliases:
+        # Modifier-only bind (e.g. a bare `Super` release bind): the trigger is
+        # the modifier itself, which has no single XKB keysym name.
+        return '+'.join(sorted(modifiers)) + ':modifier:' + aliases[parts[-1].lower()]
     mouse = {name.lower(): name for name in ('MouseLeft', 'MouseMiddle', 'MouseRight', 'MouseBack', 'MouseForward')}
     if parts[-1].lower() in mouse:
         return '+'.join(sorted(modifiers)) + ':' + mouse[parts[-1].lower()]
