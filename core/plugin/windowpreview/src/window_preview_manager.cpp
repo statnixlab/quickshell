@@ -1,4 +1,5 @@
 #include "window_preview_manager.h"
+#include <QPointer>
 #include <memory>
 
 WindowPreviewManager::WindowPreviewManager(QObject *parent) : QObject(parent)
@@ -158,7 +159,8 @@ void WindowPreviewManager::reconcile()
     for (const auto &window : m_catalog.windows())
         available.insert(window.toMap().value("identifier").toString());
     available.intersect(m_live);
-    m_cache.retain(available);
+    // A minimized window cannot be captured; keep its last frame as its preview.
+    m_cache.retain(available | (m_live & m_minimized));
     if (!m_snapshot.isEmpty() && (!available.contains(m_snapshot) || m_minimized.contains(m_snapshot)))
         finishSnapshot(m_snapshot);
     const auto queued = m_prefetch;
@@ -214,10 +216,21 @@ void WindowPreviewManager::reconcile()
                 return;
             const auto error = capture->error();
             // A stopped session or revoked protocol is not a temporary missing frame.
+            // Minimizing also stops the session, and niri may report that before
+            // the window's minimized state arrives over IPC. Decide only after
+            // that state has had time to settle, and keep a minimized window's
+            // last frame. A replaced or removed capture is no longer the
+            // authority on this window's frame.
             if (error == "session-stopped" || error == "capture-failed:2" || error == "target-closed" ||
                 error == "capture-global-removed" || error == "toplevel-list-finished" ||
-                error == "wayland-disconnected")
-                m_cache.invalidate(id);
+                error == "wayland-disconnected") {
+                QTimer::singleShot(400, this,
+                                   [this, guard = QPointer<WindowCaptureProbe>(capture), id, generation] {
+                                       if (generation == m_generation && !m_minimized.contains(id) &&
+                                           (guard ? m_captures.value(id) == guard : !m_captures.contains(id)))
+                                           m_cache.invalidate(id);
+                                   });
+            }
             if (!error.isEmpty() && (m_snapshot == id || m_waiters.contains(id)))
                 finishSnapshot(id);
             if (*started || !capture->ready() || !capture->supported())
