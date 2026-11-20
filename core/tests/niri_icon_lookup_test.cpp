@@ -53,6 +53,42 @@ class NiriIconLookupTest : public QObject {
         QCOMPARE(result.appName, QStringLiteral("Fixture Browser"));
         QCOMPARE(result.iconPath, QUrl::fromLocalFile(path).toString());
     }
+
+    void clearPicksUpChangedLauncherIcon()
+    {
+        QTemporaryDir directory;
+        QVERIFY(directory.isValid());
+        const auto oldHome = qgetenv("XDG_DATA_HOME");
+        const auto oldDirs = qgetenv("XDG_DATA_DIRS");
+        const auto restore = qScopeGuard([&] {
+            oldHome.isNull() ? qunsetenv("XDG_DATA_HOME") : qputenv("XDG_DATA_HOME", oldHome);
+            oldDirs.isNull() ? qunsetenv("XDG_DATA_DIRS") : qputenv("XDG_DATA_DIRS", oldDirs);
+        });
+        qputenv("XDG_DATA_HOME", directory.path().toUtf8());
+        qputenv("XDG_DATA_DIRS", directory.path().toUtf8());
+        const QString apps = directory.path() + "/applications";
+        const QString icons = directory.path() + "/icons/hicolor/scalable/apps";
+        QVERIFY(QDir().mkpath(apps));
+        QVERIFY(QDir().mkpath(icons));
+        for (const char *name : {"clavis-old-icon.svg", "clavis-new-icon.svg"}) {
+            QFile icon(icons + "/" + name);
+            QVERIFY(icon.open(QIODevice::WriteOnly));
+        }
+        const auto writeLauncher = [&](const QByteArray &icon) {
+            QFile desktop(apps + "/clavis-player.desktop");
+            QVERIFY(desktop.open(QIODevice::WriteOnly | QIODevice::Truncate));
+            desktop.write("[Desktop Entry]\nType=Application\nName=Player\nIcon=" + icon + "\n");
+        };
+        writeLauncher("clavis-old-icon");
+
+        NiriIconLookup lookup;
+        QVERIFY(lookup.resolve("clavis-player").iconPath.endsWith("clavis-old-icon.svg"));
+        writeLauncher("clavis-new-icon");
+        // Resolved launchers are cached until explicitly cleared.
+        QVERIFY(lookup.resolve("clavis-player").iconPath.endsWith("clavis-old-icon.svg"));
+        lookup.clear();
+        QVERIFY(lookup.resolve("clavis-player").iconPath.endsWith("clavis-new-icon.svg"));
+    }
 };
 
 QTEST_GUILESS_MAIN(NiriIconLookupTest)

@@ -61,6 +61,13 @@ NiriIconLookup::IconInfo NiriIconLookup::resolve(const QString &appId)
     return info;
 }
 
+void NiriIconLookup::clear()
+{
+    m_cache.clear();
+    m_desktopCache.clear();
+    m_iconCache.clear();
+}
+
 QString NiriIconLookup::moddedAppId(const QString &appId) const
 {
     static const QRegularExpression steamRe(QStringLiteral("^steam_app_(\\d+)$"));

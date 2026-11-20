@@ -12,6 +12,9 @@ class NiriIconLookup {
     };
 
     IconInfo resolve(const QString &appId);
+    // Forget resolved desktop entries and icon files, e.g. after an app's
+    // launcher or the icon theme changed.
+    void clear();
 
   private:
     struct DesktopEntry {

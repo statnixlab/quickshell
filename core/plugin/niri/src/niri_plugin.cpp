@@ -588,6 +588,21 @@ QVariantList NiriPlugin::outputSnapshot() const
     return result;
 }
 
+void NiriPlugin::refreshIcons()
+{
+    m_iconLookup.clear();
+    bool changed = false;
+    for (NiriWindow &window : m_windows) {
+        const NiriIconLookup::IconInfo icon = m_iconLookup.resolve(window.appId);
+        if (window.iconPath == icon.iconPath && window.appName == icon.appName)
+            continue;
+        window.iconPath = icon.iconPath;
+        window.appName = icon.appName;
+        changed = true;
+    }
+    publishState(false, changed, false);
+}
+
 void NiriPlugin::refreshOutputs()
 {
     const auto generation = ++m_outputRefreshGeneration;

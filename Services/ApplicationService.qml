@@ -3,6 +3,7 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Clavis.Files
+import Clavis.Niri
 import qs.Services
 
 Singleton {
@@ -210,6 +211,16 @@ Singleton {
 
         function onApplicationsChanged() {
             root.refresh();
+            // Window icons (Bar, Stage Manager, overviews) are resolved
+            // separately by the niri plugin; let it see changed launchers.
+            Niri.refreshIcons();
+        }
+    }
+    Connections {
+        target: ThemeService
+
+        function onIconThemeRevisionChanged() {
+            Niri.refreshIcons();
         }
     }
 

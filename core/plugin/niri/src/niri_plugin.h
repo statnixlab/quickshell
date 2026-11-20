@@ -58,6 +58,8 @@ class NiriPlugin : public QObject {
     Q_INVOKABLE bool connectToNiri();
     Q_INVOKABLE QVariantList outputSnapshot() const;
     Q_INVOKABLE void refreshOutputs();
+    // Re-resolve window icons and names after launchers or the icon theme changed.
+    Q_INVOKABLE void refreshIcons();
     Q_INVOKABLE void configureOutput(const QString &requestId, const QString &name, const QVariant &action);
 
     Q_INVOKABLE QVariantList workspacesForOutput(const QString &outputName) const;
