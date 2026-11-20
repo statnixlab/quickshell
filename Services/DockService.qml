@@ -96,6 +96,7 @@ Singleton {
     readonly property bool magnification: root._options.magnification
     readonly property real magnificationScale: root._options.magnificationScale
     readonly property bool autoHide: root._options.autoHide
+    readonly property bool revealAcrossEdge: root._options.revealAcrossEdge
     readonly property bool launchBounce: root._options.launchBounce
     readonly property bool showIndicators: root._options.showIndicators
     readonly property bool showRecent: root._options.showRecent

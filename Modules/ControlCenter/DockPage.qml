@@ -284,6 +284,20 @@ StyledFlickable {
 
             SettingsRow {
                 Layout.fillWidth: true
+                visible: DockService.autoHide
+                title: qsTr("Reveal from the whole edge")
+                supportingText: qsTr("Otherwise only the part of the screen edge below the Dock shows it")
+                iconName: "border_bottom"
+
+                trailing: StyledSwitch {
+                    checked: DockService.revealAcrossEdge
+                    Accessible.name: qsTr("Reveal from the whole edge")
+                    onToggled: DockService.setOption("revealAcrossEdge", checked)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
                 title: qsTr("Bounce when launching")
                 iconName: "animation"
 

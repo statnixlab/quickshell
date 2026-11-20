@@ -547,118 +547,118 @@
         <translation>Individual animations</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="16"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="17"/>
         <source>Very fast</source>
         <translation>Very fast</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="19"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="21"/>
         <source>Fast</source>
         <translation>Fast</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="22"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="25"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="25"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="29"/>
         <source>Slow</source>
         <translation>Slow</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="28"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="33"/>
         <source>Very slow</source>
         <translation>Very slow</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="34"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="40"/>
         <source>Custom (%1×)</source>
         <translation>Custom (%1×)</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="51"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="57"/>
         <source>Turned off in another configuration file</source>
         <translation>Turned off in another configuration file</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="73"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="79"/>
         <source>Saving…</source>
         <translation>Saving…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="74"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="81"/>
         <source>Changes are saved and applied automatically</source>
         <translation>Changes are saved and applied automatically</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="86"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="93"/>
         <source>Enable animation settings</source>
         <translation>Enable animation settings</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="87"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="94"/>
         <source>Clavis takes over the animation switch and speed, starting from your current values.</source>
         <translation>Clavis takes over the animation switch and speed, starting from your current values.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="108"/>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="114"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="116"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="122"/>
         <source>Animations</source>
         <translation>Animations</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="109"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="117"/>
         <source>Turn off to switch windows and workspaces instantly</source>
         <translation>Turn off to switch windows and workspaces instantly</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="123"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="131"/>
         <source>Speed</source>
         <translation>Speed</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="152"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="160"/>
         <source>Opening windows</source>
         <translation>Opening windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="157"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="165"/>
         <source>Closing windows</source>
         <translation>Closing windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="162"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="170"/>
         <source>Switching workspaces</source>
         <translation>Switching workspaces</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="167"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="175"/>
         <source>Scrolling between columns</source>
         <translation>Scrolling between columns</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="172"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="180"/>
         <source>Moving windows</source>
         <translation>Moving windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="177"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="185"/>
         <source>Resizing windows</source>
         <translation>Resizing windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="182"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="190"/>
         <source>Opening the overview</source>
         <translation>Opening the overview</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="188"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="196"/>
         <source>Minimize animation</source>
         <translation>Minimize animation</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="189"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="197"/>
         <source>Choose Genie or Scale in the Dock settings</source>
         <translation>Choose Genie or Scale in the Dock settings</translation>
     </message>
@@ -705,7 +705,7 @@
     </message>
     <message>
         <location filename="../Services/ApplicationService.qml" line="40"/>
-        <location filename="../Services/DockService.qml" line="210"/>
+        <location filename="../Services/DockService.qml" line="211"/>
         <source>Space</source>
         <translation>Space</translation>
     </message>
@@ -717,7 +717,7 @@
     </message>
     <message>
         <location filename="../Services/ApplicationService.qml" line="49"/>
-        <location filename="../Services/DockService.qml" line="209"/>
+        <location filename="../Services/DockService.qml" line="210"/>
         <source>Small Space</source>
         <translation>Small Space</translation>
     </message>
@@ -4252,19 +4252,30 @@ Scroll to adjust</translation>
         <translation>Automatically hide</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="287"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="292"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="288"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="294"/>
+        <source>Reveal from the whole edge</source>
+        <translation>Reveal from the whole edge</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="289"/>
+        <source>Otherwise only the part of the screen edge below the Dock shows it</source>
+        <translation>Otherwise only the part of the screen edge below the Dock shows it</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="301"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="306"/>
         <source>Bounce when launching</source>
         <translation>Bounce when launching</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="299"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="304"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="313"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="318"/>
         <source>Show running indicators</source>
         <translation>Show running indicators</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="312"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="326"/>
         <source>Minimize animation</source>
         <translation>Minimize animation</translation>
     </message>
@@ -4285,45 +4296,45 @@ Scroll to adjust</translation>
         <translation>Set up window minimization animations.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="314"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="328"/>
         <source>Window animation selection is unavailable in this session</source>
         <translation>Window animation selection is unavailable in this session</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="317"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="331"/>
         <source>Animations are disabled in your configuration</source>
         <translation>Animations are disabled in your configuration</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="330"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="344"/>
         <source>Genie</source>
         <translation>Genie</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="334"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="348"/>
         <source>Scale</source>
         <translation>Scale</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="360"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="365"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="374"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="379"/>
         <source>Show recent applications</source>
         <translation>Show recent applications</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="372"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="377"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="386"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="391"/>
         <source>Pin applications from the menu</source>
         <translation>Pin applications from the menu</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="399"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="403"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="413"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="417"/>
         <source>Show window thumbnails</source>
         <translation>Show window thumbnails</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="408"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="422"/>
         <source>Preview size</source>
         <translation>Preview size</translation>
     </message>
@@ -4359,43 +4370,43 @@ Scroll to adjust</translation>
 <context>
     <name>DockService</name>
     <message>
-        <location filename="../Services/DockService.qml" line="605"/>
+        <location filename="../Services/DockService.qml" line="606"/>
         <source>Dock settings cannot be saved because the configuration directory is unavailable.</source>
         <translation>Dock settings cannot be saved because the configuration directory is unavailable.</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="622"/>
+        <location filename="../Services/DockService.qml" line="623"/>
         <source>Dock settings could not be read. The existing file is preserved; changes apply to this session only.</source>
         <translation>Dock settings could not be read. The existing file is preserved; changes apply to this session only.</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="630"/>
+        <location filename="../Services/DockService.qml" line="631"/>
         <source>Dock settings could not be opened. Changes apply to this session only.</source>
         <translation>Dock settings could not be opened. Changes apply to this session only.</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="635"/>
+        <location filename="../Services/DockService.qml" line="636"/>
         <source>Dock settings could not be saved. Changes apply to this session only.</source>
         <translation>Dock settings could not be saved. Changes apply to this session only.</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="258"/>
+        <location filename="../Services/DockService.qml" line="259"/>
         <source>Trash</source>
         <translation>Trash</translation>
     </message>
     <message>
         <location filename="../Modules/Dock/DockFilePopup.qml" line="155"/>
-        <location filename="../Services/DockService.qml" line="278"/>
+        <location filename="../Services/DockService.qml" line="279"/>
         <source>This file or folder is unavailable.</source>
         <translation>This file or folder is unavailable.</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="593"/>
+        <location filename="../Services/DockService.qml" line="594"/>
         <source>Some files could not be processed.</source>
         <translation>Some files could not be processed.</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="593"/>
+        <location filename="../Services/DockService.qml" line="594"/>
         <source>The file operation failed.</source>
         <translation>The file operation failed.</translation>
     </message>
@@ -4403,7 +4414,7 @@ Scroll to adjust</translation>
 <context>
     <name>DockSurface</name>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="1130"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="1133"/>
         <source>Drop apps here</source>
         <translation>Drop apps here</translation>
     </message>
@@ -4413,17 +4424,17 @@ Scroll to adjust</translation>
         <translation>Remove from Dock</translation>
     </message>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="979"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="982"/>
         <source>Move to Trash</source>
         <translation>Move to Trash</translation>
     </message>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="979"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="982"/>
         <source>Open with %1</source>
         <translation>Open with %1</translation>
     </message>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="1079"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="1082"/>
         <source>The file operation could not be started.</source>
         <translation>The file operation could not be started.</translation>
     </message>
@@ -6884,7 +6895,7 @@ Temperature: %4</translation>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="286"/>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="297"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="298"/>
         <source>Set time automatically</source>
         <translation>Set time automatically</translation>
     </message>
@@ -6894,23 +6905,23 @@ Temperature: %4</translation>
         <translation>No time synchronization service is available</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="288"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="291"/>
         <source>Synchronized with a network time server</source>
         <translation>Synchronized with a network time server</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="290"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="292"/>
         <source>Waiting for a network time server</source>
         <translation>Waiting for a network time server</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="304"/>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="310"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="305"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="312"/>
         <source>Hardware clock uses local time</source>
         <translation>Hardware clock uses local time</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="305"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="306"/>
         <source>Turn on only if another system on this computer, such as Windows, shows the wrong time. Setting Windows to UTC is more reliable.</source>
         <translation>Turn on only if another system on this computer, such as Windows, shows the wrong time. Setting Windows to UTC is more reliable.</translation>
     </message>
@@ -11423,80 +11434,80 @@ Right-click to change shape; scroll to reorder</translation>
         <translation>Saving…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="90"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="91"/>
         <source>Screenshots are always copied to the clipboard</source>
         <translation>Screenshots are always copied to the clipboard</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="102"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="103"/>
         <source>Enable screenshot settings</source>
         <translation>Enable screenshot settings</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="103"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="104"/>
         <source>Clavis takes over where niri saves screenshots, starting from your current values.</source>
         <translation>Clavis takes over where niri saves screenshots, starting from your current values.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="124"/>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="130"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="126"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="132"/>
         <source>Also save to a file</source>
         <translation>Also save to a file</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="125"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="127"/>
         <source>Applies to niri screenshots, such as Print and Mod+Shift+S</source>
         <translation>Applies to niri screenshots, such as Print and Mod+Shift+S</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="140"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="142"/>
         <source>Folder</source>
         <translation>Folder</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="151"/>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="152"/>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="217"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="153"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="154"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="220"/>
         <source>Choose folder</source>
         <translation>Choose folder</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="162"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="164"/>
         <source>File name</source>
         <translation>File name</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="163"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="165"/>
         <source>For example: %1</source>
         <translation>For example: %1</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="198"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="201"/>
         <source>Recording save locations</source>
         <translation>Recording save locations</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="199"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="202"/>
         <source>Video, GIF and audio recordings are set in Keystone</source>
         <translation>Video, GIF and audio recordings are set in Keystone</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="213"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="216"/>
         <source>Screenshot folder</source>
         <translation>Screenshot folder</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="216"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="219"/>
         <source>This folder is empty</source>
         <translation>This folder is empty</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="218"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="221"/>
         <source>Choose</source>
         <translation>Choose</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="219"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="222"/>
         <source>Choose the current folder or a selected subfolder</source>
         <translation>Choose the current folder or a selected subfolder</translation>
     </message>
@@ -16245,117 +16256,117 @@ Scroll to adjust; click to open sound</translation>
         <translation>Move the pointer into a chosen screen corner to open or close the overview.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="347"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="348"/>
         <source>Top-left corner</source>
         <translation>Top-left corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="352"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="353"/>
         <source>Top-right corner</source>
         <translation>Top-right corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="357"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="358"/>
         <source>Bottom-left corner</source>
         <translation>Bottom-left corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="362"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="363"/>
         <source>Bottom-right corner</source>
         <translation>Bottom-right corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="368"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="369"/>
         <source>Workspace size in the overview</source>
         <translation>Workspace size in the overview</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="386"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="387"/>
         <source>Provided by this computer&apos;s customized niri</source>
         <translation>Provided by this computer&apos;s customized niri</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="396"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="397"/>
         <source>Remember each application&apos;s window layout</source>
         <translation>Remember each application&apos;s window layout</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="397"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="398"/>
         <source>New windows reopen floating or tiled with their last size</source>
         <translation>New windows reopen floating or tiled with their last size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="402"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="403"/>
         <source>Lower floating windows behind tiled windows</source>
         <translation>Lower floating windows behind tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="403"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="404"/>
         <source>Activating a tiled window lowers raised floating windows</source>
         <translation>Activating a tiled window lowers raised floating windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="408"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="409"/>
         <source>Keep dialogs with their parent window</source>
         <translation>Keep dialogs with their parent window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="413"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="414"/>
         <source>Keep floating windows below the bar</source>
         <translation>Keep floating windows below the bar</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="414"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="415"/>
         <source>Floating windows share the top edge of tiled windows</source>
         <translation>Floating windows share the top edge of tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="419"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="420"/>
         <source>Snap to half the screen at the edges</source>
         <translation>Snap to half the screen at the edges</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="420"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="421"/>
         <source>Drop a floating window at the left or right edge to tile it</source>
         <translation>Drop a floating window at the left or right edge to tile it</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="425"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="426"/>
         <source>Detach tiled windows by dragging with Mod</source>
         <translation>Detach tiled windows by dragging with Mod</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="426"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="427"/>
         <source>Hold Shift as well to keep the normal tiling drag</source>
         <translation>Hold Shift as well to keep the normal tiling drag</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="431"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="432"/>
         <source>Restore the previous floating size</source>
         <translation>Restore the previous floating size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="432"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="433"/>
         <source>When a tiled window becomes floating again</source>
         <translation>When a tiled window becomes floating again</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="437"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="438"/>
         <source>Double-click a title bar to expand the column</source>
         <translation>Double-click a title bar to expand the column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="438"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="439"/>
         <source>The maximize button still fills the screen</source>
         <translation>The maximize button still fills the screen</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="443"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="444"/>
         <source>Maximize requests expand the column</source>
         <translation>Maximize requests expand the column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="444"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>Applies to maximize buttons of tiled windows</translation>
     </message>

@@ -78,6 +78,16 @@ TestCase {
                               });
     }
 
+    function test_revealAcrossEdgeDefaultsOffAndRoundTrips() {
+        compare(DockModel.defaults().revealAcrossEdge, false);
+        compare(DockModel.option("revealAcrossEdge", true), true);
+        compare(DockModel.option("revealAcrossEdge", "yes"), undefined);
+        compare(DockModel.decodeConfig(encodedConfig([], {
+                                                         revealAcrossEdge: true
+                                                     })).options.revealAcrossEdge, true);
+        compare(DockModel.decodeConfig(encodedConfig([])).options.revealAcrossEdge, false);
+    }
+
     function test_fileReferencesSurviveConfigRoundTrip() {
         const pins = [
                   {

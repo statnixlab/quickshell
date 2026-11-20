@@ -14,6 +14,7 @@ function defaults() {
         magnification: true,
         magnificationScale: 1.5,
         autoHide: false,
+        revealAcrossEdge: false,
         launchBounce: true,
         showIndicators: true,
         showRecent: true,

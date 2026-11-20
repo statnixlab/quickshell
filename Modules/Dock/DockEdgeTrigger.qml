@@ -7,6 +7,8 @@ PanelWindow {
 
     required property string edge
     required property string dragMimeType
+    // Length of the centered stretch that reacts; 0 makes the whole edge react.
+    property real activeLength: 0
     readonly property bool horizontal: edge === "bottom"
     readonly property int thickness: 3
     readonly property bool hovered: pointer.hovered
@@ -27,6 +29,22 @@ PanelWindow {
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.namespace: "clavis-dock-edge-trigger"
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+
+    // Narrow the input region instead of resizing the surface, which must stay put.
+    mask: Region {
+        item: activeArea
+    }
+
+    Item {
+        id: activeArea
+        readonly property real length: root.activeLength > 0 ? Math.min(root.activeLength, root.horizontal
+                                                                        ? root.width : root.height) : (
+                                                                   root.horizontal ? root.width : root.height)
+        width: root.horizontal ? length : root.width
+        height: root.horizontal ? root.height : length
+        x: root.horizontal ? (root.width - width) / 2 : 0
+        y: root.horizontal ? 0 : (root.height - height) / 2
+    }
 
     HoverHandler {
         id: pointer

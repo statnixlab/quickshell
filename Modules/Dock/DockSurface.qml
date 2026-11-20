@@ -64,6 +64,9 @@ PanelWindow {
         edge: root.edge
         dragMimeType: DockService.dragMimeType
         visible: DockService.autoHide
+        // Only the stretch under the resting Dock reveals it, unless the whole edge is chosen.
+        activeLength: DockService.revealAcrossEdge ? 0 : Math.max(96, Math.min(root.availableLength,
+                                                                               root.baseLayout.baseLength))
         onActivated: root.revealed = true
     }
     readonly property real sensorThickness: DockService.autoHide ? edgeSensor.thickness : 0

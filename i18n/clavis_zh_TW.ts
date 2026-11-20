@@ -547,118 +547,118 @@
         <translation>個別動畫</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="16"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="17"/>
         <source>Very fast</source>
         <translation>很快</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="19"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="21"/>
         <source>Fast</source>
         <translation>快</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="22"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="25"/>
         <source>Normal</source>
         <translation>正常</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="25"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="29"/>
         <source>Slow</source>
         <translation>慢</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="28"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="33"/>
         <source>Very slow</source>
         <translation>很慢</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="34"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="40"/>
         <source>Custom (%1×)</source>
         <translation>自訂（%1×）</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="51"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="57"/>
         <source>Turned off in another configuration file</source>
         <translation>已在其他設定檔中關閉</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="73"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="79"/>
         <source>Saving…</source>
         <translation>正在儲存…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="74"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="81"/>
         <source>Changes are saved and applied automatically</source>
         <translation>變更會自動儲存並套用</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="86"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="93"/>
         <source>Enable animation settings</source>
         <translation>啟用動畫設定</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="87"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="94"/>
         <source>Clavis takes over the animation switch and speed, starting from your current values.</source>
         <translation>由 Clavis 接管動畫開關和速度，沿用你目前的設定。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="108"/>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="114"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="116"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="122"/>
         <source>Animations</source>
         <translation>動畫</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="109"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="117"/>
         <source>Turn off to switch windows and workspaces instantly</source>
         <translation>關閉後視窗和工作區會立即切換</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="123"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="131"/>
         <source>Speed</source>
         <translation>速度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="152"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="160"/>
         <source>Opening windows</source>
         <translation>開啟視窗</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="157"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="165"/>
         <source>Closing windows</source>
         <translation>關閉視窗</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="162"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="170"/>
         <source>Switching workspaces</source>
         <translation>切換工作區</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="167"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="175"/>
         <source>Scrolling between columns</source>
         <translation>在欄之間捲動</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="172"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="180"/>
         <source>Moving windows</source>
         <translation>移動視窗</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="177"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="185"/>
         <source>Resizing windows</source>
         <translation>調整視窗大小</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="182"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="190"/>
         <source>Opening the overview</source>
         <translation>開啟概覽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="188"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="196"/>
         <source>Minimize animation</source>
         <translation>最小化動畫</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="189"/>
+        <location filename="../Modules/ControlCenter/AnimationsPage.qml" line="197"/>
         <source>Choose Genie or Scale in the Dock settings</source>
         <translation>在 Dock 設定中選擇神奇效果或縮放</translation>
     </message>
@@ -705,7 +705,7 @@
     </message>
     <message>
         <location filename="../Services/ApplicationService.qml" line="40"/>
-        <location filename="../Services/DockService.qml" line="210"/>
+        <location filename="../Services/DockService.qml" line="211"/>
         <source>Space</source>
         <translation>空白佔位</translation>
     </message>
@@ -717,7 +717,7 @@
     </message>
     <message>
         <location filename="../Services/ApplicationService.qml" line="49"/>
-        <location filename="../Services/DockService.qml" line="209"/>
+        <location filename="../Services/DockService.qml" line="210"/>
         <source>Small Space</source>
         <translation>窄間距</translation>
     </message>
@@ -4251,19 +4251,30 @@ Scroll to adjust</source>
         <translation>自動隱藏</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="287"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="292"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="288"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="294"/>
+        <source>Reveal from the whole edge</source>
+        <translation>從整條螢幕邊緣喚出</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="289"/>
+        <source>Otherwise only the part of the screen edge below the Dock shows it</source>
+        <translation>關閉時，只有 Dock 所在的那段螢幕邊緣能喚出它</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="301"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="306"/>
         <source>Bounce when launching</source>
         <translation>啟動時彈跳</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="299"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="304"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="313"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="318"/>
         <source>Show running indicators</source>
         <translation>顯示執行中指示標記</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="312"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="326"/>
         <source>Minimize animation</source>
         <translation>最小化動畫</translation>
     </message>
@@ -4284,45 +4295,45 @@ Scroll to adjust</source>
         <translation>設定視窗最小化動畫。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="314"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="328"/>
         <source>Window animation selection is unavailable in this session</source>
         <translation>目前工作階段不支援選擇視窗動畫</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="317"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="331"/>
         <source>Animations are disabled in your configuration</source>
         <translation>設定中已停用動畫</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="330"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="344"/>
         <source>Genie</source>
         <translation>神奇效果</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="334"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="348"/>
         <source>Scale</source>
         <translation>縮放</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="360"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="365"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="374"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="379"/>
         <source>Show recent applications</source>
         <translation>顯示最近啟動的應用程式</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="372"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="377"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="386"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="391"/>
         <source>Pin applications from the menu</source>
         <translation>允許從選單固定應用程式</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="399"/>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="403"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="413"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="417"/>
         <source>Show window thumbnails</source>
         <translation>顯示視窗縮圖</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/DockPage.qml" line="408"/>
+        <location filename="../Modules/ControlCenter/DockPage.qml" line="422"/>
         <source>Preview size</source>
         <translation>預覽尺寸</translation>
     </message>
@@ -4358,43 +4369,43 @@ Scroll to adjust</source>
 <context>
     <name>DockService</name>
     <message>
-        <location filename="../Services/DockService.qml" line="605"/>
+        <location filename="../Services/DockService.qml" line="606"/>
         <source>Dock settings cannot be saved because the configuration directory is unavailable.</source>
         <translation>設定目錄無法使用，因此無法儲存 Dock 設定。</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="622"/>
+        <location filename="../Services/DockService.qml" line="623"/>
         <source>Dock settings could not be read. The existing file is preserved; changes apply to this session only.</source>
         <translation>無法讀取 Dock 設定。已保留原始檔案，變更僅套用於本次工作階段。</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="630"/>
+        <location filename="../Services/DockService.qml" line="631"/>
         <source>Dock settings could not be opened. Changes apply to this session only.</source>
         <translation>無法開啟 Dock 設定。變更僅套用於本次工作階段。</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="635"/>
+        <location filename="../Services/DockService.qml" line="636"/>
         <source>Dock settings could not be saved. Changes apply to this session only.</source>
         <translation>無法儲存 Dock 設定。變更僅套用於本次工作階段。</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="258"/>
+        <location filename="../Services/DockService.qml" line="259"/>
         <source>Trash</source>
         <translation>垃圾桶</translation>
     </message>
     <message>
         <location filename="../Modules/Dock/DockFilePopup.qml" line="155"/>
-        <location filename="../Services/DockService.qml" line="278"/>
+        <location filename="../Services/DockService.qml" line="279"/>
         <source>This file or folder is unavailable.</source>
         <translation>此檔案或資料夾無法使用。</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="593"/>
+        <location filename="../Services/DockService.qml" line="594"/>
         <source>Some files could not be processed.</source>
         <translation>部分檔案無法處理。</translation>
     </message>
     <message>
-        <location filename="../Services/DockService.qml" line="593"/>
+        <location filename="../Services/DockService.qml" line="594"/>
         <source>The file operation failed.</source>
         <translation>檔案操作失敗。</translation>
     </message>
@@ -4402,7 +4413,7 @@ Scroll to adjust</source>
 <context>
     <name>DockSurface</name>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="1130"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="1133"/>
         <source>Drop apps here</source>
         <translation>將應用程式拖到此處</translation>
     </message>
@@ -4412,17 +4423,17 @@ Scroll to adjust</source>
         <translation>從 Dock 移除</translation>
     </message>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="979"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="982"/>
         <source>Move to Trash</source>
         <translation>移至垃圾桶</translation>
     </message>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="979"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="982"/>
         <source>Open with %1</source>
         <translation>使用 %1 開啟</translation>
     </message>
     <message>
-        <location filename="../Modules/Dock/DockSurface.qml" line="1079"/>
+        <location filename="../Modules/Dock/DockSurface.qml" line="1082"/>
         <source>The file operation could not be started.</source>
         <translation>無法開始檔案操作。</translation>
     </message>
@@ -6882,7 +6893,7 @@ Temperature: %4</source>
     </message>
     <message>
         <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="286"/>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="297"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="298"/>
         <source>Set time automatically</source>
         <translation>自動設定時間</translation>
     </message>
@@ -6892,23 +6903,23 @@ Temperature: %4</source>
         <translation>沒有可用的時間同步服務</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="288"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="291"/>
         <source>Synchronized with a network time server</source>
         <translation>已與網路時間伺服器同步</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="290"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="292"/>
         <source>Waiting for a network time server</source>
         <translation>正在等待網路時間伺服器</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="304"/>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="310"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="305"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="312"/>
         <source>Hardware clock uses local time</source>
         <translation>硬體時鐘使用本地時間</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="305"/>
+        <location filename="../Modules/ControlCenter/LanguageAndRegionPage.qml" line="306"/>
         <source>Turn on only if another system on this computer, such as Windows, shows the wrong time. Setting Windows to UTC is more reliable.</source>
         <translation>僅當本機的另一個系統（如 Windows）時間顯示不對時才開啟。把 Windows 設為使用 UTC 更可靠。</translation>
     </message>
@@ -11419,80 +11430,80 @@ Right-click to change shape; scroll to reorder</source>
         <translation>正在儲存…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="90"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="91"/>
         <source>Screenshots are always copied to the clipboard</source>
         <translation>截圖一律會複製到剪貼簿</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="102"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="103"/>
         <source>Enable screenshot settings</source>
         <translation>啟用截圖設定</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="103"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="104"/>
         <source>Clavis takes over where niri saves screenshots, starting from your current values.</source>
         <translation>由 Clavis 接管 niri 截圖的儲存位置，沿用你目前的設定。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="124"/>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="130"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="126"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="132"/>
         <source>Also save to a file</source>
         <translation>同時儲存為檔案</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="125"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="127"/>
         <source>Applies to niri screenshots, such as Print and Mod+Shift+S</source>
         <translation>作用於 niri 截圖，例如 Print 和 Mod+Shift+S</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="140"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="142"/>
         <source>Folder</source>
         <translation>資料夾</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="151"/>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="152"/>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="217"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="153"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="154"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="220"/>
         <source>Choose folder</source>
         <translation>選擇資料夾</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="162"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="164"/>
         <source>File name</source>
         <translation>檔名</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="163"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="165"/>
         <source>For example: %1</source>
         <translation>例如：%1</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="198"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="201"/>
         <source>Recording save locations</source>
         <translation>錄影儲存位置</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="199"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="202"/>
         <source>Video, GIF and audio recordings are set in Keystone</source>
         <translation>影片、GIF 和錄音的儲存位置在拱心石中設定</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="213"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="216"/>
         <source>Screenshot folder</source>
         <translation>截圖資料夾</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="216"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="219"/>
         <source>This folder is empty</source>
         <translation>此資料夾為空</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="218"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="221"/>
         <source>Choose</source>
         <translation>選擇</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="219"/>
+        <location filename="../Modules/ControlCenter/ScreenshotsPage.qml" line="222"/>
         <source>Choose the current folder or a selected subfolder</source>
         <translation>選擇目前資料夾或選取的子資料夾</translation>
     </message>
@@ -16235,117 +16246,117 @@ Scroll to adjust; click to open sound</source>
         <translation>把指標移到選定的螢幕角落即可開啟或關閉概覽。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="347"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="348"/>
         <source>Top-left corner</source>
         <translation>左上角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="352"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="353"/>
         <source>Top-right corner</source>
         <translation>右上角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="357"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="358"/>
         <source>Bottom-left corner</source>
         <translation>左下角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="362"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="363"/>
         <source>Bottom-right corner</source>
         <translation>右下角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="368"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="369"/>
         <source>Workspace size in the overview</source>
         <translation>概覽中的工作區大小</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="386"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="387"/>
         <source>Provided by this computer&apos;s customized niri</source>
         <translation>由本機自訂的 niri 提供</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="396"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="397"/>
         <source>Remember each application&apos;s window layout</source>
         <translation>記住每個應用程式的視窗版面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="397"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="398"/>
         <source>New windows reopen floating or tiled with their last size</source>
         <translation>新視窗依上次的浮動或並排狀態與尺寸開啟</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="402"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="403"/>
         <source>Lower floating windows behind tiled windows</source>
         <translation>點擊並排視窗時降下浮動視窗</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="403"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="404"/>
         <source>Activating a tiled window lowers raised floating windows</source>
         <translation>啟用並排視窗時，浮在上方的視窗會降到它後面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="408"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="409"/>
         <source>Keep dialogs with their parent window</source>
         <translation>對話框隨父視窗一起顯示</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="413"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="414"/>
         <source>Keep floating windows below the bar</source>
         <translation>浮動視窗不覆蓋狀態列</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="414"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="415"/>
         <source>Floating windows share the top edge of tiled windows</source>
         <translation>浮動視窗與並排視窗頂部對齊</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="419"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="420"/>
         <source>Snap to half the screen at the edges</source>
         <translation>拖到螢幕邊緣吸附為半螢幕</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="420"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="421"/>
         <source>Drop a floating window at the left or right edge to tile it</source>
         <translation>把浮動視窗拖到左右邊緣放開，即變為半寬並排欄</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="425"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="426"/>
         <source>Detach tiled windows by dragging with Mod</source>
         <translation>按住 Mod 拖曳可將並排視窗變為浮動</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="426"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="427"/>
         <source>Hold Shift as well to keep the normal tiling drag</source>
         <translation>同時按住 Shift 則保持一般的並排拖曳</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="431"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="432"/>
         <source>Restore the previous floating size</source>
         <translation>還原先前的浮動尺寸</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="432"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="433"/>
         <source>When a tiled window becomes floating again</source>
         <translation>並排視窗重新變為浮動時</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="437"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="438"/>
         <source>Double-click a title bar to expand the column</source>
         <translation>按兩下標題列擴展為整欄寬</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="438"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="439"/>
         <source>The maximize button still fills the screen</source>
         <translation>最大化按鈕仍然填滿螢幕</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="443"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="444"/>
         <source>Maximize requests expand the column</source>
         <translation>最大化要求改為擴展欄寬</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="444"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>作用於並排視窗的最大化按鈕</translation>
     </message>
