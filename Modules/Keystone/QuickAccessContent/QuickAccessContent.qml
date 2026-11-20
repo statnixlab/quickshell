@@ -125,6 +125,9 @@ Item {
                         Layout.fillHeight: true
                         buttonRadius: Appearance.rounding.normal
                         containerColor: Appearance.colors.colLayer2
+                        stateLayerOpacity: Appearance.interaction.hoverStateLayerOpacity
+                        focusStateLayerOpacity: Appearance.interaction.focusStateLayerOpacity
+                        pressedStateLayerOpacity: Appearance.interaction.pressedStateLayerOpacity
                         Accessible.name: QuickAccessService.folderPath(folderRow.modelData)
                         focusPolicy: Qt.StrongFocus
                         onClicked: {
