@@ -13141,6 +13141,14 @@ Right click: Control Center</source>
     </message>
 </context>
 <context>
+    <name>StageCard</name>
+    <message>
+        <location filename="../Modules/StageManager/StageCard.qml" line="112"/>
+        <source>Move to current stage</source>
+        <translation>移到当前舞台</translation>
+    </message>
+</context>
+<context>
     <name>Stopwatch</name>
     <message>
         <location filename="../Modules/Sidebars/Dashboard/infoTools/Stopwatch.qml" line="182"/>
