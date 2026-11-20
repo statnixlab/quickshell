@@ -74,6 +74,11 @@ Singleton {
         // Its installed desktop icon remains available across app restarts.
         if (item.id === "tray-icon tray app main-tray" && item.title === "openlist-desktop")
             return ApplicationService.iconSource("openlist-desktop");
+        // Baidu Netdisk only exports a 20px tray bitmap, which blurs on HiDPI
+        // displays. Match its tooltip too: Chromium's tray ID is shared by apps.
+        if (String(item.id || "").startsWith("chrome_status_icon_") && (item.tooltipTitle === "百度网盘" || item.tooltipTitle
+                                                                        === "Baidu Netdisk"))
+            return ApplicationService.iconSource("baidunetdisk");
         return item.icon || "";
     }
 
