@@ -17,6 +17,10 @@ StyledFlickable {
         locationPicker.closeChildWindows();
     }
 
+    Component.onCompleted: DateTimeService.refresh()
+    onPresentationActiveChanged: if (presentationActive)
+                                     DateTimeService.refresh()
+
     clip: true
     contentWidth: width
     contentHeight: contentColumn.implicitHeight + Metrics.pageMargin * 2
@@ -227,7 +231,7 @@ StyledFlickable {
                 id: searchAnchor4
                 target: searchSection4
                 declaration:
-                    '{"id":"general.language-region.section.time-date","route":"general.language-region","title":"Time & date","context":"LanguageAndRegionPage","icon":"language","aliases":[]}'
+                    '{"id":"general.language-region.section.time-date","route":"general.language-region","title":"Time & date","context":"LanguageAndRegionPage","icon":"language","aliases":["time zone","ntp","clock","hardware clock","dual boot"]}'
             }
             iconName: "schedule"
 
@@ -248,6 +252,65 @@ StyledFlickable {
                     onValueSelected: value => {
                         return UiPreferences.setUseTwelveHourClock(value === "12");
                     }
+                }
+            }
+
+            InlineStatusBanner {
+                Layout.fillWidth: true
+                visible: DateTimeService.error !== ""
+                tone: "error"
+                message: DateTimeService.error
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Time zone")
+                supportingText: qsTr("Changing system time settings asks for your password")
+                trailing: SearchSelectMenuField {
+                    objectName: "timeZoneField"
+                    implicitWidth: 240
+                    implicitHeight: 40
+                    enabled: DateTimeService.loaded && !DateTimeService.busy
+                    options: DateTimeService.timezones.map(zone => ({
+                        label: zone.replace(/_/g, " "),
+                        value: zone
+                    }))
+                    value: DateTimeService.timezone
+                    placeholder: DateTimeService.timezone || qsTr("Choose time zone")
+                    onAccepted: value => DateTimeService.setTimezone(value)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Set time automatically")
+                supportingText: !DateTimeService.canNtp ? qsTr(
+                                                              "No time synchronization service is available") :
+                                                          DateTimeService.ntp ? (
+                                                                                    DateTimeService.ntpSynchronized
+                                                                                    ? qsTr("Synchronized with a network time server") :
+                                                                                      qsTr("Waiting for a network time server")) :
+                                                                                ""
+                trailing: StyledSwitch {
+                    objectName: "ntpSwitch"
+                    checked: DateTimeService.ntp
+                    enabled: DateTimeService.canNtp && !DateTimeService.busy
+                    Accessible.name: qsTr("Set time automatically")
+                    onToggled: DateTimeService.setNtp(checked)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                title: qsTr("Hardware clock uses local time")
+                supportingText: qsTr(
+                                    "Turn on only if another system on this computer, such as Windows, shows the wrong time. Setting Windows to UTC is more reliable.")
+                trailing: StyledSwitch {
+                    objectName: "localRtcSwitch"
+                    checked: DateTimeService.localRtc
+                    enabled: DateTimeService.loaded && !DateTimeService.busy
+                    Accessible.name: qsTr("Hardware clock uses local time")
+                    onToggled: DateTimeService.setLocalRtc(checked)
                 }
             }
         }

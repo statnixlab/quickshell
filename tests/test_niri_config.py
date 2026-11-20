@@ -263,6 +263,42 @@ class ConfigurationContracts(unittest.TestCase):
         self.assertEqual(config.config_argument(['niri', '--config=/c.kdl'], cwd), Path('/c.kdl'))
         self.assertIsNone(config.config_argument(['niri', '--session'], cwd))
 
+    def test_animations_fragment_controls_switch_speed_and_reports_external_offs(self):
+        self.main.write_text('animations {\n    off\n    window-close { off; }\n}\n')
+        current = self.run_config()['animations']
+        self.assertEqual((current['enabled'], current['disabled'], current['external']), (False, ['window-close'], ['window-close']))
+        self.run_config('setup', 'animations', **current)
+        state = self.run_config('update', 'animations', enabled=True, slowdown=0.5, disabled=['window-open', 'window-close'])['animations']
+        self.assertTrue(state['enabled'])
+        self.assertEqual(state['slowdown'], 0.5)
+        self.assertEqual(state['disabled'], ['window-open', 'window-close'])
+        self.assertEqual(state['external'], ['window-close'])
+        self.assertNotIn('window-close', self.fragment('animations').read_text())
+        for bad in (dict(enabled='yes'), dict(slowdown=0), dict(disabled=['window-minimize'])):
+            with self.assertRaises(ValueError):
+                self.run_config('update', 'animations', **bad)
+
+    def test_screenshots_fragment_switches_between_path_and_null(self):
+        self.main.write_text('screenshot-path null\n')
+        self.assertFalse(self.run_config()['screenshots']['save'])
+        self.run_config('setup', 'screenshots', save=False)
+        state = self.run_config('update', 'screenshots', save=True, path='~/Pictures/Shot %Y.png')['screenshots']
+        self.assertEqual(state, dict(save=True, path='~/Pictures/Shot %Y.png'))
+        state = self.run_config('update', 'screenshots', save=False, path='~/Pictures/Shot %Y.png')['screenshots']
+        self.assertFalse(state['save'])
+        with self.assertRaises(ValueError):
+            self.run_config('update', 'screenshots', save=True, path='a\nb')
+
+    def test_windows_hot_corners_and_overview_zoom(self):
+        self.assertEqual(self.run_config()['windows']['hotCorners'], ['top-left'])
+        self.run_config('setup', 'windows')
+        state = self.run_config('update', 'windows', hotCorners=['bottom-right', 'top-right'], overviewZoom=0.4)['windows']
+        self.assertEqual((state['hotCorners'], state['overviewZoom']), (['top-right', 'bottom-right'], 0.4))
+        self.assertEqual(self.run_config('update', 'windows', hotCorners=[])['windows']['hotCorners'], [])
+        for bad in (dict(hotCorners=['middle']), dict(overviewZoom=0.9)):
+            with self.assertRaises(ValueError):
+                self.run_config('update', 'windows', **bad)
+
     def test_mouse_bindings_remain_visible_after_save_and_reload(self):
         self.setup_binds()
         keys = ['MouseLeft', 'MouseMiddle', 'MouseRight', 'MouseBack', 'Ctrl+MouseForward']

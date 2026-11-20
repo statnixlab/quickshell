@@ -76,6 +76,15 @@ StyledFlickable {
 
             SettingsActionRow {
                 Layout.fillWidth: true
+                iconName: "animation"
+                text: SpotlightCatalog.title("general.animations")
+                description: qsTr("Animation switch, speed and individual animations")
+                trailingIconName: "chevron_right"
+                onClicked: root.sectionRequested("animations")
+            }
+
+            SettingsActionRow {
+                Layout.fillWidth: true
                 iconName: "tab_group"
                 text: SpotlightCatalog.title("general.windows")
                 description: qsTr("Gaps, column width, decorations, focus and floating windows")
@@ -131,6 +140,15 @@ StyledFlickable {
                                                             "Do Not Disturb, banners and application notifications")
                 trailingIconName: "chevron_right"
                 onClicked: root.sectionRequested("notifications")
+            }
+
+            SettingsActionRow {
+                Layout.fillWidth: true
+                iconName: "screenshot_monitor"
+                text: SpotlightCatalog.title("general.screenshots")
+                description: qsTr("Save location and file name")
+                trailingIconName: "chevron_right"
+                onClicked: root.sectionRequested("screenshots")
             }
 
             SettingsActionRow {

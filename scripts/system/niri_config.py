@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent / 'vendor'))
 import kdl
 
 PRINT = kdl.PrintConfig(indent='    ', semicolons=True)
-FRAGMENTS = ('effects', 'cursor', 'layer-rules', 'binds', 'outputs', 'mouse', 'keyboard', 'windows', 'minimize-animation', 'application-effects', 'panel-effects')
+FRAGMENTS = ('effects', 'cursor', 'layer-rules', 'binds', 'outputs', 'mouse', 'keyboard', 'windows', 'animations', 'screenshots', 'minimize-animation', 'application-effects', 'panel-effects')
 
 # Stable first-setup defaults. Existing fragments, including empty ones, are preserved.
 DEFAULT_BINDINGS = (
@@ -315,6 +315,10 @@ def initial(feature, request):
         return header + render(keyboard_node(request))
     if feature == 'windows':
         return header + ''.join(render(node) for node in windows_nodes(request))
+    if feature == 'animations':
+        return header + render(animations_node(request))
+    if feature == 'screenshots':
+        return header + render(screenshots_node(request))
     if feature == 'outputs':
         return header
     if feature == 'binds':
@@ -652,6 +656,8 @@ def status(request):
         state['keyboard'] = keyboard_state(graph)
         state['windows'] = windows_state(graph, path_key(managed_dir / 'windows.kdl'))
         state['windows']['personalSupported'] = supports_personal_layout(request)
+        state['animations'] = animations_state(graph, path_key(managed_dir / 'animations.kdl'))
+        state['screenshots'] = screenshots_state(graph)
         state['mouse'] = dict(speed=0.0, profile='adaptive')
         for _, node in graph.ordered:
             if node.name == 'input':
@@ -892,7 +898,9 @@ PERSONAL_LAYOUT_FLAGS = (
 WINDOWS_DEFAULTS = dict(gaps=16, centerFocusedColumn='never', alwaysCenterSingleColumn=False, emptyWorkspaceAboveFirst=False,
                         defaultColumnWidth=0.5, focusRing=True, focusRingWidth=4, border=False, borderWidth=4, shadow=False,
                         focusFollowsMouse=False, warpMouseToFocus=False, workspaceBackAndForth=False,
+                        hotCorners=['top-left'], overviewZoom=0.5,
                         personal={flag: False for flag in PERSONAL_LAYOUT_FLAGS})
+HOT_CORNERS = ('top-left', 'top-right', 'bottom-left', 'bottom-right')
 
 
 def flag_node(name, value):
@@ -937,8 +945,17 @@ def windows_nodes(request):
         layout.extend(flag_node(flag, personal.get(flag, False)) for flag in PERSONAL_LAYOUT_FLAGS)
     # niri cannot switch these two off from an include, so they are written only when enabled.
     pointer = [kdl.Node(name) for key, name in (('focusFollowsMouse', 'focus-follows-mouse'), ('warpMouseToFocus', 'warp-mouse-to-focus')) if boolean(key)]
+    corners = request.get('hotCorners', ['top-left'])
+    if not isinstance(corners, list) or any(corner not in HOT_CORNERS for corner in corners):
+        raise ValueError('Unknown hot corner')
+    zoom = request.get('overviewZoom', 0.5)
+    if isinstance(zoom, bool) or not isinstance(zoom, (int, float)) or not 0.1 <= zoom <= 0.75:
+        raise ValueError('Overview zoom must be between 0.1 and 0.75')
+    hot = [kdl.Node(corner) for corner in HOT_CORNERS if corner in corners] or [kdl.Node('off')]
     return [kdl.Node('layout', nodes=layout),
-            kdl.Node('input', nodes=pointer + [flag_node('workspace-auto-back-and-forth', boolean('workspaceBackAndForth'))])]
+            kdl.Node('input', nodes=pointer + [flag_node('workspace-auto-back-and-forth', boolean('workspaceBackAndForth'))]),
+            kdl.Node('gestures', nodes=[kdl.Node('hot-corners', nodes=hot)]),
+            kdl.Node('overview', nodes=[kdl.Node('zoom', args=[round(float(zoom), 3)])])]
 
 
 def windows_state(graph, managed=None):
@@ -985,7 +1002,84 @@ def windows_state(graph, managed=None):
                         external[key] = True
                 elif child.name == 'workspace-auto-back-and-forth':
                     state['workspaceBackAndForth'] = flag(child)
+        elif node.name == 'gestures':
+            for child in node.nodes:
+                if child.name == 'hot-corners':
+                    names = [c.name for c in child.nodes]
+                    # An empty section keeps niri's default top-left corner.
+                    state['hotCorners'] = [] if 'off' in names else [c for c in HOT_CORNERS if c in names] or ['top-left']
+        elif node.name == 'overview':
+            for child in node.nodes:
+                if child.name == 'zoom' and child.args:
+                    state['overviewZoom'] = float(child.args[0])
     state['external'] = external
+    return state
+
+
+ANIMATIONS = ('window-open', 'window-close', 'workspace-switch', 'horizontal-view-movement', 'window-movement',
+              'window-resize', 'overview-open-close')
+ANIMATIONS_DEFAULTS = dict(enabled=True, slowdown=1.0, disabled=[], external=[])
+
+
+def animations_node(request):
+    """Global switch and speed; individual animations are only ever switched off here."""
+    enabled = request.get('enabled', True)
+    if not isinstance(enabled, bool):
+        raise ValueError('Animations must be on or off')
+    slowdown = request.get('slowdown', 1.0)
+    if isinstance(slowdown, bool) or not isinstance(slowdown, (int, float)) or not 0.1 <= slowdown <= 5:
+        raise ValueError('Animation slowdown must be between 0.1 and 5')
+    disabled = request.get('disabled', [])
+    if not isinstance(disabled, list) or any(name not in ANIMATIONS for name in disabled):
+        raise ValueError('Unknown animation')
+    return kdl.Node('animations', nodes=[kdl.Node('on' if enabled else 'off'), kdl.Node('slowdown', args=[round(float(slowdown), 3)])]
+                    + [kdl.Node(name, nodes=[kdl.Node('off')]) for name in ANIMATIONS if name in disabled])
+
+
+def animations_state(graph, managed=None):
+    state = copy.deepcopy(ANIMATIONS_DEFAULTS)
+    off, sources = False, {}
+    for path, node in graph.ordered:
+        if node.name != 'animations':
+            continue
+        names = [child.name for child in node.nodes]
+        # niri: any `off` turns animations off; a later `on` turns them back on.
+        if 'off' in names:
+            off = True
+        if 'on' in names:
+            off = False
+        for child in node.nodes:
+            if child.name == 'slowdown' and child.args:
+                state['slowdown'] = float(child.args[0])
+            elif child.name in ANIMATIONS:
+                sources[child.name] = (path, any(c.name == 'off' for c in child.nodes))
+    state['enabled'] = not off
+    state['disabled'] = [name for name in ANIMATIONS if sources.get(name, (None, False))[1]]
+    state['external'] = [name for name in state['disabled'] if sources[name][0] != managed]
+    return state
+
+
+SCREENSHOT_DEFAULT_PATH = '~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png'
+
+
+def screenshots_node(request):
+    save = request.get('save', False)
+    if not isinstance(save, bool):
+        raise ValueError('Saving screenshots must be true or false')
+    path = request.get('path') or SCREENSHOT_DEFAULT_PATH
+    if not isinstance(path, str) or len(path) > 4096 or any(ch in path for ch in '\0\n\r') or path.endswith('/'):
+        raise ValueError('Invalid screenshot path')
+    return kdl.Node('screenshot-path', args=[path if save else None])
+
+
+def screenshots_state(graph):
+    state = dict(save=True, path=SCREENSHOT_DEFAULT_PATH)
+    for _, node in graph.ordered:
+        if node.name == 'screenshot-path':
+            value = node.args[0] if node.args else None
+            state['save'] = value is not None
+            if value is not None:
+                state['path'] = str(value)
     return state
 
 
@@ -1031,6 +1125,9 @@ def mutate(request):
             # would keep them enabled after the user removes the original line.
             external = windows_state(graph, path_key(path))['external']
             request = dict(request, **{key: False for key, forced in external.items() if forced})
+        if feature == 'animations':
+            external = animations_state(graph, path_key(path))['external']
+            request = dict(request, disabled=[name for name in request.get('disabled', []) if name not in external])
         if request['operation'] == 'setup':
             candidate = previous if exists else initial(feature, request)
         elif feature == 'outputs':

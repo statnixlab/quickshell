@@ -67,6 +67,21 @@ StyledFlickable {
         onToggled: checked => NiriConfigService.setPersonalLayoutFlag(personalSwitch.flag, checked)
     }
 
+    component CornerSwitch: SwitchRow {
+        id: cornerSwitch
+        required property string corner
+        readonly property var corners: root.windows.hotCorners || ["top-left"]
+        checked: corners.indexOf(corner) >= 0
+        onToggled: checked => {
+            const next = cornerSwitch.corners.filter(entry => entry !== cornerSwitch.corner);
+            if (checked)
+                next.push(cornerSwitch.corner);
+            NiriConfigService.setWindowsOptions({
+                                                    hotCorners: next
+                                                });
+        }
+    }
+
     clip: true
     contentWidth: width
     contentHeight: contentColumn.implicitHeight + Metrics.pageMargin * 2
@@ -311,6 +326,55 @@ StyledFlickable {
                 onToggled: checked => NiriConfigService.setWindowsOptions({
                                                                               workspaceBackAndForth: checked
                                                                           })
+            }
+        }
+
+        SettingsSection {
+            id: overviewSection
+            Layout.fillWidth: true
+            title: overviewAnchor.title
+            iconName: "overview"
+            supportingText: qsTr(
+                                "Move the pointer into a chosen screen corner to open or close the overview.")
+            SettingsSearchAnchor {
+                id: overviewAnchor
+                target: overviewSection
+                declaration:
+                    '{"id":"general.windows.section.overview","route":"general.windows","title":"Overview and hot corners","context":"WindowsPage","icon":"overview","aliases":["hot corner","overview zoom","expose"]}'
+            }
+
+            CornerSwitch {
+                corner: "top-left"
+                title: qsTr("Top-left corner")
+            }
+
+            CornerSwitch {
+                corner: "top-right"
+                title: qsTr("Top-right corner")
+            }
+
+            CornerSwitch {
+                corner: "bottom-left"
+                title: qsTr("Bottom-left corner")
+            }
+
+            CornerSwitch {
+                corner: "bottom-right"
+                title: qsTr("Bottom-right corner")
+            }
+
+            GeneralSliderSetting {
+                objectName: "windowsOverviewZoomSetting"
+                enabled: root.editable
+                title: qsTr("Workspace size in the overview")
+                from: 10
+                to: 75
+                stepSize: 5
+                suffix: "%"
+                value: Math.round(root.windows.overviewZoom * 100)
+                onMoved: value => NiriConfigService.setWindowsOptions({
+                                                                          overviewZoom: value / 100
+                                                                      })
             }
         }
 

@@ -65,6 +65,24 @@
       "aliases": ["do not disturb", "dnd", "banner", "popup"]
     },
     {
+      "id": "general.animations",
+      "title": "Animations",
+      "context": "GeneralPage",
+      "icon": "animation",
+      "source": "AnimationsPage.qml",
+      "path": ["general", "animations"],
+      "aliases": ["motion", "speed", "reduce motion"]
+    },
+    {
+      "id": "general.screenshots",
+      "title": "Screenshots",
+      "context": "GeneralPage",
+      "icon": "screenshot_monitor",
+      "source": "ScreenshotsPage.qml",
+      "path": ["general", "screenshots"],
+      "aliases": ["print screen", "capture", "screenshot folder"]
+    },
+    {
       "id": "account",
       "title": "Account",
       "context": "ControlCenterWindow",

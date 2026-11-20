@@ -490,6 +490,38 @@ var catalog = {
       "title": "Notifications"
     },
     {
+      "aliases": [
+        "motion",
+        "speed",
+        "reduce motion"
+      ],
+      "context": "GeneralPage",
+      "icon": "animation",
+      "id": "general.animations",
+      "path": [
+        "general",
+        "animations"
+      ],
+      "source": "AnimationsPage.qml",
+      "title": "Animations"
+    },
+    {
+      "aliases": [
+        "print screen",
+        "capture",
+        "screenshot folder"
+      ],
+      "context": "GeneralPage",
+      "icon": "screenshot_monitor",
+      "id": "general.screenshots",
+      "path": [
+        "general",
+        "screenshots"
+      ],
+      "source": "ScreenshotsPage.qml",
+      "title": "Screenshots"
+    },
+    {
       "aliases": [],
       "context": "ControlCenterWindow",
       "icon": "account_circle",
@@ -865,6 +897,42 @@ var catalog = {
       "route": "general.notifications",
       "source": "NotificationsPage.qml",
       "title": "Notifications"
+    },
+    {
+      "aliases": [
+        "motion",
+        "speed",
+        "reduce motion"
+      ],
+      "anchor": false,
+      "context": "GeneralPage",
+      "icon": "animation",
+      "id": "general.animations",
+      "path": [
+        "general",
+        "animations"
+      ],
+      "route": "general.animations",
+      "source": "AnimationsPage.qml",
+      "title": "Animations"
+    },
+    {
+      "aliases": [
+        "print screen",
+        "capture",
+        "screenshot folder"
+      ],
+      "anchor": false,
+      "context": "GeneralPage",
+      "icon": "screenshot_monitor",
+      "id": "general.screenshots",
+      "path": [
+        "general",
+        "screenshots"
+      ],
+      "route": "general.screenshots",
+      "source": "ScreenshotsPage.qml",
+      "title": "Screenshots"
     },
     {
       "aliases": [],
@@ -1262,6 +1330,42 @@ var catalog = {
       "route": "advanced",
       "source": "AdvancedPage.qml",
       "title": "Matugen template generation"
+    },
+    {
+      "aliases": [
+        "slowdown",
+        "reduce motion",
+        "turn off animations"
+      ],
+      "anchor": true,
+      "context": "AnimationsPage",
+      "icon": "animation",
+      "id": "general.animations.section.general",
+      "path": [
+        "general",
+        "animations"
+      ],
+      "route": "general.animations",
+      "source": "AnimationsPage.qml",
+      "title": "Animation speed"
+    },
+    {
+      "aliases": [
+        "window open",
+        "window close",
+        "workspace switch"
+      ],
+      "anchor": true,
+      "context": "AnimationsPage",
+      "icon": "motion_photos_on",
+      "id": "general.animations.section.items",
+      "path": [
+        "general",
+        "animations"
+      ],
+      "route": "general.animations",
+      "source": "AnimationsPage.qml",
+      "title": "Individual animations"
     },
     {
       "aliases": [],
@@ -2004,7 +2108,13 @@ var catalog = {
       "title": "Units"
     },
     {
-      "aliases": [],
+      "aliases": [
+        "time zone",
+        "ntp",
+        "clock",
+        "hardware clock",
+        "dual boot"
+      ],
       "anchor": true,
       "context": "LanguageAndRegionPage",
       "icon": "language",
@@ -2156,6 +2266,41 @@ var catalog = {
       "route": "general.power-management",
       "source": "PowerManagementPage.qml",
       "title": "Power mode"
+    },
+    {
+      "aliases": [
+        "screenshot folder",
+        "print screen",
+        "save location"
+      ],
+      "anchor": true,
+      "context": "ScreenshotsPage",
+      "icon": "screenshot_monitor",
+      "id": "general.screenshots.section.saving",
+      "path": [
+        "general",
+        "screenshots"
+      ],
+      "route": "general.screenshots",
+      "source": "ScreenshotsPage.qml",
+      "title": "Saving screenshots"
+    },
+    {
+      "aliases": [
+        "recording folder",
+        "gif"
+      ],
+      "anchor": true,
+      "context": "ScreenshotsPage",
+      "icon": "videocam",
+      "id": "general.screenshots.section.recording",
+      "path": [
+        "general",
+        "screenshots"
+      ],
+      "route": "general.screenshots",
+      "source": "ScreenshotsPage.qml",
+      "title": "Screen recording"
     },
     {
       "aliases": [
@@ -2491,6 +2636,24 @@ var catalog = {
     },
     {
       "aliases": [
+        "hot corner",
+        "overview zoom",
+        "expose"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "overview",
+      "id": "general.windows.section.overview",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Overview and hot corners"
+    },
+    {
+      "aliases": [
         "floating",
         "snap",
         "remember layout",
@@ -2522,6 +2685,8 @@ function title(id) {
     case "general.windows": return qsTranslate("GeneralPage", "Window management");
     case "general.sound": return qsTranslate("GeneralPage", "Sound");
     case "general.notifications": return qsTranslate("GeneralPage", "Notifications");
+    case "general.animations": return qsTranslate("GeneralPage", "Animations");
+    case "general.screenshots": return qsTranslate("GeneralPage", "Screenshots");
     case "account": return qsTranslate("ControlCenterWindow", "Account");
     case "general": return qsTranslate("ControlCenterWindow", "General");
     case "wallpaper": return qsTranslate("ControlCenterWindow", "Wallpaper");
@@ -2551,6 +2716,8 @@ function title(id) {
     case "advanced.section.map-and-weather-services": return qsTranslate("AdvancedPage", "Map and weather services");
     case "advanced.section.cloud-storage": return qsTranslate("AdvancedPage", "Cloud storage");
     case "advanced.section.matugen-template-generation": return qsTranslate("AdvancedPage", "Matugen template generation");
+    case "general.animations.section.general": return qsTranslate("AnimationsPage", "Animation speed");
+    case "general.animations.section.items": return qsTranslate("AnimationsPage", "Individual animations");
     case "general.autostart.section.add-application-to-autostart": return qsTranslate("AutostartPage", "Add application to autostart");
     case "general.autostart.section.user-autostart-applications": return qsTranslate("AutostartPage", "User autostart applications");
     case "general.bluetooth-pairing.section.nearby-devices": return qsTranslate("BluetoothPairingPage", "Nearby devices");
@@ -2610,6 +2777,8 @@ function title(id) {
     case "general.notifications.section.applications": return qsTranslate("NotificationsPage", "Application notifications");
     case "general.notifications.section.history": return qsTranslate("NotificationsPage", "Notification history");
     case "general.power-management.section.power-mode": return qsTranslate("PowerManagementPage", "Power mode");
+    case "general.screenshots.section.saving": return qsTranslate("ScreenshotsPage", "Saving screenshots");
+    case "general.screenshots.section.recording": return qsTranslate("ScreenshotsPage", "Screen recording");
     case "general.sound.section.output": return qsTranslate("SoundPage", "Output");
     case "general.sound.section.input": return qsTranslate("SoundPage", "Input");
     case "general.sound.section.applications": return qsTranslate("SoundPage", "Application volume");
@@ -2632,6 +2801,7 @@ function title(id) {
     case "general.windows.section.layout": return qsTranslate("WindowsPage", "Window layout");
     case "general.windows.section.decorations": return qsTranslate("WindowsPage", "Window decorations");
     case "general.windows.section.focus": return qsTranslate("WindowsPage", "Focus behavior");
+    case "general.windows.section.overview": return qsTranslate("WindowsPage", "Overview and hot corners");
     case "general.windows.section.floating": return qsTranslate("WindowsPage", "Floating windows and title bars");
     case "clavis:lock:open": return qsTranslate("SpotlightActions", "Lock screen");
     case "clavis:spotlight:search": return qsTranslate("SpotlightActions", "Search");

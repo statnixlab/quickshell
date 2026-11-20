@@ -124,6 +124,8 @@ Singleton {
                                                   focusFollowsMouse: false,
                                                   warpMouseToFocus: false,
                                                   workspaceBackAndForth: false,
+                                                  hotCorners: ["top-left"],
+                                                  overviewZoom: 0.5,
                                                   personal: ({}),
                                                   personalSupported: false,
                                                   external: ({})
@@ -148,6 +150,59 @@ Singleton {
         id: windowsSaveTimer
         interval: 400
         onTriggered: root.update("windows")
+    }
+
+    property var pendingAnimationOptions: null
+    property var activeAnimationOptions: null
+    readonly property var animationOptions: pendingAnimationOptions || activeAnimationOptions
+                                            || snapshot.animations || ({
+                                                                           enabled: true,
+                                                                           slowdown: 1,
+                                                                           disabled: [],
+                                                                           external: []
+                                                                       })
+
+    function setAnimationOptions(patch) {
+        if (!ready("animations"))
+            return;
+        pendingAnimationOptions = Object.assign({}, animationOptions, patch);
+        animationSaveTimer.restart();
+    }
+
+    function setAnimationEnabled(name, enabled) {
+        const disabled = (animationOptions.disabled || []).filter(entry => entry !== name);
+        if (!enabled)
+            disabled.push(name);
+        setAnimationOptions({
+                                disabled: disabled
+                            });
+    }
+
+    Timer {
+        id: animationSaveTimer
+        interval: 400
+        onTriggered: root.update("animations")
+    }
+
+    property var pendingScreenshotOptions: null
+    property var activeScreenshotOptions: null
+    readonly property var screenshotOptions: pendingScreenshotOptions || activeScreenshotOptions
+                                             || snapshot.screenshots || ({
+                                                                             save: false,
+                                                                             path: ""
+                                                                         })
+
+    function setScreenshotOptions(patch) {
+        if (!ready("screenshots"))
+            return;
+        pendingScreenshotOptions = Object.assign({}, screenshotOptions, patch);
+        screenshotSaveTimer.restart();
+    }
+
+    Timer {
+        id: screenshotSaveTimer
+        interval: 400
+        onTriggered: root.update("screenshots")
     }
 
     property var pendingApplicationEffects: null
@@ -275,6 +330,10 @@ Singleton {
             return keyboardOptions;
         if (feature === "windows")
             return windowsOptions;
+        if (feature === "animations")
+            return animationOptions;
+        if (feature === "screenshots")
+            return screenshotOptions;
         if (feature === "effects")
             return {
                 xray: PersonalizationConfig.shellBlurXray,
@@ -340,6 +399,14 @@ Singleton {
                 profile: request.profile
             };
             pendingMouseOptions = null;
+        }
+        if (activeFeature === "animations" && request.operation !== "status") {
+            activeAnimationOptions = Object.assign({}, animationOptions, request);
+            pendingAnimationOptions = null;
+        }
+        if (activeFeature === "screenshots" && request.operation !== "status") {
+            activeScreenshotOptions = Object.assign({}, screenshotOptions, request);
+            pendingScreenshotOptions = null;
         }
         if (activeFeature === "windows" && request.operation !== "status") {
             activeWindowsOptions = Object.assign({}, windowsOptions, request);
@@ -419,6 +486,8 @@ Singleton {
             root.activeMouseOptions = null;
             root.activeKeyboardOptions = null;
             root.activeWindowsOptions = null;
+            root.activeAnimationOptions = null;
+            root.activeScreenshotOptions = null;
             root.activeApplicationEffects = null;
             root.activePanelEffects = null;
             if (code === 0 && root.separateBlurSupported && root.ready("application-effects") &&
