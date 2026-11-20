@@ -59,6 +59,14 @@ PanelWindow {
         }
         animationTargets.targets = result;
     }
+    property var edgeSensor: DockEdgeTrigger {
+        screen: root.screen
+        edge: root.edge
+        dragMimeType: DockService.dragMimeType
+        visible: DockService.autoHide
+        onActivated: root.revealed = true
+    }
+    readonly property real sensorThickness: DockService.autoHide ? edgeSensor.thickness : 0
     readonly property bool horizontal: edge === "bottom"
     readonly property real axisLength: horizontal ? width : height
     readonly property real availableLength: Math.max(80, axisLength - 32)
@@ -109,10 +117,11 @@ PanelWindow {
                                   || dragKey !== "" || popupKey !== "" || dragGhost.active || handoffKey
                                   !== ""
 
-    readonly property bool interacting: root.pointerOverDock || edgeHover.hovered || popup.hovered
-                                        || filePopup.hovered && filePopup.visible || dropArea.containsDrag
-                                        || dragKey !== "" || DockService.externalDragActive
-                                        || dragGhost.active || handoffKey !== ""
+    readonly property bool interacting: root.pointerOverDock || edgeSensor.hovered || edgeSensor.containsDrag
+                                        || edgeHover.hovered || popup.hovered || filePopup.hovered
+                                        && filePopup.visible || dropArea.containsDrag || dragKey !== ""
+                                        || DockService.externalDragActive || dragGhost.active || handoffKey
+                                        !== ""
     property bool revealed: false
     property real pointerAxis: 0
     property bool magnificationActive: false
@@ -562,7 +571,9 @@ PanelWindow {
     anchors.bottom: true
     exclusiveZone: DockService.autoHide ? 0 : restingThickness + edgeOffset
     WlrLayershell.namespace: "clavis-shell-dock"
-    WlrLayershell.layer: WlrLayer.Top
+    // An auto-hidden dock must remain reachable above fullscreen windows too.
+    // The mask limits input to the visible dock, popups and the access corridor.
+    WlrLayershell.layer: DockService.autoHide ? WlrLayer.Overlay : WlrLayer.Top
     WlrLayershell.exclusionMode: ExclusionMode.Normal
     WlrLayershell.keyboardFocus: dragKey || contextMenu || filePopupActive ? WlrKeyboardFocus.Exclusive :
                                                                              WlrKeyboardFocus.None
@@ -663,13 +674,16 @@ PanelWindow {
 
         Item {
             id: edgeTrigger
+            // Bridge the gap between the permanent sensor and the visible dock.
+            // Never overlap the sensor: its hover state must stay stable on reveal.
             width: root.horizontal ? Math.max(96, Math.min(root.availableLength, root.baseLayout.baseLength)) :
-                                     root.shown ? root.edgeOffset + 4 : 3
-            height: root.horizontal ? root.shown ? root.edgeOffset + 4 : 3 : Math.max(96, Math.min(
-                                                                                          root.availableLength,
-                                                                                          root.baseLayout.baseLength))
-            x: root.horizontal ? (parent.width - width) / 2 : root.edge === "left" ? 0 : parent.width - width
-            y: root.horizontal ? parent.height - height : (parent.height - height) / 2
+                                     root.edgeOffset + 4 - root.sensorThickness
+            height: root.horizontal ? root.edgeOffset + 4 - root.sensorThickness : Math.max(96, Math.min(root.availableLength,
+                                                                                                         root.baseLayout.baseLength))
+            x: root.horizontal ? (parent.width - width) / 2 : root.edge === "left" ? root.sensorThickness :
+                                                                                     parent.width
+                                                                                     - root.edgeOffset - 4
+            y: root.horizontal ? parent.height - root.edgeOffset - 4 : (parent.height - height) / 2
             HoverHandler {
                 id: edgeHover
                 onHoveredChanged: {
@@ -1190,7 +1204,7 @@ PanelWindow {
             item: root.shown ? band : null
         }
         Region {
-            item: edgeTrigger
+            item: root.shown ? edgeTrigger : null
         }
         Region {
             item: popup.visible ? popup : null
