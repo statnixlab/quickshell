@@ -90,7 +90,20 @@ Singleton {
         // else opens with its default handler (folders in the file manager).
         if (String(info.name || "").endsWith(".desktop") && !info.isDirectory)
             return ApplicationService.launchCommand(["gio", "launch", root.localPath(info.url)]);
+        if (info.isDirectory)
+            return root.openFolder(info.url);
         return ApplicationService.openUrl(info.url);
+    }
+
+    // Folders open in a new file manager window, which niri places on the
+    // current workspace, instead of reusing a window that may be elsewhere.
+    // Nautilus needs --new-window for that; other file managers open the
+    // folder their own way.
+    function openFolder(url) {
+        const handler = String(DesktopFiles.defaultApplicationForFile(url) || "");
+        if (handler.endsWith("/org.gnome.Nautilus.desktop") || handler === "org.gnome.Nautilus.desktop")
+            return ApplicationService.launchCommand(["nautilus", "--new-window", root.localPath(url)]);
+        return ApplicationService.openUrl(url);
     }
 
     function reveal(info) {
@@ -100,7 +113,7 @@ Singleton {
 
     function openDesktopFolder() {
         if (root.desktopPath !== "")
-            ApplicationService.openUrl(root.fileUrl(root.desktopPath));
+            root.openFolder(root.fileUrl(root.desktopPath));
     }
 
     function moveToTrash(urls) {
