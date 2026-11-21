@@ -100,7 +100,7 @@
         <translation>Connected, open</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2750"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2769"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
@@ -115,7 +115,7 @@
         <translation>Choose language</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2751"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2770"/>
         <source>Bluetooth devices</source>
         <translation>Bluetooth devices</translation>
     </message>
@@ -161,7 +161,7 @@
         <translation>More Bluetooth settings</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2752"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2771"/>
         <source>Keyboard shortcuts</source>
         <translation>Keyboard shortcuts</translation>
     </message>
@@ -176,7 +176,7 @@
         <translation>Shortcut map</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2753"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2772"/>
         <source>Cloud storage</source>
         <translation>Cloud storage</translation>
     </message>
@@ -246,7 +246,7 @@
         <translation>Manage cloud storage</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2754"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2773"/>
         <source>Personalization</source>
         <translation>Personalization</translation>
     </message>
@@ -402,12 +402,12 @@
         <translation>Enter a valid remote directory</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2755"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2774"/>
         <source>Map and weather services</source>
         <translation>Map and weather services</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2756"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2775"/>
         <source>Cloud storage</source>
         <translation>Cloud storage</translation>
     </message>
@@ -452,7 +452,7 @@
         <translation>Computer backup location</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2757"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2776"/>
         <source>Matugen template generation</source>
         <translation>Matugen template generation</translation>
     </message>
@@ -537,12 +537,12 @@
 <context>
     <name>AnimationsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2758"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2777"/>
         <source>Animation speed</source>
         <translation>Animation speed</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2759"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2778"/>
         <source>Individual animations</source>
         <translation>Individual animations</translation>
     </message>
@@ -897,7 +897,7 @@
         <translation>Retry</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2760"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2779"/>
         <source>Add application to autostart</source>
         <translation>Add application to autostart</translation>
     </message>
@@ -913,7 +913,7 @@
         <translation>Select an installed app to add to user-level startup</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2761"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2780"/>
         <source>User autostart applications</source>
         <translation>User autostart applications</translation>
     </message>
@@ -1947,7 +1947,7 @@
 <context>
     <name>BluetoothPairingPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2762"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2781"/>
         <source>Nearby devices</source>
         <translation>Nearby devices</translation>
     </message>
@@ -2698,7 +2698,7 @@ Scroll to adjust</translation>
         <translation>Bluetooth switch</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2763"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2782"/>
         <source>Saved devices</source>
         <translation>Saved devices</translation>
     </message>
@@ -2713,7 +2713,7 @@ Scroll to adjust</translation>
         <translation>Pair new device</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2764"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2783"/>
         <location filename="../Modules/ControlCenter/ConnectedDevicesPage.qml" line="155"/>
         <source>Bluetooth adapter</source>
         <translation>Bluetooth adapter</translation>
@@ -2729,7 +2729,7 @@ Scroll to adjust</translation>
         <translation>Toggle adapter %1</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2765"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2784"/>
         <source>Advanced settings</source>
         <translation>Advanced settings</translation>
     </message>
@@ -2763,32 +2763,32 @@ Scroll to adjust</translation>
 <context>
     <name>ControlCenterWindow</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2729"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2748"/>
         <source>Account</source>
         <translation>Account</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2730"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2749"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2731"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2750"/>
         <source>Wallpaper</source>
         <translation>Wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2732"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2751"/>
         <source>Theme</source>
         <translation>Theme</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2733"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2752"/>
         <source>Keystone</source>
         <translation>Keystone</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2734"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2753"/>
         <source>Advanced</source>
         <translation>Advanced</translation>
     </message>
@@ -3411,7 +3411,7 @@ Scroll to adjust</translation>
         <translation>No available system applications were found</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2766"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2785"/>
         <source>Internet</source>
         <translation>Internet</translation>
     </message>
@@ -3426,7 +3426,7 @@ Scroll to adjust</translation>
         <translation>Email</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2767"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2786"/>
         <source>Utilities</source>
         <translation>Utilities</translation>
     </message>
@@ -3441,7 +3441,7 @@ Scroll to adjust</translation>
         <translation>Terminal</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2768"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2787"/>
         <source>Documents</source>
         <translation>Documents</translation>
     </message>
@@ -3456,7 +3456,7 @@ Scroll to adjust</translation>
         <translation>PDF reader</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2769"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2788"/>
         <source>Multimedia</source>
         <translation>Multimedia</translation>
     </message>
@@ -3883,7 +3883,7 @@ Scroll to adjust</translation>
         <translation>Display configuration</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2771"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2790"/>
         <source>Layout</source>
         <translation>Layout</translation>
     </message>
@@ -3904,7 +3904,7 @@ Scroll to adjust</translation>
         <translation>Apply</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2770"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2789"/>
         <location filename="../Modules/ControlCenter/DisplayConfigurationPage.qml" line="159"/>
         <source>Display</source>
         <translation>Display</translation>
@@ -3922,7 +3922,7 @@ Scroll to adjust</translation>
         <translation>This output is read-only. Resolve conflicting or unsupported settings in %1.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2772"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2791"/>
         <source>Output settings</source>
         <translation>Output settings</translation>
     </message>
@@ -4066,12 +4066,12 @@ Scroll to adjust</translation>
 <context>
     <name>DisplaysPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2747"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2766"/>
         <source>Display configuration</source>
         <translation>Display configuration</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2748"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2767"/>
         <source>Gamma Control</source>
         <translation>Gamma Control</translation>
     </message>
@@ -4225,22 +4225,22 @@ Scroll to adjust</translation>
 <context>
     <name>DockPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2773"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2792"/>
         <source>Appearance</source>
         <translation>Appearance</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2774"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2793"/>
         <source>Background</source>
         <translation>Background</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2775"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2794"/>
         <source>Behavior</source>
         <translation>Behavior</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2776"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2795"/>
         <source>Window previews</source>
         <translation>Window previews</translation>
     </message>
@@ -4965,7 +4965,7 @@ Temperature: %4</translation>
         <translation>The compositor does not provide Gamma control</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2777"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2796"/>
         <source>Color</source>
         <translation>Color</translation>
     </message>
@@ -4996,7 +4996,7 @@ Temperature: %4</translation>
         <translation>Night temperature</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2778"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2797"/>
         <source>Schedule</source>
         <translation>Schedule</translation>
     </message>
@@ -5104,7 +5104,7 @@ Temperature: %4</translation>
         <translation>Use weather location</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2779"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2798"/>
         <source>Current status</source>
         <translation>Current status</translation>
     </message>
@@ -5127,12 +5127,12 @@ Temperature: %4</translation>
 <context>
     <name>GeneralBarPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2780"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2799"/>
         <source>Position</source>
         <translation>Position</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2781"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2800"/>
         <source>Size</source>
         <translation>Size</translation>
     </message>
@@ -5142,7 +5142,7 @@ Temperature: %4</translation>
         <translation>Screen edge</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2783"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2802"/>
         <source>Components</source>
         <translation>Components</translation>
     </message>
@@ -5190,7 +5190,7 @@ Temperature: %4</translation>
         <translation>Quick settings widgets</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2782"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2801"/>
         <source>Size and spacing</source>
         <translation>Size and spacing</translation>
     </message>
@@ -5295,12 +5295,12 @@ Temperature: %4</translation>
         <translation>Create or connect the Clavis X-Ray rules.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2784"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2803"/>
         <source>Desktop panels</source>
         <translation>Desktop panels</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2785"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2804"/>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="118"/>
         <source>Application effects</source>
         <translation>Application effects</translation>
@@ -5382,12 +5382,12 @@ Temperature: %4</translation>
 <context>
     <name>GeneralOverviewPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2786"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2805"/>
         <source>Interface</source>
         <translation>Interface</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2787"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2806"/>
         <source>System</source>
         <translation>System</translation>
     </message>
@@ -5472,7 +5472,7 @@ Temperature: %4</translation>
         <translation>%1 devices connected</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2788"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2807"/>
         <source>Applications</source>
         <translation>Applications</translation>
     </message>
@@ -5485,107 +5485,107 @@ Temperature: %4</translation>
 <context>
     <name>GeneralPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2735"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2754"/>
         <source>Displays</source>
         <translation>Displays</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2736"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2755"/>
         <source>Bar</source>
         <translation>Bar</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2720"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2739"/>
         <source>Dock</source>
         <translation>Dock</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2721"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2740"/>
         <source>Power management</source>
         <translation>Power management</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2722"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2741"/>
         <source>Mouse and cursor</source>
         <translation>Mouse and cursor</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2723"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2742"/>
         <source>Keyboard</source>
         <translation>Keyboard</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2724"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2743"/>
         <source>Window management</source>
         <translation>Window management</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2725"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2744"/>
         <source>Sound</source>
         <translation>Sound</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2726"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2745"/>
         <source>Notifications</source>
         <translation>Notifications</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2727"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2746"/>
         <source>Animations</source>
         <translation>Animations</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2728"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2747"/>
         <source>Screenshots</source>
         <translation>Screenshots</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2737"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2756"/>
         <source>Sidebars</source>
         <translation>Sidebars</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2738"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2757"/>
         <source>Spotlight</source>
         <translation>Spotlight</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2739"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2758"/>
         <source>Transparency and blur</source>
         <translation>Transparency and blur</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2740"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2759"/>
         <source>Keyboard shortcuts</source>
         <translation>Keyboard shortcuts</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2741"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2760"/>
         <source>Language &amp; region</source>
         <translation>Language &amp; region</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2742"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2761"/>
         <source>Autostart</source>
         <translation>Autostart</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2743"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2762"/>
         <source>Default applications</source>
         <translation>Default applications</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2744"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2763"/>
         <source>Network</source>
         <translation>Network</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2745"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2764"/>
         <source>Connected devices</source>
         <translation>Connected devices</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2746"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2765"/>
         <source>Pair new device</source>
         <translation>Pair new device</translation>
     </message>
@@ -5622,7 +5622,7 @@ Temperature: %4</translation>
         <translation>Follow Disk I/O card</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2789"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2808"/>
         <source>Sidebars</source>
         <translation>Sidebars</translation>
     </message>
@@ -5660,7 +5660,7 @@ Temperature: %4</translation>
         <translation>Opens faster next time, but uses more memory</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2790"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2809"/>
         <source>Desktop card layout</source>
         <translation>Desktop card layout</translation>
     </message>
@@ -5717,7 +5717,7 @@ Temperature: %4</translation>
         <translation>Show desktop grid while dragging</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2791"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2810"/>
         <source>Clock style</source>
         <translation>Clock style</translation>
     </message>
@@ -5868,7 +5868,7 @@ Temperature: %4</translation>
         <translation>Rect</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2792"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2811"/>
         <source>System cards</source>
         <translation>System cards</translation>
     </message>
@@ -5929,7 +5929,7 @@ Temperature: %4</translation>
 <context>
     <name>HorizontalClockPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2793"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2812"/>
         <source>Horizontal clock style</source>
         <translation>Horizontal clock style</translation>
     </message>
@@ -6404,17 +6404,17 @@ Temperature: %4</translation>
 <context>
     <name>KeyboardPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2794"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2813"/>
         <source>Keyboard layouts</source>
         <translation>Keyboard layouts</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2795"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2814"/>
         <source>Keys and repeat</source>
         <translation>Keys and repeat</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2796"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2815"/>
         <source>Input method</source>
         <translation>Input method</translation>
     </message>
@@ -6611,7 +6611,7 @@ Temperature: %4</translation>
 <context>
     <name>KeystonePage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2749"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2768"/>
         <location filename="../Modules/ControlCenter/KeystonePage.qml" line="544"/>
         <source>Horizontal clock style</source>
         <translation>Horizontal clock style</translation>
@@ -6622,7 +6622,7 @@ Temperature: %4</translation>
         <translation>Back to Keystone settings</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2797"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2816"/>
         <source>Keystone style</source>
         <translation>Keystone style</translation>
     </message>
@@ -6642,7 +6642,7 @@ Temperature: %4</translation>
         <translation>Screen edge</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2801"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2820"/>
         <source>Keyboard indicators</source>
         <translation>Keyboard indicators</translation>
     </message>
@@ -6659,12 +6659,12 @@ Temperature: %4</translation>
         <translation>Num Lock changes</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2802"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2821"/>
         <source>Keyhole</source>
         <translation>Keyhole</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2803"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2822"/>
         <source>Horizontal clock</source>
         <translation>Horizontal clock</translation>
     </message>
@@ -6680,7 +6680,7 @@ Temperature: %4</translation>
         <translation>Font, digit positions, and colors</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2804"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2823"/>
         <source>Recording</source>
         <translation>Recording</translation>
     </message>
@@ -6733,7 +6733,7 @@ Temperature: %4</translation>
         <translation>Choose the current folder or a selected subfolder</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2799"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2818"/>
         <source>Mouse actions</source>
         <translation>Mouse actions</translation>
     </message>
@@ -6888,12 +6888,12 @@ Temperature: %4</translation>
         <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2798"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2817"/>
         <source>Size and spacing</source>
         <translation>Size and spacing</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2800"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2819"/>
         <source>Media controls</source>
         <translation>Media controls</translation>
     </message>
@@ -6921,7 +6921,7 @@ Temperature: %4</translation>
 <context>
     <name>LanguageAndRegionPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2805"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2824"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
@@ -6936,12 +6936,12 @@ Temperature: %4</translation>
         <translation>Select language</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2806"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2825"/>
         <source>Region &amp; weather location</source>
         <translation>Region &amp; weather location</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2807"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2826"/>
         <source>Weather map</source>
         <translation>Weather map</translation>
     </message>
@@ -7013,7 +7013,7 @@ Temperature: %4</translation>
         <translation>Turn on only if another system on this computer, such as Windows, shows the wrong time. Setting Windows to UTC is more reliable.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2808"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2827"/>
         <source>Units</source>
         <translation>Units</translation>
     </message>
@@ -7028,7 +7028,7 @@ Temperature: %4</translation>
         <translation>Hardware temperature</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2809"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2828"/>
         <source>Time &amp; date</source>
         <translation>Time &amp; date</translation>
     </message>
@@ -8338,7 +8338,7 @@ Click to open network settings</translation>
         <translation>Network service unavailable</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2810"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2829"/>
         <source>Wired connections</source>
         <translation>Wired connections</translation>
     </message>
@@ -8372,7 +8372,7 @@ Click to open network settings</translation>
         <translation>No editable connection</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2811"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2830"/>
         <location filename="../Modules/ControlCenter/NetworkPage.qml" line="303"/>
         <source>Wi-Fi</source>
         <translation>Wi-Fi</translation>
@@ -8459,7 +8459,7 @@ Click to open network settings</translation>
         <translation>IPv6 DNS</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2812"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2831"/>
         <source>Other settings</source>
         <translation>Other settings</translation>
     </message>
@@ -8474,7 +8474,7 @@ Click to open network settings</translation>
         <translation>Add network</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2813"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2832"/>
         <source>Connection information</source>
         <translation>Connection information</translation>
     </message>
@@ -9886,23 +9886,23 @@ Click to open network settings</translation>
 <context>
     <name>NiriConfigService</name>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="271"/>
+        <location filename="../Services/NiriConfigService.qml" line="285"/>
         <source>Unable to check configuration</source>
         <translation>Unable to check configuration</translation>
     </message>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="272"/>
+        <location filename="../Services/NiriConfigService.qml" line="286"/>
         <source>Configuration is invalid</source>
         <translation>Configuration is invalid</translation>
     </message>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="275"/>
+        <location filename="../Services/NiriConfigService.qml" line="289"/>
         <source>Configuration is not writable</source>
         <translation>Configuration is not writable</translation>
     </message>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="269"/>
-        <location filename="../Services/NiriConfigService.qml" line="452"/>
+        <location filename="../Services/NiriConfigService.qml" line="283"/>
+        <location filename="../Services/NiriConfigService.qml" line="466"/>
         <source>Unable to save changes</source>
         <translation>Unable to save changes</translation>
     </message>
@@ -10026,23 +10026,23 @@ Click to open network settings</translation>
 <context>
     <name>NotificationsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2814"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2833"/>
         <location filename="../Modules/ControlCenter/NotificationsPage.qml" line="56"/>
         <source>Do Not Disturb</source>
         <translation>Do Not Disturb</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2815"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2834"/>
         <source>Banners</source>
         <translation>Banners</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2816"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2835"/>
         <source>Application notifications</source>
         <translation>Application notifications</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2817"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2836"/>
         <source>Notification history</source>
         <translation>Notification history</translation>
     </message>
@@ -10906,7 +10906,7 @@ Click to open network settings</translation>
         <translation>: respect keep awake</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2818"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2837"/>
         <source>Power mode</source>
         <translation>Power mode</translation>
     </message>
@@ -11516,12 +11516,12 @@ Right-click to change shape; scroll to reorder</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2819"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2838"/>
         <source>Saving screenshots</source>
         <translation>Saving screenshots</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2820"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2839"/>
         <source>Screen recording</source>
         <translation>Screen recording</translation>
     </message>
@@ -11963,22 +11963,22 @@ Right click: Control Center</translation>
 <context>
     <name>SoundPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2821"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2840"/>
         <source>Output</source>
         <translation>Output</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2822"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2841"/>
         <source>Input</source>
         <translation>Input</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2823"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2842"/>
         <source>Application volume</source>
         <translation>Application volume</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2824"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2843"/>
         <source>Device profiles</source>
         <translation>Device profiles</translation>
     </message>
@@ -12058,222 +12058,222 @@ Right click: Control Center</translation>
 <context>
     <name>SpotlightActions</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2847"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2867"/>
         <source>Lock screen</source>
         <translation>Lock screen</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2848"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2868"/>
         <source>Search</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2849"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2869"/>
         <source>Web search</source>
         <translation>Web search</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2850"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2870"/>
         <source>Find files</source>
         <translation>Find files</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2851"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2871"/>
         <source>Applications</source>
         <translation>Applications</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2852"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2872"/>
         <source>Clipboard history</source>
         <translation>Clipboard history</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2853"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2873"/>
         <source>Wallpaper picker</source>
         <translation>Wallpaper picker</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2854"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2874"/>
         <source>Reset wallpaper</source>
         <translation>Reset wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2855"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2875"/>
         <source>Previous wallpaper</source>
         <translation>Previous wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2856"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2876"/>
         <source>Next wallpaper</source>
         <translation>Next wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2857"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2877"/>
         <source>Random wallpaper</source>
         <translation>Random wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2858"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2878"/>
         <source>Close Keystone panels</source>
         <translation>Close Keystone panels</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2859"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2879"/>
         <source>Keystone dashboard</source>
         <translation>Keystone dashboard</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2860"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2880"/>
         <source>Keystone hub</source>
         <translation>Keystone hub</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2861"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2881"/>
         <source>Lyrics</source>
         <translation>Lyrics</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2862"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2882"/>
         <source>Keystone tools</source>
         <translation>Keystone tools</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2863"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2883"/>
         <source>Notifications</source>
         <translation>Notifications</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2864"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2884"/>
         <source>Quick settings</source>
         <translation>Quick settings</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2867"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2887"/>
         <source>Shortcut map</source>
         <translation>Shortcut map</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2868"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2888"/>
         <source>Power menu</source>
         <translation>Power menu</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2875"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2895"/>
         <source>Lock the current session</source>
         <translation>Lock the current session</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2876"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2896"/>
         <source>Open Spotlight Search</source>
         <translation>Open Spotlight Search</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2877"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2897"/>
         <source>Enter Spotlight Web search</source>
         <translation>Enter Spotlight Web search</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2878"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2898"/>
         <source>Open Spotlight Files</source>
         <translation>Open Spotlight Files</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2879"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2899"/>
         <source>Open the application launcher</source>
         <translation>Open the application launcher</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2880"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2900"/>
         <source>Open clipboard history</source>
         <translation>Open clipboard history</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2881"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2901"/>
         <source>Browse and apply wallpapers</source>
         <translation>Browse and apply wallpapers</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2882"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2902"/>
         <source>Clear the global wallpaper selection</source>
         <translation>Clear the global wallpaper selection</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2883"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2903"/>
         <source>Apply the previous wallpaper</source>
         <translation>Apply the previous wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2884"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2904"/>
         <source>Apply the next wallpaper</source>
         <translation>Apply the next wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2885"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2905"/>
         <source>Apply a random wallpaper</source>
         <translation>Apply a random wallpaper</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2886"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2906"/>
         <source>Dismiss open Keystone panels</source>
         <translation>Dismiss open Keystone panels</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2887"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2907"/>
         <source>Toggle the Keystone dashboard</source>
         <translation>Toggle the Keystone dashboard</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2888"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2908"/>
         <source>Toggle the Keystone hub</source>
         <translation>Toggle the Keystone hub</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2889"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2909"/>
         <source>Toggle Keystone lyrics</source>
         <translation>Toggle Keystone lyrics</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2890"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2910"/>
         <source>Toggle the Keystone tools panel</source>
         <translation>Toggle the Keystone tools panel</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2891"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2911"/>
         <source>Open the notifications sidebar</source>
         <translation>Open the notifications sidebar</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2892"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2912"/>
         <source>Open the Quick settings sidebar</source>
         <translation>Open the Quick settings sidebar</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2895"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2915"/>
         <source>Show keyboard shortcuts</source>
         <translation>Show keyboard shortcuts</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2896"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2916"/>
         <source>Choose a session or power action</source>
         <translation>Choose a session or power action</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2865"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2885"/>
         <source>Weather sidebar</source>
         <translation>Weather sidebar</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2866"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2886"/>
         <source>Sidebar drawer</source>
         <translation>Sidebar drawer</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2893"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2913"/>
         <source>Toggle the weather sidebar</source>
         <translation>Toggle the weather sidebar</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2894"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2914"/>
         <source>Toggle the sidebar drawer</source>
         <translation>Toggle the sidebar drawer</translation>
     </message>
@@ -12697,7 +12697,7 @@ Right click: Control Center</translation>
 <context>
     <name>SpotlightPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2825"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2844"/>
         <source>Applications</source>
         <translation>Applications</translation>
     </message>
@@ -12749,7 +12749,7 @@ Right click: Control Center</translation>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2826"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2845"/>
         <source>Web search</source>
         <translation>Web search</translation>
     </message>
@@ -12760,7 +12760,7 @@ Right click: Control Center</translation>
         <translation>Search engine</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2827"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2846"/>
         <source>Clipboard</source>
         <translation>Clipboard</translation>
     </message>
@@ -14324,12 +14324,12 @@ detected</translation>
         <translation>Dark</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2829"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2848"/>
         <source>matugen color scheme</source>
         <translation>matugen color scheme</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2831"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2850"/>
         <source>Lock screen</source>
         <translation>Lock screen</translation>
     </message>
@@ -14344,12 +14344,12 @@ detected</translation>
         <translation>Create or connect the Clavis cursor configuration.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2830"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2849"/>
         <source>Super key appearance</source>
         <translation>Super key appearance</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2832"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2851"/>
         <source>Cursor theme</source>
         <translation>Cursor theme</translation>
     </message>
@@ -14384,7 +14384,7 @@ detected</translation>
         <translation>milliseconds</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2833"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2852"/>
         <location filename="../Modules/ControlCenter/ThemePage.qml" line="687"/>
         <source>Icon theme</source>
         <translation>Icon theme</translation>
@@ -14395,7 +14395,7 @@ detected</translation>
         <translation>Choose icon theme</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2834"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2853"/>
         <source>Fonts</source>
         <translation>Fonts</translation>
     </message>
@@ -14460,7 +14460,7 @@ detected</translation>
         <translation>Select expressive font</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2828"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2847"/>
         <source>Settings window</source>
         <translation>Settings window</translation>
     </message>
@@ -14902,7 +14902,7 @@ Scroll to adjust; click to open sound</translation>
         <translation>Flip</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2835"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2854"/>
         <location filename="../Modules/ControlCenter/WallpaperPage.qml" line="323"/>
         <source>Desktop wallpaper manager</source>
         <translation>Desktop wallpaper manager</translation>
@@ -14923,7 +14923,7 @@ Scroll to adjust; click to open sound</translation>
         <translation>Detecting awww…</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2836"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2855"/>
         <source>Current wallpaper</source>
         <translation>Current wallpaper</translation>
     </message>
@@ -14967,7 +14967,7 @@ Scroll to adjust; click to open sound</translation>
         <translation>Desktop wallpaper output</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2837"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2856"/>
         <source>Transition</source>
         <translation>Transition</translation>
     </message>
@@ -15039,7 +15039,7 @@ Scroll to adjust; click to open sound</translation>
         <translation>The current transition does not use an easing curve.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2838"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2857"/>
         <source>Parallax effects</source>
         <translation>Parallax effects</translation>
     </message>
@@ -15090,7 +15090,7 @@ Scroll to adjust; click to open sound</translation>
         <translation>Desktop parallax is available only with Quickshell.</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2839"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2858"/>
         <source>Overview background</source>
         <translation>Overview background</translation>
     </message>
@@ -16168,375 +16168,400 @@ Scroll to adjust; click to open sound</translation>
 <context>
     <name>WindowsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2840"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2859"/>
         <source>Window layout</source>
         <translation>Window layout</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2841"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2860"/>
         <source>Window decorations</source>
         <translation>Window decorations</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2842"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2861"/>
         <source>Focus behavior</source>
         <translation>Focus behavior</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2843"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2862"/>
         <source>Overview and hot corners</source>
         <translation>Overview and hot corners</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2844"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2863"/>
         <source>Floating windows and title bars</source>
         <translation>Floating windows and title bars</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2845"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2864"/>
+        <source>Window memory</source>
+        <translation>Window memory</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2865"/>
         <source>Stage Manager</source>
         <translation>Stage Manager</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2846"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2866"/>
         <source>Desktop</source>
         <translation>Desktop</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="19"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="33"/>
         <source>Chosen by the application</source>
         <translation>Chosen by the application</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="23"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="37"/>
         <source>One third</source>
         <translation>One third</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="27"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="41"/>
         <source>Half</source>
         <translation>Half</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="31"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="45"/>
         <source>Two thirds</source>
         <translation>Two thirds</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="35"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="49"/>
         <source>Full width</source>
         <translation>Full width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="42"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="56"/>
         <source>%1% of the screen</source>
         <translation>%1% of the screen</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="102"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="116"/>
         <source>Saving…</source>
         <translation>Saving…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="104"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="118"/>
         <source>Changes are saved and applied automatically</source>
         <translation>Changes are saved and applied automatically</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="116"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="130"/>
         <source>Enable window management settings</source>
         <translation>Enable window management settings</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="117"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="131"/>
         <source>Clavis takes over window layout, decorations and focus behavior, starting from your current values.</source>
         <translation>Clavis takes over window layout, decorations and focus behavior, starting from your current values.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="140"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="154"/>
         <source>Gaps between windows</source>
         <translation>Gaps between windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="144"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="246"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="270"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="158"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="260"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="284"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="153"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="167"/>
         <source>New window width</source>
         <translation>New window width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="170"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="184"/>
         <source>Center the focused column</source>
         <translation>Center the focused column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="178"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="192"/>
         <source>Never</source>
         <translation>Never</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="182"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="196"/>
         <source>When it does not fit</source>
         <translation>When it does not fit</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="186"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="200"/>
         <source>Always</source>
         <translation>Always</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="198"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="212"/>
         <source>Center a single column</source>
         <translation>Center a single column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="199"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="213"/>
         <source>When a workspace has only one column</source>
         <translation>When a workspace has only one column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="208"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="222"/>
         <source>Empty workspace above the first</source>
         <translation>Empty workspace above the first</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="230"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="244"/>
         <source>Focus ring</source>
         <translation>Focus ring</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="231"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="245"/>
         <source>Outline drawn around the focused window</source>
         <translation>Outline drawn around the focused window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="242"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="256"/>
         <source>Focus ring width</source>
         <translation>Focus ring width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="254"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="268"/>
         <source>Border</source>
         <translation>Border</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="255"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="269"/>
         <source>Border around every window, which takes up layout space</source>
         <translation>Border around every window, which takes up layout space</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="266"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="280"/>
         <source>Border width</source>
         <translation>Border width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="278"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="292"/>
         <source>Window shadows</source>
         <translation>Window shadows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="299"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="313"/>
         <source>Focus follows the mouse</source>
         <translation>Focus follows the mouse</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="300"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="312"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="314"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="326"/>
         <source>Turned on in another configuration file</source>
         <translation>Turned on in another configuration file</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="302"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="316"/>
         <source>Focus windows by moving the pointer over them</source>
         <translation>Focus windows by moving the pointer over them</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="311"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="325"/>
         <source>Move the pointer to the focused window</source>
         <translation>Move the pointer to the focused window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="314"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="328"/>
         <source>When focus changes with the keyboard</source>
         <translation>When focus changes with the keyboard</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="323"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
         <source>Switch back to the previous workspace</source>
         <translation>Switch back to the previous workspace</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="324"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="338"/>
         <source>Choosing the current workspace again returns to the previous one</source>
         <translation>Choosing the current workspace again returns to the previous one</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="351"/>
         <source>Move the pointer into a chosen screen corner to open or close the overview.</source>
         <translation>Move the pointer into a chosen screen corner to open or close the overview.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="348"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="362"/>
         <source>Top-left corner</source>
         <translation>Top-left corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="353"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="367"/>
         <source>Top-right corner</source>
         <translation>Top-right corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="358"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="372"/>
         <source>Bottom-left corner</source>
         <translation>Bottom-left corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="363"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="377"/>
         <source>Bottom-right corner</source>
         <translation>Bottom-right corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="369"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="383"/>
         <source>Workspace size in the overview</source>
         <translation>Workspace size in the overview</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="387"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="401"/>
         <source>Provided by this computer&apos;s customized niri</source>
         <translation>Provided by this computer&apos;s customized niri</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="397"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="411"/>
         <source>Remember each application&apos;s window layout</source>
         <translation>Remember each application&apos;s window layout</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="398"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="412"/>
         <source>New windows reopen floating or tiled with their last size</source>
         <translation>New windows reopen floating or tiled with their last size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="403"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="417"/>
         <source>Lower floating windows behind tiled windows</source>
         <translation>Lower floating windows behind tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="404"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="418"/>
         <source>Activating a tiled window lowers raised floating windows</source>
         <translation>Activating a tiled window lowers raised floating windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="409"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="423"/>
         <source>Keep dialogs with their parent window</source>
         <translation>Keep dialogs with their parent window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="414"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="428"/>
         <source>Keep floating windows below the bar</source>
         <translation>Keep floating windows below the bar</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="415"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="429"/>
         <source>Floating windows share the top edge of tiled windows</source>
         <translation>Floating windows share the top edge of tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="420"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="434"/>
         <source>Snap to half the screen at the edges</source>
         <translation>Snap to half the screen at the edges</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="421"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="435"/>
         <source>Drop a floating window at the left or right edge to tile it</source>
         <translation>Drop a floating window at the left or right edge to tile it</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="426"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="440"/>
         <source>Detach tiled windows by dragging with Mod</source>
         <translation>Detach tiled windows by dragging with Mod</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="427"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="441"/>
         <source>Hold Shift as well to keep the normal tiling drag</source>
         <translation>Hold Shift as well to keep the normal tiling drag</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="432"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="446"/>
         <source>Restore the previous floating size</source>
         <translation>Restore the previous floating size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="433"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="447"/>
         <source>When a tiled window becomes floating again</source>
         <translation>When a tiled window becomes floating again</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="438"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="452"/>
         <source>Double-click a title bar to expand the column</source>
         <translation>Double-click a title bar to expand the column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="439"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="453"/>
         <source>The maximize button still fills the screen</source>
         <translation>The maximize button still fills the screen</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="444"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="458"/>
         <source>Maximize requests expand the column</source>
         <translation>Maximize requests expand the column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="459"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>Applies to maximize buttons of tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="455"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="469"/>
+        <source>Turn an application off to stop remembering its tiled or floating layout and its size.</source>
+        <translation>Turn an application off to stop remembering its tiled or floating layout and its size.</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="479"/>
+        <source>Remember each application&apos;s window size</source>
+        <translation>Remember each application&apos;s window size</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <source>Floating size and tiled column width; the most recently adjusted window wins</source>
+        <translation>Floating size and tiled column width; the most recently adjusted window wins</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="507"/>
+        <source>Applications appear here after you open their windows</source>
+        <translation>Applications appear here after you open their windows</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="517"/>
         <source>Rest the pointer at the middle of a screen edge to open a strip.</source>
         <translation>Rest the pointer at the middle of a screen edge to open a strip.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="464"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="526"/>
         <source>Other stages on the left edge</source>
         <translation>Other stages on the left edge</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="465"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="527"/>
         <source>Windows of the other workspaces and minimized windows</source>
         <translation>Windows of the other workspaces and minimized windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="471"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="533"/>
         <source>Current stage on the right edge</source>
         <translation>Current stage on the right edge</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="472"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="534"/>
         <source>Every window of the current workspace</source>
         <translation>Every window of the current workspace</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="542"/>
         <source>Open after resting at the edge for</source>
         <translation>Open after resting at the edge for</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="486"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="548"/>
         <source>%1 s</source>
         <translation>%1 s</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="508"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="570"/>
         <source>Click wallpaper to reveal desktop</source>
         <translation>Click wallpaper to reveal desktop</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="509"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="571"/>
         <source>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</source>
         <translation>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</translation>
     </message>

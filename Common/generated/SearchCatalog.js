@@ -2675,6 +2675,25 @@ var catalog = {
     },
     {
       "aliases": [
+        "remember size",
+        "window size",
+        "exclude app",
+        "remember layout"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "history",
+      "id": "general.windows.section.memory",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Window memory"
+    },
+    {
+      "aliases": [
         "stage manager",
         "strip",
         "edge",
@@ -2842,6 +2861,7 @@ function title(id) {
     case "general.windows.section.focus": return qsTranslate("WindowsPage", "Focus behavior");
     case "general.windows.section.overview": return qsTranslate("WindowsPage", "Overview and hot corners");
     case "general.windows.section.floating": return qsTranslate("WindowsPage", "Floating windows and title bars");
+    case "general.windows.section.memory": return qsTranslate("WindowsPage", "Window memory");
     case "general.windows.section.stagemanager": return qsTranslate("WindowsPage", "Stage Manager");
     case "general.windows.section.desktop": return qsTranslate("WindowsPage", "Desktop");
     case "clavis:lock:open": return qsTranslate("SpotlightActions", "Lock screen");

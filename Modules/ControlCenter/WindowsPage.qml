@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 import qs.Common
 import qs.Services
 import qs.Widgets.common
@@ -13,6 +14,18 @@ StyledFlickable {
     readonly property var personal: windows.personal || ({})
     readonly property var external: windows.external || ({})
     readonly property bool editable: NiriConfigService.ready("windows")
+    readonly property var memoryExcludedApps: windows.memoryExcludedApps || []
+    // Applications niri has remembered plus excluded ones, so an exclusion can always be undone.
+    readonly property var memoryApplications: {
+        const ids = (windows.memoryKnownApps || []).concat(memoryExcludedApps);
+        return ids.filter((id, index) => id && ids.indexOf(id) === index).map(id => {
+            const entry = DesktopEntries.heuristicLookup(id);
+            return {
+                id: id,
+                name: entry && entry.name ? entry.name : id
+            };
+        }).sort((left, right) => left.name.localeCompare(right.name));
+    }
     readonly property var widthOptions: {
         const options = [
                   {
@@ -443,6 +456,54 @@ StyledFlickable {
                 flag: "client-maximize-to-column"
                 title: qsTr("Maximize requests expand the column")
                 supportingText: qsTr("Applies to maximize buttons of tiled windows")
+            }
+        }
+
+        SettingsSection {
+            id: memorySection
+            Layout.fillWidth: true
+            visible: root.windows.memorySupported === true
+            title: memoryAnchor.title
+            iconName: "history"
+            supportingText: qsTr(
+                                "Turn an application off to stop remembering its tiled or floating layout and its size.")
+            SettingsSearchAnchor {
+                id: memoryAnchor
+                target: memorySection
+                declaration:
+                    '{"id":"general.windows.section.memory","route":"general.windows","title":"Window memory","context":"WindowsPage","icon":"history","aliases":["remember size","window size","exclude app","remember layout"]}'
+            }
+
+            SwitchRow {
+                title: qsTr("Remember each application's window size")
+                supportingText: qsTr(
+                                    "Floating size and tiled column width; the most recently adjusted window wins")
+                checked: root.windows.rememberWindowSize === true
+                onToggled: checked => NiriConfigService.setWindowsOptions({
+                                                                              rememberWindowSize: checked
+                                                                          })
+            }
+
+            Repeater {
+                model: root.memoryApplications
+
+                SwitchRow {
+                    id: memoryAppRow
+                    required property var modelData
+                    iconName: "apps"
+                    title: memoryAppRow.modelData.name
+                    supportingText: memoryAppRow.modelData.name !== memoryAppRow.modelData.id
+                                    ? memoryAppRow.modelData.id : ""
+                    checked: root.memoryExcludedApps.indexOf(memoryAppRow.modelData.id) < 0
+                    onToggled: checked => NiriConfigService.setWindowMemoryAppExcluded(
+                                              memoryAppRow.modelData.id, !checked)
+                }
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                visible: root.memoryApplications.length === 0
+                title: qsTr("Applications appear here after you open their windows")
             }
         }
         // Clavis shell features; stored in ui-preferences.json, available

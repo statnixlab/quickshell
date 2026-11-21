@@ -256,6 +256,19 @@ class ConfigurationContracts(unittest.TestCase):
             with self.assertRaises(ValueError):
                 config.windows_nodes(bad)
 
+    def test_windows_memory_exclusions_round_trip_only_when_supported(self):
+        request = dict(rememberWindowSize=True, memoryExcludedApps=['mpv', 'com-example.App', 'mpv'])
+        self.assertNotIn('remember-window-size', ''.join(config.render(node) for node in config.windows_nodes(request)))
+        self.main.write_text(''.join(config.render(node) for node in config.windows_nodes(dict(request, memorySupported=True))))
+        state = config.windows_state(config.Graph(self.main), config.path_key(self.main))
+        self.assertTrue(state['rememberWindowSize'])
+        self.assertEqual(state['memoryExcludedApps'], ['com-example.App', 'mpv'])
+        # Rules outside the managed fragment are not reported as Clavis exclusions.
+        self.assertEqual(config.windows_state(config.Graph(self.main), None)['memoryExcludedApps'], [])
+        for bad in (dict(rememberWindowSize='yes'), dict(memoryExcludedApps=['']), dict(memoryExcludedApps='mpv')):
+            with self.assertRaises(ValueError):
+                config.windows_nodes(dict(bad, memorySupported=True))
+
     def test_compositor_config_argument_forms(self):
         cwd = Path('/work')
         self.assertEqual(config.config_argument(['niri-custom', '--session', '--config', '/a/b.kdl'], cwd), Path('/a/b.kdl'))

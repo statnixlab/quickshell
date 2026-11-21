@@ -656,6 +656,8 @@ def status(request):
         state['keyboard'] = keyboard_state(graph)
         state['windows'] = windows_state(graph, path_key(managed_dir / 'windows.kdl'))
         state['windows']['personalSupported'] = supports_personal_layout(request)
+        state['windows']['memorySupported'] = supports_window_memory(request)
+        state['windows']['memoryKnownApps'] = window_memory_known_apps()
         state['animations'] = animations_state(graph, path_key(managed_dir / 'animations.kdl'))
         state['screenshots'] = screenshots_state(graph)
         state['mouse'] = dict(speed=0.0, profile='adaptive')
@@ -899,12 +901,80 @@ WINDOWS_DEFAULTS = dict(gaps=16, centerFocusedColumn='never', alwaysCenterSingle
                         defaultColumnWidth=0.5, focusRing=True, focusRingWidth=4, border=False, borderWidth=4, shadow=False,
                         focusFollowsMouse=False, warpMouseToFocus=False, workspaceBackAndForth=False,
                         hotCorners=['top-left'], overviewZoom=0.5,
-                        personal={flag: False for flag in PERSONAL_LAYOUT_FLAGS})
+                        personal={flag: False for flag in PERSONAL_LAYOUT_FLAGS},
+                        rememberWindowSize=False, memoryExcludedApps=[])
 HOT_CORNERS = ('top-left', 'top-right', 'bottom-left', 'bottom-right')
 
 
 def flag_node(name, value):
     return kdl.Node(name, args=[] if value else [False])
+
+
+def app_id_pattern(app_id):
+    """Exact-match regex for an app-id, readable like `^org[.]example$`."""
+    def escape(char):
+        if char.isalnum() or char == '_':
+            return char
+        return '\\' + char if char in '\\[]^' else '[' + char + ']'
+    return '^' + ''.join(escape(char) for char in app_id) + '$'
+
+
+def pattern_app_id(pattern):
+    """Inverse of app_id_pattern; None for patterns it did not produce."""
+    if not isinstance(pattern, str) or not pattern.startswith('^') or not pattern.endswith('$'):
+        return None
+    body, result, i = pattern[1:-1], [], 0
+    while i < len(body):
+        if body[i] == '[' and i + 2 < len(body) and body[i + 2] == ']':
+            result.append(body[i + 1])
+            i += 3
+        elif body[i] == '\\' and i + 1 < len(body):
+            result.append(body[i + 1])
+            i += 2
+        elif body[i].isalnum() or body[i] == '_':
+            result.append(body[i])
+            i += 1
+        else:
+            return None
+    app_id = ''.join(result)
+    return app_id if app_id_pattern(app_id) == pattern else None
+
+
+def valid_app_id(app_id):
+    return isinstance(app_id, str) and app_id.strip() != '' and len(app_id) <= 512 and not any(
+        ord(char) < 32 or ord(char) == 127 for char in app_id)
+
+
+def window_memory_nodes(request):
+    """Application window memory switch and the applications excluded from it."""
+    enabled = request.get('rememberWindowSize', False)
+    if not isinstance(enabled, bool):
+        raise ValueError('rememberWindowSize must be true or false')
+    excluded = request.get('memoryExcludedApps', [])
+    if not isinstance(excluded, list) or not all(valid_app_id(app) for app in excluded):
+        raise ValueError('Excluded applications must be application IDs')
+    excluded = sorted(set(excluded))
+    rules = []
+    if excluded:
+        rules.append(kdl.Node('window-rule', nodes=[kdl.Node('match', props={'app-id': app_id_pattern(app)}) for app in excluded] + [
+            kdl.Node('remember-window-layout', args=[False]),
+            kdl.Node('remember-window-size', args=[False])]))
+    return flag_node('remember-window-size', enabled), rules
+
+
+def window_memory_known_apps():
+    """App-ids niri has remembered so far, from its own state files."""
+    base = Path(os.environ.get('XDG_STATE_HOME') or Path.home() / '.local/state') / 'niri'
+    apps = set()
+    for name in ('window-layouts.json', 'window-sizes.json'):
+        try:
+            data = json.loads((base / name).read_text())
+            keys = data.get('applications', {}).keys() if isinstance(data, dict) else []
+        except (OSError, ValueError, AttributeError):
+            continue
+        # Grouped auxiliary windows are stored as "<app-id>#<group>".
+        apps.update(key.split('#', 1)[0] for key in keys if isinstance(key, str))
+    return sorted(app for app in apps if valid_app_id(app))
 
 
 def windows_nodes(request):
@@ -943,6 +1013,10 @@ def windows_nodes(request):
         raise ValueError('Unknown personal layout option')
     if request.get('personalSupported'):
         layout.extend(flag_node(flag, personal.get(flag, False)) for flag in PERSONAL_LAYOUT_FLAGS)
+    memory_rules = []
+    if request.get('memorySupported'):
+        memory_flag, memory_rules = window_memory_nodes(request)
+        layout.append(memory_flag)
     # niri cannot switch these two off from an include, so they are written only when enabled.
     pointer = [kdl.Node(name) for key, name in (('focusFollowsMouse', 'focus-follows-mouse'), ('warpMouseToFocus', 'warp-mouse-to-focus')) if boolean(key)]
     corners = request.get('hotCorners', ['top-left'])
@@ -955,7 +1029,7 @@ def windows_nodes(request):
     return [kdl.Node('layout', nodes=layout),
             kdl.Node('input', nodes=pointer + [flag_node('workspace-auto-back-and-forth', boolean('workspaceBackAndForth'))]),
             kdl.Node('gestures', nodes=[kdl.Node('hot-corners', nodes=hot)]),
-            kdl.Node('overview', nodes=[kdl.Node('zoom', args=[round(float(zoom), 3)])])]
+            kdl.Node('overview', nodes=[kdl.Node('zoom', args=[round(float(zoom), 3)])])] + memory_rules
 
 
 def windows_state(graph, managed=None):
@@ -993,6 +1067,8 @@ def windows_state(graph, managed=None):
                         state[key + 'Width'] = int(width)
                 elif name in PERSONAL_LAYOUT_FLAGS:
                     state['personal'][name] = flag(child)
+                elif name == 'remember-window-size':
+                    state['rememberWindowSize'] = flag(child)
         elif node.name == 'input':
             for child in node.nodes:
                 if child.name in ('focus-follows-mouse', 'warp-mouse-to-focus'):
@@ -1012,6 +1088,13 @@ def windows_state(graph, managed=None):
             for child in node.nodes:
                 if child.name == 'zoom' and child.args:
                     state['overviewZoom'] = float(child.args[0])
+        elif node.name == 'window-rule' and managed is not None and path == managed:
+            if any(child.name == 'remember-window-size' and child.args == [False] for child in node.nodes):
+                for child in node.nodes:
+                    app = pattern_app_id(child.props.get('app-id')) if child.name == 'match' and set(child.props) == {'app-id'} else None
+                    if app and app not in state['memoryExcludedApps']:
+                        state['memoryExcludedApps'].append(app)
+    state['memoryExcludedApps'].sort()
     state['external'] = external
     return state
 
@@ -1081,6 +1164,17 @@ def screenshots_state(graph):
             if value is not None:
                 state['path'] = str(value)
     return state
+
+
+def supports_window_memory(request):
+    try:
+        with tempfile.TemporaryDirectory(prefix='clavis-memory-probe-') as directory:
+            candidate = Path(directory) / 'config.kdl'
+            flag, rules = window_memory_nodes(dict(rememberWindowSize=True, memoryExcludedApps=['probe']))
+            candidate.write_text(render(kdl.Node('layout', nodes=[flag])) + ''.join(render(rule) for rule in rules))
+            return subprocess.run([request.get('niri', 'niri'), 'validate', '-c', str(candidate)], capture_output=True, timeout=5).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
 
 
 def supports_personal_layout(request):

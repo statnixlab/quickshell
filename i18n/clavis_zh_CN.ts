@@ -100,7 +100,7 @@
         <translation>已连接，开放</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2750"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2769"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
@@ -115,7 +115,7 @@
         <translation>选择语言</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2751"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2770"/>
         <source>Bluetooth devices</source>
         <translation>蓝牙设备</translation>
     </message>
@@ -161,7 +161,7 @@
         <translation>更多蓝牙设置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2752"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2771"/>
         <source>Keyboard shortcuts</source>
         <translation>快捷键</translation>
     </message>
@@ -176,7 +176,7 @@
         <translation>快捷键配置图</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2753"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2772"/>
         <source>Cloud storage</source>
         <translation>云存储</translation>
     </message>
@@ -246,7 +246,7 @@
         <translation>管理云存储</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2754"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2773"/>
         <source>Personalization</source>
         <translation>个性化</translation>
     </message>
@@ -402,12 +402,12 @@
         <translation>请输入有效的远程目录</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2755"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2774"/>
         <source>Map and weather services</source>
         <translation>地图与天气服务</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2756"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2775"/>
         <source>Cloud storage</source>
         <translation>云存储</translation>
     </message>
@@ -452,7 +452,7 @@
         <translation>电脑备份位置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2757"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2776"/>
         <source>Matugen template generation</source>
         <translation>Matugen 模板生成</translation>
     </message>
@@ -537,12 +537,12 @@
 <context>
     <name>AnimationsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2758"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2777"/>
         <source>Animation speed</source>
         <translation>动画速度</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2759"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2778"/>
         <source>Individual animations</source>
         <translation>单项动画</translation>
     </message>
@@ -897,7 +897,7 @@
         <translation>重试</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2760"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2779"/>
         <source>Add application to autostart</source>
         <translation>添加应用到开机启动</translation>
     </message>
@@ -913,7 +913,7 @@
         <translation>选择一个已安装应用加入用户级开机启动</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2761"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2780"/>
         <source>User autostart applications</source>
         <translation>用户自启应用</translation>
     </message>
@@ -1947,7 +1947,7 @@
 <context>
     <name>BluetoothPairingPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2762"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2781"/>
         <source>Nearby devices</source>
         <translation>附近设备</translation>
     </message>
@@ -2698,7 +2698,7 @@ Scroll to adjust</source>
         <translation>Bluetooth 开关</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2763"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2782"/>
         <source>Saved devices</source>
         <translation>已保存的设备</translation>
     </message>
@@ -2713,7 +2713,7 @@ Scroll to adjust</source>
         <translation>配对新设备</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2764"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2783"/>
         <location filename="../Modules/ControlCenter/ConnectedDevicesPage.qml" line="155"/>
         <source>Bluetooth adapter</source>
         <translation>蓝牙适配器</translation>
@@ -2729,7 +2729,7 @@ Scroll to adjust</source>
         <translation>切换适配器 %1</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2765"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2784"/>
         <source>Advanced settings</source>
         <translation>高级设置</translation>
     </message>
@@ -2763,32 +2763,32 @@ Scroll to adjust</source>
 <context>
     <name>ControlCenterWindow</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2729"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2748"/>
         <source>Account</source>
         <translation>账户</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2730"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2749"/>
         <source>General</source>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2731"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2750"/>
         <source>Wallpaper</source>
         <translation>壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2732"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2751"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2733"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2752"/>
         <source>Keystone</source>
         <translation>拱心石</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2734"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2753"/>
         <source>Advanced</source>
         <translation>高级</translation>
     </message>
@@ -3411,7 +3411,7 @@ Scroll to adjust</source>
         <translation>没有找到可用的系统应用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2766"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2785"/>
         <source>Internet</source>
         <translation>互联网</translation>
     </message>
@@ -3426,7 +3426,7 @@ Scroll to adjust</source>
         <translation>邮件</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2767"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2786"/>
         <source>Utilities</source>
         <translation>实用工具</translation>
     </message>
@@ -3441,7 +3441,7 @@ Scroll to adjust</source>
         <translation>终端</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2768"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2787"/>
         <source>Documents</source>
         <translation>文档</translation>
     </message>
@@ -3456,7 +3456,7 @@ Scroll to adjust</source>
         <translation>PDF 阅读器</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2769"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2788"/>
         <source>Multimedia</source>
         <translation>多媒体</translation>
     </message>
@@ -3883,7 +3883,7 @@ Scroll to adjust</source>
         <translation>显示器配置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2771"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2790"/>
         <source>Layout</source>
         <translation>布局</translation>
     </message>
@@ -3904,7 +3904,7 @@ Scroll to adjust</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2770"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2789"/>
         <location filename="../Modules/ControlCenter/DisplayConfigurationPage.qml" line="159"/>
         <source>Display</source>
         <translation>显示器</translation>
@@ -3922,7 +3922,7 @@ Scroll to adjust</source>
         <translation>此输出为只读。请在 %1 中解决冲突或不支持的设置。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2772"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2791"/>
         <source>Output settings</source>
         <translation>输出设置</translation>
     </message>
@@ -4065,12 +4065,12 @@ Scroll to adjust</source>
 <context>
     <name>DisplaysPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2747"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2766"/>
         <source>Display configuration</source>
         <translation>显示器配置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2748"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2767"/>
         <source>Gamma Control</source>
         <translation>Gamma 控制</translation>
     </message>
@@ -4224,22 +4224,22 @@ Scroll to adjust</source>
 <context>
     <name>DockPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2773"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2792"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2774"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2793"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2775"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2794"/>
         <source>Behavior</source>
         <translation>行为</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2776"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2795"/>
         <source>Window previews</source>
         <translation>窗口预览</translation>
     </message>
@@ -4963,7 +4963,7 @@ Temperature: %4</source>
         <translation>合成器未提供 Gamma 控制</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2777"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2796"/>
         <source>Color</source>
         <translation>色彩</translation>
     </message>
@@ -4994,7 +4994,7 @@ Temperature: %4</source>
         <translation>夜间色温</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2778"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2797"/>
         <source>Schedule</source>
         <translation>调度</translation>
     </message>
@@ -5102,7 +5102,7 @@ Temperature: %4</source>
         <translation>使用天气位置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2779"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2798"/>
         <source>Current status</source>
         <translation>当前状态</translation>
     </message>
@@ -5125,12 +5125,12 @@ Temperature: %4</source>
 <context>
     <name>GeneralBarPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2780"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2799"/>
         <source>Position</source>
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2781"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2800"/>
         <source>Size</source>
         <translation>尺寸</translation>
     </message>
@@ -5140,7 +5140,7 @@ Temperature: %4</source>
         <translation>屏幕边缘</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2783"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2802"/>
         <source>Components</source>
         <translation>组件</translation>
     </message>
@@ -5188,7 +5188,7 @@ Temperature: %4</source>
         <translation>快捷设置组件</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2782"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2801"/>
         <source>Size and spacing</source>
         <translation>尺寸与间距</translation>
     </message>
@@ -5293,12 +5293,12 @@ Temperature: %4</source>
         <translation>创建或接入 Clavis X-Ray 规则。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2784"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2803"/>
         <source>Desktop panels</source>
         <translation>桌面面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2785"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2804"/>
         <location filename="../Modules/ControlCenter/GeneralEffectsPage.qml" line="118"/>
         <source>Application effects</source>
         <translation>应用效果</translation>
@@ -5380,12 +5380,12 @@ Temperature: %4</source>
 <context>
     <name>GeneralOverviewPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2786"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2805"/>
         <source>Interface</source>
         <translation>界面</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2787"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2806"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
@@ -5470,7 +5470,7 @@ Temperature: %4</source>
         <translation>%1 台设备已连接</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2788"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2807"/>
         <source>Applications</source>
         <translation>应用</translation>
     </message>
@@ -5483,107 +5483,107 @@ Temperature: %4</source>
 <context>
     <name>GeneralPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2735"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2754"/>
         <source>Displays</source>
         <translation>显示器</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2736"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2755"/>
         <source>Bar</source>
         <translation>条栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2720"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2739"/>
         <source>Dock</source>
         <translation>程序坞</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2721"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2740"/>
         <source>Power management</source>
         <translation>电源管理</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2722"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2741"/>
         <source>Mouse and cursor</source>
         <translation>鼠标与光标</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2723"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2742"/>
         <source>Keyboard</source>
         <translation>键盘</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2724"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2743"/>
         <source>Window management</source>
         <translation>窗口管理</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2725"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2744"/>
         <source>Sound</source>
         <translation>声音</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2726"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2745"/>
         <source>Notifications</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2727"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2746"/>
         <source>Animations</source>
         <translation>动画</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2728"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2747"/>
         <source>Screenshots</source>
         <translation>截图</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2737"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2756"/>
         <source>Sidebars</source>
         <translation>侧边栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2738"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2757"/>
         <source>Spotlight</source>
         <translation>Spotlight</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2739"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2758"/>
         <source>Transparency and blur</source>
         <translation>透明与模糊</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2740"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2759"/>
         <source>Keyboard shortcuts</source>
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2741"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2760"/>
         <source>Language &amp; region</source>
         <translation>语言与地区</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2742"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2761"/>
         <source>Autostart</source>
         <translation>开机启动</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2743"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2762"/>
         <source>Default applications</source>
         <translation>默认应用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2744"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2763"/>
         <source>Network</source>
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2745"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2764"/>
         <source>Connected devices</source>
         <translation>连接的设备</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2746"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2765"/>
         <source>Pair new device</source>
         <translation>配对新设备</translation>
     </message>
@@ -5620,7 +5620,7 @@ Temperature: %4</source>
         <translation>跟随磁盘 I/O 卡片</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2789"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2808"/>
         <source>Sidebars</source>
         <translation>侧边栏</translation>
     </message>
@@ -5658,7 +5658,7 @@ Temperature: %4</source>
         <translation>再次打开更快，但会增加内存占用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2790"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2809"/>
         <source>Desktop card layout</source>
         <translation>桌面卡片布局</translation>
     </message>
@@ -5715,7 +5715,7 @@ Temperature: %4</source>
         <translation>拖动时显示桌面网格</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2791"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2810"/>
         <source>Clock style</source>
         <translation>时钟样式</translation>
     </message>
@@ -5866,7 +5866,7 @@ Temperature: %4</source>
         <translation>矩形</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2792"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2811"/>
         <source>System cards</source>
         <translation>系统卡片</translation>
     </message>
@@ -5927,7 +5927,7 @@ Temperature: %4</source>
 <context>
     <name>HorizontalClockPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2793"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2812"/>
         <source>Horizontal clock style</source>
         <translation>横向时钟样式</translation>
     </message>
@@ -6402,17 +6402,17 @@ Temperature: %4</source>
 <context>
     <name>KeyboardPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2794"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2813"/>
         <source>Keyboard layouts</source>
         <translation>键盘布局</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2795"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2814"/>
         <source>Keys and repeat</source>
         <translation>按键与重复</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2796"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2815"/>
         <source>Input method</source>
         <translation>输入法</translation>
     </message>
@@ -6609,7 +6609,7 @@ Temperature: %4</source>
 <context>
     <name>KeystonePage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2749"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2768"/>
         <location filename="../Modules/ControlCenter/KeystonePage.qml" line="544"/>
         <source>Horizontal clock style</source>
         <translation>横向时钟样式</translation>
@@ -6620,7 +6620,7 @@ Temperature: %4</source>
         <translation>返回拱心石设置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2797"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2816"/>
         <source>Keystone style</source>
         <translation>拱心石样式</translation>
     </message>
@@ -6640,7 +6640,7 @@ Temperature: %4</source>
         <translation>屏幕边缘</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2801"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2820"/>
         <source>Keyboard indicators</source>
         <translation>键盘状态提示</translation>
     </message>
@@ -6657,12 +6657,12 @@ Temperature: %4</source>
         <translation>小键盘数字锁定状态变化</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2802"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2821"/>
         <source>Keyhole</source>
         <translation>钥匙孔</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2803"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2822"/>
         <source>Horizontal clock</source>
         <translation>横向时钟</translation>
     </message>
@@ -6678,7 +6678,7 @@ Temperature: %4</source>
         <translation>字体、数字位置和颜色</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2804"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2823"/>
         <source>Recording</source>
         <translation>录制</translation>
     </message>
@@ -6731,7 +6731,7 @@ Temperature: %4</source>
         <translation>可选择当前文件夹或选中的子文件夹</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2799"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2818"/>
         <source>Mouse actions</source>
         <translation>鼠标操作</translation>
     </message>
@@ -6886,12 +6886,12 @@ Temperature: %4</source>
         <translation>下侧</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2798"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2817"/>
         <source>Size and spacing</source>
         <translation>尺寸与间距</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2800"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2819"/>
         <source>Media controls</source>
         <translation>媒体控制</translation>
     </message>
@@ -6919,7 +6919,7 @@ Temperature: %4</source>
 <context>
     <name>LanguageAndRegionPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2805"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2824"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
@@ -6934,12 +6934,12 @@ Temperature: %4</source>
         <translation>选择语言</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2806"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2825"/>
         <source>Region &amp; weather location</source>
         <translation>地区与天气位置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2807"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2826"/>
         <source>Weather map</source>
         <translation>天气地图</translation>
     </message>
@@ -7011,7 +7011,7 @@ Temperature: %4</source>
         <translation>仅当本机的另一个系统（如 Windows）时间显示不对时才打开。把 Windows 设为使用 UTC 更可靠。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2808"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2827"/>
         <source>Units</source>
         <translation>单位</translation>
     </message>
@@ -7026,7 +7026,7 @@ Temperature: %4</source>
         <translation>硬件温度</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2809"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2828"/>
         <source>Time &amp; date</source>
         <translation>时间与日期</translation>
     </message>
@@ -8336,7 +8336,7 @@ Click to open network settings</source>
         <translation>网络服务不可用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2810"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2829"/>
         <source>Wired connections</source>
         <translation>有线连接</translation>
     </message>
@@ -8370,7 +8370,7 @@ Click to open network settings</source>
         <translation>无可编辑连接</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2811"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2830"/>
         <location filename="../Modules/ControlCenter/NetworkPage.qml" line="303"/>
         <source>Wi-Fi</source>
         <translation>Wi-Fi</translation>
@@ -8457,7 +8457,7 @@ Click to open network settings</source>
         <translation>IPv6 DNS</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2812"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2831"/>
         <source>Other settings</source>
         <translation>其他设置</translation>
     </message>
@@ -8472,7 +8472,7 @@ Click to open network settings</source>
         <translation>添加网络</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2813"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2832"/>
         <source>Connection information</source>
         <translation>连接信息</translation>
     </message>
@@ -9884,23 +9884,23 @@ Click to open network settings</source>
 <context>
     <name>NiriConfigService</name>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="271"/>
+        <location filename="../Services/NiriConfigService.qml" line="285"/>
         <source>Unable to check configuration</source>
         <translation>无法检查配置</translation>
     </message>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="272"/>
+        <location filename="../Services/NiriConfigService.qml" line="286"/>
         <source>Configuration is invalid</source>
         <translation>配置无效</translation>
     </message>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="275"/>
+        <location filename="../Services/NiriConfigService.qml" line="289"/>
         <source>Configuration is not writable</source>
         <translation>配置不可写入</translation>
     </message>
     <message>
-        <location filename="../Services/NiriConfigService.qml" line="269"/>
-        <location filename="../Services/NiriConfigService.qml" line="452"/>
+        <location filename="../Services/NiriConfigService.qml" line="283"/>
+        <location filename="../Services/NiriConfigService.qml" line="466"/>
         <source>Unable to save changes</source>
         <translation>无法保存修改</translation>
     </message>
@@ -10024,23 +10024,23 @@ Click to open network settings</source>
 <context>
     <name>NotificationsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2814"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2833"/>
         <location filename="../Modules/ControlCenter/NotificationsPage.qml" line="56"/>
         <source>Do Not Disturb</source>
         <translation>勿扰模式</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2815"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2834"/>
         <source>Banners</source>
         <translation>横幅</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2816"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2835"/>
         <source>Application notifications</source>
         <translation>应用通知</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2817"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2836"/>
         <source>Notification history</source>
         <translation>通知历史</translation>
     </message>
@@ -10902,7 +10902,7 @@ Click to open network settings</source>
         <translation>：遵循保持唤醒</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2818"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2837"/>
         <source>Power mode</source>
         <translation>电源模式</translation>
     </message>
@@ -11512,12 +11512,12 @@ Right-click to change shape; scroll to reorder</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2819"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2838"/>
         <source>Saving screenshots</source>
         <translation>保存截图</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2820"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2839"/>
         <source>Screen recording</source>
         <translation>录屏</translation>
     </message>
@@ -11959,22 +11959,22 @@ Right click: Control Center</source>
 <context>
     <name>SoundPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2821"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2840"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2822"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2841"/>
         <source>Input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2823"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2842"/>
         <source>Application volume</source>
         <translation>应用音量</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2824"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2843"/>
         <source>Device profiles</source>
         <translation>设备配置文件</translation>
     </message>
@@ -12054,222 +12054,222 @@ Right click: Control Center</source>
 <context>
     <name>SpotlightActions</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2847"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2867"/>
         <source>Lock screen</source>
         <translation>锁屏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2848"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2868"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2849"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2869"/>
         <source>Web search</source>
         <translation>网页搜索</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2850"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2870"/>
         <source>Find files</source>
         <translation>查找文件</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2851"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2871"/>
         <source>Applications</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2852"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2872"/>
         <source>Clipboard history</source>
         <translation>剪贴板历史</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2853"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2873"/>
         <source>Wallpaper picker</source>
         <translation>壁纸选择</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2854"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2874"/>
         <source>Reset wallpaper</source>
         <translation>重置壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2855"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2875"/>
         <source>Previous wallpaper</source>
         <translation>上一张壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2856"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2876"/>
         <source>Next wallpaper</source>
         <translation>下一张壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2857"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2877"/>
         <source>Random wallpaper</source>
         <translation>随机壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2858"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2878"/>
         <source>Close Keystone panels</source>
         <translation>关闭 Keystone 面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2859"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2879"/>
         <source>Keystone dashboard</source>
         <translation>Keystone 仪表盘</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2860"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2880"/>
         <source>Keystone hub</source>
         <translation>Keystone 主面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2861"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2881"/>
         <source>Lyrics</source>
         <translation>歌词</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2862"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2882"/>
         <source>Keystone tools</source>
         <translation>Keystone 工具</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2863"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2883"/>
         <source>Notifications</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2864"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2884"/>
         <source>Quick settings</source>
         <translation>快捷设置</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2867"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2887"/>
         <source>Shortcut map</source>
         <translation>快捷键配置图</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2868"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2888"/>
         <source>Power menu</source>
         <translation>电源菜单</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2875"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2895"/>
         <source>Lock the current session</source>
         <translation>锁定当前会话</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2876"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2896"/>
         <source>Open Spotlight Search</source>
         <translation>打开 Spotlight 搜索</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2877"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2897"/>
         <source>Enter Spotlight Web search</source>
         <translation>进入 Spotlight 网页搜索</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2878"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2898"/>
         <source>Open Spotlight Files</source>
         <translation>打开 Spotlight 文件搜索</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2879"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2899"/>
         <source>Open the application launcher</source>
         <translation>打开应用启动器</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2880"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2900"/>
         <source>Open clipboard history</source>
         <translation>打开剪贴板历史</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2881"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2901"/>
         <source>Browse and apply wallpapers</source>
         <translation>浏览并应用壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2882"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2902"/>
         <source>Clear the global wallpaper selection</source>
         <translation>清除全局壁纸选择</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2883"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2903"/>
         <source>Apply the previous wallpaper</source>
         <translation>应用上一张壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2884"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2904"/>
         <source>Apply the next wallpaper</source>
         <translation>应用下一张壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2885"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2905"/>
         <source>Apply a random wallpaper</source>
         <translation>应用随机壁纸</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2886"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2906"/>
         <source>Dismiss open Keystone panels</source>
         <translation>收起已打开的 Keystone 面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2887"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2907"/>
         <source>Toggle the Keystone dashboard</source>
         <translation>展开或收起 Keystone 仪表盘</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2888"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2908"/>
         <source>Toggle the Keystone hub</source>
         <translation>展开或收起 Keystone 主面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2889"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2909"/>
         <source>Toggle Keystone lyrics</source>
         <translation>展开或收起 Keystone 歌词</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2890"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2910"/>
         <source>Toggle the Keystone tools panel</source>
         <translation>展开或收起 Keystone 工具面板</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2891"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2911"/>
         <source>Open the notifications sidebar</source>
         <translation>打开通知侧栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2892"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2912"/>
         <source>Open the Quick settings sidebar</source>
         <translation>打开快捷设置侧栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2895"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2915"/>
         <source>Show keyboard shortcuts</source>
         <translation>显示键盘快捷键</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2896"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2916"/>
         <source>Choose a session or power action</source>
         <translation>选择会话或电源操作</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2865"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2885"/>
         <source>Weather sidebar</source>
         <translation>天气侧边栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2866"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2886"/>
         <source>Sidebar drawer</source>
         <translation>侧边栏抽屉</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2893"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2913"/>
         <source>Toggle the weather sidebar</source>
         <translation>切换天气侧边栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2894"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2914"/>
         <source>Toggle the sidebar drawer</source>
         <translation>切换侧边栏抽屉</translation>
     </message>
@@ -12691,7 +12691,7 @@ Right click: Control Center</source>
 <context>
     <name>SpotlightPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2825"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2844"/>
         <source>Applications</source>
         <translation>应用</translation>
     </message>
@@ -12743,7 +12743,7 @@ Right click: Control Center</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2826"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2845"/>
         <source>Web search</source>
         <translation>网页搜索</translation>
     </message>
@@ -12754,7 +12754,7 @@ Right click: Control Center</source>
         <translation>搜索引擎</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2827"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2846"/>
         <source>Clipboard</source>
         <translation>剪贴板</translation>
     </message>
@@ -14316,12 +14316,12 @@ detected</source>
         <translation>深色</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2829"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2848"/>
         <source>matugen color scheme</source>
         <translation>matugen配色方案</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2831"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2850"/>
         <source>Lock screen</source>
         <translation>锁屏</translation>
     </message>
@@ -14336,12 +14336,12 @@ detected</source>
         <translation>创建或接入 Clavis 光标配置。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2830"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2849"/>
         <source>Super key appearance</source>
         <translation>Super 键样式</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2832"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2851"/>
         <source>Cursor theme</source>
         <translation>光标主题</translation>
     </message>
@@ -14376,7 +14376,7 @@ detected</source>
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2833"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2852"/>
         <location filename="../Modules/ControlCenter/ThemePage.qml" line="687"/>
         <source>Icon theme</source>
         <translation>图标主题</translation>
@@ -14387,7 +14387,7 @@ detected</source>
         <translation>选择图标主题</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2834"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2853"/>
         <source>Fonts</source>
         <translation>字体</translation>
     </message>
@@ -14452,7 +14452,7 @@ detected</source>
         <translation>选择表现性字体</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2828"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2847"/>
         <source>Settings window</source>
         <translation>设置窗口</translation>
     </message>
@@ -14892,7 +14892,7 @@ Scroll to adjust; click to open sound</source>
         <translation>翻转</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2835"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2854"/>
         <location filename="../Modules/ControlCenter/WallpaperPage.qml" line="323"/>
         <source>Desktop wallpaper manager</source>
         <translation>桌面壁纸管理器</translation>
@@ -14913,7 +14913,7 @@ Scroll to adjust; click to open sound</source>
         <translation>正在检测 awww…</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2836"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2855"/>
         <source>Current wallpaper</source>
         <translation>当前壁纸</translation>
     </message>
@@ -14957,7 +14957,7 @@ Scroll to adjust; click to open sound</source>
         <translation>桌面壁纸输出</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2837"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2856"/>
         <source>Transition</source>
         <translation>过渡效果</translation>
     </message>
@@ -15029,7 +15029,7 @@ Scroll to adjust; click to open sound</source>
         <translation>当前转场不使用缓动曲线。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2838"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2857"/>
         <source>Parallax effects</source>
         <translation>视差效果</translation>
     </message>
@@ -15080,7 +15080,7 @@ Scroll to adjust; click to open sound</source>
         <translation>桌面视差仅适用于 Quickshell。</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2839"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2858"/>
         <source>Overview background</source>
         <translation>Overview 背景</translation>
     </message>
@@ -16158,375 +16158,400 @@ Scroll to adjust; click to open sound</source>
 <context>
     <name>WindowsPage</name>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2840"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2859"/>
         <source>Window layout</source>
         <translation>窗口布局</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2841"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2860"/>
         <source>Window decorations</source>
         <translation>窗口装饰</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2842"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2861"/>
         <source>Focus behavior</source>
         <translation>焦点行为</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2843"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2862"/>
         <source>Overview and hot corners</source>
         <translation>概览与触发角</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2844"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2863"/>
         <source>Floating windows and title bars</source>
         <translation>浮动窗口与标题栏</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2845"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2864"/>
+        <source>Window memory</source>
+        <translation>窗口记忆</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2865"/>
         <source>Stage Manager</source>
         <translation>台前调度</translation>
     </message>
     <message>
-        <location filename="../Common/generated/SearchCatalog.js" line="2846"/>
+        <location filename="../Common/generated/SearchCatalog.js" line="2866"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="19"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="33"/>
         <source>Chosen by the application</source>
         <translation>由应用决定</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="23"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="37"/>
         <source>One third</source>
         <translation>三分之一</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="27"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="41"/>
         <source>Half</source>
         <translation>一半</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="31"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="45"/>
         <source>Two thirds</source>
         <translation>三分之二</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="35"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="49"/>
         <source>Full width</source>
         <translation>全宽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="42"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="56"/>
         <source>%1% of the screen</source>
         <translation>屏幕的 %1%</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="102"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="116"/>
         <source>Saving…</source>
         <translation>正在保存…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="104"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="118"/>
         <source>Changes are saved and applied automatically</source>
         <translation>更改会自动保存并应用</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="116"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="130"/>
         <source>Enable window management settings</source>
         <translation>启用窗口管理设置</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="117"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="131"/>
         <source>Clavis takes over window layout, decorations and focus behavior, starting from your current values.</source>
         <translation>由 Clavis 接管窗口布局、装饰和焦点行为，沿用你当前的设置。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="140"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="154"/>
         <source>Gaps between windows</source>
         <translation>窗口间距</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="144"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="246"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="270"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="158"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="260"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="284"/>
         <source> px</source>
         <translation> 像素</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="153"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="167"/>
         <source>New window width</source>
         <translation>新窗口宽度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="170"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="184"/>
         <source>Center the focused column</source>
         <translation>聚焦列居中</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="178"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="192"/>
         <source>Never</source>
         <translation>从不</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="182"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="196"/>
         <source>When it does not fit</source>
         <translation>放不下时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="186"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="200"/>
         <source>Always</source>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="198"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="212"/>
         <source>Center a single column</source>
         <translation>单列时居中</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="199"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="213"/>
         <source>When a workspace has only one column</source>
         <translation>工作区只有一列时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="208"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="222"/>
         <source>Empty workspace above the first</source>
         <translation>在第一个工作区上方保留空工作区</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="230"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="244"/>
         <source>Focus ring</source>
         <translation>聚焦环</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="231"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="245"/>
         <source>Outline drawn around the focused window</source>
         <translation>在当前聚焦的窗口周围绘制轮廓</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="242"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="256"/>
         <source>Focus ring width</source>
         <translation>聚焦环宽度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="254"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="268"/>
         <source>Border</source>
         <translation>边框</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="255"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="269"/>
         <source>Border around every window, which takes up layout space</source>
         <translation>每个窗口的边框，会占用布局空间</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="266"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="280"/>
         <source>Border width</source>
         <translation>边框宽度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="278"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="292"/>
         <source>Window shadows</source>
         <translation>窗口阴影</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="299"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="313"/>
         <source>Focus follows the mouse</source>
         <translation>焦点跟随鼠标</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="300"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="312"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="314"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="326"/>
         <source>Turned on in another configuration file</source>
         <translation>已在其他配置文件中打开</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="302"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="316"/>
         <source>Focus windows by moving the pointer over them</source>
         <translation>指针移到窗口上即聚焦该窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="311"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="325"/>
         <source>Move the pointer to the focused window</source>
         <translation>鼠标指针跟随焦点</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="314"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="328"/>
         <source>When focus changes with the keyboard</source>
         <translation>用键盘切换焦点时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="323"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
         <source>Switch back to the previous workspace</source>
         <translation>切回上一个工作区</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="324"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="338"/>
         <source>Choosing the current workspace again returns to the previous one</source>
         <translation>再次选择当前工作区时回到上一个工作区</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="351"/>
         <source>Move the pointer into a chosen screen corner to open or close the overview.</source>
         <translation>把指针移到选定的屏幕角落即可打开或关闭概览。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="348"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="362"/>
         <source>Top-left corner</source>
         <translation>左上角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="353"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="367"/>
         <source>Top-right corner</source>
         <translation>右上角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="358"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="372"/>
         <source>Bottom-left corner</source>
         <translation>左下角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="363"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="377"/>
         <source>Bottom-right corner</source>
         <translation>右下角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="369"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="383"/>
         <source>Workspace size in the overview</source>
         <translation>概览中的工作区大小</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="387"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="401"/>
         <source>Provided by this computer&apos;s customized niri</source>
         <translation>由本机定制的 niri 提供</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="397"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="411"/>
         <source>Remember each application&apos;s window layout</source>
         <translation>记住每个应用的窗口布局</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="398"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="412"/>
         <source>New windows reopen floating or tiled with their last size</source>
         <translation>新窗口按上次的浮动或平铺状态和尺寸打开</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="403"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="417"/>
         <source>Lower floating windows behind tiled windows</source>
         <translation>点击平铺窗口时降下浮动窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="404"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="418"/>
         <source>Activating a tiled window lowers raised floating windows</source>
         <translation>激活平铺窗口时，浮在上方的窗口会降到它后面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="409"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="423"/>
         <source>Keep dialogs with their parent window</source>
         <translation>对话框随父窗口一起显示</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="414"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="428"/>
         <source>Keep floating windows below the bar</source>
         <translation>浮动窗口不覆盖状态栏</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="415"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="429"/>
         <source>Floating windows share the top edge of tiled windows</source>
         <translation>浮动窗口与平铺窗口顶部对齐</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="420"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="434"/>
         <source>Snap to half the screen at the edges</source>
         <translation>拖到屏幕边缘吸附为半屏</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="421"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="435"/>
         <source>Drop a floating window at the left or right edge to tile it</source>
         <translation>把浮动窗口拖到左右边缘松开，即变为半宽平铺列</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="426"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="440"/>
         <source>Detach tiled windows by dragging with Mod</source>
         <translation>按住 Mod 拖动可将平铺窗口变为浮动</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="427"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="441"/>
         <source>Hold Shift as well to keep the normal tiling drag</source>
         <translation>同时按住 Shift 则保持普通的平铺拖动</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="432"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="446"/>
         <source>Restore the previous floating size</source>
         <translation>恢复之前的浮动尺寸</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="433"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="447"/>
         <source>When a tiled window becomes floating again</source>
         <translation>平铺窗口重新变为浮动时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="438"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="452"/>
         <source>Double-click a title bar to expand the column</source>
         <translation>双击标题栏扩展为整列宽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="439"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="453"/>
         <source>The maximize button still fills the screen</source>
         <translation>最大化按钮仍然铺满屏幕</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="444"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="458"/>
         <source>Maximize requests expand the column</source>
         <translation>最大化请求改为扩展列宽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="459"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>作用于平铺窗口的最大化按钮</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="455"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="469"/>
+        <source>Turn an application off to stop remembering its tiled or floating layout and its size.</source>
+        <translation>关闭某个应用后，不再记住它的平铺或悬浮布局和窗口大小。</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="479"/>
+        <source>Remember each application&apos;s window size</source>
+        <translation>记住每个应用的窗口大小</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <source>Floating size and tiled column width; the most recently adjusted window wins</source>
+        <translation>悬浮大小和平铺列宽；以最后调整的窗口为准</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="507"/>
+        <source>Applications appear here after you open their windows</source>
+        <translation>打开应用窗口后，应用会显示在这里</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="517"/>
         <source>Rest the pointer at the middle of a screen edge to open a strip.</source>
         <translation>把指针停在屏幕左右边缘的中间，即可打开缩略图条。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="464"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="526"/>
         <source>Other stages on the left edge</source>
         <translation>左侧显示其他舞台</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="465"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="527"/>
         <source>Windows of the other workspaces and minimized windows</source>
         <translation>其他工作区的窗口和最小化的窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="471"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="533"/>
         <source>Current stage on the right edge</source>
         <translation>右侧显示当前舞台</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="472"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="534"/>
         <source>Every window of the current workspace</source>
         <translation>当前工作区的所有窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="542"/>
         <source>Open after resting at the edge for</source>
         <translation>指针停留多久后打开</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="486"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="548"/>
         <source>%1 s</source>
         <translation>%1 秒</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="508"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="570"/>
         <source>Click wallpaper to reveal desktop</source>
         <translation>点按墙纸以显示桌面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="509"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="571"/>
         <source>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</source>
         <translation>浮动窗口移到屏幕边缘；再点墙纸或点某个窗口即可恢复</translation>
     </message>

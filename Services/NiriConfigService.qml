@@ -128,6 +128,10 @@ Singleton {
                                                   overviewZoom: 0.5,
                                                   personal: ({}),
                                                   personalSupported: false,
+                                                  rememberWindowSize: false,
+                                                  memoryExcludedApps: [],
+                                                  memoryKnownApps: [],
+                                                  memorySupported: false,
                                                   external: ({})
                                               })
 
@@ -143,6 +147,16 @@ Singleton {
         personal[flag] = value;
         setWindowsOptions({
                               personal: personal
+                          });
+    }
+
+    // Excluded applications keep neither their tiled/floating choice nor their size.
+    function setWindowMemoryAppExcluded(appId, excluded) {
+        const apps = (windowsOptions.memoryExcludedApps || []).filter(app => app !== appId);
+        if (excluded)
+            apps.push(appId);
+        setWindowsOptions({
+                              memoryExcludedApps: apps.sort()
                           });
     }
 
