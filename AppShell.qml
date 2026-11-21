@@ -325,6 +325,30 @@ Item {
     }
 
     IpcHandler {
+        function show(): string {
+            DesktopIconService.setEnabled(true);
+            return "OK";
+        }
+
+        function hide(): string {
+            DesktopIconService.setEnabled(false);
+            return "OK";
+        }
+
+        function toggle(): string {
+            DesktopIconService.setEnabled(!DesktopIconService.enabled);
+            return DesktopIconService.enabled ? "SHOWN" : "HIDDEN";
+        }
+
+        // Creates a shortcut (symbolic link) on the desktop for an absolute path.
+        function addShortcut(path: string): string {
+            return DesktopIconService.addShortcut(path || "") ? "OK" : "INVALID";
+        }
+
+        target: "desktop-icons"
+    }
+
+    IpcHandler {
         function open(pageId: string): string {
             // A settings route or section ID (e.g. "general.keyboard") opens that page directly.
             if (pageId && pageId.indexOf(".") >= 0) {

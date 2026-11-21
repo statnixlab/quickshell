@@ -3597,6 +3597,92 @@ Scroll to adjust</source>
     </message>
 </context>
 <context>
+    <name>DesktopIconLayer</name>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="308"/>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="315"/>
+        <source>Show in File Manager</source>
+        <translation>在文件管理器中显示</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="321"/>
+        <source>Move to Trash</source>
+        <translation>移入废纸篓</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="321"/>
+        <source>Remove Shortcut</source>
+        <translation>删除快捷方式</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="334"/>
+        <source>Sort by Name</source>
+        <translation>按名称排序</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="340"/>
+        <source>Sort by Date Modified</source>
+        <translation>按修改时间排序</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="346"/>
+        <source>Sort by Kind</source>
+        <translation>按类型排序</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="352"/>
+        <source>Sort by Size</source>
+        <translation>按大小排序</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="359"/>
+        <source>Open Desktop Folder</source>
+        <translation>打开桌面文件夹</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="363"/>
+        <source>Hide Desktop Icons</source>
+        <translation>隐藏桌面图标</translation>
+    </message>
+</context>
+<context>
+    <name>DesktopIconService</name>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="86"/>
+        <source>This file or folder is unavailable.</source>
+        <translation>此文件或文件夹不可用。</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="180"/>
+        <source>Desktop icon settings could not be read. Changes apply to this session only.</source>
+        <translation>无法读取桌面图标设置，更改仅在本次会话中生效。</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="206"/>
+        <source>The shortcut could not be created.</source>
+        <translation>无法创建快捷方式。</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="222"/>
+        <source>Desktop icon settings cannot be saved because the configuration directory is unavailable.</source>
+        <translation>配置目录不可用，无法保存桌面图标设置。</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="240"/>
+        <source>Desktop icon settings could not be opened. Changes apply to this session only.</source>
+        <translation>无法打开桌面图标设置，更改仅在本次会话中生效。</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="245"/>
+        <source>Desktop icon settings could not be saved. Changes apply to this session only.</source>
+        <translation>无法保存桌面图标设置，更改仅在本次会话中生效。</translation>
+    </message>
+</context>
+<context>
     <name>DisplayAdvancedSettings</name>
     <message>
         <location filename="../Modules/ControlCenter/DisplayAdvancedSettings.qml" line="18"/>

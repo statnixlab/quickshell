@@ -3597,6 +3597,92 @@ Scroll to adjust</translation>
     </message>
 </context>
 <context>
+    <name>DesktopIconLayer</name>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="308"/>
+        <source>Open</source>
+        <translation>Open</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="315"/>
+        <source>Show in File Manager</source>
+        <translation>Show in File Manager</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="321"/>
+        <source>Move to Trash</source>
+        <translation>Move to Trash</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="321"/>
+        <source>Remove Shortcut</source>
+        <translation>Remove Shortcut</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="334"/>
+        <source>Sort by Name</source>
+        <translation>Sort by Name</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="340"/>
+        <source>Sort by Date Modified</source>
+        <translation>Sort by Date Modified</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="346"/>
+        <source>Sort by Kind</source>
+        <translation>Sort by Kind</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="352"/>
+        <source>Sort by Size</source>
+        <translation>Sort by Size</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="359"/>
+        <source>Open Desktop Folder</source>
+        <translation>Open Desktop Folder</translation>
+    </message>
+    <message>
+        <location filename="../Modules/DesktopIcons/DesktopIconLayer.qml" line="363"/>
+        <source>Hide Desktop Icons</source>
+        <translation>Hide Desktop Icons</translation>
+    </message>
+</context>
+<context>
+    <name>DesktopIconService</name>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="86"/>
+        <source>This file or folder is unavailable.</source>
+        <translation>This file or folder is unavailable.</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="180"/>
+        <source>Desktop icon settings could not be read. Changes apply to this session only.</source>
+        <translation>Desktop icon settings could not be read. Changes apply to this session only.</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="206"/>
+        <source>The shortcut could not be created.</source>
+        <translation>The shortcut could not be created.</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="222"/>
+        <source>Desktop icon settings cannot be saved because the configuration directory is unavailable.</source>
+        <translation>Desktop icon settings cannot be saved because the configuration directory is unavailable.</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="240"/>
+        <source>Desktop icon settings could not be opened. Changes apply to this session only.</source>
+        <translation>Desktop icon settings could not be opened. Changes apply to this session only.</translation>
+    </message>
+    <message>
+        <location filename="../Services/DesktopIconService.qml" line="245"/>
+        <source>Desktop icon settings could not be saved. Changes apply to this session only.</source>
+        <translation>Desktop icon settings could not be saved. Changes apply to this session only.</translation>
+    </message>
+</context>
+<context>
     <name>DisplayAdvancedSettings</name>
     <message>
         <location filename="../Modules/ControlCenter/DisplayAdvancedSettings.qml" line="18"/>

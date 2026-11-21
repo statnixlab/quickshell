@@ -6,6 +6,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets.common
 import qs.Modules.SystemCards
+import qs.Modules.DesktopIcons
 import "./DesktopCardLayout.js" as DesktopCardLayout
 import "../SystemCards/SystemCardPlacement.js" as Placement
 
@@ -301,6 +302,18 @@ Variants {
             radius: Appearance.rounding.extraLarge
         }
 
+        // Desktop icons sit below the cards on the same surface, so the
+        // cards always stay on top and keep their input.
+        DesktopIconLayer {
+            id: desktopIcons
+
+            anchors.fill: parent
+            screen: window.modelData
+            obstacles: [cardCanvas.inputSlot0, cardCanvas.inputSlot1, cardCanvas.inputSlot2,
+                cardCanvas.inputSlot3, cardCanvas.inputSlot4, cardCanvas.inputSlot5, cardCanvas.inputSlot6,
+                cardCanvas.inputSlot7, cardCanvas.inputSlot8, cardCanvas.inputSlot9, cardCanvas.inputSlot10]
+        }
+
         Item {
             id: viewport
 
@@ -501,6 +514,10 @@ Variants {
 
             Region {
                 item: PopupInputRegionService.itemForWindow(window)
+            }
+
+            Region {
+                item: desktopIcons.inputItem
             }
         }
     }
