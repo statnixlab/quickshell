@@ -16183,6 +16183,16 @@ Scroll to adjust; click to open sound</source>
         <translation>浮動視窗與標題列</translation>
     </message>
     <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2845"/>
+        <source>Stage Manager</source>
+        <translation>幕前調度</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2846"/>
+        <source>Desktop</source>
+        <translation>桌面</translation>
+    </message>
+    <message>
         <location filename="../Modules/ControlCenter/WindowsPage.qml" line="19"/>
         <source>Chosen by the application</source>
         <translation>由應用程式決定</translation>
@@ -16474,6 +16484,51 @@ Scroll to adjust; click to open sound</source>
         <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>作用於並排視窗的最大化按鈕</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="455"/>
+        <source>Rest the pointer at the middle of a screen edge to open a strip.</source>
+        <translation>把指標停在螢幕左右邊緣的中間，即可打開縮圖列。</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="464"/>
+        <source>Other stages on the left edge</source>
+        <translation>左側顯示其他舞台</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="465"/>
+        <source>Windows of the other workspaces and minimized windows</source>
+        <translation>其他工作區的視窗和最小化的視窗</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="471"/>
+        <source>Current stage on the right edge</source>
+        <translation>右側顯示目前舞台</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="472"/>
+        <source>Every window of the current workspace</source>
+        <translation>目前工作區的所有視窗</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <source>Open after resting at the edge for</source>
+        <translation>指標停留多久後打開</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="486"/>
+        <source>%1 s</source>
+        <translation>%1 秒</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="508"/>
+        <source>Click wallpaper to reveal desktop</source>
+        <translation>點按背景圖片以顯示桌面</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="509"/>
+        <source>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</source>
+        <translation>浮動視窗移到螢幕邊緣；再點背景圖片或點某個視窗即可恢復</translation>
     </message>
 </context>
 <context>

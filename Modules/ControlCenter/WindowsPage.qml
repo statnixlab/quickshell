@@ -445,5 +445,72 @@ StyledFlickable {
                 supportingText: qsTr("Applies to maximize buttons of tiled windows")
             }
         }
+        // Clavis shell features; stored in ui-preferences.json, available
+        // without the niri window-management integration above.
+        SettingsSection {
+            id: stageManagerSection
+            Layout.fillWidth: true
+            title: stageManagerAnchor.title
+            iconName: "view_sidebar"
+            supportingText: qsTr("Rest the pointer at the middle of a screen edge to open a strip.")
+            SettingsSearchAnchor {
+                id: stageManagerAnchor
+                target: stageManagerSection
+                declaration:
+                    '{"id":"general.windows.section.stagemanager","route":"general.windows","title":"Stage Manager","context":"WindowsPage","icon":"view_sidebar","aliases":["stage manager","strip","edge","thumbnails","workspaces"]}'
+            }
+
+            SwitchRow {
+                title: qsTr("Other stages on the left edge")
+                supportingText: qsTr("Windows of the other workspaces and minimized windows")
+                checked: UiPreferences.stageManagerLeftEnabled
+                onToggled: checked => UiPreferences.setStageManagerLeftEnabled(checked)
+            }
+
+            SwitchRow {
+                title: qsTr("Current stage on the right edge")
+                supportingText: qsTr("Every window of the current workspace")
+                checked: UiPreferences.stageManagerRightEnabled
+                onToggled: checked => UiPreferences.setStageManagerRightEnabled(checked)
+            }
+
+            SettingsRow {
+                Layout.fillWidth: true
+                enabled: UiPreferences.stageManagerLeftEnabled || UiPreferences.stageManagerRightEnabled
+                title: qsTr("Open after resting at the edge for")
+                trailing: SearchSelectMenuField {
+                    objectName: "stageManagerDelayField"
+                    implicitWidth: 180
+                    implicitHeight: 40
+                    options: UiPreferences.stageManagerRevealDelays.map(milliseconds => ({
+                        label: qsTr("%1 s").arg(milliseconds / 1000),
+                        value: String(milliseconds)
+                    }))
+                    value: String(UiPreferences.stageManagerRevealDelay)
+                    onAccepted: value => UiPreferences.setStageManagerRevealDelay(Number(value))
+                }
+            }
+        }
+
+        SettingsSection {
+            id: desktopSection
+            Layout.fillWidth: true
+            title: desktopAnchor.title
+            iconName: "desktop_windows"
+            SettingsSearchAnchor {
+                id: desktopAnchor
+                target: desktopSection
+                declaration:
+                    '{"id":"general.windows.section.desktop","route":"general.windows","title":"Desktop","context":"WindowsPage","icon":"desktop_windows","aliases":["show desktop","reveal desktop","click wallpaper","hide windows"]}'
+            }
+
+            SwitchRow {
+                title: qsTr("Click wallpaper to reveal desktop")
+                supportingText: qsTr(
+                                    "Floating windows move to the screen edges; click the wallpaper or a window to bring them back")
+                checked: UiPreferences.desktopRevealEnabled
+                onToggled: checked => UiPreferences.setDesktopRevealEnabled(checked)
+            }
+        }
     }
 }

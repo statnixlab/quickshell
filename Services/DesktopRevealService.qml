@@ -17,7 +17,12 @@ import Clavis.Niri
 Singleton {
     id: root
 
-    property bool enabled: true
+    // Set in the Windows settings page.
+    readonly property bool enabled: UiPreferences.desktopRevealEnabled
+    onEnabledChanged: {
+        if (!enabled)
+            restore();
+    }
     readonly property bool active: Object.keys(saved).length > 0
     // window id -> {x, y} in workspace-view coordinates before revealing.
     property var saved: ({})

@@ -2672,6 +2672,45 @@ var catalog = {
       "route": "general.windows",
       "source": "WindowsPage.qml",
       "title": "Floating windows and title bars"
+    },
+    {
+      "aliases": [
+        "stage manager",
+        "strip",
+        "edge",
+        "thumbnails",
+        "workspaces"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "view_sidebar",
+      "id": "general.windows.section.stagemanager",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Stage Manager"
+    },
+    {
+      "aliases": [
+        "show desktop",
+        "reveal desktop",
+        "click wallpaper",
+        "hide windows"
+      ],
+      "anchor": true,
+      "context": "WindowsPage",
+      "icon": "desktop_windows",
+      "id": "general.windows.section.desktop",
+      "path": [
+        "general",
+        "windows"
+      ],
+      "route": "general.windows",
+      "source": "WindowsPage.qml",
+      "title": "Desktop"
     }
   ]
 };
@@ -2803,6 +2842,8 @@ function title(id) {
     case "general.windows.section.focus": return qsTranslate("WindowsPage", "Focus behavior");
     case "general.windows.section.overview": return qsTranslate("WindowsPage", "Overview and hot corners");
     case "general.windows.section.floating": return qsTranslate("WindowsPage", "Floating windows and title bars");
+    case "general.windows.section.stagemanager": return qsTranslate("WindowsPage", "Stage Manager");
+    case "general.windows.section.desktop": return qsTranslate("WindowsPage", "Desktop");
     case "clavis:lock:open": return qsTranslate("SpotlightActions", "Lock screen");
     case "clavis:spotlight:search": return qsTranslate("SpotlightActions", "Search");
     case "clavis:spotlight:web": return qsTranslate("SpotlightActions", "Web search");

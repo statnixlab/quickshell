@@ -118,9 +118,7 @@ Item {
             return DesktopRevealService.restore();
         }
         function setEnabled(enabled: bool): void {
-            if (!enabled)
-                DesktopRevealService.restore();
-            DesktopRevealService.enabled = enabled;
+            UiPreferences.setDesktopRevealEnabled(enabled);
         }
         function status(): string {
             return JSON.stringify({

@@ -8,28 +8,36 @@ import qs.Common
 import qs.Components
 import qs.Services
 
-// Left-edge strip of inactive stages for one output. It slides in when the
-// pointer reaches the screen edge and slides out shortly after it leaves.
+// Stage Manager strip for one output. The left one lists the inactive stages,
+// the right one every window of the current stage. It slides in when the
+// pointer reaches its screen edge and slides out shortly after it leaves.
 PanelWindow {
     id: root
 
     required property var targetScreen
+    // "left": other stages; "right": windows of the current stage.
+    property string edge: "left"
+    readonly property bool rightEdge: edge === "right"
     property bool revealed: false
     property var stages: []
     property string previewConsumer: ""
     readonly property string outputName: targetScreen ? targetScreen.name : ""
-    readonly property real stripWidth: 236
+    readonly property real stripWidth: 252
     // Window being dragged out of the strip, and the pointer in window coordinates.
     property var dragWindow: null
     property point dragPoint: Qt.point(0, 0)
     readonly property bool dragging: dragWindow !== null
     // Past the strip: releasing moves the window into the current stage.
-    readonly property bool dropArmed: dragging && dragPoint.x > stripWidth
+    readonly property bool dropArmed: dragging && root.outsideStrip(dragPoint)
+
+    function outsideStrip(position) {
+        return rightEdge ? position.x < width - stripWidth : position.x > stripWidth;
+    }
 
     function finishDrag(position, accepted) {
         const window = dragWindow;
         dragWindow = null;
-        if (accepted && window && position.x > stripWidth) {
+        if (accepted && window && outsideStrip(position)) {
             StageManagerService.moveWindowToActive(window.id, outputName);
             conceal();
         } else if (!stripHover.hovered && revealed) {
@@ -38,7 +46,8 @@ PanelWindow {
     }
 
     function syncStages() {
-        stages = StageManagerService.stagesForOutput(outputName);
+        stages = rightEdge ? StageManagerService.currentStageWindows(outputName) :
+                             StageManagerService.stagesForOutput(outputName);
         if (!previewConsumer)
             return;
         const ids = [];
@@ -60,14 +69,27 @@ PanelWindow {
     }
     function conceal() {
         dragWindow = null;
-        if (StageManagerService.requestedOutput === outputName)
+        // Only clear a request addressed to this strip: the other edge's
+        // strip conceals itself on the same notification.
+        if (StageManagerService.requestedOutput === outputName && StageManagerService.requestedEdge === edge)
             StageManagerService.requestedOutput = "";
         revealed = false;
         syncStages();
     }
 
     screen: targetScreen
-    visible: revealed || content.x > -content.width
+    // Slide progress: 0 shown, 1 fully off-screen. Animating this instead of
+    // x keeps the right strip from sliding across the screen when the
+    // surface's width is first set as it maps.
+    property real hiddenAmount: revealed ? 0 : 1
+    Behavior on hiddenAmount {
+        NumberAnimation {
+            duration: 260
+            easing.type: Easing.OutCubic
+        }
+    }
+
+    visible: revealed || hiddenAmount < 1
     color: "transparent"
     // The surface spans the screen so a dragged window can follow the pointer
     // anywhere; only the strip itself takes input outside a drag.
@@ -102,6 +124,10 @@ PanelWindow {
         function onFocusedWorkspaceChanged() {
             root.syncStages();
         }
+        function onFocusedWindowChanged() {
+            if (root.rightEdge)
+                root.syncStages();
+        }
         function onOverviewChanged() {
             if (Niri.inOverview)
                 root.conceal();
@@ -110,7 +136,8 @@ PanelWindow {
     Connections {
         target: StageManagerService
         function onRequestRevisionChanged() {
-            if (StageManagerService.requestedOutput === root.outputName && !root.revealed)
+            if (StageManagerService.requestedOutput === root.outputName && StageManagerService.requestedEdge
+                    === root.edge && !root.revealed)
                 root.reveal();
             else
                 root.conceal();
@@ -136,14 +163,7 @@ PanelWindow {
         id: content
         width: root.stripWidth
         height: parent.height
-        x: root.revealed ? 0 : -width
-
-        Behavior on x {
-            NumberAnimation {
-                duration: 260
-                easing.type: Easing.OutCubic
-            }
-        }
+        x: root.rightEdge ? root.width - width + root.hiddenAmount * width : -root.hiddenAmount * width
 
         HoverHandler {
             id: stripHover
@@ -155,29 +175,16 @@ PanelWindow {
             }
         }
 
-        // Soft scrim so thumbnails stay readable over busy windows.
-        Rectangle {
-            anchors.fill: parent
-            gradient: Gradient {
-                orientation: Gradient.Horizontal
-                GradientStop {
-                    position: 0
-                    color: Appearance.applyAlpha(Appearance.m3colors.m3shadow, 0.32)
-                }
-                GradientStop {
-                    position: 1
-                    color: "transparent"
-                }
-            }
-        }
-
         Flickable {
             id: list
             anchors.fill: parent
-            anchors.leftMargin: 18
-            anchors.rightMargin: 18
+            anchors.leftMargin: 22
+            anchors.rightMargin: 22
+            anchors.topMargin: 48
+            anchors.bottomMargin: 48
             contentHeight: column.height
-            clip: true
+            // Clip only while scrolling, so card shadows and tilted edges are not cut.
+            clip: interactive
             interactive: contentHeight > height
             boundsBehavior: Flickable.StopAtBounds
 
@@ -194,6 +201,8 @@ PanelWindow {
                         required property var modelData
                         width: column.width
                         stage: modelData
+                        mirrored: root.rightEdge
+                        emphasizeFocus: root.rightEdge && root.stages.length > 1
                         previewsEnabled: root.revealed
                         // Focusing a window also switches to its workspace;
                         // a minimized one is restored onto this output.

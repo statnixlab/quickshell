@@ -12,6 +12,8 @@ Singleton {
     property bool enabled: true
     // Output name whose strip was requested through IPC; "" when none.
     property string requestedOutput: ""
+    // Which strip was requested: "left" (other stages) or "right" (current stage).
+    property string requestedEdge: "left"
     property int requestRevision: 0
     readonly property int maximumPreviewWindows: 6
 
@@ -89,7 +91,28 @@ Singleton {
         return true;
     }
 
-    function request(outputName) {
+    // Windows of the output's active workspace, each as its own one-window
+    // stage for the right-edge strip, in layout order (floating last).
+    function currentStageWindows(outputName) {
+        if (!Niri.connected || !outputName)
+            return [];
+        const workspace = Niri.activeWorkspaceForOutput(outputName);
+        if (!workspace || !workspace.id)
+            return [];
+        const stages = [];
+        for (const window of liveWindows(workspace.id)) {
+            stages.push({
+                            id: window.id,
+                            minimized: false,
+                            current: true,
+                            focused: window.id === workspace.activeWindowId,
+                            windows: [window]
+                        });
+        }
+        return stages;
+    }
+    function request(outputName, edge) {
+        requestedEdge = edge === "right" ? "right" : "left";
         if (!enabled)
             return false;
         const output = String(outputName || Niri.currentOutput || "");

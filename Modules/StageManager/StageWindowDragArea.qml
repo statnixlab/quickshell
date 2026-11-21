@@ -5,6 +5,8 @@ import QtQuick
 MouseArea {
     id: area
     property var windowData: null
+    // false: only clicks; pressing and moving never starts a drag.
+    property bool dragEnabled: true
     property bool dragging: false
     property point pressPoint
 
@@ -21,7 +23,7 @@ MouseArea {
         dragging = false;
     }
     onPositionChanged: mouse => {
-        if (!pressed || !windowData)
+        if (!pressed || !windowData || !dragEnabled)
             return;
         if (!dragging) {
             if (Math.abs(mouse.x - pressPoint.x) < 8 && Math.abs(mouse.y - pressPoint.y) < 8)

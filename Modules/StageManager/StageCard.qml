@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Effects
 import Clavis.WindowPreview
 import qs.Common
 import qs.Components
@@ -28,6 +29,23 @@ Item {
     // Window being dragged out of the strip (owned by the strip); its source
     // thumbnail dims while the drag is in progress.
     property var draggedWindowId: null
+    // Right-edge strip: tilt toward the right edge, no dragging out or merging.
+    property bool mirrored: false
+    readonly property bool currentStage: !!stage.current
+    // Set by the strip when several windows are listed: the unfocused ones
+    // recede slightly so the focused one stands out without an outline.
+    property bool emphasizeFocus: false
+    readonly property bool receded: emphasizeFocus && !stage.focused && !hovered
+    // The front card is right-aligned when mirrored, so cards behind it peek
+    // out toward the screen centre on both edges.
+    readonly property real frontX: mirrored ? thumbnails.width - frontWidth : 0
+
+    opacity: receded ? 0.62 : 1
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 180
+        }
+    }
 
     signal windowActivated(var windowId)
     signal mergeRequested
@@ -64,8 +82,22 @@ Item {
         id: thumbnails
         width: parent.width
         height: width * 0.66
-        scale: pointer.hovered ? 1.04 : 1
-        transformOrigin: Item.Left
+        scale: pointer.hovered ? 1.05 : root.receded ? 0.95 : 1
+        // Render the stack once with a soft shadow; the layer's transparent
+        // padding also smooths the edges after the 3D tilt.
+        layer.enabled: true
+        layer.smooth: true
+        layer.effect: MultiEffect {
+            shadowEnabled: true
+            shadowColor: "#000000"
+            // No panel behind the strip (like macOS): the shadow alone lifts
+            // the stack off whatever is underneath.
+            shadowOpacity: 0.5
+            shadowBlur: 1.0
+            shadowVerticalOffset: 8
+            autoPaddingEnabled: true
+        }
+        transformOrigin: root.mirrored ? Item.Right : Item.Left
 
         Behavior on scale {
             NumberAnimation {
@@ -75,14 +107,14 @@ Item {
         }
 
         transform: Rotation {
-            origin.x: 0
+            origin.x: root.mirrored ? thumbnails.width : 0
             origin.y: thumbnails.height / 2
             axis {
                 x: 0
                 y: 1
                 z: 0
             }
-            angle: pointer.hovered ? 6 : 16
+            angle: (pointer.hovered ? 6 : 16) * (root.mirrored ? -1 : 1)
             Behavior on angle {
                 NumberAnimation {
                     duration: 200
@@ -94,6 +126,7 @@ Item {
         // Click focuses the front window; dragging carries it out of the strip.
         StageWindowDragArea {
             id: stackDrag
+            dragEnabled: !root.currentStage
             anchors.fill: parent
             windowData: root.frontWindow
             onTapped: {
@@ -124,13 +157,14 @@ Item {
 
                 width: (thumbnails.width - 16) * (1 - depth * 0.07)
                 height: Math.min(width / aspect, thumbnails.height - depth * 8)
-                x: depth * 10
+                x: root.mirrored ? thumbnails.width - width - depth * 10 : depth * 10
                 y: (thumbnails.height - height) / 2 - depth * 6
-                radius: 10
+                radius: 12
                 clip: true
                 color: Appearance.colors.colSurfaceContainerHigh
+                // Hairline highlight instead of a dark outline.
                 border.width: 1
-                border.color: Appearance.applyAlpha(Appearance.colors.colOnSurface, 0.12)
+                border.color: Qt.rgba(1, 1, 1, 0.22)
                 visible: depth < root.stackDepth
                 z: root.stackDepth - depth
                 opacity: (1 - depth * 0.12) * (root.draggedWindowId === modelData.id ? 0.35 : 1)
@@ -170,8 +204,9 @@ Item {
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.rightMargin: 10
-            // Restoring a minimized window already brings it here.
-            visible: root.hovered && !root.stage.minimized
+            // Restoring a minimized window already brings it here, and the
+            // current stage's windows are already in it.
+            visible: root.hovered && !root.stage.minimized && !root.currentStage
             controlSize: 28
             iconSize: 18
             iconName: "add"
@@ -187,9 +222,9 @@ Item {
         // A minimized window without a saved frame already shows its large
         // icon in the middle of the card; a second small one would repeat it.
         visible: !(root.stage.minimized && !root.frontHasFrame)
-        x: (root.frontWidth - width) / 2
-        y: root.frontBottom - height / 2
-        spacing: -6
+        x: root.frontX + (root.frontWidth - width) / 2
+        y: root.frontBottom - height / 2 - 4
+        spacing: -4
 
         Behavior on y {
             NumberAnimation {
@@ -201,20 +236,26 @@ Item {
         Repeater {
             model: root.previewWindows
 
-            Rectangle {
+            // The bare app icon with a drop shadow, as on macOS.
+            Item {
                 id: badge
                 required property var modelData
                 required property int index
                 readonly property bool front: root.highlightedIndex === index
-                width: 34
-                height: 34
-                radius: 10
+                width: 38
+                height: 38
                 z: front ? 1 : 0
-                scale: front ? 1.18 : 1
-                color: Appearance.colors.colSurfaceContainerHighest
-                border.width: front ? 2 : 1
-                border.color: front ? Appearance.colors.colPrimary : Appearance.applyAlpha(
-                                          Appearance.colors.colOnSurface, 0.1)
+                scale: front ? 1.16 : 1
+                layer.enabled: true
+                layer.smooth: true
+                layer.effect: MultiEffect {
+                    shadowEnabled: true
+                    shadowColor: "#000000"
+                    shadowOpacity: 0.35
+                    shadowBlur: 0.5
+                    shadowVerticalOffset: 2
+                    autoPaddingEnabled: true
+                }
 
                 Behavior on scale {
                     NumberAnimation {
@@ -223,6 +264,7 @@ Item {
                 }
 
                 StageWindowDragArea {
+                    dragEnabled: !root.currentStage
                     anchors.fill: parent
                     hoverEnabled: true
                     windowData: badge.modelData
@@ -238,24 +280,23 @@ Item {
                 }
 
                 ThemeIcon {
-                    anchors.centerIn: parent
-                    width: 26
-                    height: 26
+                    anchors.fill: parent
                     iconSource: ApplicationService.iconSource(badge.modelData.iconPath
                                                               || badge.modelData.appId)
-                    sourceSize: Qt.size(52, 52)
+                    sourceSize: Qt.size(76, 76)
                     fillMode: Image.PreserveAspectFit
                 }
             }
         }
         Rectangle {
             visible: root.stage.windows.length > root.previewWindows.length
-            width: moreLabel.implicitWidth + 16
-            height: 34
-            radius: 10
-            color: Appearance.colors.colSurfaceContainerHighest
+            anchors.verticalCenter: parent.verticalCenter
+            width: moreLabel.implicitWidth + 14
+            height: 24
+            radius: 12
+            color: Appearance.applyAlpha(Appearance.colors.colSurfaceContainerHighest, 0.9)
             border.width: 1
-            border.color: Appearance.applyAlpha(Appearance.colors.colOnSurface, 0.1)
+            border.color: Qt.rgba(1, 1, 1, 0.22)
             Text {
                 id: moreLabel
                 anchors.centerIn: parent
@@ -274,11 +315,12 @@ Item {
     Text {
         id: titleLabel
         y: Math.max(thumbnails.height, iconRow.y + iconRow.height) + 4
-        x: 4
+        x: root.frontX + 4
         width: root.frontWidth - 8
         horizontalAlignment: Text.AlignHCenter
         visible: text !== ""
-        height: 18
+        height: 16
+        // Titles only while hovered keep the strip calm.
         text: root.hovered && root.frontWindow ? String(root.frontWindow.title || root.frontWindow.appName
                                                         || root.frontWindow.appId || "") :
                                                  root.stage.minimized ?
@@ -287,8 +329,9 @@ Item {
         textFormat: Text.PlainText
         elide: Text.ElideRight
         font.family: Fonts.ui
-        font.pixelSize: 12
-        color: Appearance.colors.colOnSurface
+        font.pixelSize: 11
+        font.weight: Font.Medium
+        color: Appearance.applyAlpha(Appearance.colors.colOnSurface, 0.85)
     }
 
     HoverHandler {

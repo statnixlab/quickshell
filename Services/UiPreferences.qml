@@ -23,6 +23,14 @@ Singleton {
     property bool notificationSoundEnabled: true
     // QQ's own message sound for new QQ notifications.
     property bool qqSoundEnabled: true
+    // Stage Manager strips: other stages on the left edge, the current stage's
+    // windows on the right edge, and how long the pointer rests at an edge.
+    property bool stageManagerLeftEnabled: true
+    property bool stageManagerRightEnabled: true
+    readonly property var stageManagerRevealDelays: [200, 300, 500, 800]
+    property int stageManagerRevealDelay: 300
+    // Click the wallpaper to move floating windows aside.
+    property bool desktopRevealEnabled: true
     readonly property var notificationPopupDurations: [3, 5, 7, 10, 15]
     property int notificationPopupSeconds: 7
     property bool notificationCriticalBypassDnd: true
@@ -139,6 +147,28 @@ Singleton {
 
     function setQqSoundEnabled(value) {
         root.qqSoundEnabled = value;
+        root.save();
+    }
+
+    function setStageManagerLeftEnabled(value) {
+        root.stageManagerLeftEnabled = value;
+        root.save();
+    }
+
+    function setStageManagerRightEnabled(value) {
+        root.stageManagerRightEnabled = value;
+        root.save();
+    }
+
+    function setStageManagerRevealDelay(value) {
+        if (root.stageManagerRevealDelays.indexOf(value) < 0)
+            return;
+        root.stageManagerRevealDelay = value;
+        root.save();
+    }
+
+    function setDesktopRevealEnabled(value) {
+        root.desktopRevealEnabled = value;
         root.save();
     }
 
@@ -576,6 +606,10 @@ Singleton {
                                              "wechatExtraSoundEnabled": root.wechatExtraSoundEnabled,
                                              "notificationSoundEnabled": root.notificationSoundEnabled,
                                              "qqSoundEnabled": root.qqSoundEnabled,
+                                             "stageManagerLeftEnabled": root.stageManagerLeftEnabled,
+                                             "stageManagerRightEnabled": root.stageManagerRightEnabled,
+                                             "stageManagerRevealDelay": root.stageManagerRevealDelay,
+                                             "desktopRevealEnabled": root.desktopRevealEnabled,
                                              "notificationPopupSeconds": root.notificationPopupSeconds,
                                              "notificationCriticalBypassDnd":
                                              root.notificationCriticalBypassDnd,
@@ -654,6 +688,11 @@ Singleton {
                 root.wechatExtraSoundEnabled = parsed.wechatExtraSoundEnabled !== false;
                 root.notificationSoundEnabled = parsed.notificationSoundEnabled !== false;
                 root.qqSoundEnabled = parsed.qqSoundEnabled !== false;
+                root.stageManagerLeftEnabled = parsed.stageManagerLeftEnabled !== false;
+                root.stageManagerRightEnabled = parsed.stageManagerRightEnabled !== false;
+                root.stageManagerRevealDelay = root.stageManagerRevealDelays.indexOf(
+                            parsed.stageManagerRevealDelay) >= 0 ? parsed.stageManagerRevealDelay : 300;
+                root.desktopRevealEnabled = parsed.desktopRevealEnabled !== false;
                 root.notificationPopupSeconds = root.notificationPopupDurations.indexOf(
                             parsed.notificationPopupSeconds) >= 0 ? parsed.notificationPopupSeconds : 7;
                 root.notificationCriticalBypassDnd = parsed.notificationCriticalBypassDnd !== false;

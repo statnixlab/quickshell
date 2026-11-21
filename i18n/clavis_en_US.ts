@@ -16193,6 +16193,16 @@ Scroll to adjust; click to open sound</translation>
         <translation>Floating windows and title bars</translation>
     </message>
     <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2845"/>
+        <source>Stage Manager</source>
+        <translation>Stage Manager</translation>
+    </message>
+    <message>
+        <location filename="../Common/generated/SearchCatalog.js" line="2846"/>
+        <source>Desktop</source>
+        <translation>Desktop</translation>
+    </message>
+    <message>
         <location filename="../Modules/ControlCenter/WindowsPage.qml" line="19"/>
         <source>Chosen by the application</source>
         <translation>Chosen by the application</translation>
@@ -16484,6 +16494,51 @@ Scroll to adjust; click to open sound</translation>
         <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>Applies to maximize buttons of tiled windows</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="455"/>
+        <source>Rest the pointer at the middle of a screen edge to open a strip.</source>
+        <translation>Rest the pointer at the middle of a screen edge to open a strip.</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="464"/>
+        <source>Other stages on the left edge</source>
+        <translation>Other stages on the left edge</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="465"/>
+        <source>Windows of the other workspaces and minimized windows</source>
+        <translation>Windows of the other workspaces and minimized windows</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="471"/>
+        <source>Current stage on the right edge</source>
+        <translation>Current stage on the right edge</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="472"/>
+        <source>Every window of the current workspace</source>
+        <translation>Every window of the current workspace</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <source>Open after resting at the edge for</source>
+        <translation>Open after resting at the edge for</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="486"/>
+        <source>%1 s</source>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="508"/>
+        <source>Click wallpaper to reveal desktop</source>
+        <translation>Click wallpaper to reveal desktop</translation>
+    </message>
+    <message>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="509"/>
+        <source>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</source>
+        <translation>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</translation>
     </message>
 </context>
 <context>
