@@ -3,6 +3,7 @@
 
 import QtQuick
 import Quickshell
+import qs.Modules.DesktopReveal
 import qs.Modules.StageManager
 import qs.Modules.WindowOverview
 
@@ -10,4 +11,5 @@ ShellRoot {
     AppShell {}
     WindowOverviewHost {}
     StageManagerHost {}
+    DesktopRevealHost {}
 }
