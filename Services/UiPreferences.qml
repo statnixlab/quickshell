@@ -19,6 +19,10 @@ Singleton {
     property string spotlightClipboardStyle: "default"
     property bool dndEnabled: false
     property bool wechatExtraSoundEnabled: true
+    // Sound for new notifications of other apps (the sound theme's message sound).
+    property bool notificationSoundEnabled: true
+    // QQ's own message sound for new QQ notifications.
+    property bool qqSoundEnabled: true
     readonly property var notificationPopupDurations: [3, 5, 7, 10, 15]
     property int notificationPopupSeconds: 7
     property bool notificationCriticalBypassDnd: true
@@ -125,6 +129,16 @@ Singleton {
 
     function setWechatExtraSoundEnabled(value) {
         root.wechatExtraSoundEnabled = value;
+        root.save();
+    }
+
+    function setNotificationSoundEnabled(value) {
+        root.notificationSoundEnabled = value;
+        root.save();
+    }
+
+    function setQqSoundEnabled(value) {
+        root.qqSoundEnabled = value;
         root.save();
     }
 
@@ -560,6 +574,8 @@ Singleton {
         prefsFile.setText(JSON.stringify({
                                              "dndEnabled": root.dndEnabled,
                                              "wechatExtraSoundEnabled": root.wechatExtraSoundEnabled,
+                                             "notificationSoundEnabled": root.notificationSoundEnabled,
+                                             "qqSoundEnabled": root.qqSoundEnabled,
                                              "notificationPopupSeconds": root.notificationPopupSeconds,
                                              "notificationCriticalBypassDnd":
                                              root.notificationCriticalBypassDnd,
@@ -636,6 +652,8 @@ Singleton {
                 if (typeof parsed.dndEnabled === "boolean")
                     root.dndEnabled = parsed.dndEnabled;
                 root.wechatExtraSoundEnabled = parsed.wechatExtraSoundEnabled !== false;
+                root.notificationSoundEnabled = parsed.notificationSoundEnabled !== false;
+                root.qqSoundEnabled = parsed.qqSoundEnabled !== false;
                 root.notificationPopupSeconds = root.notificationPopupDurations.indexOf(
                             parsed.notificationPopupSeconds) >= 0 ? parsed.notificationPopupSeconds : 7;
                 root.notificationCriticalBypassDnd = parsed.notificationCriticalBypassDnd !== false;

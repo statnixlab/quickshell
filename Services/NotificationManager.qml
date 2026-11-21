@@ -193,37 +193,72 @@ Singleton {
         onExited: root.refresh()
     }
 
-    // WeChat can send a desktop notification without playing audio itself.
-    // Play the locally extracted WeChat sound for new arrivals, never history or updates.
+    // Notification sounds for new arrivals, never history or updates. WeChat
+    // and QQ send notifications without playing audio themselves: they get
+    // their own message sounds; every other app gets the sound it names in
+    // the notification, or else the sound theme's message sound (macOS-style
+    // with the macOS theme). One sound at a time, with a short per-kind
+    // cooldown so bursts of notifications do not chime repeatedly.
+    readonly property string wechatSoundFile: Paths.xdgDataHome + "/sounds/clavis/wechat-classic.wav"
+    readonly property string qqSoundFile: "/opt/QQ/resources/app/resource/msg.wav"
+    property var _soundCooldownUntil: ({})
+
     Process {
-        id: wechatSound
-        command: ["canberra-gtk-play", "--file=" + Paths.xdgDataHome + "/sounds/clavis/wechat-classic.wav",
-            "--property=application.name=Clavis Notification", "--property=media.role=notification"]
+        id: notificationSound
         onExited: exitCode => {
             if (exitCode !== 0)
-                console.warn("WeChat notification sound failed:", exitCode);
+                console.warn("Notification sound failed:", exitCode, command.join(" "));
         }
     }
 
-    Timer {
-        id: wechatSoundCooldown
-        interval: 3000
-    }
-
-    function playWechatSound(notification, isReplacement) {
+    function notificationSoundKind(notification) {
         const desktopEntry = (notification.desktopEntry || "").toLowerCase();
         const appName = (notification.appName || "").toLowerCase();
-        const isWechat = desktopEntry === "wechat" || desktopEntry === "wechat.desktop" || appName
-              === "wechat" || appName === "weixin" || appName === "微信";
+        if (desktopEntry === "wechat" || desktopEntry === "wechat.desktop" || appName === "wechat" || appName
+                === "weixin" || appName === "微信")
+            return "wechat";
+        if (desktopEntry === "qq" || desktopEntry === "qq.desktop" || appName === "qq")
+            return "qq";
+        return "other";
+    }
+
+    // canberra-gtk-play arguments for a notification, or [] when it stays silent.
+    function notificationSoundSource(notification, kind) {
+        const hints = notification.hints || {};
+        if (kind === "wechat")
+            return UiPreferences.wechatExtraSoundEnabled ? ["--file=" + root.wechatSoundFile] : [];
+        if (kind === "qq")
+            return UiPreferences.qqSoundEnabled ? ["--file=" + root.qqSoundFile] : [];
+        if (!UiPreferences.notificationSoundEnabled)
+            return [];
+        const file = String(hints["sound-file"] || "");
+        if (file.startsWith("/"))
+            return ["--file=" + file];
+        const name = String(hints["sound-name"] || "");
+        return ["--id=" + (/^[a-z0-9][a-z0-9.-]*$/.test(name) ? name : "message-new-instant")];
+    }
+
+    function playNotificationSound(notification, isReplacement) {
         const hints = notification.hints || {};
         const muted = UiPreferences.notificationMutedApps.indexOf(notification.appName
                                                                   || notification.desktopEntry) >= 0;
-        if (!UiPreferences.wechatExtraSoundEnabled || !isWechat || root.silent || muted || isReplacement
-                || hints["suppress-sound"] || notification.urgency === NotificationUrgency.Low
-                || wechatSound.running || wechatSoundCooldown.running)
+        if (root.silent || muted || isReplacement || hints["suppress-sound"] || notification.urgency
+                === NotificationUrgency.Low || notificationSound.running)
             return;
-        wechatSoundCooldown.start();
-        wechatSound.running = true;
+        const kind = root.notificationSoundKind(notification);
+        const now = Date.now();
+        if ((root._soundCooldownUntil[kind] || 0) > now)
+            return;
+        const source = root.notificationSoundSource(notification, kind);
+        if (source.length === 0)
+            return;
+        const cooldown = Object.assign({}, root._soundCooldownUntil);
+        cooldown[kind] = now + (kind === "other" ? 1500 : 3000);
+        root._soundCooldownUntil = cooldown;
+        notificationSound.command = ["canberra-gtk-play"].concat(source,
+                                                                 ["--property=application.name=Clavis Notification",
+                                                                  "--property=media.role=notification"]);
+        notificationSound.running = true;
     }
 
     NotificationServer {
@@ -292,7 +327,7 @@ Singleton {
             replaced.forEach(notif => Qt.callLater(() => notif.destroy()));
             root.trimPopupList(1);
             root.saveNotifications();
-            root.playWechatSound(notification, replaced.length > 0);
+            root.playNotificationSound(notification, replaced.length > 0);
             root.notify(newNotifObject);
         }
     }

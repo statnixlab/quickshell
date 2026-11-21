@@ -97,10 +97,26 @@ StyledFlickable {
             }
 
             SwitchRow {
+                title: qsTr("Notification sound")
+                supportingText: qsTr(
+                                    "Play the sound theme's message sound for new notifications from other apps, except during Do Not Disturb")
+                checked: UiPreferences.notificationSoundEnabled
+                onToggled: checked => UiPreferences.setNotificationSoundEnabled(checked)
+            }
+
+            SwitchRow {
                 title: qsTr("Extra sound for WeChat")
                 supportingText: qsTr("Play a sound for new WeChat messages, except during Do Not Disturb")
                 checked: UiPreferences.wechatExtraSoundEnabled
                 onToggled: checked => UiPreferences.setWechatExtraSoundEnabled(checked)
+            }
+
+            SwitchRow {
+                title: qsTr("QQ message sound")
+                supportingText: qsTr(
+                                    "Play QQ's own message sound for new QQ messages, except during Do Not Disturb")
+                checked: UiPreferences.qqSoundEnabled
+                onToggled: checked => UiPreferences.setQqSoundEnabled(checked)
             }
         }
 
