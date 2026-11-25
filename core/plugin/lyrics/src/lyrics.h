@@ -126,6 +126,8 @@ class Lyrics : public QObject {
     QVariantMap m_selectedCandidate;
     QVariantList m_netEaseCandidates;
     QVariantMap m_pendingCandidate;
+    // LRCLIB plain-only lyrics, used only when no provider has a timeline.
+    QVariantMap m_plainFallback;
     QString m_provider;
     QString m_error;
 

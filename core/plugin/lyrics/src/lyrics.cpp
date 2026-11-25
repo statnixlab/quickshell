@@ -600,6 +600,7 @@ void Lyrics::resetProviderOutcomes()
     m_netEaseSawValidLyricResponse = false;
     m_netEaseSawNoLyrics = false;
     m_netEaseSawParseFailure = false;
+    m_plainFallback.clear();
 }
 
 void Lyrics::resetNetEaseSession()
@@ -690,9 +691,10 @@ bool Lyrics::loadCachedLyrics(quint64 generation)
     if (content.value(QStringLiteral("version")).toInt() != 2)
         return false;
     const QString synced = content.value(QStringLiteral("syncedLyrics")).toString();
-    const QString plain = content.value(QStringLiteral("plainLyrics")).toString();
-    if (synced.isEmpty() && plain.isEmpty())
+    // Plain-only entries are retried so a provider with a timeline can win.
+    if (synced.isEmpty())
         return false;
+    const QString plain = content.value(QStringLiteral("plainLyrics")).toString();
 
     QVariantMap candidate = candidateWithIdentity(
         provider, id, content.value(QStringLiteral("title")).toString(),
@@ -1046,6 +1048,14 @@ bool Lyrics::handleLrclibTrack(const QJsonObject &json, quint64 generation)
     candidate.insert(QStringLiteral("syncedLyrics"), synced);
     candidate.insert(QStringLiteral("plainLyrics"), plain);
 
+    if (synced.isEmpty() && m_autoFallback) {
+        // Plain lyrics have no timeline; look for synced lyrics on NetEase
+        // first and keep these as the last resort.
+        m_plainFallback = candidate;
+        m_lrclibOutcome = ProviderOutcome::Success;
+        return false;
+    }
+
     const bool accepted =
         acceptRawLyrics(QStringLiteral("LRCLIB"), synced, plain, candidate, generation, true);
     m_lrclibOutcome = accepted ? ProviderOutcome::Success : ProviderOutcome::ParseFailure;
@@ -1123,6 +1133,14 @@ void Lyrics::tryNextNetEaseCandidate(quint64 generation)
             continue;
         startNetEaseLyrics(candidate, generation);
         return;
+    }
+
+    if (!m_plainFallback.isEmpty()) {
+        const QVariantMap fallback = m_plainFallback;
+        m_plainFallback.clear();
+        if (acceptRawLyrics(QStringLiteral("LRCLIB"), {}, fallback.value(QStringLiteral("plainLyrics")).toString(),
+                            fallback, generation, true))
+            return;
     }
 
     if (m_netEaseSearchOutcome == ProviderOutcome::TransportError ||
