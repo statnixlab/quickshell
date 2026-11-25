@@ -40,14 +40,29 @@ Item {
                                                                              trailingLane.preferredExtent)
                                                                     + PersonalizationConfig.keystoneInsetPadding
                                                                     + 12)
-    readonly property real contentLength: root.vertical ? preferredLength : Math.min(preferredLength,
-                                                                                     availableLength)
+    readonly property real statusLength: root.vertical ? preferredLength : Math.min(preferredLength,
+                                                                                    availableLength)
+    // Lyrics mode shrinks the island to its own compact length.
+    readonly property real lyricsLength: Math.min(statusLength, lyricsBar.preferredLength)
+    readonly property real contentLength: statusLength + (lyricsLength - statusLength) * lyricsProgress
 
     Component.onCompleted: BarLayoutService.registerKeystone(root)
     Component.onDestruction: BarLayoutService.unregisterKeystone(root)
 
     signal clockClicked(int button)
     signal mediaRequested
+
+    // The middle-click lyrics mode replaces the whole island's content in place.
+    readonly property bool lyricsMode: LyricsTrackService.inlineLyrics && !root.vertical
+    property real lyricsProgress: lyricsMode ? 1 : 0
+    readonly property real statusOpacity: 1 - lyricsProgress
+
+    Behavior on lyricsProgress {
+        NumberAnimation {
+            duration: 320
+            easing.type: Easing.OutCubic
+        }
+    }
 
     HoverHandler {
         id: mainHover
@@ -61,6 +76,9 @@ Item {
                                 PersonalizationConfig.keystoneThickness
         edge: root.edge
         player: MediaManager.active
+        opacity: root.statusOpacity
+        visible: opacity > 0
+        scale: 1 - 0.06 * root.lyricsProgress
 
         HoverHandler {
             id: clockHover
@@ -73,8 +91,29 @@ Item {
         }
     }
 
+    FullLyricsBar {
+        id: lyricsBar
+        anchors.fill: parent
+        active: root.lyricsMode
+        opacity: root.lyricsProgress
+        visible: opacity > 0
+        scale: 0.96 + 0.04 * root.lyricsProgress
+
+        MouseArea {
+            // Stay below the lyrics bar's own transport buttons.
+            z: -1
+            anchors.fill: parent
+            enabled: root.lyricsMode
+            acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+            cursorShape: Qt.PointingHandCursor
+            onClicked: mouse => root.clockClicked(mouse.button)
+        }
+    }
+
     StatusLane {
         id: leadingLane
+        opacity: root.statusOpacity
+        visible: opacity > 0
         items: PersonalizationConfig.keystoneFullLeading
         x: root.vertical ? 0 : PersonalizationConfig.keystoneInsetPadding
         y: root.vertical ? PersonalizationConfig.keystoneInsetPadding : 0
@@ -87,6 +126,8 @@ Item {
 
     StatusLane {
         id: trailingLane
+        opacity: root.statusOpacity
+        visible: opacity > 0
         items: PersonalizationConfig.keystoneFullTrailing
         x: root.vertical ? 0 : clock.x + clock.width + 12
         y: root.vertical ? clock.y + clock.height + 12 : 0

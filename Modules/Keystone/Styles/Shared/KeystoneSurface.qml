@@ -170,6 +170,13 @@ Variants {
         }
 
         function lyrics(): string {
+            // The full island swaps its media title for lyrics in place, so
+            // the bar keeps its normal size and other windows stay usable.
+            if (styleSurface.fullDisplay && keystoneWindow.horizontalEdge) {
+                root.lyricsPinned = false;
+                LyricsTrackService.inlineLyrics = !LyricsTrackService.inlineLyrics;
+                return LyricsTrackService.inlineLyrics ? "LYRICS_OPENED" : "LYRICS_CLOSED";
+            }
             if (root.lyricsPinned) {
                 root.lyricsPinned = false;
                 closeAllOthers();

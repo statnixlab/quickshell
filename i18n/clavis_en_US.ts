@@ -4804,6 +4804,29 @@ Scroll to adjust</translation>
     </message>
 </context>
 <context>
+    <name>FullLyricsBar</name>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="394"/>
+        <source>Previous track</source>
+        <translation>Previous track</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="406"/>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="406"/>
+        <source>Play</source>
+        <translation>Play</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="416"/>
+        <source>Next track</source>
+        <translation>Next track</translation>
+    </message>
+</context>
+<context>
     <name>FullMetricItem</name>
     <message>
         <location filename="../Modules/Keystone/FullDisplay/FullMetricItem.qml" line="60"/>
@@ -16208,360 +16231,360 @@ Scroll to adjust; click to open sound</translation>
         <translation>Desktop</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="33"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="32"/>
         <source>Chosen by the application</source>
         <translation>Chosen by the application</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="37"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="36"/>
         <source>One third</source>
         <translation>One third</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="41"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="40"/>
         <source>Half</source>
         <translation>Half</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="45"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="44"/>
         <source>Two thirds</source>
         <translation>Two thirds</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="49"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="48"/>
         <source>Full width</source>
         <translation>Full width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="56"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="55"/>
         <source>%1% of the screen</source>
         <translation>%1% of the screen</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="116"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="115"/>
         <source>Saving…</source>
         <translation>Saving…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="118"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="117"/>
         <source>Changes are saved and applied automatically</source>
         <translation>Changes are saved and applied automatically</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="130"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="129"/>
         <source>Enable window management settings</source>
         <translation>Enable window management settings</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="131"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="130"/>
         <source>Clavis takes over window layout, decorations and focus behavior, starting from your current values.</source>
         <translation>Clavis takes over window layout, decorations and focus behavior, starting from your current values.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="154"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="153"/>
         <source>Gaps between windows</source>
         <translation>Gaps between windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="158"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="260"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="284"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="157"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="259"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="283"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="167"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="166"/>
         <source>New window width</source>
         <translation>New window width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="184"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="183"/>
         <source>Center the focused column</source>
         <translation>Center the focused column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="192"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="191"/>
         <source>Never</source>
         <translation>Never</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="196"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="195"/>
         <source>When it does not fit</source>
         <translation>When it does not fit</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="200"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="199"/>
         <source>Always</source>
         <translation>Always</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="212"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="211"/>
         <source>Center a single column</source>
         <translation>Center a single column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="213"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="212"/>
         <source>When a workspace has only one column</source>
         <translation>When a workspace has only one column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="222"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="221"/>
         <source>Empty workspace above the first</source>
         <translation>Empty workspace above the first</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="244"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="243"/>
         <source>Focus ring</source>
         <translation>Focus ring</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="245"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="244"/>
         <source>Outline drawn around the focused window</source>
         <translation>Outline drawn around the focused window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="256"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="255"/>
         <source>Focus ring width</source>
         <translation>Focus ring width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="268"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="267"/>
         <source>Border</source>
         <translation>Border</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="269"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="268"/>
         <source>Border around every window, which takes up layout space</source>
         <translation>Border around every window, which takes up layout space</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="280"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="279"/>
         <source>Border width</source>
         <translation>Border width</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="292"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="291"/>
         <source>Window shadows</source>
         <translation>Window shadows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="313"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="312"/>
         <source>Focus follows the mouse</source>
         <translation>Focus follows the mouse</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="314"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="326"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="313"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="325"/>
         <source>Turned on in another configuration file</source>
         <translation>Turned on in another configuration file</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="316"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="315"/>
         <source>Focus windows by moving the pointer over them</source>
         <translation>Focus windows by moving the pointer over them</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="325"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="324"/>
         <source>Move the pointer to the focused window</source>
         <translation>Move the pointer to the focused window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="328"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="327"/>
         <source>When focus changes with the keyboard</source>
         <translation>When focus changes with the keyboard</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="336"/>
         <source>Switch back to the previous workspace</source>
         <translation>Switch back to the previous workspace</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="338"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
         <source>Choosing the current workspace again returns to the previous one</source>
         <translation>Choosing the current workspace again returns to the previous one</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="351"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="350"/>
         <source>Move the pointer into a chosen screen corner to open or close the overview.</source>
         <translation>Move the pointer into a chosen screen corner to open or close the overview.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="362"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="361"/>
         <source>Top-left corner</source>
         <translation>Top-left corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="367"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="366"/>
         <source>Top-right corner</source>
         <translation>Top-right corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="372"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="371"/>
         <source>Bottom-left corner</source>
         <translation>Bottom-left corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="377"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="376"/>
         <source>Bottom-right corner</source>
         <translation>Bottom-right corner</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="383"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="382"/>
         <source>Workspace size in the overview</source>
         <translation>Workspace size in the overview</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="401"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="400"/>
         <source>Provided by this computer&apos;s customized niri</source>
         <translation>Provided by this computer&apos;s customized niri</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="411"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="410"/>
         <source>Remember each application&apos;s window layout</source>
         <translation>Remember each application&apos;s window layout</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="412"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="411"/>
         <source>New windows reopen floating or tiled with their last size</source>
         <translation>New windows reopen floating or tiled with their last size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="417"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="416"/>
         <source>Lower floating windows behind tiled windows</source>
         <translation>Lower floating windows behind tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="418"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="417"/>
         <source>Activating a tiled window lowers raised floating windows</source>
         <translation>Activating a tiled window lowers raised floating windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="423"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="422"/>
         <source>Keep dialogs with their parent window</source>
         <translation>Keep dialogs with their parent window</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="428"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="427"/>
         <source>Keep floating windows below the bar</source>
         <translation>Keep floating windows below the bar</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="429"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="428"/>
         <source>Floating windows share the top edge of tiled windows</source>
         <translation>Floating windows share the top edge of tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="434"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="433"/>
         <source>Snap to half the screen at the edges</source>
         <translation>Snap to half the screen at the edges</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="435"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="434"/>
         <source>Drop a floating window at the left or right edge to tile it</source>
         <translation>Drop a floating window at the left or right edge to tile it</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="440"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="439"/>
         <source>Detach tiled windows by dragging with Mod</source>
         <translation>Detach tiled windows by dragging with Mod</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="441"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="440"/>
         <source>Hold Shift as well to keep the normal tiling drag</source>
         <translation>Hold Shift as well to keep the normal tiling drag</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="446"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
         <source>Restore the previous floating size</source>
         <translation>Restore the previous floating size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="447"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="446"/>
         <source>When a tiled window becomes floating again</source>
         <translation>When a tiled window becomes floating again</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="452"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="451"/>
         <source>Double-click a title bar to expand the column</source>
         <translation>Double-click a title bar to expand the column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="453"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="452"/>
         <source>The maximize button still fills the screen</source>
         <translation>The maximize button still fills the screen</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="458"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="457"/>
         <source>Maximize requests expand the column</source>
         <translation>Maximize requests expand the column</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="459"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="458"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>Applies to maximize buttons of tiled windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="469"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="468"/>
         <source>Turn an application off to stop remembering its tiled or floating layout and its size.</source>
         <translation>Turn an application off to stop remembering its tiled or floating layout and its size.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="479"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="478"/>
         <source>Remember each application&apos;s window size</source>
         <translation>Remember each application&apos;s window size</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="479"/>
         <source>Floating size and tiled column width; the most recently adjusted window wins</source>
         <translation>Floating size and tiled column width; the most recently adjusted window wins</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="507"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="506"/>
         <source>Applications appear here after you open their windows</source>
         <translation>Applications appear here after you open their windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="517"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="516"/>
         <source>Rest the pointer at the middle of a screen edge to open a strip.</source>
         <translation>Rest the pointer at the middle of a screen edge to open a strip.</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="526"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="525"/>
         <source>Other stages on the left edge</source>
         <translation>Other stages on the left edge</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="527"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="526"/>
         <source>Windows of the other workspaces and minimized windows</source>
         <translation>Windows of the other workspaces and minimized windows</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="533"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="532"/>
         <source>Current stage on the right edge</source>
         <translation>Current stage on the right edge</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="534"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="533"/>
         <source>Every window of the current workspace</source>
         <translation>Every window of the current workspace</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="542"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="541"/>
         <source>Open after resting at the edge for</source>
         <translation>Open after resting at the edge for</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="548"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="547"/>
         <source>%1 s</source>
         <translation>%1 s</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="570"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="569"/>
         <source>Click wallpaper to reveal desktop</source>
         <translation>Click wallpaper to reveal desktop</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="571"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="570"/>
         <source>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</source>
         <translation>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</translation>
     </message>

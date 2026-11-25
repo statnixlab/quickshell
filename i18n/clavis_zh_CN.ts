@@ -4803,6 +4803,29 @@ Scroll to adjust</source>
     </message>
 </context>
 <context>
+    <name>FullLyricsBar</name>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="394"/>
+        <source>Previous track</source>
+        <translation>上一首</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="406"/>
+        <source>Pause</source>
+        <translation>暂停</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="406"/>
+        <source>Play</source>
+        <translation>播放</translation>
+    </message>
+    <message>
+        <location filename="../Modules/Keystone/FullDisplay/FullLyricsBar.qml" line="416"/>
+        <source>Next track</source>
+        <translation>下一首</translation>
+    </message>
+</context>
+<context>
     <name>FullMetricItem</name>
     <message>
         <location filename="../Modules/Keystone/FullDisplay/FullMetricItem.qml" line="60"/>
@@ -16198,360 +16221,360 @@ Scroll to adjust; click to open sound</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="33"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="32"/>
         <source>Chosen by the application</source>
         <translation>由应用决定</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="37"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="36"/>
         <source>One third</source>
         <translation>三分之一</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="41"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="40"/>
         <source>Half</source>
         <translation>一半</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="45"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="44"/>
         <source>Two thirds</source>
         <translation>三分之二</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="49"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="48"/>
         <source>Full width</source>
         <translation>全宽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="56"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="55"/>
         <source>%1% of the screen</source>
         <translation>屏幕的 %1%</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="116"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="115"/>
         <source>Saving…</source>
         <translation>正在保存…</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="118"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="117"/>
         <source>Changes are saved and applied automatically</source>
         <translation>更改会自动保存并应用</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="130"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="129"/>
         <source>Enable window management settings</source>
         <translation>启用窗口管理设置</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="131"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="130"/>
         <source>Clavis takes over window layout, decorations and focus behavior, starting from your current values.</source>
         <translation>由 Clavis 接管窗口布局、装饰和焦点行为，沿用你当前的设置。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="154"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="153"/>
         <source>Gaps between windows</source>
         <translation>窗口间距</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="158"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="260"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="284"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="157"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="259"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="283"/>
         <source> px</source>
         <translation> 像素</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="167"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="166"/>
         <source>New window width</source>
         <translation>新窗口宽度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="184"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="183"/>
         <source>Center the focused column</source>
         <translation>聚焦列居中</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="192"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="191"/>
         <source>Never</source>
         <translation>从不</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="196"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="195"/>
         <source>When it does not fit</source>
         <translation>放不下时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="200"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="199"/>
         <source>Always</source>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="212"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="211"/>
         <source>Center a single column</source>
         <translation>单列时居中</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="213"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="212"/>
         <source>When a workspace has only one column</source>
         <translation>工作区只有一列时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="222"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="221"/>
         <source>Empty workspace above the first</source>
         <translation>在第一个工作区上方保留空工作区</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="244"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="243"/>
         <source>Focus ring</source>
         <translation>聚焦环</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="245"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="244"/>
         <source>Outline drawn around the focused window</source>
         <translation>在当前聚焦的窗口周围绘制轮廓</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="256"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="255"/>
         <source>Focus ring width</source>
         <translation>聚焦环宽度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="268"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="267"/>
         <source>Border</source>
         <translation>边框</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="269"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="268"/>
         <source>Border around every window, which takes up layout space</source>
         <translation>每个窗口的边框，会占用布局空间</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="280"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="279"/>
         <source>Border width</source>
         <translation>边框宽度</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="292"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="291"/>
         <source>Window shadows</source>
         <translation>窗口阴影</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="313"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="312"/>
         <source>Focus follows the mouse</source>
         <translation>焦点跟随鼠标</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="314"/>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="326"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="313"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="325"/>
         <source>Turned on in another configuration file</source>
         <translation>已在其他配置文件中打开</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="316"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="315"/>
         <source>Focus windows by moving the pointer over them</source>
         <translation>指针移到窗口上即聚焦该窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="325"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="324"/>
         <source>Move the pointer to the focused window</source>
         <translation>鼠标指针跟随焦点</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="328"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="327"/>
         <source>When focus changes with the keyboard</source>
         <translation>用键盘切换焦点时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="336"/>
         <source>Switch back to the previous workspace</source>
         <translation>切回上一个工作区</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="338"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="337"/>
         <source>Choosing the current workspace again returns to the previous one</source>
         <translation>再次选择当前工作区时回到上一个工作区</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="351"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="350"/>
         <source>Move the pointer into a chosen screen corner to open or close the overview.</source>
         <translation>把指针移到选定的屏幕角落即可打开或关闭概览。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="362"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="361"/>
         <source>Top-left corner</source>
         <translation>左上角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="367"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="366"/>
         <source>Top-right corner</source>
         <translation>右上角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="372"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="371"/>
         <source>Bottom-left corner</source>
         <translation>左下角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="377"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="376"/>
         <source>Bottom-right corner</source>
         <translation>右下角</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="383"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="382"/>
         <source>Workspace size in the overview</source>
         <translation>概览中的工作区大小</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="401"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="400"/>
         <source>Provided by this computer&apos;s customized niri</source>
         <translation>由本机定制的 niri 提供</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="411"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="410"/>
         <source>Remember each application&apos;s window layout</source>
         <translation>记住每个应用的窗口布局</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="412"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="411"/>
         <source>New windows reopen floating or tiled with their last size</source>
         <translation>新窗口按上次的浮动或平铺状态和尺寸打开</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="417"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="416"/>
         <source>Lower floating windows behind tiled windows</source>
         <translation>点击平铺窗口时降下浮动窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="418"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="417"/>
         <source>Activating a tiled window lowers raised floating windows</source>
         <translation>激活平铺窗口时，浮在上方的窗口会降到它后面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="423"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="422"/>
         <source>Keep dialogs with their parent window</source>
         <translation>对话框随父窗口一起显示</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="428"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="427"/>
         <source>Keep floating windows below the bar</source>
         <translation>浮动窗口不覆盖状态栏</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="429"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="428"/>
         <source>Floating windows share the top edge of tiled windows</source>
         <translation>浮动窗口与平铺窗口顶部对齐</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="434"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="433"/>
         <source>Snap to half the screen at the edges</source>
         <translation>拖到屏幕边缘吸附为半屏</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="435"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="434"/>
         <source>Drop a floating window at the left or right edge to tile it</source>
         <translation>把浮动窗口拖到左右边缘松开，即变为半宽平铺列</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="440"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="439"/>
         <source>Detach tiled windows by dragging with Mod</source>
         <translation>按住 Mod 拖动可将平铺窗口变为浮动</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="441"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="440"/>
         <source>Hold Shift as well to keep the normal tiling drag</source>
         <translation>同时按住 Shift 则保持普通的平铺拖动</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="446"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="445"/>
         <source>Restore the previous floating size</source>
         <translation>恢复之前的浮动尺寸</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="447"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="446"/>
         <source>When a tiled window becomes floating again</source>
         <translation>平铺窗口重新变为浮动时</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="452"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="451"/>
         <source>Double-click a title bar to expand the column</source>
         <translation>双击标题栏扩展为整列宽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="453"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="452"/>
         <source>The maximize button still fills the screen</source>
         <translation>最大化按钮仍然铺满屏幕</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="458"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="457"/>
         <source>Maximize requests expand the column</source>
         <translation>最大化请求改为扩展列宽</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="459"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="458"/>
         <source>Applies to maximize buttons of tiled windows</source>
         <translation>作用于平铺窗口的最大化按钮</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="469"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="468"/>
         <source>Turn an application off to stop remembering its tiled or floating layout and its size.</source>
         <translation>关闭某个应用后，不再记住它的平铺或悬浮布局和窗口大小。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="479"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="478"/>
         <source>Remember each application&apos;s window size</source>
         <translation>记住每个应用的窗口大小</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="480"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="479"/>
         <source>Floating size and tiled column width; the most recently adjusted window wins</source>
         <translation>悬浮大小和平铺列宽；以最后调整的窗口为准</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="507"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="506"/>
         <source>Applications appear here after you open their windows</source>
         <translation>打开应用窗口后，应用会显示在这里</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="517"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="516"/>
         <source>Rest the pointer at the middle of a screen edge to open a strip.</source>
         <translation>把指针停在屏幕左右边缘的中间，即可打开缩略图条。</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="526"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="525"/>
         <source>Other stages on the left edge</source>
         <translation>左侧显示其他舞台</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="527"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="526"/>
         <source>Windows of the other workspaces and minimized windows</source>
         <translation>其他工作区的窗口和最小化的窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="533"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="532"/>
         <source>Current stage on the right edge</source>
         <translation>右侧显示当前舞台</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="534"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="533"/>
         <source>Every window of the current workspace</source>
         <translation>当前工作区的所有窗口</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="542"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="541"/>
         <source>Open after resting at the edge for</source>
         <translation>指针停留多久后打开</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="548"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="547"/>
         <source>%1 s</source>
         <translation>%1 秒</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="570"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="569"/>
         <source>Click wallpaper to reveal desktop</source>
         <translation>点按墙纸以显示桌面</translation>
     </message>
     <message>
-        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="571"/>
+        <location filename="../Modules/ControlCenter/WindowsPage.qml" line="570"/>
         <source>Floating windows move to the screen edges; click the wallpaper or a window to bring them back</source>
         <translation>浮动窗口移到屏幕边缘；再点墙纸或点某个窗口即可恢复</translation>
     </message>

@@ -8,15 +8,15 @@ Singleton {
     id: root
 
     readonly property var player: MediaManager.active
+    // The full island shows the current lyric line in place of the media title.
+    property bool inlineLyrics: false
 
     function playerIdentity(playerObject) {
         if (!playerObject)
             return "";
 
-        const service = playerObject.dbusName || playerObject.busName
-            || playerObject.identity || "";
-        const uniqueId = playerObject.uniqueId === undefined
-            ? "" : String(playerObject.uniqueId);
+        const service = playerObject.dbusName || playerObject.busName || playerObject.identity || "";
+        const uniqueId = playerObject.uniqueId === undefined ? "" : String(playerObject.uniqueId);
         return String(service) + ":" + uniqueId;
     }
 
@@ -27,13 +27,9 @@ Singleton {
             return;
         }
 
-        Lyrics.setTrack(
-            String(current.trackArtist || ""),
-            String(current.trackTitle || ""),
-            String(current.trackAlbum || ""),
-            Number(current.length) > 0 ? Number(current.length) : 0,
-            root.playerIdentity(current)
-        );
+        Lyrics.setTrack(String(current.trackArtist || ""), String(current.trackTitle || ""), String(
+                            current.trackAlbum || ""), Number(current.length) > 0 ? Number(current.length) : 0,
+                        root.playerIdentity(current));
     }
 
     function initialize() {
@@ -45,18 +41,32 @@ Singleton {
     Connections {
         target: MediaManager
 
-        function onActiveChanged() { root.sync(); }
+        function onActiveChanged() {
+            root.sync();
+        }
     }
 
     Connections {
         target: root.player
         ignoreUnknownSignals: true
 
-        function onTrackTitleChanged() { root.sync(); }
-        function onTrackArtistChanged() { root.sync(); }
-        function onTrackAlbumChanged() { root.sync(); }
-        function onLengthChanged() { root.sync(); }
-        function onUniqueIdChanged() { root.sync(); }
-        function onIdentityChanged() { root.sync(); }
+        function onTrackTitleChanged() {
+            root.sync();
+        }
+        function onTrackArtistChanged() {
+            root.sync();
+        }
+        function onTrackAlbumChanged() {
+            root.sync();
+        }
+        function onLengthChanged() {
+            root.sync();
+        }
+        function onUniqueIdChanged() {
+            root.sync();
+        }
+        function onIdentityChanged() {
+            root.sync();
+        }
     }
 }
