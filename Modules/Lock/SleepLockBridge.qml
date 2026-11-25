@@ -17,13 +17,17 @@ Scope {
         const serial = root.pendingSerial;
         root.pendingSerial = -1;
         if (bridge.running)
-            bridge.write(JSON.stringify({secured: serial}) + "\n");
+            bridge.write(JSON.stringify({
+                                            secured: serial
+                                        }) + "\n");
         root.lockConfirmed(serial);
     }
 
     function receive(event) {
         if (event.event === "ready") {
             root.ready = true;
+            if (event.sessionLocked && !root.locker.isLocked())
+                root.locker.open(true);
         } else if (event.event === "prepare") {
             root.pendingSerial = event.serial;
             root.locker.open();
@@ -38,13 +42,16 @@ Scope {
 
     Connections {
         target: root.locker
-        function onSecured() { root.confirmLock(); }
+        function onSecured() {
+            root.confirmLock();
+        }
     }
 
     Timer {
         id: retry
         interval: 3000
-        onTriggered: if (root.enabled) bridge.running = true
+        onTriggered: if (root.enabled)
+                         bridge.running = true
     }
 
     Process {
@@ -54,8 +61,11 @@ Scope {
         stdinEnabled: true
         stdout: SplitParser {
             onRead: data => {
-                try { root.receive(JSON.parse(data)); }
-                catch (error) { console.warn("Sleep lock bridge:", error); }
+                try {
+                    root.receive(JSON.parse(data));
+                } catch (error) {
+                    console.warn("Sleep lock bridge:", error);
+                }
             }
         }
         stderr: SplitParser {

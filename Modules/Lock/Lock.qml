@@ -31,7 +31,7 @@ Scope {
         root.sessionLocked = sessionLock.locked;
     }
 
-    function open() {
+    function open(recoverExisting = false) {
         if (sessionLock.locked || capturePending)
             return "ALREADY_LOCKED";
 
@@ -40,6 +40,12 @@ Scope {
         internalContext.currentText = "";
         internalContext.unlockInProgress = false;
         internalContext.showFailure = false;
+        // The compositor already hides the desktop when replacing a dead locker.
+        if (recoverExisting) {
+            sessionLock.locked = true;
+            root.syncLockState();
+            return "LOCKED";
+        }
         capturePending = true;
         activeCaptureRequestId = preLockCapture.capture();
         return "LOCKED";

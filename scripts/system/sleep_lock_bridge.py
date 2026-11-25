@@ -46,6 +46,24 @@ class SleepGuard:
             self.release()
 
 
+def session_locked(connection, session_id):
+    if not session_id:
+        return False
+    try:
+        path, = connection.call_sync(
+            DESTINATION, MANAGER, INTERFACE, 'GetSession', GLib.Variant('(s)', (session_id,)),
+            GLib.VariantType.new('(o)'), Gio.DBusCallFlags.NONE, 2000, None).unpack()
+        locked, = connection.call_sync(
+            DESTINATION, path, 'org.freedesktop.DBus.Properties', 'Get',
+            GLib.Variant('(ss)', ('org.freedesktop.login1.Session', 'LockedHint')),
+            GLib.VariantType.new('(v)'), Gio.DBusCallFlags.NONE, 2000, None).unpack()
+        return locked
+    except GLib.Error as error:
+        print('Sleep lock bridge: cannot read session lock state: ' + str(error),
+              file=sys.stderr, flush=True)
+        return False
+
+
 def main():
     connection = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
     loop = GLib.MainLoop()
@@ -111,7 +129,7 @@ def main():
     GLib.io_add_watch(sys.stdin.fileno(), GLib.IO_IN | GLib.IO_HUP | GLib.IO_ERR, receive)
     try:
         guard.hold()
-        emit({'event': 'ready'})
+        emit({'event': 'ready', 'sessionLocked': session_locked(connection, os.getenv('XDG_SESSION_ID'))})
         loop.run()
     finally:
         guard.release()
